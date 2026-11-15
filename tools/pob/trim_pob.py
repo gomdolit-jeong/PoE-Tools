@@ -43,9 +43,16 @@ def main() -> None:
     keep = sys.argv[2:]
     src = repo / "src"
 
+    # 버전 폴더(3_19, 3_27_ruthless 등)만 지웁니다. legion 같은 공용 폴더는 둡니다.
+    # TreeData/3_19/Assets.lua 는 자체 그림 정보가 없는 트리(3.28 등)가 빌려 쓰므로 남깁니다.
+    shared = [src / "TreeData" / "3_19" / "Assets.lua"]
+    saved = {p: p.read_bytes() for p in shared}
     for tree in (src / "TreeData").iterdir():
-        if tree.is_dir() and tree.name not in keep:
+        if tree.is_dir() and re.match(r"^\d+_\d+", tree.name) and tree.name not in keep:
             shutil.rmtree(tree)
+    for p, content in saved.items():
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_bytes(content)
 
     game_versions = src / "GameVersions.lua"
     text = game_versions.read_text(encoding="utf-8")
