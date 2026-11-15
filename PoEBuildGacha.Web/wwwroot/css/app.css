@@ -148,6 +148,23 @@ html, body {
 .game-title { font-family: "Cinzel", serif; font-size: 1.1rem; color: var(--gold); }
 .game-sub { color: var(--muted); font-size: .9rem; }
 
+.game-col { display: flex; flex-direction: column; gap: 8px; }
+.game-col .game-card { flex: 1; }
+.game-pob {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #3a2a12, #1f160b);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    color: var(--gold);
+    font-size: .92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: filter .15s, transform .15s;
+}
+.game-pob:hover { filter: brightness(1.15); transform: translateY(-1px); }
+.game-pob .pob-icon { font-size: 1.15rem; }
+
 .badge {
     display: inline-block;
     padding: 2px 10px;
@@ -426,3 +443,39 @@ html, body {
 .guide-link:hover { border-color: var(--gold); }
 .guide-link b { font-size: .92rem; }
 .guide-link span { color: var(--muted); font-size: .8rem; }
+
+/* ===== Path of Building 버튼 (결과 카드 바로 아래) ===== */
+.pob-actions { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-top: 16px; }
+@media (max-width: 520px) { .pob-actions { grid-template-columns: 1fr; } }
+.pob-open, .pob-copy {
+    display: flex;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font: inherit;
+    cursor: pointer;
+    transition: border-color .15s, transform .15s, filter .15s;
+}
+.pob-open {
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #3a2a12, #1f160b);
+    border: 1px solid var(--gold);
+}
+.pob-open:hover { filter: brightness(1.15); transform: translateY(-1px); }
+.pob-icon { font-size: 1.7rem; color: var(--gold); line-height: 1; }
+.pob-text { display: flex; flex-direction: column; gap: 3px; }
+.pob-text b { font-size: 1.05rem; color: var(--gold); }
+.pob-open small, .pob-copy small { color: var(--muted); font-size: .78rem; }
+.pob-copy {
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding: 12px 14px;
+    background: #0f0c0a;
+    border: 1px solid var(--line);
+    text-align: left;
+}
+.pob-copy:hover { border-color: var(--gold); }
+.pob-copy b { font-size: .92rem; }

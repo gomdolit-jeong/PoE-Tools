@@ -47,6 +47,27 @@ jobs:
           # Jekyll이 _framework 폴더를 빼지 않게 한다
           touch publish/wwwroot/.nojekyll
 
+      # 브라우저용 Path of Building (tools/pob/build.sh). 빌드 결과는 캐시해서 매시간 배포 때 다시 쓰고,
+      # tools/pob 파일이 바뀌면 처음부터 다시 빌드합니다.
+      - uses: jdx/mise-action@v2
+        with:
+          install: false
+
+      - uses: actions/cache@v4
+        with:
+          key: pob-${{ runner.os }}-${{ hashFiles('tools/pob/**') }}
+          path: |
+            .pob-work
+            ~/.local/share/mise
+            ~/.cache/deno
+
+      # 실패해도 사이트 배포는 계속합니다 (그때는 PoB 페이지만 빠집니다).
+      - name: Build Path of Building
+        continue-on-error: true
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/pob/
+        run: bash tools/pob/build.sh publish/wwwroot/pob "$BASE_PATH"
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: publish/wwwroot

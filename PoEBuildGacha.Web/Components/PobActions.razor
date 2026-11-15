@@ -1,0 +1,51 @@
+@using PoEBuildGacha.Web.Gacha
+@inject IJSRuntime JS
+
+@* 뽑기 결과 바로 아래의 Path of Building 버튼. 브라우저용 PoB는 이 사이트의 pob/ 아래에 있습니다 (tools/pob/build.sh, 배포 때 빌드). *@
+<div class="pob-actions">
+    <a class="pob-open" href="@PobUrl" target="_blank" rel="noopener">
+        <span class="pob-icon" aria-hidden="true">⚙</span>
+        <span class="pob-text">
+            <b>Path of Building으로 열기</b>
+            <small>이 직업·전직·스킬이 들어간 상태로 열려요 · 처음엔 200MB쯤 받아요</small>
+        </span>
+    </a>
+    <button type="button" class="pob-copy" @onclick="CopyPobCode">
+        <b>@(copied ? "복사했어요!" : "PoB 코드 복사")</b>
+        <small>@(copyMessage ?? "데스크톱 PoB의 Import에 붙여 넣기")</small>
+    </button>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public GachaResult Result { get; set; } = default!;
+
+    GachaResult? pobFor;
+    string pobCode = "";
+    bool copied;
+    string? copyMessage;
+
+    string PobUrl => "pob/#build=" + pobCode;
+
+    protected override void OnParametersSet()
+    {
+        if (ReferenceEquals(pobFor, Result)) return;
+        pobFor = Result;
+        pobCode = PobCode.Create(Result);
+        copied = false;
+        copyMessage = null;
+    }
+
+    async Task CopyPobCode()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("navigator.clipboard.writeText", pobCode);
+            copied = true;
+            copyMessage = "PoB → Import/Export Build에 붙여 넣으세요";
+        }
+        catch (JSException)
+        {
+            copyMessage = "복사하지 못했어요. 브라우저 권한을 확인해 주세요";
+        }
+    }
+}

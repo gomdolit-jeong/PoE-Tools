@@ -426,3 +426,6 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# 브라우저용 PoB 빌드 작업 폴더 (tools/pob/build.sh)
+.pob-work/

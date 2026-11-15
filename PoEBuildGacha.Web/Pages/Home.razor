@@ -19,10 +19,17 @@
         <section class="panel">
             <h2>어떤 게임을 하시나요?</h2>
             <div class="game-grid">
-                <button class="game-card" @onclick="() => game = 1">
-                    <span class="game-title">Path of Exile 1</span>
-                    <span class="game-sub">빌드 뽑으러 가기</span>
-                </button>
+                <div class="game-col">
+                    <button class="game-card" @onclick="() => game = 1">
+                        <span class="game-title">Path of Exile 1</span>
+                        <span class="game-sub">빌드 뽑으러 가기</span>
+                    </button>
+                    @* 빈 빌드로 PoB만 엽니다 (tools/pob/build.sh로 배포 때 빌드) *@
+                    <a class="game-pob" href="pob/" target="_blank" rel="noopener">
+                        <span class="pob-icon" aria-hidden="true">⚙</span>
+                        <span>Path of Building 열기</span>
+                    </a>
+                </div>
                 <button class="game-card disabled" disabled>
                     <span class="game-title">Path of Exile 2</span>
                     <span class="badge">개발 예정</span>
@@ -105,6 +112,8 @@
                         </div>
                     }
                 </dl>
+
+                <PobActions Result="result" />
 
                 <BuildGuides Result="result" />
 
