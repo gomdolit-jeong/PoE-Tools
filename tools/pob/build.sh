@@ -12,8 +12,9 @@ set -euo pipefail
 POB_WEB_COMMIT="${POB_WEB_COMMIT:-aead90ff705e511ca6b20e488cef093211570c27}"
 POB_TAG="${POB_TAG:-v2.67.2}"
 COI_VERSION="0.1.7"
-# 이 트리들의 이미지만 올립니다. 나머지(옛 리그 트리)는 용량 때문에 뺍니다.
-KEEP_TREES="3_29 3_28_alternate"
+# 이 패시브 트리 버전만 올립니다 (최신 정규 리그 2개 + 최신 프레시아). 나머지는 용량 때문에 뺍니다.
+# PobCode.cs의 TreeVersion·PhreciaTreeVersion이 이 안에 있어야 합니다.
+KEEP_TREES="3_29 3_28 3_28_alternate"
 
 OUT="$(realpath -m "$1")"
 BASE="$2"
@@ -41,8 +42,13 @@ if [ ! -f packages/driver/dist/release/driver.wasm ]; then
   deno task repo driver-build
 fi
 
-# 2) PoB 원본(Lua 코드와 데이터)을 받아서 묶기
-deno task --filter pob-packer pack "$POB_TAG" poe1 clone
+# 2) PoB 원본(Lua 코드와 데이터)을 받아서 안 쓰는 트리 버전을 지우고 묶기
+POB_REPO="packages/packer/build/poe1/$POB_TAG/repo"
+rm -rf "packages/packer/build/poe1/$POB_TAG"
+git clone -q --depth 1 --branch "$POB_TAG" https://github.com/PathOfBuildingCommunity/PathOfBuilding.git "$POB_REPO"
+# shellcheck disable=SC2086
+python3 "$HERE/trim_pob.py" "$POB_REPO" $KEEP_TREES
+(cd packages/packer && deno task pack "$POB_TAG" poe1)
 
 # 3) 이 사이트용 시작 페이지로 바꾸고, 사이트 루트(/)를 가정한 경로를 하위 경로로 고치기
 cp "$HERE/index.html" packages/driver/index.html
@@ -68,9 +74,5 @@ DATA="$OUT/data/games/poe1/versions/$POB_TAG"
 mkdir -p "$DATA"
 cp -r "packages/packer/r2/games/poe1/versions/$POB_TAG/." "$DATA/"
 rm -f "$DATA/.pack-input.sha256"
-for tree in "$DATA"/root/TreeData/*/; do
-  name="$(basename "$tree")"
-  case " $KEEP_TREES " in *" $name "*) ;; *) rm -rf "$tree" ;; esac
-done
 
 du -sh "$OUT" "$DATA/root.zip"
