@@ -11,9 +11,10 @@ namespace PoEBuildGacha.Web.Gacha;
 /// </summary>
 public static class PobCode
 {
-    // PoB v2.67.2 기준 트리 버전. 일반 전직은 최신 트리, 프레시아 전직은 "alternate" 트리에 있습니다.
-    // PoB 버전을 올릴 때(.github/workflows/deploy-pages.yml의 POB_TAG) 함께 확인합니다.
-    public const string TreeVersion = "3_29";
+    // PoB v2.68.1 기준 트리 버전. 일반 전직은 최신 트리(3.30), 프레시아 전직은 "alternate" 트리에 있습니다.
+    // PoB 버전을 올릴 때(tools/pob/build.sh의 POB_TAG·KEEP_TREES) 함께 확인합니다.
+    // 3.30 트리에서 워든의 내부 id는 "Raider"지만 이름과 순서(레인저 1번)는 그대로입니다.
+    public const string TreeVersion = "3_30";
     public const string PhreciaTreeVersion = "3_28_alternate";
 
     // 트리 데이터(TreeData/<버전>/tree.lua)의 "classes" 순서. 직업 번호는 0부터, 전직 번호는 1부터입니다.

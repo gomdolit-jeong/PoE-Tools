@@ -16,7 +16,7 @@
   - 뽑힌 직업·전직·주요 스킬(프레시아면 이동기까지)이 들어간 PoB 코드를 만듭니다. 패시브 트리와 장비는 비어 있습니다.
   - 사이트의 `pob/`에 브라우저용 PoB를 직접 올립니다. [pob-web](https://github.com/atty303/pob-web)(MIT)의 실행기로 [PoB Community](https://github.com/PathOfBuildingCommunity/PathOfBuilding) 원본을 그대로 돌립니다.
   - 처음 열 때 PoB 데이터 약 200MB를 받습니다. pobb.in 불러오기·캐릭터 가져오기처럼 외부 사이트에 접속하는 기능은 동작하지 않을 수 있습니다.
-  - 용량을 줄이려고 패시브 트리는 최신 정규 리그 2개(3.29, 3.28)와 최신 프레시아(3.28 alternate)만 넣습니다(`tools/pob/trim_pob.py`). 다른 버전으로 저장된 빌드는 최신 트리로 열립니다.
+  - 용량을 줄이려고 패시브 트리는 최신 정규 리그 2개(3.30, 3.29)와 최신 프레시아(3.28 alternate)만 넣습니다(`tools/pob/trim_pob.py`). 다른 버전으로 저장된 빌드는 최신 트리로 열립니다.
   - 배포할 때 GitHub Actions가 `tools/pob/build.sh`로 빌드합니다. PoB 버전(`POB_TAG`)과 pob-web 버전은 이 파일에 고정되어 있고, 올릴 때는 `PobCode.cs`의 트리 버전도 같이 확인합니다.
 
 ## 실행

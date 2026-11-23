@@ -9,12 +9,14 @@
 set -euo pipefail
 
 # 검증한 버전에 고정합니다. 올릴 때는 PobCode.cs의 트리 버전도 같이 확인합니다.
-POB_WEB_COMMIT="${POB_WEB_COMMIT:-aead90ff705e511ca6b20e488cef093211570c27}"
-POB_TAG="${POB_TAG:-v2.67.2}"
+# PoB를 올릴 때는 pob-web의 version.json에서 그 버전이 "tested"인 커밋을 고릅니다
+# (PoB 새 버전이 pob-web의 Lua 실행기 수정을 요구하기도 합니다. 예: v2.68).
+POB_WEB_COMMIT="${POB_WEB_COMMIT:-7f25457763b0452bf4f024e9a305442418c26601}"
+POB_TAG="${POB_TAG:-v2.68.1}"
 COI_VERSION="0.1.7"
 # 이 패시브 트리 버전만 올립니다 (최신 정규 리그 2개 + 최신 프레시아). 나머지는 용량 때문에 뺍니다.
 # PobCode.cs의 TreeVersion·PhreciaTreeVersion이 이 안에 있어야 합니다.
-KEEP_TREES="3_29 3_28 3_28_alternate"
+KEEP_TREES="3_30 3_29 3_28_alternate"
 
 OUT="$(realpath -m "$1")"
 BASE="$2"
@@ -37,9 +39,11 @@ mise install deno emsdk cmake ninja
 eval "$(mise env -s bash)"
 deno ci
 
-# 1) PoB 실행기(Lua + 그리기)를 WebAssembly로 빌드
-if [ ! -f packages/driver/dist/release/driver.wasm ]; then
+# 1) PoB 실행기(Lua + 그리기)를 WebAssembly로 빌드. 캐시된 빌드는 같은 pob-web 커밋일 때만 다시 씁니다.
+DRIVER_MARK=packages/driver/dist/.gacha-commit
+if [ ! -f packages/driver/dist/release/driver.wasm ] || [ "$(cat "$DRIVER_MARK" 2>/dev/null)" != "$POB_WEB_COMMIT" ]; then
   deno task repo driver-build
+  echo "$POB_WEB_COMMIT" > "$DRIVER_MARK"
 fi
 
 # 2) PoB 원본(Lua 코드와 데이터)을 받아서 안 쓰는 트리 버전을 지우고 묶기
