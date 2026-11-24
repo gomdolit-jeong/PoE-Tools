@@ -52,6 +52,8 @@ rm -rf "packages/packer/build/poe1/$POB_TAG"
 git clone -q --depth 1 --branch "$POB_TAG" https://github.com/PathOfBuildingCommunity/PathOfBuilding.git "$POB_REPO"
 # shellcheck disable=SC2086
 python3 "$HERE/trim_pob.py" "$POB_REPO" $KEEP_TREES
+# 패시브 툴팁에 한글 이름·설명을 덧붙입니다 (계산용 영어 문장은 그대로). 넣을 자리가 없으면 경고만 합니다.
+python3 "$HERE/korean_tooltips.py" "$POB_REPO" "$HERE/../timeless_korean.json" || echo "경고: 한글 툴팁을 넣지 못했습니다 (PoB는 영어로 빌드)"
 (cd packages/packer && deno task pack "$POB_TAG" poe1)
 
 # 3) 이 사이트용 시작 페이지로 바꾸고, 사이트 루트(/)를 가정한 경로를 하위 경로로 고치기
