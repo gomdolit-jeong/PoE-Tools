@@ -1,0 +1,216 @@
+@page "/timeless"
+@using System.Globalization
+@using System.Text
+@using PoEBuildGacha.Web.Gacha
+@inject HttpClient Http
+
+<PageTitle>군단 주얼 트리 - PoE Build Gacha</PageTitle>
+
+<main class="shell">
+    <header class="hero">
+        <h1>Timeless Jewel</h1>
+        <p class="tagline">군단 주얼을 골라서 Path of Building 트리로 바로 열어 보세요</p>
+    </header>
+
+    <section class="panel">
+        <a class="back" href="./">← 처음으로</a>
+        <h2>1. 주얼 고르기</h2>
+        <div class="tj-grid">
+            @foreach (var j in TimelessJewels.All)
+            {
+                <button type="button" class="tj-choice @(j == jewel ? "on" : "")" @onclick="() => SelectJewel(j)">
+                    <b>@j.Korean</b>
+                    <small>@j.Name</small>
+                </button>
+            }
+        </div>
+
+        <h3 class="tj-sub">정복자</h3>
+        <div class="tj-grid three">
+            @foreach (var c in jewel.Conquerors)
+            {
+                <button type="button" class="tj-choice @(c == conqueror ? "on" : "")" @onclick="() => conqueror = c">
+                    <b>@c.Name</b>
+                    <small>@c.Keystone</small>
+                </button>
+            }
+        </div>
+
+        <h3 class="tj-sub">시드 (주얼에 적힌 숫자)</h3>
+        <input class="tj-seed @(SeedWrong ? "bad" : "")" type="number" inputmode="numeric"
+               min="@jewel.MinSeed" max="@jewel.MaxSeed" step="@jewel.SeedStep"
+               @bind="seed" @bind:event="oninput" />
+        <p class="tj-help @(SeedWrong ? "bad" : "")">
+            @jewel.MinSeed.ToString("N0") ~ @jewel.MaxSeed.ToString("N0")@(jewel.SeedStep > 1 ? $", {jewel.SeedStep} 단위" : "")
+        </p>
+    </section>
+
+    <section class="panel">
+        <h2>2. 소켓 고르기</h2>
+        @if (tree is null)
+        {
+            <p class="tj-help">@(loadFailed ? "트리 데이터를 받지 못했어요. 새로고침해 주세요." : "트리를 불러오는 중이에요…")</p>
+        }
+        else
+        {
+            <p class="tj-help">금색 동그라미가 주얼 소켓이에요. 눌러서 고르면 대형 반경과 경로가 표시돼요.</p>
+            <svg class="tj-map" viewBox="@MapViewBox" role="img" aria-label="패시브 트리 소켓 지도">
+                <path class="tj-edge" d="@edgePath" />
+                @if (socket is not null)
+                {
+                    <circle class="tj-radius" cx="@F(socket.X)" cy="@F(socket.Y)" r="@F(TimelessTree.LargeRadius)" />
+                    <path class="tj-path" d="@pathLine" />
+                }
+                @foreach (var n in bigNodes)
+                {
+                    <circle class="@(n.IsKeystone ? "tj-key" : "tj-notable") @(inRadius.Contains(n.I) ? "hit" : "")"
+                            cx="@F(n.X)" cy="@F(n.Y)" r="@(n.IsKeystone ? 70 : 45)" />
+                }
+                @foreach (var s in tree.Sockets)
+                {
+                    <circle class="tj-socket @(s == socket ? "on" : "")" cx="@F(s.X)" cy="@F(s.Y)" r="190"
+                            @onclick="() => SelectSocket(s)">
+                        <title>@SocketLabel(s)</title>
+                    </circle>
+                }
+            </svg>
+
+            @if (socket is not null)
+            {
+                <div class="tj-socket-info">
+                    <label>
+                        시작 직업
+                        <select @bind="classChoice" @bind:after="UpdatePath">
+                            <option value="">가장 가까운 직업 (@ClassKorean(nearestClass))</option>
+                            @foreach (var c in tree.Data.Starts.Keys)
+                            {
+                                <option value="@c">@ClassKorean(c)</option>
+                            }
+                        </select>
+                    </label>
+                    <span class="tj-help">소켓까지 @(path?.Length ?? 0)포인트</span>
+                </div>
+
+                <h3 class="tj-sub">반경 안의 핵심·주요 패시브</h3>
+                <ul class="tj-notables">
+                    @foreach (var n in notablesInRadius)
+                    {
+                        <li class="@(n.IsKeystone ? "key" : "")">@n.N</li>
+                    }
+                </ul>
+            }
+        }
+    </section>
+
+    @if (Code is { } pobCode)
+    {
+        <section class="panel">
+            <h2>3. PoB로 보기</h2>
+            <p class="tj-help">
+                @jewel.Korean @seed (@conqueror.Name)을 @ClassKorean(StartClass) 시작점에서 이어진 소켓에 꽂아 둔 상태로 열려요.
+                PoB 트리에서 바뀐 패시브에 마우스를 올려 보세요.
+            </p>
+            <PobActions Code="@pobCode" Description="이 군단 주얼이 소켓에 꽂힌 상태로 열려요" />
+        </section>
+    }
+
+    <footer class="footer">
+        This is a fan project, not affiliated with Grinding Gear Games.
+    </footer>
+</main>
+
+@code {
+    TimelessTree? tree;
+    bool loadFailed;
+
+    TimelessJewelType jewel = TimelessJewels.All[0];
+    Conqueror conqueror = TimelessJewels.All[0].Conquerors[0];
+    int? seed;
+
+    TreeNode? socket;
+    string classChoice = "";
+    string nearestClass = "Scion";
+    HashSet<int> inRadius = [];
+    TreeNode[] notablesInRadius = [];
+    TreeNode[] bigNodes = [];
+    string edgePath = "";
+    int[]? path;
+    string pathLine = "";
+
+    bool SeedValid => seed is { } s && jewel.IsValidSeed(s);
+    // 아직 안 적었을 때는 빨갛게 하지 않습니다.
+    bool SeedWrong => seed is not null && !SeedValid;
+    string StartClass => classChoice == "" ? nearestClass : classChoice;
+
+    string? Code => SeedValid && socket is not null && path is not null
+        ? PobCode.CreateTimeless(StartClass, jewel, conqueror, seed!.Value, socket.I, path)
+        : null;
+
+    string MapViewBox
+    {
+        get
+        {
+            var nodes = tree!.Data.Nodes;
+            double minX = nodes.Min(n => n.X), maxX = nodes.Max(n => n.X);
+            double minY = nodes.Min(n => n.Y), maxY = nodes.Max(n => n.Y);
+            const double pad = 300;
+            return $"{F(minX - pad)} {F(minY - pad)} {F(maxX - minX + 2 * pad)} {F(maxY - minY + 2 * pad)}";
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        tree = await TimelessTree.LoadAsync(Http);
+        loadFailed = tree is null;
+        if (tree is null) return;
+
+        bigNodes = tree.Data.Nodes.Where(n => n.IsKeystone || n.IsNotable).ToArray();
+        var sb = new StringBuilder();
+        foreach (var e in tree.Data.Edges)
+        {
+            TreeNode a = tree.Nodes[e[0]], b = tree.Nodes[e[1]];
+            // 직업 시작점의 연결선은 PoB처럼 그리지 않습니다 (시작점 원 안에서 겹침).
+            if (a.IsStart || b.IsStart) continue;
+            sb.Append($"M{F(a.X)} {F(a.Y)}L{F(b.X)} {F(b.Y)}");
+        }
+        edgePath = sb.ToString();
+    }
+
+    void UpdatePath()
+    {
+        if (tree is null || socket is null) return;
+        path = tree.PathTo(StartClass, socket.I);
+        var start = tree.Nodes[tree.Data.Starts[StartClass]];
+        var points = new[] { start }.Concat((path ?? []).Select(id => tree.Nodes[id]));
+        pathLine = "M" + string.Join("L", points.Select(n => $"{F(n.X)} {F(n.Y)}"));
+    }
+
+    void SelectJewel(TimelessJewelType j)
+    {
+        if (j == jewel) return;
+        jewel = j;
+        conqueror = j.Conquerors[0];
+        if (seed is { } s && !j.IsValidSeed(s)) seed = null;
+    }
+
+    void SelectSocket(TreeNode s)
+    {
+        socket = s;
+        nearestClass = tree!.NearestClass(s.I);
+        var nodes = tree.InRadius(s).ToArray();
+        inRadius = nodes.Select(n => n.I).ToHashSet();
+        notablesInRadius = nodes.Where(n => n.IsKeystone || n.IsNotable)
+            .OrderByDescending(n => n.IsKeystone).ThenBy(n => n.N).ToArray();
+        UpdatePath();
+    }
+
+    string SocketLabel(TreeNode s)
+    {
+        var names = tree!.InRadius(s).Where(n => n.IsKeystone).Select(n => n.N).ToArray();
+        return names.Length > 0 ? "소켓 · " + string.Join(", ", names) : "소켓";
+    }
+
+    static string ClassKorean(string name) => PoeData.Classes.FirstOrDefault(c => c.Name == name)?.Korean ?? name;
+
+    static string F(double v) => v.ToString("0.#", CultureInfo.InvariantCulture);
+}

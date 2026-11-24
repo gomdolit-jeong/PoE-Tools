@@ -25,10 +25,16 @@
                         <span class="game-sub">빌드 뽑으러 가기</span>
                     </button>
                     @* 빈 빌드로 PoB만 엽니다 (tools/pob/build.sh로 배포 때 빌드) *@
-                    <a class="game-pob" href="pob/" target="_blank" rel="noopener">
-                        <span class="pob-icon" aria-hidden="true">⚙</span>
-                        <span>Path of Building 열기</span>
-                    </a>
+                    <div class="game-links">
+                        <a class="game-pob" href="pob/" target="_blank" rel="noopener">
+                            <span class="pob-icon" aria-hidden="true">⚙</span>
+                            <span>Path of Building 열기</span>
+                        </a>
+                        <a class="game-pob" href="timeless">
+                            <span class="pob-icon" aria-hidden="true">◈</span>
+                            <span>군단 주얼 트리</span>
+                        </a>
+                    </div>
                 </div>
                 <button class="game-card disabled" disabled>
                     <span class="game-title">Path of Exile 2</span>
@@ -113,7 +119,7 @@
                     }
                 </dl>
 
-                <PobActions Result="result" />
+                <PobActions Code="@PobCode.Create(result)" Description="이 직업·전직·스킬이 들어간 상태로 열려요" />
 
                 <BuildGuides Result="result" />
 

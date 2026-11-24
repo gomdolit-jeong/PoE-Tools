@@ -42,12 +42,51 @@ public static class PobCode
         ["Shadow"] = ["Servant of Arakaali", "Blind Prophet", "Surfcaster"],
     };
 
-    public static string Create(GachaResult result)
+    public static string Create(GachaResult result) => Encode(Xml(result));
+
+    /// <summary>
+    /// 군단 주얼 하나만 든 빌드. 직업 시작점에서 소켓까지 경로(pathNodes)를 찍고 그 소켓에 주얼을 꽂습니다.
+    /// PoB는 찍힌 소켓의 군단 주얼만 트리에 변환을 보여 줍니다 (PassiveSpec.lua의 radiusJewels).
+    /// </summary>
+    public static string CreateTimeless(string className, TimelessJewelType jewel, Conqueror conqueror, int seed,
+        int socketId, IEnumerable<int> pathNodes) => Encode(TimelessXml(className, jewel, conqueror, seed, socketId, pathNodes));
+
+    public static XDocument TimelessXml(string className, TimelessJewelType jewel, Conqueror conqueror, int seed,
+        int socketId, IEnumerable<int> pathNodes)
+    {
+        var classId = Array.IndexOf(ClassOrder, className);
+        if (classId < 0) throw new InvalidOperationException($"PoB 트리에 없는 직업입니다: {className}");
+
+        return new XDocument(
+            new XElement("PathOfBuilding",
+                new XElement("Build",
+                    new XAttribute("level", 100),
+                    new XAttribute("targetVersion", "3_0"),
+                    new XAttribute("className", className),
+                    new XAttribute("ascendClassName", "None"),
+                    new XAttribute("mainSocketGroup", 1)),
+                new XElement("Skills", new XAttribute("activeSkillSet", 1), new XElement("SkillSet", new XAttribute("id", 1))),
+                new XElement("Items", new XAttribute("activeItemSet", 1),
+                    new XElement("Item", new XAttribute("id", 1), TimelessJewels.ItemText(jewel, conqueror, seed)),
+                    new XElement("ItemSet", new XAttribute("id", 1))),
+                new XElement("Tree", new XAttribute("activeSpec", 1),
+                    new XElement("Spec",
+                        new XAttribute("title", $"{jewel.Name} {seed} ({conqueror.Name})"),
+                        new XAttribute("treeVersion", TreeVersion),
+                        new XAttribute("classId", classId),
+                        new XAttribute("ascendClassId", 0),
+                        new XAttribute("nodes", string.Join(',', pathNodes)),
+                        new XElement("Sockets",
+                            new XElement("Socket", new XAttribute("nodeId", socketId), new XAttribute("itemId", 1))))),
+                new XElement("Notes", $"PoE Build Gacha: {jewel.Name} {seed} / {conqueror.Name} ({conqueror.Keystone})")));
+    }
+
+    static string Encode(XDocument xml)
     {
         using var output = new MemoryStream();
         using (var zlib = new ZLibStream(output, CompressionLevel.Optimal))
         {
-            zlib.Write(Encoding.UTF8.GetBytes(Xml(result).ToString(SaveOptions.DisableFormatting)));
+            zlib.Write(Encoding.UTF8.GetBytes(xml.ToString(SaveOptions.DisableFormatting)));
         }
         return Convert.ToBase64String(output.ToArray()).Replace('+', '-').Replace('/', '_');
     }

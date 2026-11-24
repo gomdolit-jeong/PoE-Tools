@@ -479,3 +479,68 @@ html, body {
 }
 .pob-copy:hover { border-color: var(--gold); }
 .pob-copy b { font-size: .92rem; }
+
+
+/* ===== 군단 주얼 페이지 (Pages/Timeless.razor) ===== */
+.game-links { display: flex; gap: 8px; }
+.game-links .game-pob { flex: 1; }
+a.back { display: inline-block; text-decoration: none; }
+
+.tj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+@media (max-width: 480px) { .tj-grid { grid-template-columns: 1fr 1fr; } }
+.tj-choice {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+    padding: 10px 12px;
+    background: #231d17;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.tj-choice small { color: var(--muted); font-size: .78rem; }
+.tj-choice:hover { border-color: #8a6a28; }
+.tj-choice.on { border-color: var(--gold); background: #3a2a12; }
+.tj-choice.on b { color: var(--gold); }
+
+.tj-sub { margin: 18px 0 8px; font-size: .95rem; color: var(--text); }
+.tj-seed {
+    width: 100%;
+    padding: 10px 12px;
+    background: #0f0c0a;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font: inherit;
+    font-size: 1.1rem;
+}
+.tj-seed:focus { outline: none; border-color: var(--gold); }
+.tj-seed.bad { border-color: #8a3a2a; }
+.tj-help { margin: 6px 0 0; color: var(--muted); font-size: .85rem; }
+.tj-help.bad { color: #d98a6a; }
+
+.tj-map { display: block; width: 100%; height: auto; margin-top: 10px; background: #0f0c0a; border-radius: 8px; }
+.tj-edge { stroke: #3b3127; stroke-width: 18; fill: none; }
+.tj-notable { fill: #5e5446; }
+.tj-key { fill: #7a6a50; }
+.tj-notable.hit, .tj-key.hit { fill: #e8c46a; }
+.tj-radius { fill: rgba(200, 161, 74, .10); stroke: var(--gold); stroke-width: 20; }
+.tj-path { stroke: #6fc1e8; stroke-width: 40; fill: none; stroke-linejoin: round; }
+.tj-socket { fill: #1f160b; stroke: var(--gold); stroke-width: 40; cursor: pointer; }
+.tj-socket:hover { fill: #5a3f16; }
+.tj-socket.on { fill: var(--gold); }
+
+.tj-socket-info { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; }
+.tj-socket-info label { display: flex; align-items: center; gap: 8px; }
+.tj-socket-info select {
+    padding: 6px 8px;
+    background: #0f0c0a;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font: inherit;
+}
+.tj-notables { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.tj-notables li { padding: 3px 10px; border-radius: 999px; background: #3b3127; font-size: .82rem; }
+.tj-notables li.key { background: #5a3f16; color: #f3dc9c; font-weight: 700; }

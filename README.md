@@ -17,7 +17,12 @@
   - 사이트의 `pob/`에 브라우저용 PoB를 직접 올립니다. [pob-web](https://github.com/atty303/pob-web)(MIT)의 실행기로 [PoB Community](https://github.com/PathOfBuildingCommunity/PathOfBuilding) 원본을 그대로 돌립니다.
   - 처음 열 때 PoB 데이터 약 200MB를 받습니다. pobb.in 불러오기·캐릭터 가져오기처럼 외부 사이트에 접속하는 기능은 동작하지 않을 수 있습니다.
   - 용량을 줄이려고 패시브 트리는 최신 정규 리그 2개(3.30, 3.29)와 최신 프레시아(3.28 alternate)만 넣습니다(`tools/pob/trim_pob.py`). 다른 버전으로 저장된 빌드는 최신 트리로 열립니다.
-  - 배포할 때 GitHub Actions가 `tools/pob/build.sh`로 빌드합니다. PoB 버전(`POB_TAG`)과 pob-web 버전은 이 파일에 고정되어 있고, 올릴 때는 `PobCode.cs`의 트리 버전도 같이 확인합니다.
+  - 배포할 때 GitHub Actions가 `tools/pob/build.sh`로 빌드합니다. PoB 버전(`POB_TAG`)과 pob-web 버전은 이 파일에 고정되어 있고, 올릴 때는 `PobCode.cs`의 트리 버전과 `timeless-tree.json`도 같이 확인합니다.
+
+- 첫 화면의 **군단 주얼 트리**(`/timeless`)에서 군단 주얼을 직접 골라 PoB로 열 수 있습니다.
+  - 주얼 종류(찬란한 허영심, 치명적인 긍지, 잔인한 속박, 호전적인 신념, 고상한 오만, 영웅적인 비극), 정복자, 시드를 고르고 트리 지도에서 소켓을 누릅니다.
+  - PoB는 찍힌 소켓의 주얼만 변환을 보여 주므로, 직업 시작점(기본은 가장 가까운 직업)에서 소켓까지 가장 짧은 경로를 찍어서 엽니다.
+  - 트리 지도 데이터(`wwwroot/data/timeless-tree.json`)는 `tools/build_timeless_tree.py`로 PoB의 `TreeData/<버전>/tree.lua`에서 만듭니다. PoB 트리 버전을 올릴 때 다시 만듭니다.
 
 ## 실행
 
@@ -32,7 +37,9 @@ dotnet run --project PoEBuildGacha.Web --launch-profile http
 - `PoEBuildGacha.Web/Gacha/PoeData.cs` — 직업·전직·스킬·이동기 목록
 - `PoEBuildGacha.Web/Gacha/BuildGacha.cs` — 무작위 뽑기
 - `PoEBuildGacha.Web/Pages/Home.razor` — 화면과 주사위 효과
-- `PoEBuildGacha.Web/Gacha/PobCode.cs` — 뽑기 결과 → PoB 코드
+- `PoEBuildGacha.Web/Gacha/PobCode.cs` — 뽑기 결과·군단 주얼 → PoB 코드
+- `PoEBuildGacha.Web/Gacha/TimelessJewel.cs` — 군단 주얼 목록, 트리 데이터, 소켓까지 경로
+- `PoEBuildGacha.Web/Pages/Timeless.razor` — 군단 주얼 페이지
 - `tools/pob/` — 브라우저용 PoB 빌드 (배포 때만 빌드, 로컬 실행에는 없음)
 
 This is a fan project, not affiliated with Grinding Gear Games.

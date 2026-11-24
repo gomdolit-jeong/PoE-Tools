@@ -1,13 +1,12 @@
-@using PoEBuildGacha.Web.Gacha
 @inject IJSRuntime JS
 
-@* 뽑기 결과 바로 아래의 Path of Building 버튼. 브라우저용 PoB는 이 사이트의 pob/ 아래에 있습니다 (tools/pob/build.sh, 배포 때 빌드). *@
+@* Path of Building 열기·코드 복사 버튼 (뽑기 결과, 군단 주얼 페이지). 브라우저용 PoB는 이 사이트의 pob/ 아래에 있습니다 (tools/pob/build.sh, 배포 때 빌드). *@
 <div class="pob-actions">
     <a class="pob-open" href="@PobUrl" target="_blank" rel="noopener">
         <span class="pob-icon" aria-hidden="true">⚙</span>
         <span class="pob-text">
             <b>Path of Building으로 열기</b>
-            <small>이 직업·전직·스킬이 들어간 상태로 열려요 · 처음엔 200MB쯤 받아요</small>
+            <small>@Description · 처음엔 200MB쯤 받아요</small>
         </span>
     </a>
     <button type="button" class="pob-copy" @onclick="CopyPobCode">
@@ -17,20 +16,21 @@
 </div>
 
 @code {
-    [Parameter, EditorRequired] public GachaResult Result { get; set; } = default!;
+    /// <summary>PoB 가져오기 코드 (PobCode)</summary>
+    [Parameter, EditorRequired] public string Code { get; set; } = "";
+    /// <summary>열기 버튼 아래 설명, 예: "이 직업·전직·스킬이 들어간 상태로 열려요"</summary>
+    [Parameter, EditorRequired] public string Description { get; set; } = "";
 
-    GachaResult? pobFor;
-    string pobCode = "";
+    string? shownCode;
     bool copied;
     string? copyMessage;
 
-    string PobUrl => "pob/#build=" + pobCode;
+    string PobUrl => "pob/#build=" + Code;
 
     protected override void OnParametersSet()
     {
-        if (ReferenceEquals(pobFor, Result)) return;
-        pobFor = Result;
-        pobCode = PobCode.Create(Result);
+        if (shownCode == Code) return;
+        shownCode = Code;
         copied = false;
         copyMessage = null;
     }
@@ -39,7 +39,7 @@
     {
         try
         {
-            await JS.InvokeVoidAsync("navigator.clipboard.writeText", pobCode);
+            await JS.InvokeVoidAsync("navigator.clipboard.writeText", Code);
             copied = true;
             copyMessage = "PoB → Import/Export Build에 붙여 넣으세요";
         }
