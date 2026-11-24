@@ -1,7 +1,8 @@
 """군단 주얼 페이지가 시드별 변환을 보여 줄 수 있게, PoB의 변환표를 소켓별로 잘라 둡니다.
 
-사용법: python tools/build_timeless_luts.py <PoB 폴더>/src [출력 폴더]
+사용법: python tools/build_timeless_luts.py <PoB 폴더>/src [출력 폴더] [트리 json]
   기본 출력 폴더: PoEBuildGacha.Web/wwwroot/data/timeless/ (저장소에는 넣지 않고 배포 때 만듭니다)
+  트리 json을 주지 않으면 저장소의 timeless-tree.json을 씁니다.
 
 입력
 - <PoB>/src/Data/TimelessJewelData/: 변환표(*.zip, GloriousVanity.zip.part*), NodeIndexMapping.lua, LegionPassives.lua
@@ -203,9 +204,9 @@ def write_socket_file(path: Path, node_ids, seed_count, records):
     path.write_bytes(zlib.compress(bytes(header + body), 9))
 
 
-def main(pob_src: Path, out: Path):
+def main(pob_src: Path, out: Path, tree_json: Path = TREE_JSON):
     data_dir = pob_src / "Data" / "TimelessJewelData"
-    tree = json.loads(TREE_JSON.read_text(encoding="utf-8"))
+    tree = json.loads(tree_json.read_text(encoding="utf-8"))
     korean = json.loads(KOREAN.read_text(encoding="utf-8"))
     node_index, node_count, size_notable, local_to_global = load_node_index(data_dir / "NodeIndexMapping.lua")
 
@@ -261,6 +262,8 @@ def main(pob_src: Path, out: Path):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) not in (2, 3):
+    if len(sys.argv) not in (2, 3, 4):
         raise SystemExit(__doc__)
-    main(Path(sys.argv[1]), Path(sys.argv[2]) if len(sys.argv) == 3 else DEFAULT_OUT)
+    main(Path(sys.argv[1]),
+         Path(sys.argv[2]) if len(sys.argv) >= 3 else DEFAULT_OUT,
+         Path(sys.argv[3]) if len(sys.argv) == 4 else TREE_JSON)

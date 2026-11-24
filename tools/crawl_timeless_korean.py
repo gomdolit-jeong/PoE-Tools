@@ -5,7 +5,7 @@
 - 군단 주얼이 덧붙이는 능력치(Passive Additions): PoB와 같은 코드(예: vaal_small_fire_damage) → 한글 설명
 
 설명의 수치 범위는 "(7-12)" 형태로 바꿔 둡니다 (PoB LegionPassives.lua의 범위 표기와 같게).
-결과 파일은 저장소에 넣어 두고, PoB나 게임 데이터가 바뀌면 다시 받습니다.
+결과 파일은 저장소에 넣어 두고, 배포할 때마다 GitHub Actions가 다시 받습니다 (실패하면 저장소 파일을 씀).
 사용법: python tools/crawl_timeless_korean.py
 """
 
@@ -95,6 +95,13 @@ def main() -> None:
         cells = re.findall(r"<td>(.*?)</td>", row, re.S)
         if len(cells) >= 4:
             additions[text(cells[3])] = lines(cells[2])
+
+    # poedb 페이지 모양이 바뀌어 거의 못 읽었으면 기존 파일을 그대로 둡니다 (배포 때 자동 실행).
+    counts = {"트리": len(tree), "바뀌는 패시브": sum(map(len, legion.values())), "덧붙는 능력치": len(additions)}
+    minimums = {"트리": 500, "바뀌는 패시브": 300, "덧붙는 능력치": 300}
+    too_few = [f"{k} {counts[k]}개 (최소 {minimums[k]})" for k in minimums if counts[k] < minimums[k]]
+    if too_few:
+        raise SystemExit(f"poedb에서 읽은 항목이 너무 적어 기존 파일을 둡니다: {', '.join(too_few)}")
 
     data = {"tree": tree, "legion": legion, "additions": additions}
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")

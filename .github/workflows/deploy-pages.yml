@@ -32,6 +32,11 @@ jobs:
         continue-on-error: true
         run: python3 tools/crawl_starter_builds.py
 
+      # 군단 주얼 페이지·PoB 툴팁의 한글 이름·설명 (poedb). 실패하거나 너무 적게 읽히면 저장소 파일을 씁니다.
+      - name: Crawl timeless jewel Korean names
+        continue-on-error: true
+        run: python3 tools/crawl_timeless_korean.py
+
       - name: Publish
         run: dotnet publish PoEBuildGacha.Web/PoEBuildGacha.Web.csproj -c Release -o publish
 
@@ -71,16 +76,18 @@ jobs:
           BASE_PATH: /${{ github.event.repository.name }}/pob/
         run: bash tools/pob/build.sh publish/wwwroot/pob "$BASE_PATH"
 
-      # 군단 주얼 페이지의 시드별 변환표 (tools/build_timeless_luts.py, 약 33MB). PoB 원본에서 만들고,
-      # PoB 버전과 스크립트·입력 파일이 같으면 캐시를 다시 씁니다.
-      - name: Read PoB version
+      # 군단 주얼 페이지 데이터: 트리 지도(tools/build_timeless_tree.py)와 시드별 변환표(tools/build_timeless_luts.py, 약 33MB).
+      # PoB 원본에서 만들고, PoB·트리 버전과 스크립트·한글 데이터가 같으면 캐시를 다시 씁니다.
+      - name: Read PoB and tree versions
         id: pob
-        run: echo "tag=$(grep -oE 'POB_TAG:-[^}]+' tools/pob/build.sh | cut -d- -f2-)" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "tag=$(grep -oE 'POB_TAG:-[^}]+' tools/pob/build.sh | cut -d- -f2-)" >> "$GITHUB_OUTPUT"
+          echo "tree=$(grep -oE 'TreeVersion = "[^"]+"' PoEBuildGacha.Web/Gacha/PobCode.cs | head -1 | cut -d'"' -f2)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/cache@v4
         id: timeless-cache
         with:
-          key: timeless-${{ steps.pob.outputs.tag }}-${{ hashFiles('tools/build_timeless_luts.py', 'tools/build_timeless_tree.py', 'tools/timeless_korean.json', 'PoEBuildGacha.Web/wwwroot/data/timeless-tree.json') }}
+          key: timeless-${{ steps.pob.outputs.tag }}-${{ steps.pob.outputs.tree }}-${{ hashFiles('tools/build_timeless_luts.py', 'tools/build_timeless_tree.py', 'tools/timeless_korean.json') }}
           path: .timeless-data
 
       # 실패해도 사이트 배포는 계속합니다 (그때는 군단 주얼 페이지에서 변환 목록만 빠집니다).
@@ -89,15 +96,23 @@ jobs:
         continue-on-error: true
         env:
           POB_TAG: ${{ steps.pob.outputs.tag }}
+          TREE_VERSION: ${{ steps.pob.outputs.tree }}
         run: |
           git clone -q --depth 1 --filter=blob:none --sparse --branch "$POB_TAG" https://github.com/PathOfBuildingCommunity/PathOfBuilding.git .pob-timeless
-          git -C .pob-timeless sparse-checkout set src/Data/TimelessJewelData
+          git -C .pob-timeless sparse-checkout set --no-cone /src/Data/TimelessJewelData/ "/src/TreeData/$TREE_VERSION/tree.lua"
           # 중간에 실패한 결과가 캐시되지 않게 다 만든 뒤에 옮깁니다.
-          python3 tools/build_timeless_luts.py .pob-timeless/src .timeless-tmp
+          mkdir -p .timeless-tmp
+          python3 tools/build_timeless_tree.py ".pob-timeless/src/TreeData/$TREE_VERSION/tree.lua" .timeless-tmp/timeless-tree.json
+          python3 tools/build_timeless_luts.py .pob-timeless/src .timeless-tmp/timeless .timeless-tmp/timeless-tree.json
           mv .timeless-tmp .timeless-data
 
+      # 만들지 못했으면 저장소의 트리 지도만 그대로 쓰고 변환표는 빠집니다.
       - name: Copy timeless jewel data
-        run: if [ -d .timeless-data ]; then cp -r .timeless-data publish/wwwroot/data/timeless; fi
+        run: |
+          if [ -d .timeless-data ]; then
+            cp .timeless-data/timeless-tree.json publish/wwwroot/data/timeless-tree.json
+            cp -r .timeless-data/timeless publish/wwwroot/data/timeless
+          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,7 +1,8 @@
 """PoB 패시브 트리(tree.lua)에서 군단 주얼 페이지용 트리 데이터를 만듭니다.
 
-사용법: python tools/build_timeless_tree.py <PoB 폴더>/src/TreeData/3_30/tree.lua
-결과: PoEBuildGacha.Web/wwwroot/data/timeless-tree.json
+사용법: python tools/build_timeless_tree.py <PoB 폴더>/src/TreeData/3_30/tree.lua [결과 파일]
+결과: PoEBuildGacha.Web/wwwroot/data/timeless-tree.json (결과 파일을 주면 그곳)
+배포할 때 GitHub Actions가 PobCode.TreeVersion의 트리로 다시 만듭니다.
 
 주요·핵심 패시브의 한글 이름·설명은 tools/timeless_korean.json(crawl_timeless_korean.py)에서 넣습니다.
 
@@ -100,7 +101,7 @@ def korean_key(name):
     return re.sub(r"[^a-z0-9]", "", name.lower())
 
 
-def main(tree_path):
+def main(tree_path, out=OUT):
     tree = parse_lua_table(Path(tree_path).read_text(encoding="utf-8"))
     korean = json.loads(KOREAN.read_text(encoding="utf-8"))["tree"]
     radii = tree["constants"]["orbitRadii"]
@@ -175,13 +176,13 @@ def main(tree_path):
         "nodes": nodes,
         "edges": sorted(edges),
     }
-    OUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"{OUT}: 노드 {len(nodes)}, 연결 {len(edges)}, 소켓 {len(sockets)}, {OUT.stat().st_size // 1024}KB")
+    out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print(f"{out}: 노드 {len(nodes)}, 연결 {len(edges)}, 소켓 {len(sockets)}, {out.stat().st_size // 1024}KB")
     if missing_korean:
         print(f"한글 이름이 없는 주요·핵심 패시브 {len(missing_korean)}개: {', '.join(sorted(missing_korean))}")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) not in (2, 3):
         raise SystemExit(__doc__)
-    main(sys.argv[1])
+    main(sys.argv[1], Path(sys.argv[2]) if len(sys.argv) == 3 else OUT)

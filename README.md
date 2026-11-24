@@ -24,11 +24,11 @@
   - 주얼 종류(찬란한 허영심, 치명적인 긍지, 잔인한 속박, 호전적인 신념, 고상한 오만, 영웅적인 비극), 정복자, 시드를 고르고 트리 지도에서 소켓을 누릅니다.
   - 고른 소켓의 대형 반경을 크게 그리고, 반경 안 주요·핵심·작은 패시브가 무엇으로 바뀌는지 한글로 보여 줍니다. 계산 규칙은 PoB(`PassiveSpec.lua`)와 같습니다.
   - PoB는 찍힌 소켓의 주얼만 변환을 보여 주므로, PoB로 열 때는 직업 시작점(기본은 가장 가까운 직업)에서 소켓까지 가장 짧은 경로를 찍습니다.
-  - 데이터
-    - `tools/crawl_timeless_korean.py` → `tools/timeless_korean.json`: poedb의 한글 이름·설명 (저장소에 넣어 둠)
-    - `tools/build_timeless_tree.py` → `wwwroot/data/timeless-tree.json`: PoB `TreeData/<버전>/tree.lua`의 노드 좌표 (저장소에 넣어 둠)
-    - `tools/build_timeless_luts.py` → `wwwroot/data/timeless/`: PoB 변환표를 소켓별로 자른 것 (약 33MB라 저장소에 넣지 않고 배포 때 만듭니다. 로컬에서 볼 때는 PoB 소스 폴더를 주고 직접 실행)
-  - PoB 트리 버전을 올릴 때 위 데이터도 다시 만듭니다.
+  - 데이터 (모두 배포할 때 GitHub Actions가 새로 만듭니다. 실패하면 한글·트리 지도는 저장소 파일을 쓰고, 변환표는 빠집니다)
+    - `tools/crawl_timeless_korean.py` → `tools/timeless_korean.json`: poedb의 한글 이름·설명. 너무 적게 읽히면 기존 파일을 둡니다.
+    - `tools/build_timeless_tree.py` → `wwwroot/data/timeless-tree.json`: PoB `TreeData/<PobCode.TreeVersion>/tree.lua`의 노드 좌표와 한글 이름
+    - `tools/build_timeless_luts.py` → `wwwroot/data/timeless/`: PoB 변환표를 소켓별로 자른 것 (약 33MB라 저장소에 넣지 않음. 로컬에서 볼 때는 PoB 소스 폴더를 주고 직접 실행)
+  - PoB 버전(`POB_TAG`)이나 `PobCode.TreeVersion`을 올리면 다음 배포에서 위 데이터가 그 버전으로 다시 만들어집니다.
 
 ## 실행
 
