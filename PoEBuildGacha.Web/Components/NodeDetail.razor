@@ -1,0 +1,46 @@
+@using PoEBuildGacha.Web.Gacha
+
+@* 군단 주얼 페이지에서 고른 노드의 원래 효과와 바뀐 효과 *@
+<div class="tj-detail">
+    <div class="tj-detail-col">
+        <span class="tj-detail-head">원래</span>
+        <b>@(Node.IsSmall ? "작은 패시브" : Node.Display)</b>
+        @if (Node.Kn is not null && Node.N is not null)
+        {
+            <small class="tj-en">@Node.N</small>
+        }
+        @foreach (var line in Node.Ks ?? [])
+        {
+            <small>@line</small>
+        }
+    </div>
+    <div class="tj-detail-col changed">
+        @if (Change is null)
+        {
+            <span class="tj-detail-head">변화</span>
+            <small>@(Node.IsSmall || Node.IsNotable || Node.IsKeystone ? "시드를 적으면 보여요 (반경 밖이면 바뀌지 않아요)" : "바뀌지 않아요")</small>
+        }
+        else if (Change.Kind == NodeChangeKind.Replaced)
+        {
+            <span class="tj-detail-head">이렇게 바뀌어요</span>
+            <b>@Change.Title</b>
+            @foreach (var line in Change.Lines)
+            {
+                <small>@line</small>
+            }
+        }
+        else
+        {
+            <span class="tj-detail-head">원래 효과에 더해져요</span>
+            @foreach (var line in Change.Lines)
+            {
+                <small>@line</small>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public TreeNode Node { get; set; } = default!;
+    [Parameter] public NodeChange? Change { get; set; }
+}

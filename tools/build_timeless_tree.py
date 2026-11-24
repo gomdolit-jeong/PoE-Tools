@@ -3,6 +3,8 @@
 사용법: python tools/build_timeless_tree.py <PoB 폴더>/src/TreeData/3_30/tree.lua
 결과: PoEBuildGacha.Web/wwwroot/data/timeless-tree.json
 
+주요·핵심 패시브의 한글 이름·설명은 tools/timeless_korean.json(crawl_timeless_korean.py)에서 넣습니다.
+
 PoB 버전(tools/pob/build.sh의 POB_TAG)이나 PobCode.TreeVersion을 올릴 때 다시 만듭니다.
 노드 좌표 계산은 PoB PassiveTree.lua와 같습니다 (그룹 좌표 + 궤도 반지름·각도).
 """
@@ -13,6 +15,9 @@ import sys
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "PoEBuildGacha.Web" / "wwwroot" / "data" / "timeless-tree.json"
+KOREAN = Path(__file__).resolve().parent / "timeless_korean.json"
+# PoB PassiveSpec.lua의 attributes: 이 이름의 작은 노드는 군단 주얼이 더 작은 값을 붙입니다.
+ATTRIBUTE_NAMES = {"Strength", "Dexterity", "Intelligence"}
 
 # tree.lua의 classStartIndex → 직업 이름 (PobCode.ClassOrder와 같은 순서)
 CLASS_ORDER = ["Scion", "Marauder", "Ranger", "Witch", "Duelist", "Templar", "Shadow"]
@@ -90,8 +95,14 @@ def orbit_angles(count):
     return [math.radians(d) for d in degrees]
 
 
+def korean_key(name):
+    """crawl_timeless_korean.py의 key()와 같게 맞춥니다."""
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
 def main(tree_path):
     tree = parse_lua_table(Path(tree_path).read_text(encoding="utf-8"))
+    korean = json.loads(KOREAN.read_text(encoding="utf-8"))["tree"]
     radii = tree["constants"]["orbitRadii"]
     angles = [orbit_angles(n) for n in tree["constants"]["skillsPerOrbit"]]
     groups = tree["groups"]
@@ -122,13 +133,24 @@ def main(tree_path):
             kind = "N"
         else:
             kind = "n"
-        kept[int(node_id)] = (node, round(x, 1), round(y, 1), kind)
+        kept[int(node_id)] = (node, round(x, 1), round(y, 1), kind, node["group"], r)
 
-    nodes, starts, sockets, edges = [], {}, [], set()
-    for node_id, (node, x, y, kind) in sorted(kept.items()):
-        entry = {"i": node_id, "x": x, "y": y, "k": kind}
+    nodes, starts, sockets, edges, used_groups = [], {}, [], set(), set()
+    missing_korean = []
+    for node_id, (node, x, y, kind, group_no, orbit_radius) in sorted(kept.items()):
+        # g·o: 같은 그룹·같은 궤도의 연결선은 PoB처럼 호(arc)로 그립니다.
+        entry = {"i": node_id, "x": x, "y": y, "k": kind, "g": group_no, "o": orbit_radius}
+        used_groups.add(group_no)
         if kind in ("N", "K"):
             entry["n"] = node["name"]
+            ko = korean.get(korean_key(node["name"]))
+            if ko:
+                entry["kn"] = ko["name"]
+                entry["ks"] = ko["stats"]
+            else:
+                missing_korean.append(node["name"])
+        elif kind == "n" and node["name"] in ATTRIBUTE_NAMES:
+            entry["a"] = 1
         nodes.append(entry)
         if kind == "C":
             starts[CLASS_ORDER[node["classStartIndex"]]] = node_id
@@ -149,11 +171,14 @@ def main(tree_path):
         "treeVersion": Path(tree_path).parent.name,
         "starts": {name: starts[name] for name in CLASS_ORDER},
         "sockets": sockets,
+        "groups": {str(g): [round(groups[g]["x"], 1), round(groups[g]["y"], 1)] for g in sorted(used_groups)},
         "nodes": nodes,
         "edges": sorted(edges),
     }
     OUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"{OUT}: 노드 {len(nodes)}, 연결 {len(edges)}, 소켓 {len(sockets)}, {OUT.stat().st_size // 1024}KB")
+    if missing_korean:
+        print(f"한글 이름이 없는 주요·핵심 패시브 {len(missing_korean)}개: {', '.join(sorted(missing_korean))}")
 
 
 if __name__ == "__main__":

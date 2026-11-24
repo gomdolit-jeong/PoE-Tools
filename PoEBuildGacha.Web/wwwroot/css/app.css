@@ -500,6 +500,10 @@ a.back { display: inline-block; text-decoration: none; }
     cursor: pointer;
 }
 .tj-choice small { color: var(--muted); font-size: .78rem; }
+/* 주얼 카드: 왼쪽 그림 + 오른쪽 이름 */
+.tj-choice.tj-jewel { flex-direction: row; align-items: center; gap: 10px; }
+.tj-jewel img { width: 52px; height: 52px; flex-shrink: 0; object-fit: contain; filter: drop-shadow(0 0 6px rgba(0, 0, 0, .8)); }
+.tj-jewel span { display: flex; flex-direction: column; gap: 2px; }
 .tj-choice:hover { border-color: #8a6a28; }
 .tj-choice.on { border-color: var(--gold); background: #3a2a12; }
 .tj-choice.on b { color: var(--gold); }
@@ -520,16 +524,44 @@ a.back { display: inline-block; text-decoration: none; }
 .tj-help { margin: 6px 0 0; color: var(--muted); font-size: .85rem; }
 .tj-help.bad { color: #d98a6a; }
 
-.tj-map { display: block; width: 100%; height: auto; margin-top: 10px; background: #0f0c0a; border-radius: 8px; }
-.tj-edge { stroke: #3b3127; stroke-width: 18; fill: none; }
-.tj-notable { fill: #5e5446; }
-.tj-key { fill: #7a6a50; }
-.tj-notable.hit, .tj-key.hit { fill: #e8c46a; }
-.tj-radius { fill: rgba(200, 161, 74, .10); stroke: var(--gold); stroke-width: 20; }
-.tj-path { stroke: #6fc1e8; stroke-width: 40; fill: none; stroke-linejoin: round; }
-.tj-socket { fill: #1f160b; stroke: var(--gold); stroke-width: 40; cursor: pointer; }
+.shell.wide { max-width: 1100px; }
+
+/* 왼쪽: 전체 트리에서 소켓 고르기, 오른쪽: 고른 소켓 확대 */
+.tj-maps { display: grid; grid-template-columns: 2fr 3fr; gap: 12px; margin-top: 10px; align-items: start; }
+@media (max-width: 900px) { .tj-maps { grid-template-columns: 1fr; } }
+.tj-map, .tj-zoom { display: block; width: 100%; height: auto; background: #0b0a0d; border-radius: 8px; }
+.tj-edge { stroke: #4a3f31; stroke-width: 22; fill: none; }
+.tj-notable { fill: #6e6150; }
+.tj-key { fill: #8f7d5c; }
+.tj-radius { fill: color-mix(in srgb, var(--faction) 12%, transparent); stroke: var(--faction); stroke-width: 30; }
+.tj-path { stroke: var(--gold); stroke-width: 70; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.tj-socket { fill: #1f160b; stroke: var(--gold); stroke-width: 45; cursor: pointer; }
 .tj-socket:hover { fill: #5a3f16; }
-.tj-socket.on { fill: var(--gold); }
+.tj-socket.on { fill: var(--faction); }
+
+.tj-zoom-empty {
+    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 1; border: 1px dashed var(--line); border-radius: 8px; color: var(--muted);
+}
+.tj-zradius { fill: color-mix(in srgb, var(--faction) 7%, transparent); stroke: var(--faction); stroke-width: 26; stroke-dasharray: 60 24; }
+.tj-zedge { stroke: #5a4d3b; stroke-width: 14; fill: none; }
+.tj-zedge.on { stroke: #e9c46a; stroke-width: 22; }
+.tj-znode { cursor: pointer; }
+.tj-znode circle { fill: #26211c; stroke: #7a6a50; stroke-width: 10; }
+.tj-znode.notable circle { stroke: #c8a14a; stroke-width: 16; }
+.tj-znode.key circle { stroke: #e0c27a; stroke-width: 20; fill: #2e2618; }
+.tj-znode.out { opacity: .45; }
+.tj-znode.replaced circle { fill: color-mix(in srgb, var(--faction) 55%, #1a1410); }
+.tj-znode.added circle { fill: #2f4a2a; }
+.tj-znode.alloc circle { stroke: #f3dc9c; stroke-width: 22; }
+.tj-znode.sel circle { stroke: #ffffff; stroke-width: 26; }
+.tj-znode:hover circle { stroke: #ffffff; }
+.tj-zjewel { fill: var(--faction); stroke: #f3dc9c; stroke-width: 18; }
+.tj-zlabel {
+    font-size: 74px; font-weight: 700; text-anchor: middle; fill: #cfc3ad;
+    paint-order: stroke; stroke: #0b0a0d; stroke-width: 14px; pointer-events: none;
+}
+.tj-zlabel.changed { fill: color-mix(in srgb, var(--faction) 45%, #ffffff); }
 
 .tj-socket-info { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; }
 .tj-socket-info label { display: flex; align-items: center; gap: 8px; }
@@ -541,6 +573,92 @@ a.back { display: inline-block; text-decoration: none; }
     color: var(--text);
     font: inherit;
 }
-.tj-notables { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
-.tj-notables li { padding: 3px 10px; border-radius: 999px; background: #3b3127; font-size: .82rem; }
-.tj-notables li.key { background: #5a3f16; color: #f3dc9c; font-weight: 700; }
+
+.tj-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+@media (max-width: 560px) { .tj-detail { grid-template-columns: 1fr; } }
+.tj-detail-col {
+    display: flex; flex-direction: column; gap: 3px;
+    padding: 10px 12px; background: #0f0c0a; border: 1px solid var(--line); border-radius: 6px;
+}
+.tj-detail-col.changed { border-color: var(--faction); }
+.tj-detail-head { color: var(--muted); font-size: .78rem; }
+.tj-detail-col small, .tj-change small { color: #cfc3ad; font-size: .82rem; }
+.tj-detail-col small.tj-en { color: var(--muted); }
+
+.tj-changes { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; margin-top: 10px; }
+.tj-change {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+    padding: 10px 12px; background: #0f0c0a; border: 1px solid var(--line);
+    border-left: 3px solid var(--faction); border-radius: 6px;
+    color: var(--text); font: inherit; text-align: left; cursor: pointer;
+}
+.tj-change:hover, .tj-change.on { border-color: var(--faction); background: #1a1410; }
+.tj-change.key { background: #1d160d; }
+.tj-from { color: var(--muted); font-size: .85rem; }
+.tj-arrow b { color: color-mix(in srgb, var(--faction) 45%, #ffffff); }
+.tj-small { margin-top: 14px; }
+.tj-small summary { cursor: pointer; color: var(--gold); }
+.tj-small ul { margin: 8px 0 0; padding-left: 18px; font-size: .85rem; line-height: 1.7; }
+.tj-count { color: var(--muted); }
+
+/* ===== 군단 주얼 시드 찾기 (Components/SeedFinder.razor) ===== */
+.tj-mode { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 12px; }
+.tj-mode button {
+    padding: 6px 12px; background: #231d17; border: 1px solid var(--line); border-radius: 999px;
+    color: var(--text); font: inherit; font-size: .9rem; cursor: pointer;
+}
+.tj-mode button.on { border-color: #5fa8e8; background: #16324a; color: #d6ecff; }
+.tj-mode .tj-clear { border-color: #8a3a2a; }
+.tj-znode.pickable circle { stroke-dasharray: 18 10; }
+.tj-znode.chosen circle { stroke: #5fa8e8; stroke-width: 26; stroke-dasharray: none; }
+
+.tj-finder-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 10px 0; }
+.tj-filter {
+    flex: 1; min-width: 200px; padding: 8px 10px;
+    background: #0f0c0a; border: 1px solid var(--line); border-radius: 6px; color: var(--text); font: inherit;
+}
+.tj-outcomes {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 8px;
+    max-height: 520px; overflow-y: auto; padding-right: 4px;
+}
+.tj-outcome {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; background: #0f0c0a; border: 1px solid var(--line); border-radius: 6px;
+}
+.tj-outcome.plus { border-color: #5fa8e8; }
+.tj-outcome.minus { border-color: #8a3a2a; }
+.tj-outcome-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.tj-outcome-text small { color: #cfc3ad; font-size: .82rem; }
+.tj-weight {
+    width: 4.5em; padding: 6px; text-align: center;
+    background: #1a1410; border: 1px solid var(--line); border-radius: 6px; color: var(--text); font: inherit;
+}
+.tj-search { width: 100%; margin-top: 12px; }
+.tj-hits { margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.tj-hits button {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px; width: 100%;
+    padding: 8px 12px; background: #0f0c0a; border: 1px solid var(--line); border-radius: 6px;
+    color: var(--text); font: inherit; text-align: left; cursor: pointer;
+}
+.tj-hits button:hover { border-color: var(--faction); background: #1a1410; }
+.tj-hit-seed { font-weight: 700; color: var(--gold); min-width: 5em; }
+.tj-hit-score { color: #9fd0ff; min-width: 4em; }
+.tj-hit-counts { display: flex; flex-wrap: wrap; gap: 4px; }
+.tj-hit-counts span { padding: 1px 8px; border-radius: 999px; background: #2a2118; font-size: .82rem; }
+
+/* 시드 찾기 → 거래소 */
+.tj-trade { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 14px 0 6px; }
+.tj-trade label { display: flex; align-items: center; gap: 8px; }
+.tj-trade select {
+    padding: 6px 8px; background: #0f0c0a; border: 1px solid var(--line); border-radius: 6px; color: var(--text); font: inherit;
+}
+.tj-trade-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; }
+.tj-trade a, .tj-hits li > a {
+    padding: 6px 12px; border: 1px solid var(--gold); border-radius: 6px;
+    background: linear-gradient(135deg, #3a2a12, #1f160b); color: var(--gold);
+    font-weight: 700; font-size: .88rem; text-decoration: none; white-space: nowrap;
+}
+.tj-trade a:hover, .tj-hits li > a:hover { filter: brightness(1.2); }
+.tj-hits li { display: flex; align-items: stretch; gap: 6px; }
+.tj-hits li > button { flex: 1; }
+.tj-hits li > a { display: flex; align-items: center; padding: 0 10px; font-size: .8rem; }

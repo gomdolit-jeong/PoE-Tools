@@ -1,0 +1,9548 @@
+{
+ "additions": {
+  "abyss_ghastly_notable_1": [
+   "지능 +(12-16)"
+  ],
+  "abyss_ghastly_notable_10": [
+   "소환수가 10%의 확률로 점화 유발"
+  ],
+  "abyss_ghastly_notable_11": [
+   "소환수가 공격 시 10%의 확률로 출혈 유발"
+  ],
+  "abyss_ghastly_notable_12": [
+   "(31-40)%의 확률로 중독 긴급회피"
+  ],
+  "abyss_ghastly_notable_13": [
+   "소환수가 1초마다 생명력의 (0.4-0.8)% 재생"
+  ],
+  "abyss_ghastly_notable_14": [
+   "소환수가 피해의 (0.3-0.5)%를 생명력으로 흡수"
+  ],
+  "abyss_ghastly_notable_15": [
+   "소환수의 이동 속도 (6-10)% 증가"
+  ],
+  "abyss_ghastly_notable_16": [
+   "소환수의 최대 생명력 (6-10)% 증가"
+  ],
+  "abyss_ghastly_notable_17": [
+   "소환수의 모든 원소 저항 +(6-10)%"
+  ],
+  "abyss_ghastly_notable_18": [
+   "소환수의 카오스 저항 +(7-11)%"
+  ],
+  "abyss_ghastly_notable_19": [
+   "플레이어의 저주 효과 2% 증가"
+  ],
+  "abyss_ghastly_notable_2": [
+   "모든 능력치 +(6-8)"
+  ],
+  "abyss_ghastly_notable_20": [
+   "최근 4초 이내 소환수가 사망하면 시전 속도 (6-8)% 증가"
+  ],
+  "abyss_ghastly_notable_21": [
+   "최근 4초 이내 소환수 스킬을 사용한 경우 소환수 피해 (10-15)% 증가"
+  ],
+  "abyss_ghastly_notable_22": [
+   "자신이나 소환수가 최근 4초 이내 적을 처치한 경우 소환수의 공격 및 시전 속도 (6-8)% 증가"
+  ],
+  "abyss_ghastly_notable_23": [
+   "소환수가 주는 화염 피해 (15-18)~(21-24) 추가"
+  ],
+  "abyss_ghastly_notable_24": [
+   "소환수가 주는 냉기 피해 (15-18)~(21-24) 추가"
+  ],
+  "abyss_ghastly_notable_25": [
+   "소환수가 주는 번개 피해 (1-3)~(33-39) 추가"
+  ],
+  "abyss_ghastly_notable_26": [
+   "소환수가 주는 물리 피해 (9-12)~(15-18) 추가"
+  ],
+  "abyss_ghastly_notable_27": [
+   "소환수가 주는 카오스 피해 (9-12)~(15-18) 추가"
+  ],
+  "abyss_ghastly_notable_28": [
+   "재사용 대기시간 회복 속도 3% 증가"
+  ],
+  "abyss_ghastly_notable_3": [
+   "카오스 저항 +(5-7)%"
+  ],
+  "abyss_ghastly_notable_4": [
+   "소환수가 1초마다 (22-40) 생명력 재생"
+  ],
+  "abyss_ghastly_notable_5": [
+   "1초마다 에너지 보호막 (9-16) 재생"
+  ],
+  "abyss_ghastly_notable_6": [
+   "소환수가 공격 명중 시 (3-5)%의 확률로 실명 유발"
+  ],
+  "abyss_ghastly_notable_7": [
+   "소환수가 공격 명중 시 (3-5)%의 확률로 도발"
+  ],
+  "abyss_ghastly_notable_8": [
+   "소환수가 주문 명중 시 (3-5)%의 확률로 적 이동 방해"
+  ],
+  "abyss_ghastly_notable_9": [
+   "소환수가 명중 시 10%의 확률로 적 중독 유발"
+  ],
+  "abyss_hypnotic_notable_1": [
+   "마나 최대치 +(21-30)"
+  ],
+  "abyss_hypnotic_notable_10": [
+   "(31-40)%의 확률로 감전 긴급회피"
+  ],
+  "abyss_hypnotic_notable_11": [
+   "받은 피해의 2%를 마나로 회생"
+  ],
+  "abyss_hypnotic_notable_12": [
+   "최근 4초 이내 피격 피해를 받은 경우 주문 피해 막기 확률 +(3-4)%"
+  ],
+  "abyss_hypnotic_notable_13": [
+   "최근 4초 이내 적을 처치하지 않은 경우 피해가 2%의 원소 저항 관통"
+  ],
+  "abyss_hypnotic_notable_14": [
+   "이동 중 마나 재생 속도 (20-25)% 증가"
+  ],
+  "abyss_hypnotic_notable_15": [
+   "최근 4초 이내 치명타 명중 시 시전 속도 (5-7)% 증가"
+  ],
+  "abyss_hypnotic_notable_16": [
+   "신성화 지대에 있는 동안 플레이어에게 적용되는 저주 효과 (10-15)% 감소"
+  ],
+  "abyss_hypnotic_notable_17": [
+   "플레이어가 이동 방해한 적의 생명력 재생 속도 (15-20)% 감소"
+  ],
+  "abyss_hypnotic_notable_18": [
+   "플레이어가 위축시킨 적의 모든 저항 -2%"
+  ],
+  "abyss_hypnotic_notable_19": [
+   "쌍수를 장착하는 동안 주문 시전 시 화염 피해 (13-16)~(18-21) 추가"
+  ],
+  "abyss_hypnotic_notable_2": [
+   "번개 상태 이상 효과 (10-15)% 증가"
+  ],
+  "abyss_hypnotic_notable_20": [
+   "쌍수를 장착하는 동안 주문 시전 시 냉기 피해 (12-14)~(17-19) 추가"
+  ],
+  "abyss_hypnotic_notable_21": [
+   "쌍수를 장착하는 동안 주문 시전 시 번개 피해 (1-4)~(29-34) 추가"
+  ],
+  "abyss_hypnotic_notable_22": [
+   "쌍수를 장착하는 동안 주문 시전 시 물리 피해 (9-12)~(14-17) 추가"
+  ],
+  "abyss_hypnotic_notable_23": [
+   "쌍수를 장착하는 동안 주문 시전 시 카오스 피해 (9-12)~(14-17) 추가"
+  ],
+  "abyss_hypnotic_notable_24": [
+   "양손 무기를 장착하는 동안 주문 시전 시 화염 피해 (13-16)~(18-21) 추가"
+  ],
+  "abyss_hypnotic_notable_25": [
+   "양손 무기를 장착하는 동안 주문 시전 시 냉기 피해 (12-14)~(17-19) 추가"
+  ],
+  "abyss_hypnotic_notable_26": [
+   "양손 무기를 장착하는 동안 주문 시전 시 번개 피해 (1-4)~(29-34) 추가"
+  ],
+  "abyss_hypnotic_notable_27": [
+   "양손 무기를 장착하는 동안 주문 시전 시 물리 피해 (9-12)~(14-17) 추가"
+  ],
+  "abyss_hypnotic_notable_28": [
+   "양손 무기를 장착하는 동안 주문 시전 시 카오스 피해 (9-12)~(14-17) 추가"
+  ],
+  "abyss_hypnotic_notable_29": [
+   "방패를 들고 있는 동안 주문 시전 시 화염 피해 (13-16)~(18-21) 추가"
+  ],
+  "abyss_hypnotic_notable_3": [
+   "지능 +(12-16)"
+  ],
+  "abyss_hypnotic_notable_30": [
+   "방패를 들고 있는 동안 주문 시전 시 냉기 피해 (12-14)~(17-19) 추가"
+  ],
+  "abyss_hypnotic_notable_31": [
+   "방패를 들고 있는 동안 주문 시전 시 번개 피해 (1-4)~(29-34) 추가"
+  ],
+  "abyss_hypnotic_notable_32": [
+   "방패를 들고 있는 동안 주문 시전 시 물리 피해 (9-12)~(14-17) 추가"
+  ],
+  "abyss_hypnotic_notable_33": [
+   "방패를 들고 있는 동안 주문 시전 시 카오스 피해 (9-12)~(14-17) 추가"
+  ],
+  "abyss_hypnotic_notable_34": [
+   "주문 시전 시 화염 피해 (9-12)~(14-17) 추가"
+  ],
+  "abyss_hypnotic_notable_35": [
+   "주문 시전 시 냉기 피해 (8-11)~(13-16) 추가"
+  ],
+  "abyss_hypnotic_notable_36": [
+   "주문 시전 시 번개 피해 (1-3)~(22-27) 추가"
+  ],
+  "abyss_hypnotic_notable_37": [
+   "주문 시전 시 물리 피해 (4-7)~(10-13) 추가"
+  ],
+  "abyss_hypnotic_notable_38": [
+   "주문 시전 시 카오스 피해 (4-7)~(10-13) 추가"
+  ],
+  "abyss_hypnotic_notable_39": [
+   "재사용 대기시간 회복 속도 3% 증가"
+  ],
+  "abyss_hypnotic_notable_4": [
+   "모든 능력치 +(6-8)"
+  ],
+  "abyss_hypnotic_notable_40": [
+   "쌍수 장착 시 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_hypnotic_notable_41": [
+   "양손 무기 장착 시 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_hypnotic_notable_42": [
+   "방패를 들고 있는 동안 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_hypnotic_notable_5": [
+   "번개 저항 +(12-15)%"
+  ],
+  "abyss_hypnotic_notable_6": [
+   "모든 원소 저항 +(6-8)%"
+  ],
+  "abyss_hypnotic_notable_7": [
+   "시전 속도 (2-4)% 증가"
+  ],
+  "abyss_hypnotic_notable_8": [
+   "1초마다 마나 (1.1-3) 재생"
+  ],
+  "abyss_hypnotic_notable_9": [
+   "주문 명중 시 (3-8)%의 확률로 적 이동 방해"
+  ],
+  "abyss_murderous_notable_1": [
+   "생명력 최대치 +(21-30)"
+  ],
+  "abyss_murderous_notable_10": [
+   "(21-30)%의 확률로 기절 긴급회피"
+  ],
+  "abyss_murderous_notable_11": [
+   "방어도 +(61-100)"
+  ],
+  "abyss_murderous_notable_12": [
+   "꿰뚫기 효과 (3-5)% 증가"
+  ],
+  "abyss_murderous_notable_13": [
+   "최근 4초 이내 적을 처치한 경우 피해 (15-20)% 증가"
+  ],
+  "abyss_murderous_notable_14": [
+   "이동 중일 때 1초마다 생명력의 (0.5-1)% 재생"
+  ],
+  "abyss_murderous_notable_15": [
+   "최근 4초 이내 피격으로 피해를 받은 경우 공격 피해 막기 확률 +(3-4)%"
+  ],
+  "abyss_murderous_notable_16": [
+   "힘줄 절단시킨 적이 받는 지속 피해 (4-5)% 증가"
+  ],
+  "abyss_murderous_notable_17": [
+   "플레이어가 위협한 적의 기절 지속시간 10% 증가"
+  ],
+  "abyss_murderous_notable_18": [
+   "단검 공격 시 물리 피해 (5-6)~(7-8) 추가"
+  ],
+  "abyss_murderous_notable_19": [
+   "클로 공격 시 물리 피해 (5-6)~(7-8) 추가"
+  ],
+  "abyss_murderous_notable_2": [
+   "힘 +(12-16)"
+  ],
+  "abyss_murderous_notable_20": [
+   "검 공격 시 물리 피해 (5-6)~(7-8) 추가"
+  ],
+  "abyss_murderous_notable_21": [
+   "도끼 공격 시 물리 피해 (5-6)~(7-8) 추가"
+  ],
+  "abyss_murderous_notable_22": [
+   "철퇴나 셉터 공격 시 물리 피해 (5-6)~(7-8) 추가"
+  ],
+  "abyss_murderous_notable_23": [
+   "지팡이 공격 시 물리 피해 (5-6)~(7-8) 추가"
+  ],
+  "abyss_murderous_notable_24": [
+   "단검 공격 시 번개 피해 (1-4)~(33-35) 추가"
+  ],
+  "abyss_murderous_notable_25": [
+   "클로 공격 시 번개 피해 (1-4)~(33-35) 추가"
+  ],
+  "abyss_murderous_notable_26": [
+   "검 공격 시 번개 피해 (1-4)~(33-35) 추가"
+  ],
+  "abyss_murderous_notable_27": [
+   "도끼 공격 시 번개 피해 (1-4)~(33-35) 추가"
+  ],
+  "abyss_murderous_notable_28": [
+   "철퇴나 셉터 공격 시 번개 피해 (1-4)~(33-35) 추가"
+  ],
+  "abyss_murderous_notable_29": [
+   "지팡이 공격 시 번개 피해 (1-4)~(33-35) 추가"
+  ],
+  "abyss_murderous_notable_3": [
+   "모든 능력치 +(6-8)"
+  ],
+  "abyss_murderous_notable_30": [
+   "단검 공격 시 화염 피해 (12-13)~(20-22) 추가"
+  ],
+  "abyss_murderous_notable_31": [
+   "클로 공격 시 화염 피해 (12-13)~(20-22) 추가"
+  ],
+  "abyss_murderous_notable_32": [
+   "검 공격 시 화염 피해 (12-13)~(20-22) 추가"
+  ],
+  "abyss_murderous_notable_33": [
+   "도끼 공격 시 화염 피해 (12-13)~(20-22) 추가"
+  ],
+  "abyss_murderous_notable_34": [
+   "철퇴나 셉터 공격 시 화염 피해 (12-13)~(20-22) 추가"
+  ],
+  "abyss_murderous_notable_35": [
+   "지팡이 공격 시 화염 피해 (12-13)~(20-22) 추가"
+  ],
+  "abyss_murderous_notable_36": [
+   "단검 공격 시 냉기 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_37": [
+   "클로 공격 시 냉기 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_38": [
+   "검 공격 시 냉기 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_39": [
+   "도끼 공격 시 냉기 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_4": [
+   "화염 저항 +(12-15)%"
+  ],
+  "abyss_murderous_notable_40": [
+   "철퇴나 셉터 공격 시 냉기 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_41": [
+   "지팡이 공격 시 냉기 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_42": [
+   "단검 공격의 카오스 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_43": [
+   "클로 공격의 카오스 피해 (10-11)~(17-20) 추가"
+  ],
+  "abyss_murderous_notable_44": [
+   "재사용 대기시간 회복 속도 3% 증가"
+  ],
+  "abyss_murderous_notable_45": [
+   "공격 시 화염 피해 (6-7)~(13-16) 추가"
+  ],
+  "abyss_murderous_notable_46": [
+   "공격 시 냉기 피해 (6-7)~(11-13) 추가"
+  ],
+  "abyss_murderous_notable_47": [
+   "공격 시 번개 피해 (1-2)~(25-27) 추가"
+  ],
+  "abyss_murderous_notable_48": [
+   "공격 시 물리 피해 (2-3)~(4-5) 추가"
+  ],
+  "abyss_murderous_notable_49": [
+   "공격 시 카오스 피해 (8-9)~(14-17) 추가"
+  ],
+  "abyss_murderous_notable_5": [
+   "모든 원소 저항 +(6-8)%"
+  ],
+  "abyss_murderous_notable_50": [
+   "쌍수 장착 시 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_murderous_notable_51": [
+   "양손 무기 장착 시 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_murderous_notable_52": [
+   "방패를 들고 있는 동안 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_murderous_notable_6": [
+   "공격 속도 (3-5)% 증가"
+  ],
+  "abyss_murderous_notable_7": [
+   "1초마다 생명력 (9-16) 재생"
+  ],
+  "abyss_murderous_notable_8": [
+   "공격 명중 시 (3-8)%의 확률로 적 도발"
+  ],
+  "abyss_murderous_notable_9": [
+   "(31-40)%의 확률로 점화 긴급회피"
+  ],
+  "abyss_searching_notable_1": [
+   "생명력 최대치 +(21-30)"
+  ],
+  "abyss_searching_notable_10": [
+   "쌍수 장착 시 지속 피해 (10-18)% 증가"
+  ],
+  "abyss_searching_notable_11": [
+   "양손 무기 장착 시 지속 피해 (10-18)% 증가"
+  ],
+  "abyss_searching_notable_12": [
+   "방패를 들고 있는 동안 지속 피해 (10-18)% 증가"
+  ],
+  "abyss_searching_notable_13": [
+   "공격 명중 시 (3-6)%의 확률로 적 실명 유발"
+  ],
+  "abyss_searching_notable_14": [
+   "(31-40)%의 확률로 동결 긴급회피"
+  ],
+  "abyss_searching_notable_15": [
+   "(31-40)%의 확률로 출혈 긴급회피"
+  ],
+  "abyss_searching_notable_16": [
+   "정확도 +(31-120)"
+  ],
+  "abyss_searching_notable_17": [
+   "회피 +(36-100)"
+  ],
+  "abyss_searching_notable_18": [
+   "재사용 대기시간 회복 속도 2% 증가"
+  ],
+  "abyss_searching_notable_19": [
+   "최근 4초 이내 피격 피해를 받지 않은 경우 받는 물리 피해 2% 추가 감소"
+  ],
+  "abyss_searching_notable_2": [
+   "냉기 상태 이상 효과 10% 증가"
+  ],
+  "abyss_searching_notable_20": [
+   "최근 4초 이내 피해를 받지 않은 경우 이동 속도 3% 증가"
+  ],
+  "abyss_searching_notable_21": [
+   "최근 4초 이내 적을 처치한 경우 치명타 피해 배율 +(8-10)%"
+  ],
+  "abyss_searching_notable_22": [
+   "이동 중 회피 (20-30)% 증가"
+  ],
+  "abyss_searching_notable_23": [
+   "최근 4초 이내 치명타 명중 시 공격 속도 (4-6)% 증가"
+  ],
+  "abyss_searching_notable_24": [
+   "최근 4초 이내 치명타를 명중시키지 않은 경우 치명타 확률 (20-30)% 증가"
+  ],
+  "abyss_searching_notable_25": [
+   "처치 시 5%의 확률로 4초 동안 차원 능력 획득"
+  ],
+  "abyss_searching_notable_26": [
+   "플레이어가 실명시킨 적의 치명타 확률 (15-20)% 감소"
+  ],
+  "abyss_searching_notable_27": [
+   "공격 시 화염 피해 (6-7)~(13-16) 추가"
+  ],
+  "abyss_searching_notable_28": [
+   "공격 시 냉기 피해 (6-7)~(11-13) 추가"
+  ],
+  "abyss_searching_notable_29": [
+   "공격 시 번개 피해 (1-2)~(25-27) 추가"
+  ],
+  "abyss_searching_notable_3": [
+   "민첩 +(12-16)"
+  ],
+  "abyss_searching_notable_30": [
+   "공격 시 물리 피해 (2-3)~(4-5) 추가"
+  ],
+  "abyss_searching_notable_31": [
+   "공격 시 카오스 피해 (8-9)~(14-17) 추가"
+  ],
+  "abyss_searching_notable_32": [
+   "마법봉 공격 시 물리 피해 4~(5-6) 추가"
+  ],
+  "abyss_searching_notable_33": [
+   "활 공격 시 물리 피해 4~(5-6) 추가"
+  ],
+  "abyss_searching_notable_34": [
+   "마법봉 공격 시 번개 피해 (1-3)~(28-30) 추가"
+  ],
+  "abyss_searching_notable_35": [
+   "활 공격 시 번개 피해 (1-3)~(28-30) 추가"
+  ],
+  "abyss_searching_notable_36": [
+   "마법봉 공격 시 화염 피해 (9-11)~(16-19) 추가"
+  ],
+  "abyss_searching_notable_37": [
+   "활 공격 시 화염 피해 (9-11)~(16-19) 추가"
+  ],
+  "abyss_searching_notable_38": [
+   "마법봉 공격 시 냉기 피해 (8-9)~(14-16) 추가"
+  ],
+  "abyss_searching_notable_39": [
+   "활 공격 시 냉기 피해 (8-9)~(14-16) 추가"
+  ],
+  "abyss_searching_notable_4": [
+   "모든 능력치 +(6-8)"
+  ],
+  "abyss_searching_notable_40": [
+   "활 공격의 카오스 피해 (8-9)~(14-16) 추가"
+  ],
+  "abyss_searching_notable_41": [
+   "재사용 대기시간 회복 속도 3% 증가"
+  ],
+  "abyss_searching_notable_42": [
+   "쌍수 장착 시 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_searching_notable_43": [
+   "양손 무기 장착 시 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_searching_notable_44": [
+   "방패를 들고 있는 동안 지속 피해 (8-10)% 증가"
+  ],
+  "abyss_searching_notable_5": [
+   "냉기 저항 +(12-15)%"
+  ],
+  "abyss_searching_notable_6": [
+   "모든 원소 저항 +(6-8)%"
+  ],
+  "abyss_searching_notable_7": [
+   "공격 속도 (3-5)% 증가"
+  ],
+  "abyss_searching_notable_8": [
+   "치명타 확률 (8-12)% 증가"
+  ],
+  "abyss_searching_notable_9": [
+   "치명타 피해 배율 +(4-8)%"
+  ],
+  "abyss_special_notable_1": [
+   "정확도 +(31-120)"
+  ],
+  "abyss_special_notable_10": [
+   "공격 명중 시 (3-8)%의 확률로 적 도발"
+  ],
+  "abyss_special_notable_11": [
+   "(31-40)%의 확률로 출혈 긴급회피"
+  ],
+  "abyss_special_notable_12": [
+   "(31-40)%의 확률로 동결 긴급회피"
+  ],
+  "abyss_special_notable_13": [
+   "(31-40)%의 확률로 점화 긴급회피"
+  ],
+  "abyss_special_notable_14": [
+   "(31-40)%의 확률로 중독 긴급회피"
+  ],
+  "abyss_special_notable_15": [
+   "(31-40)%의 확률로 감전 긴급회피"
+  ],
+  "abyss_special_notable_16": [
+   "(21-30)%의 확률로 기절 긴급회피"
+  ],
+  "abyss_special_notable_17": [
+   "시전 속도 (2-4)% 증가"
+  ],
+  "abyss_special_notable_18": [
+   "카오스 저항 +(5-7)%"
+  ],
+  "abyss_special_notable_19": [
+   "냉기 저항 +(12-15)%"
+  ],
+  "abyss_special_notable_2": [
+   "모든 능력치 +(6-8)"
+  ],
+  "abyss_special_notable_20": [
+   "재사용 대기시간 회복 속도 3% 증가"
+  ],
+  "abyss_special_notable_21": [
+   "치명타 피해 배율 +(4-8)%"
+  ],
+  "abyss_special_notable_22": [
+   "회피 +(36-100)"
+  ],
+  "abyss_special_notable_23": [
+   "화염 저항 +(12-15)%"
+  ],
+  "abyss_special_notable_24": [
+   "1초마다 생명력 (9-16) 재생"
+  ],
+  "abyss_special_notable_25": [
+   "번개 저항 +(12-15)%"
+  ],
+  "abyss_special_notable_26": [
+   "1초마다 마나 (1.1-3) 재생"
+  ],
+  "abyss_special_notable_27": [
+   "생명력 최대치 +(21-30)"
+  ],
+  "abyss_special_notable_28": [
+   "마나 최대치 +(21-30)"
+  ],
+  "abyss_special_notable_29": [
+   "방어도 +(61-100)"
+  ],
+  "abyss_special_notable_3": [
+   "민첩 +(12-16)"
+  ],
+  "abyss_special_notable_30": [
+   "모든 원소 저항 +(6-8)%"
+  ],
+  "abyss_special_notable_31": [
+   "최근 4초 이내 피격으로 피해를 받은 경우 공격 피해 막기 확률 +(3-4)%"
+  ],
+  "abyss_special_notable_32": [
+   "최근 4초 이내 치명타 명중 시 시전 속도 (5-7)% 증가"
+  ],
+  "abyss_special_notable_33": [
+   "최근 4초 이내 소환수가 사망하면 시전 속도 (6-8)% 증가"
+  ],
+  "abyss_special_notable_34": [
+   "최근 4초 이내 피격 피해를 받은 경우 주문 피해 막기 확률 +(3-4)%"
+  ],
+  "abyss_special_notable_35": [
+   "냉기 상태 이상 효과 10% 증가"
+  ],
+  "abyss_special_notable_36": [
+   "치명타 확률 (8-12)% 증가"
+  ],
+  "abyss_special_notable_37": [
+   "최근 4초 이내 치명타를 명중시키지 않은 경우 치명타 확률 (20-30)% 증가"
+  ],
+  "abyss_special_notable_38": [
+   "최근 4초 이내 적을 처치한 경우 치명타 피해 배율 +(8-10)%"
+  ],
+  "abyss_special_notable_39": [
+   "플레이어의 저주 효과 2% 증가"
+  ],
+  "abyss_special_notable_4": [
+   "지능 +(12-16)"
+  ],
+  "abyss_special_notable_40": [
+   "신성화 지대에 있는 동안 플레이어에게 적용되는 저주 효과 (10-15)% 감소"
+  ],
+  "abyss_special_notable_41": [
+   "최근 4초 이내 적을 처치한 경우 피해 (15-20)% 증가"
+  ],
+  "abyss_special_notable_42": [
+   "쌍수 장착 시 지속 피해 (10-18)% 증가"
+  ],
+  "abyss_special_notable_43": [
+   "방패를 들고 있는 동안 지속 피해 (10-18)% 증가"
+  ],
+  "abyss_special_notable_44": [
+   "양손 무기 장착 시 지속 피해 (10-18)% 증가"
+  ],
+  "abyss_special_notable_45": [
+   "최근 4초 이내 적을 처치하지 않은 경우 피해가 2%의 원소 저항 관통"
+  ],
+  "abyss_special_notable_46": [
+   "받은 피해의 2%를 마나로 회생"
+  ],
+  "abyss_special_notable_47": [
+   "플레이어가 실명시킨 적의 치명타 확률 (15-20)% 감소"
+  ],
+  "abyss_special_notable_48": [
+   "플레이어가 이동 방해한 적의 생명력 재생 속도 (15-20)% 감소"
+  ],
+  "abyss_special_notable_49": [
+   "플레이어가 위협한 적의 기절 지속시간 10% 증가"
+  ],
+  "abyss_special_notable_5": [
+   "최근 4초 이내 피격 피해를 받지 않은 경우 받는 물리 피해 2% 추가 감소"
+  ],
+  "abyss_special_notable_50": [
+   "힘줄 절단시킨 적이 받는 지속 피해 (4-5)% 증가"
+  ],
+  "abyss_special_notable_51": [
+   "플레이어가 위축시킨 적의 모든 저항 -2%"
+  ],
+  "abyss_special_notable_52": [
+   "1초마다 에너지 보호막 (9-16) 재생"
+  ],
+  "abyss_special_notable_53": [
+   "이동 중 회피 (20-30)% 증가"
+  ],
+  "abyss_special_notable_54": [
+   "꿰뚫기 효과 (3-5)% 증가"
+  ],
+  "abyss_special_notable_55": [
+   "이동 중일 때 1초마다 생명력의 (0.5-1)% 재생"
+  ],
+  "abyss_special_notable_56": [
+   "번개 상태 이상 효과 (10-15)% 증가"
+  ],
+  "abyss_special_notable_57": [
+   "이동 중 마나 재생 속도 (20-25)% 증가"
+  ],
+  "abyss_special_notable_58": [
+   "자신이나 소환수가 최근 4초 이내 적을 처치한 경우 소환수의 공격 및 시전 속도 (6-8)% 증가"
+  ],
+  "abyss_special_notable_59": [
+   "소환수가 공격 명중 시 (3-5)%의 확률로 실명 유발"
+  ],
+  "abyss_special_notable_6": [
+   "힘 +(12-16)"
+  ],
+  "abyss_special_notable_60": [
+   "소환수가 공격 명중 시 (3-5)%의 확률로 도발"
+  ],
+  "abyss_special_notable_61": [
+   "소환수가 공격 시 10%의 확률로 출혈 유발"
+  ],
+  "abyss_special_notable_62": [
+   "소환수가 10%의 확률로 점화 유발"
+  ],
+  "abyss_special_notable_63": [
+   "소환수의 카오스 저항 +(7-11)%"
+  ],
+  "abyss_special_notable_64": [
+   "최근 4초 이내 소환수 스킬을 사용한 경우 소환수 피해 (10-15)% 증가"
+  ],
+  "abyss_special_notable_65": [
+   "소환수의 모든 원소 저항 +(6-10)%"
+  ],
+  "abyss_special_notable_66": [
+   "소환수가 피해의 (0.3-0.5)%를 생명력으로 흡수"
+  ],
+  "abyss_special_notable_67": [
+   "소환수가 1초마다 생명력의 (0.4-0.8)% 재생"
+  ],
+  "abyss_special_notable_68": [
+   "소환수가 1초마다 (22-40) 생명력 재생"
+  ],
+  "abyss_special_notable_69": [
+   "소환수의 최대 생명력 (6-10)% 증가"
+  ],
+  "abyss_special_notable_7": [
+   "공격 속도 (3-5)% 증가"
+  ],
+  "abyss_special_notable_70": [
+   "소환수의 이동 속도 (6-10)% 증가"
+  ],
+  "abyss_special_notable_71": [
+   "소환수가 주문 명중 시 (3-5)%의 확률로 적 이동 방해"
+  ],
+  "abyss_special_notable_72": [
+   "소환수가 명중 시 10%의 확률로 적 중독 유발"
+  ],
+  "abyss_special_notable_73": [
+   "최근 4초 이내 피해를 받지 않은 경우 이동 속도 3% 증가"
+  ],
+  "abyss_special_notable_74": [
+   "처치 시 5%의 확률로 4초 동안 차원 능력 획득"
+  ],
+  "abyss_special_notable_75": [
+   "주문 명중 시 (3-8)%의 확률로 적 이동 방해"
+  ],
+  "abyss_special_notable_8": [
+   "최근 4초 이내 치명타 명중 시 공격 속도 (4-6)% 증가"
+  ],
+  "abyss_special_notable_9": [
+   "공격 명중 시 (3-6)%의 확률로 적 실명 유발"
+  ],
+  "kalguuran_attribute_ward": [
+   "수호 1% 증가"
+  ],
+  "kalguuran_small_ward": [
+   "수호 2% 증가"
+  ],
+  "karui_attribute_strength": [
+   "힘 +2"
+  ],
+  "karui_notable_add_armour": [
+   "방어도 20% 증가"
+  ],
+  "karui_notable_add_burning_damage": [
+   "화상 피해 20% 증가"
+  ],
+  "karui_notable_add_damage_from_crits": [
+   "치명타로 받는 추가 피해 10% 감소"
+  ],
+  "karui_notable_add_double_damage": [
+   "5%의 확률로 2배의 피해를 줌"
+  ],
+  "karui_notable_add_endurance_charge_on_kill": [
+   "처치 시 5%의 확률로 인내 충전 획득"
+  ],
+  "karui_notable_add_faster_burn": [
+   "플레이어가 유발한 점화가 피해 10% 가속"
+  ],
+  "karui_notable_add_fire_resistance": [
+   "화염 저항 +20%"
+  ],
+  "karui_notable_add_fortify_effect": [
+   "방어 상승 최대치 +1"
+  ],
+  "karui_notable_add_intimidate": [
+   "적중 시 10%의 확률로 4초 동안 적 위협"
+  ],
+  "karui_notable_add_leech": [
+   "공격 피해의 0.4%를 생명력으로 흡수"
+  ],
+  "karui_notable_add_life": [
+   "최대 생명력 4% 증가"
+  ],
+  "karui_notable_add_life_regen": [
+   "1초마다 생명력의 1% 재생"
+  ],
+  "karui_notable_add_melee_crit_chance": [
+   "근접 치명타 확률 30% 증가"
+  ],
+  "karui_notable_add_melee_crit_multi": [
+   "근접 치명타 피해 배율 +15%"
+  ],
+  "karui_notable_add_melee_damage": [
+   "근접 피해 20% 증가"
+  ],
+  "karui_notable_add_percent_strength": [
+   "힘 5% 증가"
+  ],
+  "karui_notable_add_physical_added_as_fire": [
+   "물리 피해의 5%를 추가 화염 피해로 획득"
+  ],
+  "karui_notable_add_physical_damage": [
+   "물리 피해 20% 증가"
+  ],
+  "karui_notable_add_physical_taken_as_fire": [
+   "근접 명중 시 격노 1 획득"
+  ],
+  "karui_notable_add_reduced_stun_threshold": [
+   "적 기절 한계치 10% 감소"
+  ],
+  "karui_notable_add_strength": [
+   "힘 +20"
+  ],
+  "karui_notable_add_stun_duration": [
+   "적에게 적용되는 기절 지속시간 20% 증가"
+  ],
+  "karui_notable_add_totem_damage": [
+   "토템 피해 20% 증가"
+  ],
+  "karui_notable_add_totem_placement_speed": [
+   "토템 설치 속도 12% 증가"
+  ],
+  "karui_notable_add_warcry_buff_effect": [
+   "함성 버프 효과 8% 증가"
+  ],
+  "karui_small_strength": [
+   "힘 +4"
+  ],
+  "maraketh_attribute_dex": [
+   "민첩 +2"
+  ],
+  "maraketh_notable_add_accuracy": [
+   "정확도 5% 증가"
+  ],
+  "maraketh_notable_add_ailment_avoid": [
+   "20%의 확률로 기절 긴급회피"
+  ],
+  "maraketh_notable_add_ailment_duration": [
+   "적에게 적용되는 원소 상태 이상 지속시간 10% 증가"
+  ],
+  "maraketh_notable_add_ailment_effect": [
+   "비-피해 상태 이상 효과 10% 증가"
+  ],
+  "maraketh_notable_add_aura_effect": [
+   "자신의 비-저주 오라 스킬 효과 8% 증가"
+  ],
+  "maraketh_notable_add_blind": [
+   "명중 시 5%의 확률로 적 실명 유발"
+  ],
+  "maraketh_notable_add_cold_resistance": [
+   "냉기 저항 +20%"
+  ],
+  "maraketh_notable_add_dexterity": [
+   "민첩 +20"
+  ],
+  "maraketh_notable_add_elemental_damage": [
+   "원소 피해 20% 증가"
+  ],
+  "maraketh_notable_add_evasion": [
+   "회피 20% 증가"
+  ],
+  "maraketh_notable_add_faster_poison": [
+   "플레이어가 유발한 중독이 피해 10% 가속"
+  ],
+  "maraketh_notable_add_flask_charges": [
+   "플라스크 충전량 10% 증가"
+  ],
+  "maraketh_notable_add_flask_effect": [
+   "플라스크 사용 시 25%의 확률로 연금술사의 천재성 획득"
+  ],
+  "maraketh_notable_add_frenzy_charge_on_kill": [
+   "처치 시 5%의 확률로 격분 충전 획득"
+  ],
+  "maraketh_notable_add_global_crit_chance": [
+   "치명타 확률 25% 증가"
+  ],
+  "maraketh_notable_add_life": [
+   "최대 생명력 4% 증가"
+  ],
+  "maraketh_notable_add_minion_damage": [
+   "소환수가 주는 피해 20% 증가"
+  ],
+  "maraketh_notable_add_minion_movement_speed": [
+   "소환수의 이동 속도 15% 증가"
+  ],
+  "maraketh_notable_add_movement_speed": [
+   "이동 속도 5% 증가"
+  ],
+  "maraketh_notable_add_onslaught": [
+   "처치 시 8초 동안 맹공 획득"
+  ],
+  "maraketh_notable_add_percent_dexterity": [
+   "민첩 5% 증가"
+  ],
+  "maraketh_notable_add_physical_added_as_cold": [
+   "물리 피해의 5%를 추가 냉기 피해로 획득"
+  ],
+  "maraketh_notable_add_poison_damage": [
+   "중독 피해 20% 증가"
+  ],
+  "maraketh_notable_add_projectile_damage": [
+   "투사체 피해 20% 증가"
+  ],
+  "maraketh_notable_add_speed": [
+   "공격 및 시전 속도 5% 증가"
+  ],
+  "maraketh_small_dex": [
+   "민첩 +4"
+  ],
+  "templar_notable_devotion": [
+   "헌신 +5"
+  ],
+  "templar_small_devotion": [
+   "헌신 +5"
+  ],
+  "vaal_small_area_damage": [
+   "범위 피해 (7-12)% 증가"
+  ],
+  "vaal_small_area_of_effect": [
+   "효과 범위 (4-7)% 증가"
+  ],
+  "vaal_small_armour": [
+   "방어도 (7-12)% 증가"
+  ],
+  "vaal_small_attack_block": [
+   "공격 피해 막기 확률 +2%"
+  ],
+  "vaal_small_attack_damage": [
+   "공격 피해 (7-12)% 증가"
+  ],
+  "vaal_small_attack_dodge": [
+   "3%의 확률로 원소 상태 이상 긴급회피"
+  ],
+  "vaal_small_attack_speed": [
+   "공격 속도 (3-4)% 증가"
+  ],
+  "vaal_small_aura_effect": [
+   "자신의 비-저주 오라 스킬 효과 (2-4)% 증가"
+  ],
+  "vaal_small_cast_speed": [
+   "시전 속도 (2-3)% 증가"
+  ],
+  "vaal_small_chance_to_freeze": [
+   "(3-6)%의 확률로 동결 유발"
+  ],
+  "vaal_small_chance_to_ignite": [
+   "(3-6)%의 확률로 점화 유발"
+  ],
+  "vaal_small_chance_to_shock": [
+   "(3-6)%의 확률로 감전 유발"
+  ],
+  "vaal_small_chaos_damage": [
+   "카오스 피해 (7-12)% 증가"
+  ],
+  "vaal_small_chaos_resistance": [
+   "카오스 저항 +(6-10)%"
+  ],
+  "vaal_small_cold_damage": [
+   "냉기 피해 (7-12)% 증가"
+  ],
+  "vaal_small_cold_resistance": [
+   "냉기 저항 +(9-14)%"
+  ],
+  "vaal_small_critical_strike_chance": [
+   "치명타 확률 (7-14)% 증가"
+  ],
+  "vaal_small_critical_strike_multiplier": [
+   "치명타 피해 배율 +(6-10)%"
+  ],
+  "vaal_small_curse_effect": [
+   "플레이어의 저주 효과 2% 증가"
+  ],
+  "vaal_small_damage_over_time": [
+   "지속 피해 (7-12)% 증가"
+  ],
+  "vaal_small_duration": [
+   "스킬 효과 지속시간 (4-7)% 증가"
+  ],
+  "vaal_small_energy_shield": [
+   "에너지 보호막 최대치 (3-5)% 증가"
+  ],
+  "vaal_small_evasion": [
+   "회피 (7-12)% 증가"
+  ],
+  "vaal_small_fire_damage": [
+   "화염 피해 (7-12)% 증가"
+  ],
+  "vaal_small_fire_resistance": [
+   "화염 저항 +(9-14)%"
+  ],
+  "vaal_small_life": [
+   "최대 생명력 (2-4)% 증가"
+  ],
+  "vaal_small_lightning_damage": [
+   "번개 피해 (7-12)% 증가"
+  ],
+  "vaal_small_lightning_resistance": [
+   "번개 저항 +(9-14)%"
+  ],
+  "vaal_small_mana": [
+   "최대 마나 (4-6)% 증가"
+  ],
+  "vaal_small_mana_regeneration": [
+   "마나 재생 속도 (12-17)% 증가"
+  ],
+  "vaal_small_minion_damage": [
+   "소환수가 주는 피해 (8-13)% 증가"
+  ],
+  "vaal_small_movement_speed": [
+   "이동 속도 (2-3)% 증가"
+  ],
+  "vaal_small_physical_damage": [
+   "물리 피해 (7-12)% 증가"
+  ],
+  "vaal_small_projectile_damage": [
+   "투사체 피해 (7-12)% 증가"
+  ],
+  "vaal_small_projectile_speed": [
+   "투사체 속도 (7-12)% 증가"
+  ],
+  "vaal_small_spell_block": [
+   "2%의 확률로 주문 피해를 막아냄"
+  ],
+  "vaal_small_spell_damage": [
+   "주문 피해 (7-12)% 증가"
+  ],
+  "vaal_small_spell_dodge": [
+   "주문 피해 억제 확률 +4%"
+  ]
+ },
+ "legion": {
+  "accuracy": [
+   {
+    "jewel": null,
+    "name": "정확도",
+    "stats": [
+     "정확도 +(31-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "정확도",
+    "stats": [
+     "정확도 +(31-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "정확도",
+    "stats": [
+     "정확도 +(31-60)"
+    ]
+   }
+  ],
+  "ancienthex": [
+   {
+    "jewel": null,
+    "name": "고대의 사술",
+    "stats": [
+     "플레이어의 저주 효과 (4-6)% 증가",
+     "저주 스킬의 스킬 효과 지속시간 20% 증가"
+    ]
+   }
+  ],
+  "areadamage": [
+   {
+    "jewel": null,
+    "name": "범위 피해",
+    "stats": [
+     "범위 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "areaofeffect": [
+   {
+    "jewel": null,
+    "name": "효과 범위",
+    "stats": [
+     "효과 범위 (4-7)% 증가"
+    ]
+   }
+  ],
+  "armour": [
+   {
+    "jewel": null,
+    "name": "방어도",
+    "stats": [
+     "방어도 (7-12)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "방어도",
+    "stats": [
+     "방어도 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "방어도",
+    "stats": [
+     "방어도 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "방어도",
+    "stats": [
+     "방어도 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "방어도",
+    "stats": [
+     "방어도 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "방어도",
+    "stats": [
+     "방어도 +(36-60)"
+    ]
+   }
+  ],
+  "attackdamage": [
+   {
+    "jewel": null,
+    "name": "공격 피해",
+    "stats": [
+     "공격 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "attackspeed": [
+   {
+    "jewel": null,
+    "name": "공격 속도",
+    "stats": [
+     "공격 속도 (3-4)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "공격 속도",
+    "stats": [
+     "공격 속도 (2-3)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "공격 속도",
+    "stats": [
+     "공격 속도 (2-3)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "공격 속도",
+    "stats": [
+     "공격 속도 (2-3)% 증가"
+    ]
+   }
+  ],
+  "attributes": [
+   {
+    "jewel": null,
+    "name": "능력치",
+    "stats": [
+     "모든 능력치 +(4-6)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "능력치",
+    "stats": [
+     "모든 능력치 +(4-6)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "능력치",
+    "stats": [
+     "모든 능력치 +(4-6)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "능력치",
+    "stats": [
+     "모든 능력치 +(4-6)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "능력치",
+    "stats": [
+     "모든 능력치 +(4-6)"
+    ]
+   }
+  ],
+  "auraeffect": [
+   {
+    "jewel": null,
+    "name": "오라 효과",
+    "stats": [
+     "자신의 비-저주 오라 스킬 효과 (2-4)% 증가"
+    ]
+   }
+  ],
+  "automatonstudies": [
+   {
+    "jewel": null,
+    "name": "오토마톤 연구",
+    "stats": [
+     "방어도 (30-40)% 증가",
+     "받는 물리 피해 (3-4)% 추가 감소"
+    ]
+   }
+  ],
+  "avoidelementalailments": [
+   {
+    "jewel": null,
+    "name": "원소 상태 이상 긴급회피",
+    "stats": [
+     "3%의 확률로 원소 상태 이상 긴급회피"
+    ]
+   }
+  ],
+  "axiomwarden": [
+   {
+    "jewel": null,
+    "name": "액시옴 간수",
+    "stats": [
+     "소환수의 최대 생명력 80% 증가"
+    ]
+   }
+  ],
+  "balefulaugmentation": [
+   {
+    "jewel": null,
+    "name": "사악한 강화",
+    "stats": [
+     "번개 저항 +50%"
+    ]
+   }
+  ],
+  "blackscythetraining": [
+   {
+    "jewel": "kalguur",
+    "name": "검은 낫의 교육",
+    "stats": [
+     "모든 에너지 보호막 제거",
+     "명중 회피 확률이 회피가 아닌 수호의 200%에 따라 결정됨",
+     "명중의 물리 피해 감소가 방어도가 아닌 수호의 200%에 따라 결정됨"
+    ]
+   }
+  ],
+  "bleedavoidance": [
+   {
+    "jewel": null,
+    "name": "출혈 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 출혈 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "출혈 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 출혈 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "출혈 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 출혈 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "출혈 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 출혈 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "출혈 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 출혈 긴급회피"
+    ]
+   }
+  ],
+  "blindchance": [
+   {
+    "jewel": null,
+    "name": "실명 확률",
+    "stats": [
+     "공격 명중 시 (2-3)%의 확률로 적 실명 유발"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "실명 확률",
+    "stats": [
+     "공격 명중 시 (2-3)%의 확률로 적 실명 유발"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "실명 확률",
+    "stats": [
+     "공격 명중 시 (2-3)%의 확률로 적 실명 유발"
+    ]
+   }
+  ],
+  "block": [
+   {
+    "jewel": null,
+    "name": "막기",
+    "stats": [
+     "공격 피해 막기 확률 +2%"
+    ]
+   }
+  ],
+  "bloodquenchedbulwark": [
+   {
+    "jewel": null,
+    "name": "피 억제 방벽",
+    "stats": [
+     "막아낼 시 생명력 (6-10) 획득",
+     "공격 피해 막기 확률 +8%"
+    ]
+   }
+  ],
+  "bloodyflowersrebellion": [
+   {
+    "jewel": null,
+    "name": "핏빛 꽃송이 봉기",
+    "stats": [
+     "공격 스킬의 냉기 피해 80% 증가"
+    ]
+   }
+  ],
+  "bloodysavagery": [
+   {
+    "jewel": null,
+    "name": "피로 물든 야만성",
+    "stats": [
+     "플레이어가 유발한 출혈이 피해 10% 가속",
+     "물리 피해 (25-35)% 증가"
+    ]
+   }
+  ],
+  "brutalexecution": [
+   {
+    "jewel": null,
+    "name": "잔인한 처형",
+    "stats": [
+     "치명타 피해 배율 +40%"
+    ]
+   }
+  ],
+  "calmingdevotion": [
+   {
+    "jewel": null,
+    "name": "냉정한 헌신",
+    "stats": [
+     "헌신이 150 이상인 경우 물리 피해의 15%를 냉기 피해로 전환"
+    ]
+   }
+  ],
+  "castspeed": [
+   {
+    "jewel": null,
+    "name": "시전 속도",
+    "stats": [
+     "시전 속도 (2-3)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "시전 속도",
+    "stats": [
+     "시전 속도 (2-3)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "시전 속도",
+    "stats": [
+     "시전 속도 (2-3)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "시전 속도",
+    "stats": [
+     "시전 속도 (2-3)% 증가"
+    ]
+   }
+  ],
+  "celestialmathematics": [
+   {
+    "jewel": "kalguur",
+    "name": "천공의 수학",
+    "stats": [
+     "부서지지 않은 수호를 보유한 동안 플레이어가 사용하는 다음 비-집중 유지 공격이 수호를 부수고 수호의 15%와 동일한 추가 냉기 피해 획득"
+    ]
+   }
+  ],
+  "chainbreaker": [
+   {
+    "jewel": "karui",
+    "name": "사슬 파괴자",
+    "stats": [
+     "재생으로 인한 마나 회복이 적용되지 않음",
+     "초당 마나 재생 25당 격노 1 생성",
+     "기본 격노 상실을 지연시키지 않음",
+     "스킬의 격노 소모 +3"
+    ]
+   }
+  ],
+  "chaosdamage": [
+   {
+    "jewel": null,
+    "name": "카오스 피해",
+    "stats": [
+     "카오스 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "chaosresistance": [
+   {
+    "jewel": null,
+    "name": "카오스 저항",
+    "stats": [
+     "카오스 저항 +(6-10)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "카오스 저항",
+    "stats": [
+     "카오스 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "카오스 저항",
+    "stats": [
+     "카오스 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "카오스 저항",
+    "stats": [
+     "카오스 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "카오스 저항",
+    "stats": [
+     "카오스 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "카오스 저항",
+    "stats": [
+     "카오스 저항 +(4-6)%"
+    ]
+   }
+  ],
+  "chitusheart": [
+   {
+    "jewel": null,
+    "name": "치투스의 심장",
+    "stats": [
+     "공격 스킬의 번개 피해 80% 증가"
+    ]
+   }
+  ],
+  "citywalls": [
+   {
+    "jewel": null,
+    "name": "도시 성벽",
+    "stats": [
+     "공격 피해 막기 확률 +12%"
+    ]
+   }
+  ],
+  "cleansingrunes": [
+   {
+    "jewel": null,
+    "name": "정화하는 룬",
+    "stats": [
+     "수호가 회복되면 무작위 피해를 주는 상태 이상 1개 제거",
+     "self damaging ailment duration +% [-25]"
+    ]
+   }
+  ],
+  "cloistered": [
+   {
+    "jewel": null,
+    "name": "격리됨",
+    "stats": [
+     "헌신이 150 이상인 경우 신성화 지대에 있는 동안 원소 상태 이상에 면역"
+    ]
+   }
+  ],
+  "coldailmenteffect": [
+   {
+    "jewel": null,
+    "name": "냉기 상태 이상 효과",
+    "stats": [
+     "냉기 상태 이상 효과 (10-20)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 상태 이상 효과",
+    "stats": [
+     "냉기 상태 이상 효과 (10-20)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 상태 이상 효과",
+    "stats": [
+     "냉기 상태 이상 효과 (10-20)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 상태 이상 효과",
+    "stats": [
+     "냉기 상태 이상 효과 (10-20)% 증가"
+    ]
+   }
+  ],
+  "coldandlightningresistance": [
+   {
+    "jewel": null,
+    "name": "냉기 및 번개 저항",
+    "stats": [
+     "냉기 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 및 번개 저항",
+    "stats": [
+     "냉기 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 및 번개 저항",
+    "stats": [
+     "냉기 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 및 번개 저항",
+    "stats": [
+     "냉기 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 및 번개 저항",
+    "stats": [
+     "냉기 및 번개 저항 +(4-6)%"
+    ]
+   }
+  ],
+  "colddamage": [
+   {
+    "jewel": null,
+    "name": "냉기 피해",
+    "stats": [
+     "냉기 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "coldresistance": [
+   {
+    "jewel": null,
+    "name": "냉기 저항",
+    "stats": [
+     "냉기 저항 +(9-14)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 저항",
+    "stats": [
+     "냉기 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 저항",
+    "stats": [
+     "냉기 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 저항",
+    "stats": [
+     "냉기 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 저항",
+    "stats": [
+     "냉기 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "냉기 저항",
+    "stats": [
+     "냉기 저항 +(6-8)%"
+    ]
+   }
+  ],
+  "commandingpresence": [
+   {
+    "jewel": null,
+    "name": "위엄있는 존재감",
+    "stats": [
+     "오라 스킬의 효과 범위 20% 증가",
+     "자신의 비-저주 오라 스킬 효과 (7-10)% 증가"
+    ]
+   }
+  ],
+  "constructstudies": [
+   {
+    "jewel": null,
+    "name": "구조물 연구",
+    "stats": [
+     "회피 (30-40)% 증가",
+     "명중 시 (5-7)%의 확률로 적 실명 유발"
+    ]
+   }
+  ],
+  "corruptedsoul": [
+   {
+    "jewel": "vaal",
+    "name": "타락한 영혼",
+    "stats": [
+     "비-카오스 피해의 50%가 에너지 보호막을 무시함",
+     "최대 생명력의 15%를 추가 에너지 보호막 최대치로 획득"
+    ]
+   }
+  ],
+  "crematoriumworker": [
+   {
+    "jewel": null,
+    "name": "화장터 일꾼",
+    "stats": [
+     "화염 저항 +50%"
+    ]
+   }
+  ],
+  "criticalstrikechance": [
+   {
+    "jewel": null,
+    "name": "치명타 확률",
+    "stats": [
+     "치명타 확률 (7-14)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "치명타 확률",
+    "stats": [
+     "치명타 확률 (6-8)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "치명타 확률",
+    "stats": [
+     "치명타 확률 (6-8)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "치명타 확률",
+    "stats": [
+     "치명타 확률 (6-8)% 증가"
+    ]
+   }
+  ],
+  "criticalstrikemultiplier": [
+   {
+    "jewel": null,
+    "name": "치명타 피해 배율",
+    "stats": [
+     "치명타 피해 배율 +(6-10)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "치명타 피해 배율",
+    "stats": [
+     "치명타 피해 배율 +(7-9)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "치명타 피해 배율",
+    "stats": [
+     "치명타 피해 배율 +(7-9)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "치명타 피해 배율",
+    "stats": [
+     "치명타 피해 배율 +(7-9)%"
+    ]
+   }
+  ],
+  "crownofkalguur": [
+   {
+    "jewel": null,
+    "name": "칼구르의 왕관",
+    "stats": [
+     "장착한 투구의 방어도 10당 수호 +2"
+    ]
+   }
+  ],
+  "cultofchaos": [
+   {
+    "jewel": null,
+    "name": "카오스의 교단",
+    "stats": [
+     "카오스 저항 최대치 +1%",
+     "카오스 저항 +(13-19)%"
+    ]
+   }
+  ],
+  "cultoffire": [
+   {
+    "jewel": null,
+    "name": "불의 교단",
+    "stats": [
+     "화염 저항 최대치 +1%",
+     "화염 저항 +(20-30)%"
+    ]
+   }
+  ],
+  "cultofice": [
+   {
+    "jewel": null,
+    "name": "얼음의 교단",
+    "stats": [
+     "냉기 저항 최대치 +1%",
+     "냉기 저항 +(20-30)%"
+    ]
+   }
+  ],
+  "cultoflightning": [
+   {
+    "jewel": null,
+    "name": "번개의 교단",
+    "stats": [
+     "번개 저항 최대치 +1%",
+     "번개 저항 +(20-30)%"
+    ]
+   }
+  ],
+  "curseeffect": [
+   {
+    "jewel": null,
+    "name": "저주 효과",
+    "stats": [
+     "플레이어의 저주 효과 2% 증가"
+    ]
+   }
+  ],
+  "damageovertime": [
+   {
+    "jewel": null,
+    "name": "지속 피해",
+    "stats": [
+     "지속 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "dancewithdeath": [
+   {
+    "jewel": "maraketh",
+    "name": "죽음의 춤",
+    "stats": [
+     "투구 사용 불가",
+     "치명타 확률에 행운 적용",
+     "치명타 피해에 행운 적용",
+     "적이 주는 치명타 피해에 행운 적용"
+    ]
+   }
+  ],
+  "devotion": [
+   {
+    "jewel": null,
+    "name": "헌신",
+    "stats": [
+     "헌신 +10"
+    ]
+   }
+  ],
+  "dexterity": [
+   {
+    "jewel": null,
+    "name": "민첩",
+    "stats": [
+     "민첩 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩",
+    "stats": [
+     "민첩 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩",
+    "stats": [
+     "민첩 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩",
+    "stats": [
+     "민첩 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩",
+    "stats": [
+     "민첩 +(8-10)"
+    ]
+   }
+  ],
+  "dexterityandintelligence": [
+   {
+    "jewel": null,
+    "name": "민첩과 지능",
+    "stats": [
+     "민첩 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩과 지능",
+    "stats": [
+     "민첩 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩과 지능",
+    "stats": [
+     "민첩 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩과 지능",
+    "stats": [
+     "민첩 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "민첩과 지능",
+    "stats": [
+     "민첩 및 지능 +(6-8)"
+    ]
+   }
+  ],
+  "diallaswit": [
+   {
+    "jewel": null,
+    "name": "디알라의 재치",
+    "stats": [
+     "시전 속도 15% 증가"
+    ]
+   }
+  ],
+  "discerningtaste": [
+   {
+    "jewel": null,
+    "name": "안목의 소유자",
+    "stats": [
+     "스킬의 마나 점유 효율 12% 증가"
+    ]
+   }
+  ],
+  "divineflesh": [
+   {
+    "jewel": "vaal",
+    "name": "신성한 육체",
+    "stats": [
+     "모든 받는 피해가 에너지 보호막을 무시함",
+     "받는 원소 피해의 50%를 카오스 피해로 전환",
+     "카오스 저항 최대치 +5%"
+    ]
+   }
+  ],
+  "elementalresistance": [
+   {
+    "jewel": null,
+    "name": "원소 저항",
+    "stats": [
+     "모든 원소 저항 +(3-5)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "원소 저항",
+    "stats": [
+     "모든 원소 저항 +(3-5)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "원소 저항",
+    "stats": [
+     "모든 원소 저항 +(3-5)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "원소 저항",
+    "stats": [
+     "모든 원소 저항 +(3-5)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "원소 저항",
+    "stats": [
+     "모든 원소 저항 +(3-5)%"
+    ]
+   }
+  ],
+  "elusiveward": [
+   {
+    "jewel": null,
+    "name": "교묘한 수호",
+    "stats": [
+     "수호 회복 속도 15% 가속",
+     "부서지지 않은 수호를 보유한 동안 회피 30% 증가"
+    ]
+   }
+  ],
+  "enduringfaith": [
+   {
+    "jewel": null,
+    "name": "인내하는 믿음",
+    "stats": [
+     "헌신이 150 이상인 경우 최소 인내 충전 +1"
+    ]
+   }
+  ],
+  "enduringsigil": [
+   {
+    "jewel": null,
+    "name": "인내의 부적",
+    "stats": [
+     "인내 충전 지속시간 20% 증가",
+     "수호가 부서질 때 인내 충전 1 획득"
+    ]
+   }
+  ],
+  "energyflowstudies": [
+   {
+    "jewel": null,
+    "name": "에너지 흐름 연구",
+    "stats": [
+     "에너지 보호막 최대치 (8-12)% 증가",
+     "에너지 보호막 재충전 속도 (10-15)% 증가"
+    ]
+   }
+  ],
+  "energyshield": [
+   {
+    "jewel": null,
+    "name": "에너지 보호막",
+    "stats": [
+     "에너지 보호막 최대치 (3-5)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막",
+    "stats": [
+     "에너지 보호막 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막",
+    "stats": [
+     "에너지 보호막 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막",
+    "stats": [
+     "에너지 보호막 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막",
+    "stats": [
+     "에너지 보호막 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막",
+    "stats": [
+     "에너지 보호막 최대치 +(9-12)"
+    ]
+   }
+  ],
+  "energyshieldregeneration": [
+   {
+    "jewel": null,
+    "name": "에너지 보호막 재생",
+    "stats": [
+     "1초마다 에너지 보호막 (9-12) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막 재생",
+    "stats": [
+     "1초마다 에너지 보호막 (9-12) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막 재생",
+    "stats": [
+     "1초마다 에너지 보호막 (9-12) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막 재생",
+    "stats": [
+     "1초마다 에너지 보호막 (9-12) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "에너지 보호막 재생",
+    "stats": [
+     "1초마다 에너지 보호막 (9-12) 재생"
+    ]
+   }
+  ],
+  "ephemeralbolts": [
+   {
+    "jewel": null,
+    "name": "덧없는 볼트",
+    "stats": [
+     "투사체의 최대 직접 비행 5미터",
+     "투사체 속도 40% 증폭"
+    ]
+   }
+  ],
+  "etchedrunes": [
+   {
+    "jewel": null,
+    "name": "식각된 룬",
+    "stats": [
+     "수호 12% 증가",
+     "장착한 방어구 아이템으로 얻는 수호 20% 증가"
+    ]
+   }
+  ],
+  "eternaladaptiveness": [
+   {
+    "jewel": null,
+    "name": "영원한 순응",
+    "stats": [
+     "격분 충전 하나당 회피 8% 증가"
+    ]
+   }
+  ],
+  "eternalbloodlust": [
+   {
+    "jewel": null,
+    "name": "영원한 유혈 충동",
+    "stats": [
+     "격분 충전 하나당 피해 10% 증가"
+    ]
+   }
+  ],
+  "eternaldominance": [
+   {
+    "jewel": null,
+    "name": "영원한 지배",
+    "stats": [
+     "인내 충전 하나당 피해 10% 증가"
+    ]
+   }
+  ],
+  "eternalexploitation": [
+   {
+    "jewel": null,
+    "name": "영원한 착취",
+    "stats": [
+     "권능 충전 하나당 피해 10% 증가"
+    ]
+   }
+  ],
+  "eternalfervour": [
+   {
+    "jewel": null,
+    "name": "영원한 열정",
+    "stats": [
+     "명중 시 10%의 확률로 격분 충전 획득"
+    ]
+   }
+  ],
+  "eternalfortitude": [
+   {
+    "jewel": null,
+    "name": "영원한 강건함",
+    "stats": [
+     "인내 충전 하나당 방어도 8% 증가"
+    ]
+   }
+  ],
+  "eternalresilience": [
+   {
+    "jewel": null,
+    "name": "영원한 회복력",
+    "stats": [
+     "최근 4초 이내 피격된 경우 1초마다 인내 충전 1개 획득"
+    ]
+   }
+  ],
+  "eternalseparation": [
+   {
+    "jewel": null,
+    "name": "영원한 이별",
+    "stats": [
+     "권능 충전 하나당 에너지 보호막 4% 증가"
+    ]
+   }
+  ],
+  "eternalsubjugation": [
+   {
+    "jewel": null,
+    "name": "영원한 예속",
+    "stats": [
+     "치명타 명중 시 15%의 확률로 권능 충전 획득"
+    ]
+   }
+  ],
+  "evasion": [
+   {
+    "jewel": null,
+    "name": "회피",
+    "stats": [
+     "회피 (7-12)% 증가"
+    ]
+   }
+  ],
+  "evasionrating": [
+   {
+    "jewel": null,
+    "name": "회피",
+    "stats": [
+     "회피 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "회피",
+    "stats": [
+     "회피 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "회피",
+    "stats": [
+     "회피 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "회피",
+    "stats": [
+     "회피 +(36-60)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "회피",
+    "stats": [
+     "회피 +(36-60)"
+    ]
+   }
+  ],
+  "exquisitepain": [
+   {
+    "jewel": null,
+    "name": "정교한 고통",
+    "stats": [
+     "지속 피해 (25-35)% 증가",
+     "스킬 효과 지속시간 (7-11)% 증가"
+    ]
+   }
+  ],
+  "fireandcoldresistance": [
+   {
+    "jewel": null,
+    "name": "화염 및 냉기 저항",
+    "stats": [
+     "화염 및 냉기 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 냉기 저항",
+    "stats": [
+     "화염 및 냉기 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 냉기 저항",
+    "stats": [
+     "화염 및 냉기 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 냉기 저항",
+    "stats": [
+     "화염 및 냉기 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 냉기 저항",
+    "stats": [
+     "화염 및 냉기 저항 +(4-6)%"
+    ]
+   }
+  ],
+  "fireandlightningresistance": [
+   {
+    "jewel": null,
+    "name": "화염 및 번개 저항",
+    "stats": [
+     "화염 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 번개 저항",
+    "stats": [
+     "화염 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 번개 저항",
+    "stats": [
+     "화염 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 번개 저항",
+    "stats": [
+     "화염 및 번개 저항 +(4-6)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 및 번개 저항",
+    "stats": [
+     "화염 및 번개 저항 +(4-6)%"
+    ]
+   }
+  ],
+  "firedamage": [
+   {
+    "jewel": null,
+    "name": "화염 피해",
+    "stats": [
+     "화염 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "fireresistance": [
+   {
+    "jewel": null,
+    "name": "화염 저항",
+    "stats": [
+     "화염 저항 +(9-14)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 저항",
+    "stats": [
+     "화염 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 저항",
+    "stats": [
+     "화염 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 저항",
+    "stats": [
+     "화염 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 저항",
+    "stats": [
+     "화염 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "화염 저항",
+    "stats": [
+     "화염 저항 +(6-8)%"
+    ]
+   }
+  ],
+  "flawlessexecution": [
+   {
+    "jewel": null,
+    "name": "결함 없는 처형",
+    "stats": [
+     "치명타 확률 80% 증가"
+    ]
+   }
+  ],
+  "fleshtoflames": [
+   {
+    "jewel": null,
+    "name": "육체 화염화",
+    "stats": [
+     "화염 피해 (25-35)% 증가",
+     "물리 피해의 10%를 화염 피해로 전환"
+    ]
+   }
+  ],
+  "fleshtofrost": [
+   {
+    "jewel": null,
+    "name": "육체 서리화",
+    "stats": [
+     "냉기 피해 (25-35)% 증가",
+     "물리 피해의 10%를 냉기 피해로 전환"
+    ]
+   }
+  ],
+  "fleshtolightning": [
+   {
+    "jewel": null,
+    "name": "육체 번개화",
+    "stats": [
+     "번개 피해 (25-35)% 증가",
+     "물리 피해의 10%를 번개 피해로 전환"
+    ]
+   }
+  ],
+  "fleshworship": [
+   {
+    "jewel": null,
+    "name": "육체 숭배",
+    "stats": [
+     "최대 생명력 (6-10)% 증가",
+     "공격 피해의 0.4%를 생명력으로 흡수"
+    ]
+   }
+  ],
+  "fortifiedward": [
+   {
+    "jewel": null,
+    "name": "견고한 수호",
+    "stats": [
+     "수호 회복 속도 15% 가속",
+     "부서지지 않은 수호를 보유한 동안 방어도 30% 증가"
+    ]
+   }
+  ],
+  "freezeavoidance": [
+   {
+    "jewel": null,
+    "name": "동결 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 동결 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "동결 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 동결 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "동결 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 동결 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "동결 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 동결 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "동결 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 동결 긴급회피"
+    ]
+   }
+  ],
+  "freezechance": [
+   {
+    "jewel": null,
+    "name": "동결 확률",
+    "stats": [
+     "(3-6)%의 확률로 동결 유발"
+    ]
+   }
+  ],
+  "frenziedfaith": [
+   {
+    "jewel": null,
+    "name": "열광적인 믿음",
+    "stats": [
+     "헌신이 150 이상인 경우 최소 격분 충전 +1"
+    ]
+   }
+  ],
+  "frenzyingsigil": [
+   {
+    "jewel": null,
+    "name": "격분의 부적",
+    "stats": [
+     "격분 충전 지속시간 20% 증가",
+     "수호가 부서질 때 격분 충전 1 획득"
+    ]
+   }
+  ],
+  "freshlybrewed": [
+   {
+    "jewel": null,
+    "name": "신선한 한 잔",
+    "stats": [
+     "플라스크 효과 지속시간 20% 증가"
+    ]
+   }
+  ],
+  "frombelow": [
+   {
+    "jewel": null,
+    "name": "아래로부터",
+    "stats": [
+     "마나가 부족해도 주문 사용 가능",
+     "마나 회복 불가"
+    ]
+   }
+  ],
+  "gemlingambush": [
+   {
+    "jewel": null,
+    "name": "마석병의 매복",
+    "stats": [
+     "주문 치명타 확률 80% 증가"
+    ]
+   }
+  ],
+  "gemlinginquisition": [
+   {
+    "jewel": null,
+    "name": "마석병의 이단 심문",
+    "stats": [
+     "주문 피해 80% 증가"
+    ]
+   }
+  ],
+  "gemlingtraining": [
+   {
+    "jewel": null,
+    "name": "마석병 훈련",
+    "stats": [
+     "물리 피해 80% 증가"
+    ]
+   }
+  ],
+  "geofrisend": [
+   {
+    "jewel": null,
+    "name": "조프리의 끝",
+    "stats": [
+     "출혈 피해 50% 증가",
+     "플레이어가 유발한 출혈이 피해 10% 가속"
+    ]
+   }
+  ],
+  "gleaminglegion": [
+   {
+    "jewel": null,
+    "name": "번뜩이는 군단",
+    "stats": [
+     "방어도 80% 증가"
+    ]
+   }
+  ],
+  "gripofkalguur": [
+   {
+    "jewel": null,
+    "name": "칼구르의 손아귀",
+    "stats": [
+     "장착한 장갑의 회피 10당 수호 +4"
+    ]
+   }
+  ],
+  "guilefaith": [
+   {
+    "jewel": null,
+    "name": "교활한 신념",
+    "stats": [
+     "수호 12% 증가",
+     "회피 16% 증가"
+    ]
+   }
+  ],
+  "heateddevotion": [
+   {
+    "jewel": null,
+    "name": "열렬한 헌신",
+    "stats": [
+     "헌신이 150 이상인 경우 물리 피해의 15%를 화염 피해로 전환"
+    ]
+   }
+  ],
+  "hierarchy": [
+   {
+    "jewel": null,
+    "name": "계층",
+    "stats": [
+     "소환수의 최대 생명력 (15-20)% 증가",
+     "소환수가 주는 피해 (25-35)% 증가"
+    ]
+   }
+  ],
+  "hinderchance": [
+   {
+    "jewel": null,
+    "name": "이동 방해 확률",
+    "stats": [
+     "주문 명중 시 (2-3)%의 확률로 적 이동 방해"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "이동 방해 확률",
+    "stats": [
+     "주문 명중 시 (2-3)%의 확률로 적 이동 방해"
+    ]
+   }
+  ],
+  "igniteavoidance": [
+   {
+    "jewel": null,
+    "name": "점화 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 점화 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "점화 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 점화 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "점화 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 점화 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "점화 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 점화 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "점화 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 점화 긴급회피"
+    ]
+   }
+  ],
+  "ignitechance": [
+   {
+    "jewel": null,
+    "name": "점화 확률",
+    "stats": [
+     "(3-6)%의 확률로 점화 유발"
+    ]
+   }
+  ],
+  "immortalambition": [
+   {
+    "jewel": "vaal",
+    "name": "불멸의 야망",
+    "stats": [
+     "에너지 보호막이 0에서 시작",
+     "에너지 보호막 재충전 또는 재생 불가",
+     "1초당 에너지 보호막 5% 상실",
+     "점유되지 않은 생명력이 찼을 때 생명력 흡수 효과가 제거되지 않음",
+     "최대 생명력일 때 생명력 흡수 시 생명력이 아닌 에너지 보호막 회복"
+    ]
+   }
+  ],
+  "impaleeffect": [
+   {
+    "jewel": null,
+    "name": "꿰뚫기 효과",
+    "stats": [
+     "꿰뚫기 효과 (2-4)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "꿰뚫기 효과",
+    "stats": [
+     "꿰뚫기 효과 (2-4)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "꿰뚫기 효과",
+    "stats": [
+     "꿰뚫기 효과 (2-4)% 증가"
+    ]
+   }
+  ],
+  "innerconviction": [
+   {
+    "jewel": "templar",
+    "name": "내면의 신념",
+    "stats": [
+     "권능 충전 하나당 주문 피해 3% 증폭",
+     "격분 충전 대신 권능 충전 획득"
+    ]
+   }
+  ],
+  "intelligence": [
+   {
+    "jewel": null,
+    "name": "지능",
+    "stats": [
+     "지능 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "지능",
+    "stats": [
+     "지능 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "지능",
+    "stats": [
+     "지능 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "지능",
+    "stats": [
+     "지능 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "지능",
+    "stats": [
+     "지능 +(8-10)"
+    ]
+   }
+  ],
+  "intoleranceofsin": [
+   {
+    "jewel": null,
+    "name": "씬의 분노",
+    "stats": [
+     "헌신이 150 이상인 경우 모든 저항 최대치 +1%"
+    ]
+   }
+  ],
+  "junglepaths": [
+   {
+    "jewel": null,
+    "name": "밀림 길",
+    "stats": [
+     "(8-10)%의 확률로 원소 상태 이상 긴급회피",
+     "(8-10)%의 확률로 기절 긴급회피"
+    ]
+   }
+  ],
+  "laureate": [
+   {
+    "jewel": null,
+    "name": "계관인",
+    "stats": [
+     "마나 재생 속도 50% 증가"
+    ]
+   }
+  ],
+  "legacyofthevaal": [
+   {
+    "jewel": null,
+    "name": "바알의 유산",
+    "stats": []
+   }
+  ],
+  "life": [
+   {
+    "jewel": null,
+    "name": "생명력",
+    "stats": [
+     "최대 생명력 (2-4)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력",
+    "stats": [
+     "생명력 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력",
+    "stats": [
+     "생명력 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력",
+    "stats": [
+     "생명력 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력",
+    "stats": [
+     "생명력 최대치 +(9-12)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력",
+    "stats": [
+     "생명력 최대치 +(9-12)"
+    ]
+   }
+  ],
+  "liferegeneration": [
+   {
+    "jewel": null,
+    "name": "생명력 재생",
+    "stats": [
+     "1초마다 생명력 (4.5-6) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력 재생",
+    "stats": [
+     "1초마다 생명력 (4.5-6) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력 재생",
+    "stats": [
+     "1초마다 생명력 (4.5-6) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력 재생",
+    "stats": [
+     "1초마다 생명력 (4.5-6) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "생명력 재생",
+    "stats": [
+     "1초마다 생명력 (4.5-6) 재생"
+    ]
+   }
+  ],
+  "lightningailmenteffect": [
+   {
+    "jewel": null,
+    "name": "번개 상태 이상 효과",
+    "stats": [
+     "번개 상태 이상 효과 (10-20)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 상태 이상 효과",
+    "stats": [
+     "번개 상태 이상 효과 (10-20)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 상태 이상 효과",
+    "stats": [
+     "번개 상태 이상 효과 (10-20)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 상태 이상 효과",
+    "stats": [
+     "번개 상태 이상 효과 (10-20)% 증가"
+    ]
+   }
+  ],
+  "lightningdamage": [
+   {
+    "jewel": null,
+    "name": "번개 피해",
+    "stats": [
+     "번개 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "lightningresistance": [
+   {
+    "jewel": null,
+    "name": "번개 저항",
+    "stats": [
+     "번개 저항 +(9-14)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 저항",
+    "stats": [
+     "번개 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 저항",
+    "stats": [
+     "번개 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 저항",
+    "stats": [
+     "번개 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 저항",
+    "stats": [
+     "번개 저항 +(6-8)%"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "번개 저항",
+    "stats": [
+     "번개 저항 +(6-8)%"
+    ]
+   }
+  ],
+  "lioneyesfocus": [
+   {
+    "jewel": null,
+    "name": "라이온아이의 집중",
+    "stats": [
+     "투사체 공격 피해 80% 증가"
+    ]
+   }
+  ],
+  "magesward": [
+   {
+    "jewel": null,
+    "name": "마법사의 수호",
+    "stats": [
+     "5%의 확률로 주문 피해를 막아냄",
+     "막아낼 시 10% 확률로 수호 회복"
+    ]
+   }
+  ],
+  "magicfaith": [
+   {
+    "jewel": null,
+    "name": "마법의 신념",
+    "stats": [
+     "수호 12% 증가",
+     "에너지 보호막 최대치 8% 증가"
+    ]
+   }
+  ],
+  "mana": [
+   {
+    "jewel": null,
+    "name": "마나",
+    "stats": [
+     "최대 마나 (4-6)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나",
+    "stats": [
+     "마나 최대치 +(8-11)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나",
+    "stats": [
+     "마나 최대치 +(8-11)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나",
+    "stats": [
+     "마나 최대치 +(8-11)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나",
+    "stats": [
+     "마나 최대치 +(8-11)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나",
+    "stats": [
+     "마나 최대치 +(8-11)"
+    ]
+   }
+  ],
+  "manarecoup": [
+   {
+    "jewel": null,
+    "name": "마나 회생",
+    "stats": [
+     "받은 피해의 (2-3)%를 마나로 회생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 회생",
+    "stats": [
+     "받은 피해의 (2-3)%를 마나로 회생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 회생",
+    "stats": [
+     "받은 피해의 (2-3)%를 마나로 회생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 회생",
+    "stats": [
+     "받은 피해의 (2-3)%를 마나로 회생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 회생",
+    "stats": [
+     "받은 피해의 (2-3)%를 마나로 회생"
+    ]
+   }
+  ],
+  "manaregeneration": [
+   {
+    "jewel": null,
+    "name": "마나 재생",
+    "stats": [
+     "마나 재생 속도 (12-17)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 재생",
+    "stats": [
+     "1초마다 마나 (0.6-1) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 재생",
+    "stats": [
+     "1초마다 마나 (0.6-1) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 재생",
+    "stats": [
+     "1초마다 마나 (0.6-1) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 재생",
+    "stats": [
+     "1초마다 마나 (0.6-1) 재생"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "마나 재생",
+    "stats": [
+     "1초마다 마나 (0.6-1) 재생"
+    ]
+   }
+  ],
+  "martyrsmight": [
+   {
+    "jewel": null,
+    "name": "순교자의 완력",
+    "stats": [
+     "헌신이 150 이상인 경우 받는 물리 피해 5% 추가 감소"
+    ]
+   }
+  ],
+  "mightofthevaal": [
+   {
+    "jewel": null,
+    "name": "바알의 완력",
+    "stats": []
+   }
+  ],
+  "minionattackandcastspeed": [
+   {
+    "jewel": null,
+    "name": "소환수 공격 및 시전 속도",
+    "stats": [
+     "소환수의 공격 속도 (2-3)% 증가",
+     "소환수의 시전 속도 (2-3)% 증가"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "소환수 공격 및 시전 속도",
+    "stats": [
+     "소환수의 공격 속도 (2-3)% 증가",
+     "소환수의 시전 속도 (2-3)% 증가"
+    ]
+   }
+  ],
+  "minionblindchance": [
+   {
+    "jewel": null,
+    "name": "소환수 실명 확률",
+    "stats": [
+     "소환수가 공격 명중 시 (2-3)%의 확률로 실명 유발"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "소환수 실명 확률",
+    "stats": [
+     "소환수가 공격 명중 시 (2-3)%의 확률로 실명 유발"
+    ]
+   }
+  ],
+  "miniondamage": [
+   {
+    "jewel": null,
+    "name": "소환수 피해",
+    "stats": [
+     "소환수가 주는 피해 (8-13)% 증가"
+    ]
+   }
+  ],
+  "minionhinderchance": [
+   {
+    "jewel": null,
+    "name": "소환수 이동 방해 확률",
+    "stats": [
+     "소환수가 주문 명중 시 (2-3)%의 확률로 적 이동 방해"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "소환수 이동 방해 확률",
+    "stats": [
+     "소환수가 주문 명중 시 (2-3)%의 확률로 적 이동 방해"
+    ]
+   }
+  ],
+  "miniontauntchance": [
+   {
+    "jewel": null,
+    "name": "소환수 도발 확률",
+    "stats": [
+     "소환수가 공격 명중 시 (2-3)%의 확률로 도발"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "소환수 도발 확률",
+    "stats": [
+     "소환수가 공격 명중 시 (2-3)%의 확률로 도발"
+    ]
+   }
+  ],
+  "movementspeed": [
+   {
+    "jewel": null,
+    "name": "이동 속도",
+    "stats": [
+     "이동 속도 (2-3)% 증가"
+    ]
+   }
+  ],
+  "nightofathousandribbons": [
+   {
+    "jewel": null,
+    "name": "천 개의 리본의 밤",
+    "stats": [
+     "공격 스킬의 화염 피해 80% 증가"
+    ]
+   }
+  ],
+  "overwhelminghate": [
+   {
+    "jewel": null,
+    "name": "압도적인 증오",
+    "stats": [
+     "생명력 최대치 20% 감폭",
+     "생명력 최대치 증가 및 감소가 해당 값의 20%만큼 격노 최대치에도 적용"
+    ]
+   }
+  ],
+  "persistingdrive": [
+   {
+    "jewel": null,
+    "name": "지속되는 추진",
+    "stats": [
+     "수호 회복 속도 15% 가속",
+     "부서지지 않은 수호를 보유한 동안 피해 30% 증가"
+    ]
+   }
+  ],
+  "physicaldamage": [
+   {
+    "jewel": null,
+    "name": "물리 피해",
+    "stats": [
+     "물리 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "poisonavoidance": [
+   {
+    "jewel": null,
+    "name": "중독 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 중독 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "중독 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 중독 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "중독 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 중독 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "중독 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 중독 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "중독 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 중독 긴급회피"
+    ]
+   }
+  ],
+  "pooledresources": [
+   {
+    "jewel": null,
+    "name": "물자 산더미",
+    "stats": [
+     "최대 마나 30% 증가"
+    ]
+   }
+  ],
+  "powerfulfaith": [
+   {
+    "jewel": null,
+    "name": "강력한 믿음",
+    "stats": [
+     "헌신이 150 이상인 경우 최소 권능 충전 +1"
+    ]
+   }
+  ],
+  "poweringsigil": [
+   {
+    "jewel": null,
+    "name": "권능의 부적",
+    "stats": [
+     "권능 충전 지속시간 20% 증가",
+     "수호가 부서질 때 권능 충전 1 획득"
+    ]
+   }
+  ],
+  "powerofpurpose": [
+   {
+    "jewel": "templar",
+    "name": "의지력의 힘",
+    "stats": [
+     "최대 마나의 80%를 그 2배만큼의 방어도로 전환"
+    ]
+   }
+  ],
+  "priceofglory": [
+   {
+    "jewel": null,
+    "name": "영광의 대가",
+    "stats": []
+   }
+  ],
+  "projectiledamage": [
+   {
+    "jewel": null,
+    "name": "투사체 피해",
+    "stats": [
+     "투사체 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "projectilespeed": [
+   {
+    "jewel": null,
+    "name": "투사체 속도",
+    "stats": [
+     "투사체 속도 (7-12)% 증가"
+    ]
+   }
+  ],
+  "purefaith": [
+   {
+    "jewel": null,
+    "name": "순수한 신념",
+    "stats": [
+     "수호 12% 증가",
+     "카오스 저항 +8%"
+    ]
+   }
+  ],
+  "purityrebel": [
+   {
+    "jewel": null,
+    "name": "정화 반란자",
+    "stats": [
+     "주문 피해 억제 확률 +12%"
+    ]
+   }
+  ],
+  "reconstructedessence": [
+   {
+    "jewel": null,
+    "name": "다시 빚어진 에센스",
+    "stats": [
+     "생명력 회생이 마나도 회복",
+     "회생의 회복량 50% 감폭"
+    ]
+   }
+  ],
+  "regenerativerunes": [
+   {
+    "jewel": null,
+    "name": "재생하는 룬",
+    "stats": [
+     "플라스크 효과 지속시간 10% 증가",
+     "자신에게 적용된 철 플라스크의 효과 20% 증가"
+    ]
+   }
+  ],
+  "resolutefaith": [
+   {
+    "jewel": null,
+    "name": "단호한 신념",
+    "stats": [
+     "수호 12% 증가",
+     "방어도 16% 증가"
+    ]
+   }
+  ],
+  "revitalisingdarkness": [
+   {
+    "jewel": null,
+    "name": "되살아나는 어둠",
+    "stats": [
+     "카오스 피해 (25-35)% 증가",
+     "카오스 피해의 0.2%를 생명력으로 흡수"
+    ]
+   }
+  ],
+  "revitalisingflames": [
+   {
+    "jewel": null,
+    "name": "되살아나는 화염",
+    "stats": [
+     "화염 피해 (25-35)% 증가",
+     "화염 피해의 0.2%를 생명력으로 흡수"
+    ]
+   }
+  ],
+  "revitalisingfrost": [
+   {
+    "jewel": null,
+    "name": "되살아나는 서리",
+    "stats": [
+     "냉기 피해 (25-35)% 증가",
+     "냉기 피해의 0.2%를 생명력으로 흡수"
+    ]
+   }
+  ],
+  "revitalisinglightning": [
+   {
+    "jewel": null,
+    "name": "되살아나는 번개",
+    "stats": [
+     "번개 피해 (25-35)% 증가",
+     "번개 피해의 0.2%를 생명력으로 흡수"
+    ]
+   }
+  ],
+  "revitalisingwinds": [
+   {
+    "jewel": null,
+    "name": "되살아나는 바람",
+    "stats": [
+     "물리 피해의 0.2%를 생명력으로 흡수",
+     "물리 피해 (25-35)% 증가"
+    ]
+   }
+  ],
+  "rigwaldsmight": [
+   {
+    "jewel": null,
+    "name": "리그월드의 완력",
+    "stats": [
+     "근접 물리 피해 80% 증가"
+    ]
+   }
+  ],
+  "ritesoflunaris": [
+   {
+    "jewel": null,
+    "name": "루나리스의 의식",
+    "stats": [
+     "냉각 효과 30% 증가"
+    ]
+   }
+  ],
+  "ritesofsolaris": [
+   {
+    "jewel": null,
+    "name": "솔라리스의 의식",
+    "stats": [
+     "80%의 확률로 냉각 긴급회피"
+    ]
+   }
+  ],
+  "ritualofflesh": [
+   {
+    "jewel": null,
+    "name": "육체의 의식",
+    "stats": [
+     "최대 생명력 (6-10)% 증가",
+     "1초마다 생명력의 (0.7-1.2)% 재생"
+    ]
+   }
+  ],
+  "ritualofimmolation": [
+   {
+    "jewel": null,
+    "name": "제물의 의식",
+    "stats": [
+     "화염 피해 (25-35)% 증가",
+     "피해가 화염 저항 (2-4)% 관통"
+    ]
+   }
+  ],
+  "ritualofmemory": [
+   {
+    "jewel": null,
+    "name": "기억의 의식",
+    "stats": [
+     "최대 마나 (17-23)% 증가",
+     "마나 재생 속도 (15-25)% 증가"
+    ]
+   }
+  ],
+  "ritualofmight": [
+   {
+    "jewel": null,
+    "name": "완력의 의식",
+    "stats": [
+     "(2-4)%의 확률로 2배의 피해를 줌",
+     "물리 피해 (25-35)% 증가"
+    ]
+   }
+  ],
+  "ritualofshadows": [
+   {
+    "jewel": null,
+    "name": "그림자의 의식",
+    "stats": [
+     "카오스 피해 (25-35)% 증가",
+     "명중 시 25%의 확률로 2초 동안 위축 유발"
+    ]
+   }
+  ],
+  "ritualofstillness": [
+   {
+    "jewel": null,
+    "name": "정지의 의식",
+    "stats": [
+     "냉기 피해 (25-35)% 증가",
+     "피해가 냉기 저항 (2-4)% 관통"
+    ]
+   }
+  ],
+  "ritualofthunder": [
+   {
+    "jewel": null,
+    "name": "천둥의 의식",
+    "stats": [
+     "번개 피해 (25-35)% 증가",
+     "피해가 번개 저항 (2-4)% 관통"
+    ]
+   }
+  ],
+  "robustdiet": [
+   {
+    "jewel": null,
+    "name": "보양식",
+    "stats": [
+     "최대 생명력 10% 증가"
+    ]
+   }
+  ],
+  "rurallife": [
+   {
+    "jewel": null,
+    "name": "전원 생활",
+    "stats": [
+     "80%의 확률로 감전 긴급회피"
+    ]
+   }
+  ],
+  "sanguinebargain": [
+   {
+    "jewel": null,
+    "name": "핏빛 협상",
+    "stats": [
+     "공격의 생명력 소모량이 소모할 수 있는 생명력 최대치보다 크지 않을 경우, 공격으로 소모되는 생명력 최대치의 2%당 공격의 피해 1% 증폭",
+     "공격 스킬이 마나가 아닌 생명력 소모"
+    ]
+   }
+  ],
+  "sceptrepinnacle": [
+   {
+    "jewel": null,
+    "name": "셉터의 정점",
+    "stats": [
+     "12%의 확률로 주문 피해를 막아냄"
+    ]
+   }
+  ],
+  "secondsight": [
+   {
+    "jewel": "maraketh",
+    "name": "꿰뚫어 보는 눈",
+    "stats": [
+     "플레이어 실명됨",
+     "실명은 플레이어의 시야 반경과 무관",
+     "실명 상태에서 근접 치명타 확률 25% 증폭"
+    ]
+   }
+  ],
+  "secrettunnels": [
+   {
+    "jewel": null,
+    "name": "비밀 터널",
+    "stats": [
+     "20%의 확률로 원소 상태 이상 긴급회피"
+    ]
+   }
+  ],
+  "shadowystreets": [
+   {
+    "jewel": null,
+    "name": "아련한 거리",
+    "stats": [
+     "회피 80% 증가"
+    ]
+   }
+  ],
+  "shatteredpiercing": [
+   {
+    "jewel": null,
+    "name": "바스러진 관통",
+    "stats": [
+     "원소 피해 15% 증가",
+     "부서지지 않은 수호를 보유한 동안 피해가 8%의 원소 저항 관통"
+    ]
+   }
+  ],
+  "shockavoidance": [
+   {
+    "jewel": null,
+    "name": "감전 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 감전 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "감전 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 감전 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "감전 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 감전 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "감전 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 감전 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "감전 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 감전 긴급회피"
+    ]
+   }
+  ],
+  "shockchance": [
+   {
+    "jewel": null,
+    "name": "감전 확률",
+    "stats": [
+     "(3-6)%의 확률로 감전 유발"
+    ]
+   }
+  ],
+  "skillduration": [
+   {
+    "jewel": null,
+    "name": "스킬 지속시간",
+    "stats": [
+     "스킬 효과 지속시간 (4-7)% 증가"
+    ]
+   }
+  ],
+  "slumlord": [
+   {
+    "jewel": null,
+    "name": "빈민가 군주",
+    "stats": [
+     "소환수가 주는 피해 80% 증가"
+    ]
+   }
+  ],
+  "smitetheheretical": [
+   {
+    "jewel": null,
+    "name": "이단자 징벌",
+    "stats": [
+     "헌신이 150 이상인 경우 명중 시 10%의 확률로 번개 노출 유발"
+    ]
+   }
+  ],
+  "smitetheignorant": [
+   {
+    "jewel": null,
+    "name": "몰지각자 징벌",
+    "stats": [
+     "헌신이 150 이상인 경우 명중 시 10%의 확률로 냉기 노출 유발"
+    ]
+   }
+  ],
+  "smitethewicked": [
+   {
+    "jewel": null,
+    "name": "악인 징벌",
+    "stats": [
+     "헌신이 150 이상인 경우 명중 시 10%의 확률로 화염 노출 유발"
+    ]
+   }
+  ],
+  "soulworship": [
+   {
+    "jewel": null,
+    "name": "영혼 숭배",
+    "stats": [
+     "에너지 보호막 최대치 (8-12)% 증가",
+     "주문 피해의 0.3%를 에너지 보호막으로 흡수"
+    ]
+   }
+  ],
+  "spellblock": [
+   {
+    "jewel": null,
+    "name": "주문 막기",
+    "stats": [
+     "2%의 확률로 주문 피해를 막아냄"
+    ]
+   }
+  ],
+  "spelldamage": [
+   {
+    "jewel": null,
+    "name": "주문 피해",
+    "stats": [
+     "주문 피해 (7-12)% 증가"
+    ]
+   }
+  ],
+  "spellsuppression": [
+   {
+    "jewel": null,
+    "name": "주문 억제",
+    "stats": [
+     "주문 피해 억제 확률 +4%"
+    ]
+   }
+  ],
+  "spitefulallies": [
+   {
+    "jewel": null,
+    "name": "악의에 찬 동료",
+    "stats": [
+     "소환수가 명중 시 꿰뚫음"
+    ]
+   }
+  ],
+  "starbornbirth": [
+   {
+    "jewel": null,
+    "name": "별붙이 탄생",
+    "stats": [
+     "수호 25% 증가"
+    ]
+   }
+  ],
+  "starlightswig": [
+   {
+    "jewel": null,
+    "name": "별빛 한 모금",
+    "stats": [
+     "플라스크 충전량 10% 증가",
+     "플라스크 사용 시 10% 확률로 수호 회복"
+    ]
+   }
+  ],
+  "starsoakedtime": [
+   {
+    "jewel": null,
+    "name": "별에 젖은 시간",
+    "stats": [
+     "수호 회복 속도 20% 가속",
+     "에너지 보호막 재충전 시작 속도 20% 가속"
+    ]
+   }
+  ],
+  "streeturchin": [
+   {
+    "jewel": null,
+    "name": "거리의 악동",
+    "stats": [
+     "냉기 저항 +50%"
+    ]
+   }
+  ],
+  "strength": [
+   {
+    "jewel": null,
+    "name": "힘",
+    "stats": [
+     "힘 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘",
+    "stats": [
+     "힘 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘",
+    "stats": [
+     "힘 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘",
+    "stats": [
+     "힘 +(8-10)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘",
+    "stats": [
+     "힘 +(8-10)"
+    ]
+   }
+  ],
+  "strengthanddexterity": [
+   {
+    "jewel": null,
+    "name": "힘과 민첩",
+    "stats": [
+     "힘 및 민첩 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 민첩",
+    "stats": [
+     "힘 및 민첩 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 민첩",
+    "stats": [
+     "힘 및 민첩 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 민첩",
+    "stats": [
+     "힘 및 민첩 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 민첩",
+    "stats": [
+     "힘 및 민첩 +(6-8)"
+    ]
+   }
+  ],
+  "strengthandintelligence": [
+   {
+    "jewel": null,
+    "name": "힘과 지능",
+    "stats": [
+     "힘 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 지능",
+    "stats": [
+     "힘 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 지능",
+    "stats": [
+     "힘 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 지능",
+    "stats": [
+     "힘 및 지능 +(6-8)"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "힘과 지능",
+    "stats": [
+     "힘 및 지능 +(6-8)"
+    ]
+   }
+  ],
+  "strengthofblood": [
+   {
+    "jewel": "karui",
+    "name": "피의 힘",
+    "stats": [
+     "비-즉시 흡수로 인한 생명력 회복이 적용되지 않음",
+     "흡수 시 1초당 생명력 회복량의 3%마다 받는 물리 피해 2% 추가 감소"
+    ]
+   }
+  ],
+  "strideofkalguur": [
+   {
+    "jewel": null,
+    "name": "칼구르의 발걸음",
+    "stats": [
+     "장착한 장화의 에너지 보호막 10당 수호 +8"
+    ]
+   }
+  ],
+  "stunavoidance": [
+   {
+    "jewel": null,
+    "name": "기절 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 기절 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "기절 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 기절 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "기절 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 기절 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "기절 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 기절 긴급회피"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "기절 긴급회피",
+    "stats": [
+     "(15-20)%의 확률로 기절 긴급회피"
+    ]
+   }
+  ],
+  "superiority": [
+   {
+    "jewel": null,
+    "name": "우월성",
+    "stats": [
+     "자신의 비-저주 오라 스킬 효과 12% 증가"
+    ]
+   }
+  ],
+  "supremedecadence": [
+   {
+    "jewel": "eternal",
+    "name": "타락의 정점",
+    "stats": [
+     "플라스크의 생명력 회복이 에너지 보호막에도 적용",
+     "플라스크로 회복되는 생명력 30% 감폭"
+    ]
+   }
+  ],
+  "supremegrandstanding": [
+   {
+    "jewel": "eternal",
+    "name": "과시의 정점",
+    "stats": [
+     "주변 동료들과 적이 플레이어에게 충전을 공유",
+     "플레이어를 명중한 적이 10% 확률로",
+     "인내, 격분, 또는 권능 충전 획득"
+    ]
+   }
+  ],
+  "supremeostentation": [
+   {
+    "jewel": "eternal",
+    "name": "허영의 정점",
+    "stats": [
+     "능력치 요구사항 무시",
+     "능력치로 인한 보너스 받지 않음"
+    ]
+   }
+  ],
+  "tauntchance": [
+   {
+    "jewel": null,
+    "name": "도발 확률",
+    "stats": [
+     "공격 명중 시 (2-3)%의 확률로 적 도발"
+    ]
+   },
+   {
+    "jewel": null,
+    "name": "도발 확률",
+    "stats": [
+     "공격 명중 시 (2-3)%의 확률로 적 도발"
+    ]
+   }
+  ],
+  "temperedbywar": [
+   {
+    "jewel": "karui",
+    "name": "전쟁의 담금질",
+    "stats": [
+     "냉기 및 번개 피해의 50%를 화염 피해로 받음",
+     "냉기 저항 50% 감폭",
+     "번개 저항 50% 감폭"
+    ]
+   }
+  ],
+  "templepaths": [
+   {
+    "jewel": null,
+    "name": "사원 길",
+    "stats": [
+     "주문 피해 억제 확률 +6%",
+     "모든 원소 저항 +(8-10)%"
+    ]
+   }
+  ],
+  "thaumaturgicalaptitude": [
+   {
+    "jewel": null,
+    "name": "마석학 적성",
+    "stats": [
+     "주문 피해 (25-35)% 증가",
+     "주문 치명타 확률 (35-50)% 증가"
+    ]
+   }
+  ],
+  "thaumaturgicalprotection": [
+   {
+    "jewel": null,
+    "name": "마석학 보호",
+    "stats": [
+     "8%의 확률로 주문 피해를 막아냄",
+     "장착한 방패로 얻는 방어력 (20-30)% 증가"
+    ]
+   }
+  ],
+  "theloyalfew": [
+   {
+    "jewel": null,
+    "name": "충직한 소수",
+    "stats": [
+     "플레이어가 좀비를 보유하고 있는 동안 소환수가 받는 피해 10% 감폭",
+     "플레이어가 해골을 보유하고 있는 동안 소환수가 주는 피해 10% 증폭",
+     "플레이어가 망령을 보유하고 있는 동인 소환수가 비-카오스 피해의 10%를 추가 카오스 피해로 획득",
+     "소환 가능한 망령, 해골, 좀비의 최대치 1"
+    ]
+   }
+  ],
+  "thetraitor": [
+   {
+    "jewel": "maraketh",
+    "name": "배반자",
+    "stats": [
+     "5초마다 빈 플라스크 슬롯 1개당 플라스크 4 충전"
+    ]
+   }
+  ],
+  "theunbreakingcircle": [
+   {
+    "jewel": "kalguur",
+    "name": "부서지지 않는 원",
+    "stats": [
+     "수호 40% 감폭",
+     "수호가 60% 확률로 부서지지 않음"
+    ]
+   }
+  ],
+  "thoughtsandprayers": [
+   {
+    "jewel": null,
+    "name": "사색과 기도",
+    "stats": [
+     "헌신이 150 이상인 경우 최대 마나의 5%를 추가 에너지 보호막 최대치로 획득"
+    ]
+   }
+  ],
+  "thundrousdevotion": [
+   {
+    "jewel": null,
+    "name": "우레 같은 헌신",
+    "stats": [
+     "헌신이 150 이상인 경우 물리 피해의 15%를 번개 피해로 전환"
+    ]
+   }
+  ],
+  "transcendence": [
+   {
+    "jewel": "templar",
+    "name": "초월",
+    "stats": [
+     "피격 시 물리 피해 대신 화염, 냉기, 번개 피해에 방어도 적용",
+     "모든 최대 원소 저항 -15%"
+    ]
+   }
+  ],
+  "vengefulrunes": [
+   {
+    "jewel": null,
+    "name": "복수의 룬",
+    "stats": [
+     "오라 스킬의 효과 범위 8% 증가",
+     "수호가 부서져 있는 동안 자신의 비저주 오라 스킬 효과 12% 증가"
+    ]
+   }
+  ],
+  "virtuegemsurgery": [
+   {
+    "jewel": null,
+    "name": "힘의 마석 수술",
+    "stats": [
+     "감전 효과 30% 증가"
+    ]
+   }
+  ],
+  "vollscoup": [
+   {
+    "jewel": null,
+    "name": "볼의 봉기",
+    "stats": [
+     "공격 속도 15% 증가"
+    ]
+   }
+  ],
+  "wardingflasks": [
+   {
+    "jewel": null,
+    "name": "수호하는 플라스크",
+    "stats": [
+     "플라스크 효과 지속시간 10% 증가",
+     "아무 플라스크 효과나 받는 동안 수호 20% 증가"
+    ]
+   }
+  ],
+  "wargames": [
+   {
+    "jewel": null,
+    "name": "워 게임",
+    "stats": [
+     "정확도 25% 증가"
+    ]
+   }
+  ],
+  "warriorsward": [
+   {
+    "jewel": null,
+    "name": "전사의 수호",
+    "stats": [
+     "5%의 확률로 공격 피해를 막아냄",
+     "막아낼 시 10% 확률로 수호 회복"
+    ]
+   }
+  ],
+  "weightedexchange": [
+   {
+    "jewel": null,
+    "name": "기울어진 공방",
+    "stats": [
+     "비-치명타로 받는 피해 15% 증폭",
+     "치명타로 받는 피해 30% 감폭"
+    ]
+   }
+  ],
+  "witheyesopen": [
+   {
+    "jewel": null,
+    "name": "트인 눈",
+    "stats": [
+     "카오스 저항 +37%"
+    ]
+   }
+  ],
+  "zealot": [
+   {
+    "jewel": null,
+    "name": "맹신자",
+    "stats": [
+     "헌신이 150 이상인 경우 주문 명중 시 비전 쇄도 획득"
+    ]
+   }
+  ]
+ },
+ "tree": {
+  "acrimony": {
+   "name": "신랄",
+   "stats": [
+    "지속 피해 배율 +15%"
+   ]
+  },
+  "acrobatics": {
+   "name": "곡예",
+   "stats": [
+    "주문 피해 억제 확률 속성 부여가 주문 피해 억제 확률이 아닌 주문 명중 완벽회피에 50%의 수치로 적용",
+    "주문 명중 완벽회피 확률의 최대치는 75%"
+   ]
+  },
+  "acuity": {
+   "name": "예민함",
+   "stats": [
+    "공격 속도 6% 증가",
+    "정확도 +100",
+    "정확도 20% 증가"
+   ]
+  },
+  "adamant": {
+   "name": "견고한 의지",
+   "stats": [
+    "방어도 25% 증가",
+    "수호 스킬 사용 시 출혈 제거",
+    "수호 스킬 사용 시 타락한 피 제거",
+    "수호 스킬의 지속시간 25% 증가"
+   ]
+  },
+  "adaptivesteel": {
+   "name": "적응형 강철",
+   "stats": [
+    "최근 4초 이내 적에게 피격된 횟수 1회당",
+    "5%의 확률로 200%의 방어도로 방어, 최대 30% 확률"
+   ]
+  },
+  "adderstouch": {
+   "name": "살무사의 접촉",
+   "stats": [
+    "치명타로 주는 독 지속 피해 배율 +25%",
+    "단검으로 치명타 시 적 중독 유발"
+   ]
+  },
+  "adjacentanimosity": {
+   "name": "근처의 적개심",
+   "stats": [
+    "투사체 속도 10% 감소",
+    "투사체가 발사 지점에 있는 대상에게 명중하는 경우",
+    "피해 40% 증가, 투사체의 이동 거리가 멀어질수록 0%로 감소"
+   ]
+  },
+  "admonisher": {
+   "name": "꾸짖는 자",
+   "stats": [
+    "함성 속도 50% 증가",
+    "최근 4초 이내 함성 사용 횟수 하나당 피해 15% 증가"
+   ]
+  },
+  "afarudritual": {
+   "name": "아파루드 의식",
+   "stats": [
+    "피해를 받을 수 있는 소환수가 생존해 있는 시간 1초마다 해당 소환수가 주는 피해 30% 증가,",
+    "최대 150%",
+    "피해를 받을 수 있는 소환수가 생존해 있는 시간 1초마다 해당 소환수가 받는 피해 5% 증가,",
+    "최대 50%"
+   ]
+  },
+  "aggressivebastion": {
+   "name": "공격적인 보루",
+   "stats": [
+    "방패를 들고 있는 동안 공격 피해 막기 확률 +8%",
+    "방패를 들고 있는 동안 물리 공격 피해 30% 증가",
+    "방패를 들고 있는 동안 공격 스킬로 주는 상태 이상 피해 30% 증가",
+    "방패를 들고 있는 동안 처치 시 10%의 확률로 인내 충전 획득"
+   ]
+  },
+  "agility": {
+   "name": "민첩함",
+   "stats": [
+    "민첩 +30"
+   ]
+  },
+  "alacrity": {
+   "name": "기민성",
+   "stats": [
+    "민첩 +30"
+   ]
+  },
+  "alwaysangry": {
+   "name": "꺼지지 않는 분노",
+   "stats": [
+    "격노 최소치 +8"
+   ]
+  },
+  "ambidexterity": {
+   "name": "양손잡이",
+   "stats": [
+    "쌍수 장착 시 주 무기로 주는 공격 피해 60% 증가",
+    "쌍수 장착 시 보조 장비 공격 속도 30% 증가"
+   ]
+  },
+  "amplify": {
+   "name": "증폭",
+   "stats": [
+    "효과 범위 10% 증가",
+    "범위 피해 20% 증가"
+   ]
+  },
+  "ancestralbond": {
+   "name": "선대의 유대",
+   "stats": [
+    "스킬을 사용하여 직접 피해를 줄 수 없음",
+    "소환 가능한 토템 최대치 +1"
+   ]
+  },
+  "ancestralfury": {
+   "name": "선대의 광분",
+   "stats": [
+    "타격 스킬이 이전 위치를 추가 대상으로 지정"
+   ]
+  },
+  "ancestralknowledge": {
+   "name": "선대의 지식",
+   "stats": [
+    "지능 +30"
+   ]
+  },
+  "annihilation": {
+   "name": "전멸",
+   "stats": [
+    "주문 치명타 확률 50% 증가",
+    "주문 피해의 치명타 피해 배율 +15%"
+   ]
+  },
+  "anointedflesh": {
+   "name": "기름 부은 살",
+   "stats": [
+    "모든 원소 저항 최대치 +1%",
+    "플레이어에게 적용되는 원소 상태 이상 지속시간 20% 감소",
+    "플레이어에게 적용되는 냉각 및 감전 효과 20% 감소"
+   ]
+  },
+  "arcaneblessing": {
+   "name": "비전의 축복",
+   "stats": [
+    "비전 쇄도가 주문 피해 20% 증폭 효과도 부여",
+    "자신 또는 자신의 토템이 주문으로 적 명중 시 비전 쇄도 획득"
+   ]
+  },
+  "arcanecapacitor": {
+   "name": "비전 축전기",
+   "stats": [
+    "최대 마나 15% 증가",
+    "최근 4초 이내 사용한 마나 200당",
+    "비전 쇄도 효과 10% 증가, 최대 50%",
+    "적 처치 시 10%의 확률로 비전 쇄도 획득"
+   ]
+  },
+  "arcanechemistry": {
+   "name": "비전의 반응",
+   "stats": [
+    "최대 마나 15% 증가",
+    "플라스크로 회복하는 마나 30% 증가",
+    "3초마다 마나 플라스크 1 충전"
+   ]
+  },
+  "arcaneconservation": {
+   "name": "비전 보존",
+   "stats": [
+    "시전 속도 10% 증가",
+    "주문의 마나 소모 효율 20% 증가",
+    "지능 3% 증가"
+   ]
+  },
+  "arcaneexpanse": {
+   "name": "비전 팽창",
+   "stats": [
+    "주문 스킬의 효과 범위 20% 증가"
+   ]
+  },
+  "arcanefocus": {
+   "name": "비전의 집중",
+   "stats": [
+    "에너지 보호막 최대치 20% 증가",
+    "에너지 보호막 재충전 시작 속도 10% 가속",
+    "지능 +10"
+   ]
+  },
+  "arcaneguarding": {
+   "name": "비전 수호",
+   "stats": [
+    "방패를 들고 있는 동안 주문 피해 막기 확률 +10%",
+    "장착한 방패로 얻는 에너지 보호막 60% 증가"
+   ]
+  },
+  "arcanepotency": {
+   "name": "비전의 잠재력",
+   "stats": [
+    "주문 치명타 확률 30% 증가",
+    "주문 피해의 치명타 피해 배율 +30%"
+   ]
+  },
+  "arcaneretaliation": {
+   "name": "비전의 보복",
+   "stats": [
+    "최근 4초 이내에 시전 중 기절한 경우 주문으로 주는 피해 25% 증폭"
+   ]
+  },
+  "arcanesanctuary": {
+   "name": "비전의 성역",
+   "stats": [
+    "방패를 들고 있는 동안 주문 피해 막기 확률 +8%",
+    "방패를 들고 있는 동안 주문 피해 25% 증가",
+    "방패를 들고 있는 동안 플레이어에게 적용되는 원소 상태 이상 지속시간 25% 감소"
+   ]
+  },
+  "arcanewill": {
+   "name": "비전의 의지",
+   "stats": [
+    "최대 마나 30% 증가",
+    "1초마다 마나 5 재생",
+    "지능 +10"
+   ]
+  },
+  "arcanistsdominion": {
+   "name": "신비학자의 지배력",
+   "stats": [
+    "주문 피해 20% 증가",
+    "시전 속도 5% 증가",
+    "지능 +20"
+   ]
+  },
+  "arcingblows": {
+   "name": "전호의 일격",
+   "stats": [
+    "무기로 주는 피해가 8%의 번개 저항 관통",
+    "공격 스킬의 번개 피해 30% 증가"
+   ]
+  },
+  "armourdisplay": {
+   "name": "방어구 전시물",
+   "stats": []
+  },
+  "arrowdancing": {
+   "name": "춤추는 화살",
+   "stats": [
+    "투사체 공격에 대한 회피 2배로 증가",
+    "근접 공격에 대한 회피 25% 감폭"
+   ]
+  },
+  "arsenalofvengeance": {
+   "name": "복수의 병기창",
+   "stats": [
+    "적에게 여섯 번째 피격될 때마다 피해를 주는 보복 스킬 사용 가능"
+   ]
+  },
+  "arsonist": {
+   "name": "방화범",
+   "stats": [
+    "지속 화염 피해 배율 +10%",
+    "1초마다 생명력의 1.2% 재생"
+   ]
+  },
+  "artofthegladiator": {
+   "name": "검투사의 기교",
+   "stats": [
+    "공격 속도 10% 증가",
+    "갑옷으로 인한 모든 이동 페널티 무시",
+    "민첩 +20",
+    "정확도 10% 증가"
+   ]
+  },
+  "ash2cfrostandstorm": {
+   "name": "재, 서리, 태풍",
+   "stats": [
+    "원소 피해 30% 증가",
+    "10%의 확률로 동결, 감전 및 점화 유발",
+    "비-피해 상태 이상 효과 30% 증가"
+   ]
+  },
+  "aspectofcarnage": {
+   "name": "학살의 위상",
+   "stats": [
+    "받는 피해 10% 증가",
+    "피해 40% 증폭"
+   ]
+  },
+  "aspectofstone": {
+   "name": "돌의 위상",
+   "stats": [
+    "피격 시 20% 확률로 물리 피해 긴급회피"
+   ]
+  },
+  "aspectoftheeagle": {
+   "name": "독수리의 위상",
+   "stats": [
+    "활 사용 시 피해 20% 증가",
+    "활 사용 시 공격 속도 6% 증가",
+    "활 사용 시 정확도 10% 증가",
+    "활 스킬의 지속 피해 20% 증가"
+   ]
+  },
+  "aspectofthelynx": {
+   "name": "스라소니의 위상",
+   "stats": [
+    "공격 피해 20% 증가",
+    "이동 속도 5% 증가",
+    "공격 치명타 확률 20% 증가"
+   ]
+  },
+  "assassination": {
+   "name": "암살",
+   "stats": [
+    "치명타 확률 25% 증가",
+    "치명타 피해 배율 +25%"
+   ]
+  },
+  "assassinationstyle": {
+   "name": "암살의 멋",
+   "stats": []
+  },
+  "assuredstrike": {
+   "name": "확실한 타격",
+   "stats": [
+    "근접 피해 24% 증가",
+    "6미터 내에 적이 5명 이상인 경우 근접 타격 범위 +0.4미터"
+   ]
+  },
+  "asthemountain": {
+   "name": "태산과도 같이",
+   "stats": [
+    "쌍수 장착 시 또는 방패를 들고 있는 동안 공격 피해 막기 확률 +12%",
+    "공격 피해 막기 확률 최대치 +3%"
+   ]
+  },
+  "asthethunder": {
+   "name": "천둥과도 같이",
+   "stats": [
+    "함성 지속시간 25% 증가",
+    "함성 버프 효과 20% 증가"
+   ]
+  },
+  "asylum": {
+   "name": "보호소",
+   "stats": [
+    "카오스 저항 +18%",
+    "플레이어에게 적용되는 저주 효과 18% 감소"
+   ]
+  },
+  "atrophy": {
+   "name": "위축",
+   "stats": [
+    "카오스 피해 27% 증가",
+    "스킬 효과 지속시간 12% 증가"
+   ]
+  },
+  "auguryofpenitence": {
+   "name": "참회의 조짐",
+   "stats": [
+    "주변의 적이 주는 원소 피해 8% 감폭",
+    "주변의 적이 받는 원소 피해 16% 증가"
+   ]
+  },
+  "avataroffire": {
+   "name": "불의 화신",
+   "stats": [
+    "물리, 냉기 및 번개 피해의 50%를 화염 피해로 전환",
+    "화염 피해만 줄 수 있음"
+   ]
+  },
+  "avatarofthehunt": {
+   "name": "사냥의 화신",
+   "stats": [
+    "활 사용 시 피해 30% 증가",
+    "회피 +200",
+    "이동 속도 6% 증가",
+    "활 스킬의 지속 피해 30% 증가"
+   ]
+  },
+  "avatarofthewilds": {
+   "name": "야생의 화신",
+   "stats": [
+    "적에게 명중으로 원소 상태 이상 유발 시 족쇄 풀린 광분 1 획득, 상태 이상 유형당 0.2초마다 최대 1번 획득",
+    "족쇄 풀린 상태인 동안 족쇄 풀린 광분 획득 불가",
+    "족쇄 풀린 상태인 동안 명중 시 항상 동결, 감전 및 점화 유발",
+    "족쇄 풀린 상태인 동안 원소 피해 100% 증폭",
+    "local display grants skill ailment bearer [0]",
+    "20레벨 족쇄 풀린 화신 부여"
+   ]
+  },
+  "avidity": {
+   "name": "야욕",
+   "stats": [
+    "격분 충전 하나당 정확도 5% 증폭",
+    "이동 중 1초마다 격분 충전 1개 획득",
+    "격분 충전 최대치 +1"
+   ]
+  },
+  "aweandterror": {
+   "name": "경외와 공포",
+   "stats": [
+    "플레이어가 설치한 깃발 근처에서 사망한 적이 20%의 확률로 폭발하여, 생명력의 1/10을 물리 피해로 줌",
+    "깃발 스킬의 효과 범위 20% 증가"
+   ]
+  },
+  "backstabbing": {
+   "name": "암습",
+   "stats": [
+    "단검 사용 시 치명타 확률 30% 증가",
+    "단검 사용 시 치명타 피해 배율 +30%",
+    "생명력이 최대인 적에 대한 치명타 확률 100% 증가"
+   ]
+  },
+  "ballistics": {
+   "name": "탄도학",
+   "stats": [
+    "투사체 속도 20% 증가",
+    "투사체 피해 20% 증가",
+    "민첩 +20"
+   ]
+  },
+  "baneoflegends": {
+   "name": "전설의 파멸",
+   "stats": [
+    "최근 4초 이내 적을 처치한 경우 피해 10% 증폭",
+    "반사된 물리 피해를 받지 않음",
+    "고유 적에 대한 적중 및 상태 이상 피해 20% 증폭"
+   ]
+  },
+  "bannerman": {
+   "name": "기수",
+   "stats": [
+    "범위를 떠난 후 플레이어가 설치한 깃발 버프가 3초 더 유지됨",
+    "깃발 스킬의 지속시간 20% 증가"
+   ]
+  },
+  "barbarism": {
+   "name": "포악성",
+   "stats": [
+    "최대 생명력 8% 증가",
+    "화염 저항 최대치 +1%",
+    "화염 저항 +8%"
+   ]
+  },
+  "bastionbreaker": {
+   "name": "보루 분쇄자",
+   "stats": [
+    "공격 물리 피해 30% 증가",
+    "명중 시 50%의 확률로 적 몬스터 물리 피해 감소를 무시"
+   ]
+  },
+  "bastionofelements": {
+   "name": "원소의 보루",
+   "stats": [
+    "할당 시 20레벨 원시 비호 발동",
+    "원시 비호가 할당된 주요 패시브 스킬 하나당 75의 원소 피해를 받을 수 있음",
+    "다른 비호 스킬들이 비활성화됨",
+    "반사된 원소 피해를 받지 않음",
+    "20레벨 원시 비호 부여"
+   ]
+  },
+  "bastionoffaith": {
+   "name": "신념의 보루",
+   "stats": [
+    "플레이어가 생성하는 신성화 지대가 추가로",
+    "플레이어에게 적용된 피해를 주는 상태 이상의 지속시간 50% 감소"
+   ]
+  },
+  "bastionofhope": {
+   "name": "희망의 보루",
+   "stats": [
+    "최근 4초 이내 공격한 경우 자신 및 6미터 내의 동료들의 공격 피해 막기 확률 +25%",
+    "최근 4초 이내 주문을 시전한 경우 자신 및 6미터 내의 동료들의 주문 피해 막기 확률 +25%"
+   ]
+  },
+  "battlerouse": {
+   "name": "전투 분발",
+   "stats": [
+    "최대 마나 15% 증가",
+    "받은 피해의 10%를 마나로 회생"
+   ]
+  },
+  "battletrance": {
+   "name": "전투의 무아지경",
+   "stats": [
+    "격노 최대치 +10"
+   ]
+  },
+  "beaconofhope": {
+   "name": "희망의 등불",
+   "stats": [
+    "오라 스킬의 효과 범위 80% 증가"
+   ]
+  },
+  "beef": {
+   "name": "근력",
+   "stats": [
+    "힘 +30"
+   ]
+  },
+  "berserking": {
+   "name": "광폭화",
+   "stats": [
+    "공격 속도 6% 증가",
+    "격노 최대치 +5"
+   ]
+  },
+  "bestowedknighthood": {
+   "name": "수여된 기사 작위",
+   "stats": [
+    "용병이 명중 시 도발",
+    "용병이 비-저주 오라 스킬로 받는 효과 50% 증가"
+   ]
+  },
+  "bitterfrost": {
+   "name": "원통한 서리",
+   "stats": [
+    "플레이어에게 피격되어 냉각된 적이 받는 냉기 피해가 냉각 효과만큼 증가",
+    "플레이어의 냉각 지역 안에 있는 적이 받는 냉기 피해가 냉각 효과만큼 증가",
+    "비-냉기 피해를 줄 수 없음"
+   ]
+  },
+  "bitterheresy": {
+   "name": "쓰라린 이단",
+   "stats": [
+    "신성화 지대 대신 부정 지대 생성",
+    "플레이어가 생성하는 부정 지대가 적에게 악담 유발",
+    "플레이어가 생성하는 부정 지대가 플레이어와 아군에게도 영향을 줘서 혼돈의 완력 부여"
+   ]
+  },
+  "bitterlash": {
+   "name": "쓰라린 채찍",
+   "stats": [
+    "장착한 주 무기의 스킬에 1레벨 잔혹 보조 효과 적용"
+   ]
+  },
+  "blacksmithsclout": {
+   "name": "대장장이의 일격",
+   "stats": [
+    "철퇴나 셉터 사용 시 물리 피해 35% 증가",
+    "철퇴나 셉터 공격으로 주는 상태 이상 피해 35% 증가",
+    "철퇴나 셉터 사용 시 치명타 피해 배율 +35%"
+   ]
+  },
+  "bladebarrier": {
+   "name": "칼날 방어막",
+   "stats": [
+    "쌍수 장착 시 공격 피해 막기 확률 +10%",
+    "막기 회복 50% 증가",
+    "쌍수 장착 시 공격 스킬로 주는 피해 25% 증가"
+   ]
+  },
+  "bladedancer": {
+   "name": "검의 무희",
+   "stats": [
+    "검 공격으로 주는 적중 및 상태 이상 피해 30% 증가",
+    "검 사용 시 근접 타격 범위 +0.3미터"
+   ]
+  },
+  "blademaster": {
+   "name": "검의 대가",
+   "stats": [
+    "검 사용 시 물리 피해 20% 증가",
+    "검 공격으로 주는 상태 이상 피해 20% 증가",
+    "검 사용 시 공격 속도 8% 증가",
+    "검 정확도 +200 증가"
+   ]
+  },
+  "bladeofcunning": {
+   "name": "교활한 검",
+   "stats": [
+    "검 사용 시 정확도 15% 증가",
+    "검 사용 시 치명타 확률 45% 증가",
+    "검 사용 시 치명타 피해 배율 +15%"
+   ]
+  },
+  "blastradius": {
+   "name": "폭발 반경",
+   "stats": [
+    "효과 범위 10% 증가",
+    "범위 피해 20% 증가"
+   ]
+  },
+  "blastwaves": {
+   "name": "폭발의 물결",
+   "stats": [
+    "최근 4초 이내 지뢰를 폭발시켰을 경우 지뢰로 인해 사용된 스킬이 주는 범위 피해 30% 증가",
+    "최근 4초 이내 지뢰를 폭발시켰을 경우 지뢰로 인해 사용된 스킬의 효과 범위 15% 증가"
+   ]
+  },
+  "blooddrinker": {
+   "name": "피 흡수자",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "처치 시 생명력의 2% 회복"
+   ]
+  },
+  "bloodhunt": {
+   "name": "피의 사냥",
+   "stats": [
+    "적에게 몬스터 유형 표시됨",
+    "local display grants skill corpse sacrifice [0]",
+    "20레벨 굶주림 부여"
+   ]
+  },
+  "bloodless": {
+   "name": "무혈",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "적이 플레이어의 생명력을 흡수할 수 없음"
+   ]
+  },
+  "bloodletting": {
+   "name": "출혈 과다",
+   "stats": [
+    "출혈 지속 피해 배율 +15%",
+    "공격 명중 시 10%의 확률로 대상의 출혈 가중"
+   ]
+  },
+  "bloodmagic": {
+   "name": "혈마법",
+   "stats": [
+    "모든 마나를 제거",
+    "최대 생명력 10% 증폭",
+    "스킬 사용 시 마나 대신 생명력 소모",
+    "스킬 사용 시 마나 대신 생명력 점유"
+   ]
+  },
+  "bloodsiphon": {
+   "name": "혈액 착취",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "처치한 적 하나당 생명력 10 획득",
+    "힘 +20"
+   ]
+  },
+  "bloodsoakedblade": {
+   "name": "피투성이 칼날",
+   "stats": [
+    "팅크가 마나 연소가 아닌 진물 나는 상처 유발",
+    "마나 연소와 상호작용하는 효과가 마나 연소가 아닌 진물 나는 상처와 상호작용"
+   ]
+  },
+  "blunttrauma": {
+   "name": "둔탁한 외상",
+   "stats": [
+    "지팡이 사용 시 치명타 확률 40% 증가",
+    "지팡이 사용 시 치명타 피해 배율 +20%",
+    "지팡이로 치명타를 가하는 경우 적을 밀어냄"
+   ]
+  },
+  "bombspecialist": {
+   "name": "폭탄 전문가",
+   "stats": [
+    "명중 시 30%의 확률로 주는 범위 피해 50% 증폭",
+    "30%의 확률로 피격 시 범위 피해 50% 감폭"
+   ]
+  },
+  "bonebarrier": {
+   "name": "뼈대 방어막",
+   "stats": [
+    "소환수 하나당 받는 물리 피해 1% 추가 감소. 최대 10%",
+    "자신의 소환수가 주는 피해의 1%를 생명력으로 흡수",
+    "소환수가 최대 생명력의 40%를 추가 에너지 보호막 최대치로 획득"
+   ]
+  },
+  "bonebreaker": {
+   "name": "뼈 분쇄기",
+   "stats": [
+    "철퇴나 셉터 사용 시 물리 피해 30% 증가",
+    "철퇴나 셉터 공격으로 주는 상태 이상 피해 30% 증가",
+    "효과 범위 15% 증가"
+   ]
+  },
+  "bonefeeders": {
+   "name": "뼈 포식자",
+   "stats": [
+    "할당 시 20레벨 뼈 포식자 소환 발동",
+    "20레벨 뼈 포식자 소환 부여"
+   ]
+  },
+  "bornintheshadows": {
+   "name": "어둠의 자식",
+   "stats": [
+    "실명될 수 없음",
+    "실명된 적에게 받는 피해 15% 감소",
+    "3.5미터 내의 적 실명 유발",
+    "명중 시 적 실명 유발",
+    "generic_buff_aura"
+   ]
+  },
+  "borntofight": {
+   "name": "타고난 싸움꾼",
+   "stats": [
+    "공격 속도 4% 증가",
+    "힘 +20",
+    "물리 피해 26% 증가"
+   ]
+  },
+  "boundflesh": {
+   "name": "속박된 육체",
+   "stats": [
+    "주문의 초기 비용으로 소모한 생명력 20당 바리야의 긴장 20 획득",
+    "바리야의 긴장 최대치가 최대 생명력의 30%와 동일",
+    "야만적인 타격을 받을 경우 바리야의 긴장을 상실하고 그만큼의 생명력 회복, 최대치까지 회복"
+   ]
+  },
+  "brandequity": {
+   "name": "낙인 형평성",
+   "stats": [
+    "낙인 2개 추가 시전 가능",
+    "낙인 스킬의 지속시간 20% 증가",
+    "낙인 소환의 재사용 대기시간 회복 속도 20% 증가"
+   ]
+  },
+  "bravery": {
+   "name": "기개",
+   "stats": [
+    "회피 및 방어도 24% 증가",
+    "최대 생명력 8% 증가"
+   ]
+  },
+  "breathofflames": {
+   "name": "화염의 숨결",
+   "stats": [
+    "지속 화염 피해 배율 +10%",
+    "화염 피해 30% 증가"
+   ]
+  },
+  "breathoflightning": {
+   "name": "번개의 숨결",
+   "stats": [
+    "번개 피해 30% 증가",
+    "번개 상태 이상 효과 50% 증가"
+   ]
+  },
+  "breathofrime": {
+   "name": "흰서리의 숨결",
+   "stats": [
+    "냉기 피해 30% 증가",
+    "냉기 상태 이상 지속시간 50% 증가"
+   ]
+  },
+  "brinerot": {
+   "name": "염수 부패",
+   "stats": [
+    "할당 시 익사 영역 발동",
+    "brine_rot_aura"
+   ]
+  },
+  "bringerofruin": {
+   "name": "파멸의 인도자",
+   "stats": [
+    "플레이어에게 적용되는 전령 버프 효과 66% 증가",
+    "전령 스킬의 마나 점유 효율 66% 증가"
+   ]
+  },
+  "brinkmanship": {
+   "name": "벼랑 끝 전략",
+   "stats": [
+    "근접 스킬의 효과 범위 20% 증가"
+   ]
+  },
+  "brinkofdeath": {
+   "name": "생사의 경계",
+   "stats": [
+    "낮은 생명력 상태일 때 1초마다 생명력의 4% 재생"
+   ]
+  },
+  "brutalblade": {
+   "name": "잔인한 검",
+   "stats": [
+    "쌍수 장착 시 또는 방패를 들고 있는 동안 공격 피해 막기 확률 +6%",
+    "검 공격으로 주는 적중 및 상태 이상 피해 24% 증가",
+    "공격 피해를 막아낼 시 20%의 확률로 격분 충전 획득"
+   ]
+  },
+  "brutalfervour": {
+   "name": "잔인한 열정",
+   "stats": [
+    "생명력 흡수당 회복량 최대치 100% 증가",
+    "점유되지 않은 생명력이 찼을 때 생명력 흡수 효과가 제거되지 않음",
+    "흡수하는 동안 받는 피해 10% 감소"
+   ]
+  },
+  "brutalskewering": {
+   "name": "잔인한 꿰뚫기",
+   "stats": [
+    "플레이어가 부여한 꿰뚫기 효과가 1회 적중할 동안 유지됨"
+   ]
+  },
+  "burningbrutality": {
+   "name": "불타는 포악함",
+   "stats": [
+    "공격 스킬의 지속 화염 피해 배율 +12%",
+    "공격 속도 6% 증가"
+   ]
+  },
+  "burstofenergy": {
+   "name": "에너지 격발",
+   "stats": [
+    "팅크 활성화 시 마나의 15% 회복"
+   ]
+  },
+  "butchery": {
+   "name": "도살",
+   "stats": [
+    "양손 근접 무기 사용 시 물리 피해 25% 증가",
+    "양손 근접 무기 공격으로 주는 상태 이상 피해 25% 증가",
+    "양손 근접 무기 사용 시 공격 속도 5% 증가",
+    "힘 +20"
+   ]
+  },
+  "calculatedrisk": {
+   "name": "계산된 위험",
+   "stats": [
+    "치명타 확률에 행운 적용",
+    "적으로부터 피격되어 받는 피해에 불운 적용",
+    "명중 시 피해에 불운 적용"
+   ]
+  },
+  "calltoarms": {
+   "name": "소집",
+   "stats": [
+    "플레이어의 함성이 플레이어에게 버프 또는 충전을 부여하지 않음",
+    "함성 지속시간 100% 증폭"
+   ]
+  },
+  "cannibalisedfaith": {
+   "name": "식인의 신념",
+   "stats": [
+    "생명력 소모량이 소모할 수 있는 최대 생명력보다 크지 않을 경우, 주문 직접 시전 시 생명력 소모량의 75%와 동일한 추가 물리 피해를 얻음"
+   ]
+  },
+  "cannibalisticrite": {
+   "name": "식인 의식",
+   "stats": [
+    "공격 스킬이 마나 소모의 10% 대신 생명력 소모",
+    "공격의 소모 효율 25% 증가"
+   ]
+  },
+  "carefulconservationist": {
+   "name": "철저한 보호론자",
+   "stats": [
+    "플라스크 충전 소모량 10% 감소",
+    "자신에게 적용된 플라스크의 효과 5% 증가",
+    "최근 4초 이내 치명타 명중 시 플라스크 충전량 20% 증가"
+   ]
+  },
+  "carefulcounterattack": {
+   "name": "조심스러운 반격",
+   "stats": [
+    "최근 4초 이내 보복 스킬을 사용한 경우 10%의 확률로 공격 피해를 막아냄",
+    "최근 4초 이내 보복 스킬을 사용한 경우 10%의 확률로 주문 피해를 막아냄"
+   ]
+  },
+  "casterweapondisplay": {
+   "name": "시전자 무기 전시물",
+   "stats": []
+  },
+  "cauterisation": {
+   "name": "소작",
+   "stats": [
+    "출혈 중인 적이 플레이어에게 출혈 유발 불가",
+    "점화된 적이 플레이어 점화 불가"
+   ]
+  },
+  "chainreaction": {
+   "name": "연쇄 반응",
+   "stats": [
+    "덫에 의해 사용된 스킬 효과 범위 50% 증가",
+    "자신의 덫 발동 시 2미터 내의 덫도 발동"
+   ]
+  },
+  "championofthecause": {
+   "name": "대의의 용사",
+   "stats": [
+    "오라 스킬의 효과 범위 12% 증가",
+    "스킬의 점유 효율 8% 증가",
+    "자신의 비-저주 오라 스킬 효과 6% 증가"
+   ]
+  },
+  "chaosinoculation": {
+   "name": "카오스 면역",
+   "stats": [
+    "최대 생명력을 1로 변경, 카오스 피해에 면역"
+   ]
+  },
+  "charisma": {
+   "name": "신비한 매력",
+   "stats": [
+    "스킬의 마나 점유 효율 16% 증가",
+    "자신의 비-저주 오라 스킬 효과 6% 증가"
+   ]
+  },
+  "circleoflife": {
+   "name": "생명의 순환",
+   "stats": [
+    "공격으로 명중한 적 하나당 생명력 10 획득",
+    "받은 피해의 12%를 생명력으로 회생"
+   ]
+  },
+  "clawsofthefalcon": {
+   "name": "매의 발톱",
+   "stats": [
+    "클로 사용 시 정확도 15% 증가",
+    "클로 사용 시 치명타 피해 배율 +40%"
+   ]
+  },
+  "clawsofthehawk": {
+   "name": "사냥매의 발톱",
+   "stats": [
+    "클로 사용 시 치명타 확률 60% 증가",
+    "클로 사용 시 치명타 피해 배율 +20%"
+   ]
+  },
+  "clawsofthemagpie": {
+   "name": "까치의 발톱",
+   "stats": [
+    "클로 공격으로 주는 적중 및 상태 이상 피해 25% 증가",
+    "클로 사용 시 공격 속도 10% 증가",
+    "클로 명중 시 25%의 확률로 권능, 격분, 인내 충전 강탈"
+   ]
+  },
+  "cleansedthoughts": {
+   "name": "정화된 생각",
+   "stats": [
+    "카오스 저항 2배"
+   ]
+  },
+  "cleaving": {
+   "name": "쪼개기",
+   "stats": [
+    "도끼 사용 시 물리 피해 30% 증가",
+    "도끼 공격으로 주는 상태 이상 피해 30% 증가",
+    "공격 명중 시 15%의 확률로 4초 동안 적 위협"
+   ]
+  },
+  "cleverconstruction": {
+   "name": "교묘한 구조물",
+   "stats": [
+    "10%의 확률로 덫이 1회 추가 발동"
+   ]
+  },
+  "cleverthief": {
+   "name": "교묘한 도둑",
+   "stats": [
+    "공격 피해의 1%를 생명력으로 흡수",
+    "공격 피해의 1%를 마나로 흡수"
+   ]
+  },
+  "clothandchain": {
+   "name": "천과 사슬",
+   "stats": [
+    "회피 및 방어도 24% 증가",
+    "모든 원소 저항 +12%"
+   ]
+  },
+  "coatedblade": {
+   "name": "칠한 칼날",
+   "stats": []
+  },
+  "coldheartedcalculation": {
+   "name": "냉담한 계산",
+   "stats": [
+    "피해 12% 증가",
+    "마나 재생 속도 20% 증가",
+    "지능 +20"
+   ]
+  },
+  "colloidalmixture": {
+   "name": "교질 혼합물",
+   "stats": [
+    "자신에게 적용된 팅크의 효과 15% 증가",
+    "최근 4초 이내 생명력 플라스크를 사용한 경우 자신에게 적용된 팅크의 효과 15% 증가"
+   ]
+  },
+  "combatstamina": {
+   "name": "전투 지구력",
+   "stats": [
+    "방어도 20% 증가",
+    "최대 생명력 5% 증가",
+    "1초마다 생명력의 1% 재생"
+   ]
+  },
+  "commanderofdarkness": {
+   "name": "어둠의 사령관",
+   "stats": [
+    "자신의 오라 스킬이 플레이어 및 동료들에게",
+    "공격 및 시전 속도 3% 증가 적용",
+    "자신 및 6미터 내의 동료들이 주는 피해 30% 증가",
+    "자신 및 6미터 내의 동료들의 원소 저항 +30%"
+   ]
+  },
+  "commandofsteel": {
+   "name": "강철의 명령",
+   "stats": [
+    "방패를 들고 있는 동안 공격 피해 막기 확률 +8%",
+    "장착한 방패로 얻는 방어력 50% 증가"
+   ]
+  },
+  "concussiveforce": {
+   "name": "충격적인 힘",
+   "stats": [
+    "명중 시 50% 증폭된 근접 화염 피해를 준 것처럼 적을 기절",
+    "기절을 유발하는 근접 명중으로 주는 점화 피해 20% 증폭"
+   ]
+  },
+  "conduit": {
+   "name": "도관",
+   "stats": [
+    "주변의 파티원과 인내, 격분 및 권능 충전 공유"
+   ]
+  },
+  "conjoinedspire": {
+   "name": "결합된 첨탑",
+   "stats": [
+    "토템 소환 시 다른 모든 소환된 토템 파괴",
+    "토템이 있는 동안 받는 피해 15% 감폭",
+    "소환 가능한 토템 최대치 하나당 토템이 사용하는 스킬의 효과 범위 10% 증폭",
+    "소환 가능한 토템 최대치 하나당 토템이 사용하는 스킬로 주는 피해 10% 증폭",
+    "소환 가능한 토템 최대치 하나당 토템의 생명력 5% 증폭"
+   ]
+  },
+  "conjuredbarrier": {
+   "name": "상상의 장벽",
+   "stats": [
+    "시전하는 동안 30%의 확률로 기절 무시",
+    "기절 및 막기 회복 50% 증가",
+    "정지 상태일 때 마나 재생 속도 30% 증가"
+   ]
+  },
+  "constitution": {
+   "name": "체질",
+   "stats": [
+    "생명력 최대치 +20",
+    "최대 생명력 10% 증가"
+   ]
+  },
+  "contemplativemeditation": {
+   "name": "사색적 명상",
+   "stats": [
+    "스킬의 점유 효율 8% 증가",
+    "소모 효율 20% 증가"
+   ]
+  },
+  "convictionofpower": {
+   "name": "힘의 신념",
+   "stats": [
+    "최소 인내 충전 +4",
+    "최소 권능 충전 +4",
+    "권능 충전 및 인내 충전 최대치 +1"
+   ]
+  },
+  "coordination": {
+   "name": "조율",
+   "stats": [
+    "공격 속도 10% 증가",
+    "시전 속도 8% 증가",
+    "민첩 및 지능 +10"
+   ]
+  },
+  "corneredprey": {
+   "name": "궁지에 몰린 사냥감",
+   "stats": [
+    "출혈 중인 적에 대한 치명타 피해 배율 +30%",
+    "출혈 중인 적에 대한 치명타 확률 80% 증가"
+   ]
+  },
+  "corpsepact": {
+   "name": "시신의 서약",
+   "stats": [
+    "최근 4초 이내 소모한 시신 하나당 공격 및 시전 속도 4% 증가, 최대 200% 증가",
+    "최근 4초 이내 자신이 생성한 시신 주변의 적들이 냉각 및 감전"
+   ]
+  },
+  "corruption": {
+   "name": "타락",
+   "stats": [
+    "위축 효과 20% 증가"
+   ]
+  },
+  "corruptionsembrace": {
+   "name": "타락의 품",
+   "stats": [
+    "타락한 아이템을 4개 이상 장착한 경우 영혼의 목자 부여",
+    "타락한 아이템을 6개 이상 장착한 경우 영원히 계속되는 희생 부여",
+    "타락한 아이템을 8개 이상 장착한 경우 피의 희생 부여"
+   ]
+  },
+  "counterweight": {
+   "name": "평형추",
+   "stats": [
+    "지팡이 장착 시 치명타 확률 60% 증가",
+    "지팡이 장착 시 치명타 피해 배율 +30%"
+   ]
+  },
+  "courage": {
+   "name": "용기",
+   "stats": [
+    "최근 4초 이내 피격당한 경우 방어도 30% 증가",
+    "최근 4초 이내 피격되지 않은 경우 회피 30% 증가",
+    "최근 4초 이내 적 명중 시 주문 피해 억제 확률 +15%"
+   ]
+  },
+  "cracklingspeed": {
+   "name": "치직대는 속도",
+   "stats": [
+    "번개 피해 24% 증가",
+    "시전 속도 8% 증가"
+   ]
+  },
+  "cravetheslaughter": {
+   "name": "살육의 갈망",
+   "stats": [
+    "격노 1당 공격 속도 1% 증가",
+    "기본 격노 상실이 2초 늦게 시작"
+   ]
+  },
+  "crimsondance": {
+   "name": "진홍색 춤",
+   "stats": [
+    "적에게 최대 8회 출혈 유발 가능",
+    "적이 이동하는 동안 당신이 유발한 출혈의 추가 피해를 받지 않음",
+    "출혈 피해 50% 감폭"
+   ]
+  },
+  "crimsonpower": {
+   "name": "진홍색 힘",
+   "stats": [
+    "모든 에너지 보호막 제거",
+    "장착한 방어구 아이템으로부터 에너지 보호막 최대치 대신 생명력 최대치를 얻음",
+    "1레벨당 최대 생명력 -6"
+   ]
+  },
+  "cruelpreparation": {
+   "name": "잔혹한 준비",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "모든 원소 저항 +5%"
+   ]
+  },
+  "cruelretort": {
+   "name": "잔혹한 응수",
+   "stats": [
+    "보복 스킬을 4회 사용할 때마다 항상 치명타",
+    "보복 스킬의 속도 20% 증가"
+   ]
+  },
+  "crusader": {
+   "name": "십자군",
+   "stats": [
+    "최대 마나 8% 증가",
+    "정신의 변모"
+   ]
+  },
+  "crushingreply": {
+   "name": "타쇄하는 대응",
+   "stats": [
+    "보복 스킬이 적에게 적용하는 기절 지속시간 50% 증가",
+    "보복 스킬로 근접 명중 시 방어 상승"
+   ]
+  },
+  "cryogenesis": {
+   "name": "동결생성",
+   "stats": [
+    "민첩이 다른 능력치 2개를 모두 초과하면 다른 유형의 추가 피해 대신 추가 냉기 피해 획득",
+    "지능이 다른 능력치 2개를 모두 초과하면 다른 유형의 추가 피해 대신 추가 번개 피해 획득",
+    "원소의 일격의 추가 피해가 이 방식으로 교체되지 않음"
+   ]
+  },
+  "crystalskin": {
+   "name": "결정 가죽",
+   "stats": [
+    "모든 원소 저항 최대치 +1%",
+    "20%의 확률로 원소 상태 이상 긴급회피"
+   ]
+  },
+  "danceofblades": {
+   "name": "칼춤",
+   "stats": [
+    "최근 4초 이내 태세를 변경한 경우 맹공 획득"
+   ]
+  },
+  "darkarts": {
+   "name": "어둠의 기술",
+   "stats": [
+    "쌍수 장착 시 주문 피해 막기 확률 +8%",
+    "쌍수 장착 시 공격 피해 막기 확률 +8%",
+    "쌍수 장착 시 공격 속도 10% 증가",
+    "쌍수 장착 시 시전 속도 10% 증가"
+   ]
+  },
+  "dazzlingstrikes": {
+   "name": "현란한 일격",
+   "stats": [
+    "실명된 적에 대한 치명타 확률 50% 증가",
+    "공격 명중 시 20%의 확률로 적 실명 유발",
+    "실명 효과 20% 증가"
+   ]
+  },
+  "deadlydraw": {
+   "name": "치명적인 당기기",
+   "stats": [
+    "활 스킬의 지속 피해 30% 증가",
+    "상태 이상 피해 10%만큼 가속"
+   ]
+  },
+  "deadlyinclinations": {
+   "name": "치명적인 의지",
+   "stats": [
+    "회피 18% 증가",
+    "생명력 최대치 +12",
+    "투사체 피해 16% 증가",
+    "민첩 +30"
+   ]
+  },
+  "deathattunement": {
+   "name": "죽음의 조율",
+   "stats": [
+    "소환 가능한 좀비 최대치 +1",
+    "망령 최대치 +1",
+    "해골 최대치 +1"
+   ]
+  },
+  "deathmarked": {
+   "name": "죽음의 징표를 지닌 자",
+   "stats": [
+    "플레이어에게 징표가 없는 상태로 희귀 또는 고유 적에게 공격 치명타 시",
+    "30레벨 암살자의 징표 발동",
+    "징표 스킬 사용 시 마나를 소모하지 않음",
+    "권능 충전 최대치 하나당 플레이어의 징표 효과 10% 증가",
+    "권능 충전 최대치 하나당 흡수의 3%가 즉시 적용",
+    "30레벨 암살자의 징표 부여"
+   ]
+  },
+  "deathoffering": {
+   "name": "죽음의 공물",
+   "stats": [
+    "공물 효과 50% 증가",
+    "공물 지속시간이 만료될 때 공물이 피해를 줄 수 있는 영향을 받은 대상 처치"
+   ]
+  },
+  "decayward": {
+   "name": "부패 수호",
+   "stats": [
+    "소환수의 공격 피해 막기 확률 +18%",
+    "소환수의 주문 피해 막기 확률 +18%",
+    "소환수가 막아낼 시 소환수의 생명력 2% 회복"
+   ]
+  },
+  "deceitfulservant": {
+   "name": "기만적인 종복",
+   "stats": []
+  },
+  "deepbreaths": {
+   "name": "심호흡",
+   "stats": [
+    "함성 재사용 대기시간 회복 속도 35% 증가",
+    "함성 스킬의 효과 범위 40% 증가"
+   ]
+  },
+  "deepthoughts": {
+   "name": "깊은 생각",
+   "stats": [
+    "최대 마나 20% 증가",
+    "마나 재생 속도 20% 증가",
+    "지능 +20"
+   ]
+  },
+  "deepwisdom": {
+   "name": "깊은 지혜",
+   "stats": [
+    "에너지 보호막 최대치 +20",
+    "마나 최대치 +20",
+    "지능 +20"
+   ]
+  },
+  "defiance": {
+   "name": "저항",
+   "stats": [
+    "방패를 들고 있는 동안 공격 피해 막기 확률 +3%",
+    "방패를 들고 있는 동안 공격 스킬로 주는 피해 24% 증가",
+    "장착한 방패로 얻는 방어력 60% 증가"
+   ]
+  },
+  "defiantstand": {
+   "name": "굴하지 않는 항전",
+   "stats": [
+    "최대 기백을 소모하여 깃발 설치 시 인내 충전 3개 획득",
+    "최대 기백을 소모하여 깃발 설치 시 격분 충전 3개 획득"
+   ]
+  },
+  "defiledforces": {
+   "name": "더럽혀진 힘",
+   "stats": [
+    "저주 스킬의 시전 속도 15% 증가",
+    "저주한 적에게 적용되는 냉각 및 감전 지속시간 초기화",
+    "저주 주문 시전 시 원소 상태 이상 제거"
+   ]
+  },
+  "deflection": {
+   "name": "굴절",
+   "stats": [
+    "방패를 들고 있는 동안 공격 피해 막기 확률 +8%",
+    "막아낼 시 25%의 확률로 인내 충전 획득"
+   ]
+  },
+  "defypain": {
+   "name": "고통 무시",
+   "stats": [
+    "적에게 피격되어 생명력을 잃으면 10초 동안 저항 획득, 0.3초마다 최대 1번 발동",
+    "저항 10 도달 시 모든 저항을 상실",
+    "저항 하나당 적에게 피격되기 전 상실한 점유되지 않은 생명력의 3% 획득"
+   ]
+  },
+  "deliberatebrutality": {
+   "name": "신중한 잔인성",
+   "stats": [
+    "플레이어가 유발한 꿰뚫기의 지속시간이 1초 만료된 후 해당 꿰뚫기의 효과 50% 증가"
+   ]
+  },
+  "demolitionsspecialist": {
+   "name": "폭파 전문가",
+   "stats": [
+    "지뢰의 오라 효과 150% 증가",
+    "지뢰 설치 시 3미터 내의 적들을 2초 동안 이동 방해"
+   ]
+  },
+  "depthperception": {
+   "name": "날카로운 감각",
+   "stats": [
+    "정확도 +100",
+    "치명타 확률 25% 증가",
+    "정확도 20% 증가"
+   ]
+  },
+  "dervish": {
+   "name": "수도승",
+   "stats": [
+    "쌍수 장착 시 공격 피해 막기 확률 +3%",
+    "쌍수 장착 시 공격 스킬로 주는 피해 24% 증가",
+    "쌍수 장착 시 공격 속도 6% 증가"
+   ]
+  },
+  "destroyer": {
+   "name": "파괴자",
+   "stats": [
+    "양손 근접 무기 사용 시 물리 피해 25% 증가",
+    "양손 근접 무기 공격으로 주는 상태 이상 피해 25% 증가",
+    "양손 근접 무기 사용 시 공격 속도 5% 증가",
+    "양손 근접 무기 사용 시 적에게 적용되는 기절 지속시간 25% 증가"
+   ]
+  },
+  "destructiveapparatus": {
+   "name": "파괴적인 기구",
+   "stats": [
+    "지뢰 지속시간 60% 증가",
+    "지뢰 투척 속도 12% 증가"
+   ]
+  },
+  "detectevil": {
+   "name": "악 감지",
+   "stats": [
+    "징표 찍힌 적을 대상으로 플레이어의 명중이 막히거나 억제되지 않음",
+    "120미터 내 희귀 및 고유 적이 미니맵에 아이콘으로 표시"
+   ]
+  },
+  "determinedsurvivor": {
+   "name": "결연한 생존자",
+   "stats": [
+    "장착한 방패로 그 방패의 수치 대신 막기 확률 50% 획득",
+    "쌍수로 인한 기본 보너스가 2배로 증가"
+   ]
+  },
+  "devastatingdevices": {
+   "name": "파괴적인 장치",
+   "stats": [
+    "지뢰 사용 시 치명타 확률 50% 증가",
+    "지뢰 사용 시 치명타 피해 배율 +25%",
+    "자신의 지뢰가 적을 대상으로 폭발하면 10%의 확률로 권능 충전 획득"
+   ]
+  },
+  "devotion": {
+   "name": "헌신",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "자신이 생성한 신성화 지대의 효과 25% 증가"
+   ]
+  },
+  "diamondskin": {
+   "name": "다이아몬드 피부",
+   "stats": [
+    "모든 원소 저항 +15%"
+   ]
+  },
+  "diretorment": {
+   "name": "지독한 고통",
+   "stats": [
+    "치명타로 주는 상태 이상 지속 피해 배율 +25%",
+    "치명타 확률 40% 증가"
+   ]
+  },
+  "dirtytechniques": {
+   "name": "더러운 기술",
+   "stats": [
+    "상태 이상 피해 15%만큼 가속"
+   ]
+  },
+  "discipleoftheforbidden": {
+   "name": "금단 신봉자",
+   "stats": [
+    "최소 권능 충전 +1",
+    "처치 시 8%의 확률로 권능 충전 획득",
+    "권능 충전 하나당 피해 8% 증가"
+   ]
+  },
+  "discipleoftheslaughter": {
+   "name": "학살 신봉자",
+   "stats": [
+    "최소 격분 충전 +1",
+    "처치 시 8%의 확률로 격분 충전 획득",
+    "격분 충전 하나당 피해 8% 증가"
+   ]
+  },
+  "discipleoftheunyielding": {
+   "name": "완고한 신봉자",
+   "stats": [
+    "최소 인내 충전 +1",
+    "처치 시 8%의 확률로 인내 충전 획득",
+    "인내 충전 하나당 피해 8% 증가"
+   ]
+  },
+  "disciplineandtraining": {
+   "name": "수양과 훈련",
+   "stats": [
+    "생명력 최대치 +30",
+    "최대 생명력 10% 증가"
+   ]
+  },
+  "discordartisan": {
+   "name": "불화의 장인",
+   "stats": [
+    "자신에게 영향을 주는 전령 하나당 피해 15% 증가",
+    "플레이어에게 적용되는 전령 버프 효과 20% 증가"
+   ]
+  },
+  "disemboweling": {
+   "name": "창자 뽑기",
+   "stats": [
+    "근접 치명타 확률 50% 증가",
+    "근접 치명타 피해 배율 +25%"
+   ]
+  },
+  "disintegration": {
+   "name": "분해",
+   "stats": [
+    "마법봉 사용 시 치명타 확률 60% 증가",
+    "마법봉 사용 시 치명타 피해 배율 +30%",
+    "지능 +20"
+   ]
+  },
+  "dismembering": {
+   "name": "사지 절단",
+   "stats": [
+    "근접 치명타 확률 40% 증가",
+    "근접 치명타 피해 배율 +20%",
+    "치명타 명중 시 20%의 확률로 적 힘줄 절단"
+   ]
+  },
+  "divinefervour": {
+   "name": "신성한 열정",
+   "stats": [
+    "공격 피해 20% 증가",
+    "근접 치명타 확률 30% 증가",
+    "힘 및 지능 +10"
+   ]
+  },
+  "divinefury": {
+   "name": "신성한 광분",
+   "stats": [
+    "물리 피해의 5%를 추가 화염 피해로 획득",
+    "피해가 화염 저항 5% 관통"
+   ]
+  },
+  "divineguidance": {
+   "name": "신성한 인도",
+   "stats": [
+    "최대 마나 30% 증가",
+    "받는 피해의 10%를 생명력 대신 마나로 소모",
+    "정신의 변모"
+   ]
+  },
+  "divinejudgement": {
+   "name": "신성한 심판",
+   "stats": [
+    "원소 피해 50% 증가"
+   ]
+  },
+  "divineshield": {
+   "name": "신성한 방패",
+   "stats": [
+    "에너지 보호막 회복량은 방어도를 넘어갈 수 없음",
+    "1초당 최근 4초 이내의 피격에서 방지한 물리 피해의 3%를 에너지 보호막으로 재생"
+   ]
+  },
+  "divinewrath": {
+   "name": "신성한 진노",
+   "stats": [
+    "물리 피해의 5%를 추가 번개 피해로 획득",
+    "피해가 번개 저항 5% 관통"
+   ]
+  },
+  "doomcast": {
+   "name": "멸망 시전",
+   "stats": [
+    "주문 치명타 확률 60% 증가",
+    "주문 피해의 치명타 피해 배율 +15%"
+   ]
+  },
+  "dreamer": {
+   "name": "몽상가",
+   "stats": [
+    "마나 재생 속도 30% 증가",
+    "마나 소모 효율 15% 증가"
+   ]
+  },
+  "druidicrite": {
+   "name": "드루이드 의식",
+   "stats": [
+    "최대 마나 20% 증가",
+    "플라스크 효과 지속시간 20% 증가"
+   ]
+  },
+  "duelistascendancy": {
+   "name": "듀얼리스트 전직",
+   "stats": []
+  },
+  "dynamo": {
+   "name": "정력가",
+   "stats": [
+    "최대 마나 18% 증가",
+    "수호 스킬의 지속시간 40% 증가"
+   ]
+  },
+  "eagleeye": {
+   "name": "독수리의 눈",
+   "stats": [
+    "정확도 +150",
+    "치명타 확률 20% 증가",
+    "정확도 20% 증가"
+   ]
+  },
+  "efficientexplosives": {
+   "name": "효율적인 폭발물",
+   "stats": [
+    "지뢰 투척 스킬의 마나 점유 효율 30% 증가",
+    "지뢰가 15%의 확률로 1회 추가 폭발"
+   ]
+  },
+  "elderpower": {
+   "name": "엘더의 힘",
+   "stats": [
+    "권능 충전 하나당 마법봉 피해 10% 증가",
+    "처치 시 10%의 확률로 권능 충전 획득"
+   ]
+  },
+  "eldritchbattery": {
+   "name": "섬뜩한 충전기",
+   "stats": [
+    "스킬 사용 시 마나 대신 에너지 보호막 소모",
+    "에너지 보호막이 생명력 대신 마나 보호",
+    "에너지 보호막 재충전 속도 50% 감폭"
+   ]
+  },
+  "elementalequilibrium": {
+   "name": "원소 균형",
+   "stats": [
+    "명중으로 원소 피해를 주면 해당 원소의 노출을 제거하고 다른 원소의 노출 유발",
+    "이렇게 유발된 노출은 저항 -25% 적용"
+   ]
+  },
+  "elementalfocus": {
+   "name": "원소 집중",
+   "stats": [
+    "적에게 적용되는 원소 상태 이상 지속시간 20% 증가",
+    "원소 피해 20% 증가",
+    "비-피해 상태 이상 효과 20% 증가"
+   ]
+  },
+  "elementaloverload": {
+   "name": "원소 과부하",
+   "stats": [
+    "지난 8초 이내에 치명타 명중 시 해당 스킬의 명중 및 상태 이상 원소 피해 40% 증폭",
+    "플레이어의 치명타가 추가 피해를 주지 않음",
+    "상태 이상은 치명타로 유발하는 것으로 간주하지 않음"
+   ]
+  },
+  "empoweredbond": {
+   "name": "강화된 유대",
+   "stats": [
+    "모든 연결 스킬 젬 레벨 +2"
+   ]
+  },
+  "endlesshunger": {
+   "name": "끝없는 굶주림",
+   "stats": [
+    "과잉살상 피해의 20%를 생명력으로 흡수",
+    "흡수하는 동안 공격 속도 20% 증가",
+    "흡수하는 동안 기절할 수 없음",
+    "흡수의 영향을 받는 동안 출혈의 영향을 받지 않음"
+   ]
+  },
+  "endlessmunitions": {
+   "name": "끝없는 탄약",
+   "stats": [
+    "스킬이 투사체 2개를 추가 발사"
+   ]
+  },
+  "endurance": {
+   "name": "인내",
+   "stats": [
+    "인내 충전 최대치 +1"
+   ]
+  },
+  "enduringbond": {
+   "name": "인내의 유대",
+   "stats": [
+    "스킬 효과 지속시간 20% 증가",
+    "최근 4초 이내 소환수 스킬을 사용한 경우 소환수 피해 30% 증가",
+    "소환수 지속시간 20% 증가"
+   ]
+  },
+  "enduringsuffusion": {
+   "name": "지속되는 확산",
+   "stats": [
+    "팅크가 비활성화되었을 때 플레이어에게 적용되어 있던 마나 연소 하나당 팅크 효과가 0.5초씩, 최대 6초까지 더 유지됨",
+    "자신에게 적용된 팅크의 마나 연소 속도 50% 감폭"
+   ]
+  },
+  "enhancedstarlight": {
+   "name": "강화 별빛",
+   "stats": [
+    "명중이 주는 피해가 수호의 15% 미만인 경우 받은 피해가 부서지지 않은 수호를 무시함",
+    "장착한 방어구 아이템으로 얻는 수호 70% 증가"
+   ]
+  },
+  "enigmaticdefence": {
+   "name": "수수께끼의 방어력",
+   "stats": [
+    "지팡이 장착 시 주문 피해 20% 증가",
+    "지팡이 장착 시 공격 피해 막기 확률 +8%",
+    "지팡이 장착 시 주문 피해 막기 확률 +8%"
+   ]
+  },
+  "enigmaticreach": {
+   "name": "수수께끼의 역량",
+   "stats": [
+    "권능 충전 하나당 효과 범위 3% 증가",
+    "주문 피해를 막아낼 시 25%의 확률로 권능 충전 1개 획득",
+    "지팡이 장착 시 주문 피해 막기 확률 +8%"
+   ]
+  },
+  "entrench": {
+   "name": "견고화",
+   "stats": [
+    "주문 피해 억제 확률 +12%",
+    "주문 피해 억제 시 생명력 플라스크 3 충전"
+   ]
+  },
+  "entropy": {
+   "name": "엔트로피",
+   "stats": [
+    "지속 피해 23% 증가",
+    "스킬 효과 지속시간 10% 증가"
+   ]
+  },
+  "escalation": {
+   "name": "증대자",
+   "stats": [
+    "함성 버프의 영향을 받은 시간 1초당 근접 피해 10% 증가, 최대 60%"
+   ]
+  },
+  "escapeartist": {
+   "name": "탈출의 명수",
+   "stats": [
+    "장착한 투구의 에너지 보호막 최대치 1당 회피 +4",
+    "장착한 갑옷의 회피 8당 에너지 보호막 최대치 +1"
+   ]
+  },
+  "eshofthestorm": {
+   "name": "폭풍의 에쉬",
+   "stats": [
+    "장착한 반지가 모두 시냅스 반지인 경우, 명중 시 적 몬스터의 번개 저항을 무시함",
+    "삿된 고유 아이템을 4개 이상 장착한 경우 모든 번개 스킬 젬 레벨 +2",
+    "지능 +30"
+   ]
+  },
+  "essenceextraction": {
+   "name": "에센스 추출",
+   "stats": [
+    "플라스크 충전량 25% 증가",
+    "아무 마나 플라스크나 효과를 받는 동안 마나 회복 속도 15% 증가"
+   ]
+  },
+  "essenceglutton": {
+   "name": "에센스 포식",
+   "stats": [
+    "6미터 내의 시신 하나당 자신 및 6미터 내의 동료들이 1초마다 에너지 보호막의 0.2%씩, 최대 2.0% 재생",
+    "6미터 내의 시신 하나당 자신 및 6미터 내의 동료들이 1초마다",
+    "마나를 5씩, 최대 50 재생",
+    "시신 소모 시 2초 동안 에너지 보호막의 8% 재생",
+    "시신 소모 시 2초 동안 마나의 4% 재생"
+   ]
+  },
+  "essenceinfusion": {
+   "name": "에센스 주입",
+   "stats": [
+    "에너지 보호막 재충전 시작 속도 15% 가속",
+    "에너지 보호막 재충전 속도 30% 증가"
+   ]
+  },
+  "essencesap": {
+   "name": "정수 진액",
+   "stats": [
+    "공격 피해의 0.5%를 마나로 흡수",
+    "흡수로 인한 초당 총 마나 회복량 최대치 50% 증가",
+    "마나 흡수로 인한 초당 총 회복량 100% 증가"
+   ]
+  },
+  "essencesurge": {
+   "name": "에센스 쇄도",
+   "stats": [
+    "에너지 보호막 최대치 +30",
+    "에너지 보호막 재충전 시작 속도 20% 가속"
+   ]
+  },
+  "eternalyouth": {
+   "name": "영원한 젊음",
+   "stats": [
+    "생명력 재생 속도 50% 감폭",
+    "흡수 시 초당 총 생명력 회복량 최대치 50% 감폭",
+    "에너지 보호막 재충전이 생명력에 대신 적용"
+   ]
+  },
+  "etherealfeast": {
+   "name": "천상의 연회",
+   "stats": [
+    "주문 피해의 1%를 에너지 보호막으로 흡수",
+    "흡수로 인한 초당 총 에너지 보호막 회복량 최대치 40% 증가"
+   ]
+  },
+  "exceptionalperformance": {
+   "name": "특출난 솜씨",
+   "stats": [
+    "스킬 효과 지속시간 25% 증가"
+   ]
+  },
+  "excesssustenance": {
+   "name": "과잉 자양분",
+   "stats": [
+    "공격 명중 시 15%의 확률로 생명력 200 획득"
+   ]
+  },
+  "executioner": {
+   "name": "사형 집행자",
+   "stats": [
+    "낮은 생명력 상태의 적 적중 시 피해 60% 증가",
+    "최근 4초 이내 적을 처치한 경우 효과 범위 15% 증가"
+   ]
+  },
+  "expeditiousmunitions": {
+   "name": "효율적인 탄약",
+   "stats": [
+    "덫 발동 효과 범위 50% 증가",
+    "덫 투척 속도 12% 증가"
+   ]
+  },
+  "experiencedherbalist": {
+   "name": "숙련된 약초학자",
+   "stats": [
+    "팅크 1개 추가로 활성화 가능"
+   ]
+  },
+  "experthunter": {
+   "name": "사냥 전문가",
+   "stats": [
+    "플레이어의 징표 효과 20% 증가"
+   ]
+  },
+  "expertise": {
+   "name": "전문 지식",
+   "stats": [
+    "민첩 +30"
+   ]
+  },
+  "explosiveelements": {
+   "name": "폭발 원소",
+   "stats": [
+    "지뢰 피해가 10%의 원소 저항 관통"
+   ]
+  },
+  "explosiveimpact": {
+   "name": "폭발적인 충격",
+   "stats": [
+    "화염 피해 30% 증가",
+    "효과 범위 12% 증가"
+   ]
+  },
+  "explosiverunes": {
+   "name": "폭발 룬",
+   "stats": [
+    "낙인 치명타 피해 배율 +30%",
+    "낙인 부착 범위 30% 증가"
+   ]
+  },
+  "faithandsteel": {
+   "name": "신뢰와 강철",
+   "stats": [
+    "방어도 15% 증가",
+    "에너지 보호막 최대치 10% 증가",
+    "모든 원소 저항 +8%"
+   ]
+  },
+  "fangsoffrost": {
+   "name": "서리의 송곳니",
+   "stats": [
+    "무기로 주는 피해가 8%의 냉기 저항 관통",
+    "공격 스킬의 냉기 피해 30% 증가"
+   ]
+  },
+  "fangsoftheviper": {
+   "name": "독사의 송곳니",
+   "stats": [
+    "카오스 피해 20% 증가",
+    "이동 속도 5% 증가",
+    "민첩 +20",
+    "물리 피해 20% 증가"
+   ]
+  },
+  "farewelltoflesh": {
+   "name": "육체와의 작별",
+   "stats": [
+    "전령 스킬이 점유하는 최대 마나 1%당 해당 스킬의 버프 효과 2% 증폭",
+    "전령 스킬이 점유한 최대 생명력 1%당 해당 전령 스킬 및 전령 스킬의 소환수가 주는 피해 1% 증폭"
+   ]
+  },
+  "farrulswill": {
+   "name": "페룰의 의지",
+   "stats": []
+  },
+  "farshot": {
+   "name": "장거리 사격",
+   "stats": [
+    "투사체 이동 거리가 멀어질수록 명중 및 상태 이상으로",
+    "주는 피해가 최대 30% 증폭",
+    "투사체 연발 사격이 확산되지 않음"
+   ]
+  },
+  "farsight": {
+   "name": "멀리 보는 자",
+   "stats": [
+    "활 사용 시 피해 24% 증가",
+    "활 사용 시 공격 속도 6% 증가",
+    "활 사용 시 정확도 16% 증가",
+    "활 스킬의 지속 피해 24% 증가"
+   ]
+  },
+  "fatalblade": {
+   "name": "치명적인 검",
+   "stats": [
+    "검 사용 시 치명타 확률 50% 증가",
+    "검 사용 시 치명타 피해 배율 +25%"
+   ]
+  },
+  "fataltoxins": {
+   "name": "치명적인 독소",
+   "stats": [
+    "독 지속 피해 배율 +10%",
+    "카오스 저항 +10%",
+    "중독 피해 30% 증가"
+   ]
+  },
+  "fearsomeforce": {
+   "name": "무시무시한 힘",
+   "stats": [
+    "소환수의 치명타 확률 60% 증가",
+    "소환수의 치명타 피해 배율 +20%"
+   ]
+  },
+  "felineswiftness": {
+   "name": "고양이의 재빠름",
+   "stats": [
+    "쌍수 장착 시 공격 피해 막기 확률 +10%",
+    "쌍수 장착 시 이동 속도 8% 증가"
+   ]
+  },
+  "felleroffoes": {
+   "name": "적병 벌목자",
+   "stats": [
+    "도끼 공격으로 주는 적중 및 상태 이상 피해 30% 증가",
+    "도끼 사용 시 치명타 피해 배율 +40%",
+    "도끼 정확도 +200 증가"
+   ]
+  },
+  "fending": {
+   "name": "밀쳐내기",
+   "stats": [
+    "명중 시 15%의 확률로 적을 밀어냄",
+    "밀어내기 거리 25% 증가"
+   ]
+  },
+  "fervour": {
+   "name": "열정",
+   "stats": [
+    "격분 충전 최대치 +1"
+   ]
+  },
+  "fieldmedicine": {
+   "name": "야전 의술",
+   "stats": [
+    "플라스크로 회복하는 생명력 30% 증가",
+    "적 명중 시 생명력 플라스크 1 충전, 1초마다 최대 1번 충전"
+   ]
+  },
+  "finesse": {
+   "name": "수완",
+   "stats": [
+    "공격 속도 8% 증가",
+    "민첩 +20",
+    "정확도 15% 증가"
+   ]
+  },
+  "fingersoffrost": {
+   "name": "서리의 손가락",
+   "stats": [
+    "적의 동결이 해제될 때 해당 적이 냉각되어 동작 속도 30% 감소",
+    "30%의 확률로 냉각된 적을 동결시킴"
+   ]
+  },
+  "firewalker": {
+   "name": "화염 보행자",
+   "stats": [
+    "화염 피해 25% 증가",
+    "화염 스킬 사용 시 시전 속도 5% 증가",
+    "화염 저항 +15%"
+   ]
+  },
+  "firsttostrike2clasttofall": {
+   "name": "선수필승",
+   "stats": [
+    "생명력이 최대인 적 명중 시 영구적으로 적 위협",
+    "낮은 생명력 상태가 되면20초 동안 아드레날린 획득",
+    "아드레날린 획득 시 생명력의 25% 회복",
+    "아드레날린 획득 시 모든 상태 이상 및 화상 제거"
+   ]
+  },
+  "flashfreeze": {
+   "name": "순간 동결",
+   "stats": [
+    "냉기 피해 25% 증가",
+    "15%의 확률로 동결 유발",
+    "냉기 상태 이상 효과 30% 증가"
+   ]
+  },
+  "flaying": {
+   "name": "가죽 벗기기",
+   "stats": [
+    "단검 공격으로 주는 적중 및 상태 이상 피해 24% 증가",
+    "단검 사용 시 공격 속도 12% 증가",
+    "단검 사용 시 정확도 18% 증가"
+   ]
+  },
+  "fleetfoot": {
+   "name": "넓은 발",
+   "stats": [
+    "회피 30% 증가",
+    "이동 속도 5% 증가",
+    "이동 스킬의 재사용 대기시간 회복 속도 30% 증가"
+   ]
+  },
+  "flowofbattle": {
+   "name": "전투의 흐름",
+   "stats": [
+    "보복 스킬로 주는 피해 30% 증가",
+    "보복 스킬 명중 시 격노 5 획득"
+   ]
+  },
+  "focalpoint": {
+   "name": "집중점",
+   "stats": [
+    "플레이어의 징표 효과 75% 증가",
+    "플레이어의 징표가 찍힌 적 주변의 다른 적들에게 받는 피해 25% 감폭",
+    "징표가 찍힌 적이 사망하면 징표가 3미터 내의 다른 적에게 전이됨"
+   ]
+  },
+  "forbiddenpower": {
+   "name": "금지된 힘",
+   "stats": [
+    "권능 충전 하나당 효과 범위 6% 증가",
+    "권능 충전 하나당 피해 6% 증가",
+    "권능 충전 최대치 +1",
+    "총 200마나 소모 시 권능 충전 획득",
+    "occultist_power_charge_on_mana_spent"
+   ]
+  },
+  "forcefulskewering": {
+   "name": "강력한 꿰뚫기",
+   "stats": [
+    "공격 명중 시 15%의 확률로 적 꿰뚫음",
+    "꿰뚫기 효과 10% 증가"
+   ]
+  },
+  "forceofdarkness": {
+   "name": "어둠의 힘",
+   "stats": [
+    "피해가 카오스 저항 15% 관통"
+   ]
+  },
+  "forceshaper": {
+   "name": "힘의 형성자",
+   "stats": [
+    "물리 피해의 10%를 추가 카오스 피해로 획득",
+    "공격 및 시전 속도 4% 증가"
+   ]
+  },
+  "forcesofnature": {
+   "name": "자연의 힘",
+   "stats": [
+    "공격 피해가 적 원소 저항의 10% 관통"
+   ]
+  },
+  "foresight": {
+   "name": "선견지명",
+   "stats": [
+    "에너지 보호막 최대치 +20",
+    "에너지 보호막 최대치 14% 증가",
+    "에너지 보호막 재충전 속도 10% 증가"
+   ]
+  },
+  "forethought": {
+   "name": "원려",
+   "stats": [
+    "최대 마나 30% 증가",
+    "스킬의 마나 소모 10% 증가"
+   ]
+  },
+  "fortitude": {
+   "name": "강건함",
+   "stats": [
+    "6미터 내의 동료들이 플레이어와 동일한 방어 상승을 보유한 것으로 간주",
+    "방어 상승 최대"
+   ]
+  },
+  "foulpact": {
+   "name": "추악한 맹약",
+   "stats": [
+    "플레이어가 진정시킨 적이 받는 피해 20% 증가",
+    "고난의 영향을 받는 소환수가 맹공 획득",
+    "속죄의 징표로 생성되는 환영이 처치당할 시 50%의 확률로 바알 영혼 제공",
+    "속죄의 징표로 생성되는 환영이 부여하는 플라스크 충전량 50% 증가"
+   ]
+  },
+  "freedomofmovement": {
+   "name": "이동의 자유",
+   "stats": [
+    "차원 능력 상태에서 회피 40% 증가",
+    "차원 능력 상태에서 이동 속도 10% 증가",
+    "민첩 +20"
+   ]
+  },
+  "frenetic": {
+   "name": "광란",
+   "stats": [
+    "격분 충전 최대치 +1"
+   ]
+  },
+  "frigidwake": {
+   "name": "차디찬 각성",
+   "stats": [
+    "냉각될 수 없음",
+    "동결될 수 없음",
+    "냉기 피해 15% 증폭",
+    "4초마다, 50%의 확률로 0.4초 동안 6미터 내의 동결되지 않은 적 동결",
+    "주변의 냉각된 적이 주는 명중 시 피해 10% 감소"
+   ]
+  },
+  "fromtheshadows": {
+   "name": "어둠 속에서",
+   "stats": [
+    "단검 사용 시 공격 속도 12% 증가",
+    "도피 효과 40% 증가"
+   ]
+  },
+  "frostwalker": {
+   "name": "서리 보행자",
+   "stats": [
+    "냉기 피해 25% 증가",
+    "냉기 스킬 시전 속도 5% 증가",
+    "냉기 저항 +15%"
+   ]
+  },
+  "furybolts": {
+   "name": "광분의 화살",
+   "stats": [
+    "투사체 속도 20% 증가",
+    "투사체 피해 20% 증가",
+    "힘 +20"
+   ]
+  },
+  "fusillade": {
+   "name": "일제 사격",
+   "stats": [
+    "마법봉 사용 시 공격 속도 15% 증가",
+    "마법봉 사용 시 정확도 30% 증가"
+   ]
+  },
+  "galvanichammer": {
+   "name": "충격의 망치",
+   "stats": [
+    "철퇴나 셉터 사용 시 정확도 10% 증가",
+    "철퇴나 셉터 사용 시 원소 피해 30% 증가",
+    "무기로 주는 피해가 5%의 원소 저항 관통"
+   ]
+  },
+  "gatheringwinds": {
+   "name": "몰려드는 바람",
+   "stats": [
+    "스킬 사용 시 강풍의 힘 1개 획득",
+    "강풍의 힘 하나당 플레이어에게 적용되는 순풍 효과 10% 증가",
+    "자신 및 주변 동료들이 순풍 획득"
+   ]
+  },
+  "gazeofthelich": {
+   "name": "리치의 응시",
+   "stats": []
+  },
+  "ghostdance": {
+   "name": "혼의 춤",
+   "stats": [
+    "에너지 보호막 회복량은 회피를 넘어갈 수 없음",
+    "2초마다 유령 연막을 1개 획득, 최대 3개",
+    "피격 시 유령 연막을 1개 잃고 회피의 3%와 동일한 에너지 보호막 회복"
+   ]
+  },
+  "ghostreaver": {
+   "name": "혼 강탈자",
+   "stats": [
+    "생명력 대신 에너지 보호막을 흡수",
+    "흡수 시 1초당 총 에너지 보호막 회복량 최대치가 2배로 증가",
+    "에너지 보호막 재충전 불가"
+   ]
+  },
+  "glacialcage": {
+   "name": "빙하 창살",
+   "stats": [
+    "적이 플레이어에 의해 냉각된 시간 1초당 받는 피해가 영구적으로 1% 증가, 최대 10%"
+   ]
+  },
+  "gladiatorsperseverance": {
+   "name": "검투사의 인내",
+   "stats": [
+    "생명력이 최대일 때 공격 속도 10% 증가",
+    "물리 공격 피해의 1%를 생명력으로 흡수",
+    "흡수하는 동안 공격 피해 40% 증가"
+   ]
+  },
+  "glancingblows": {
+   "name": "비껴내기",
+   "stats": [
+    "공격 피해 막기 확률 2배",
+    "주문 피해 막기 확률 2배",
+    "피격을 막아낼 시 65%의 피해를 받음"
+   ]
+  },
+  "gloryofcommand": {
+   "name": "지휘의 영광",
+   "stats": [
+    "6미터 내에 동료가 있는 경우 정확도 40% 증가",
+    "6미터 내에 동료가 있는 경우 공격 효과 범위 15% 증가"
+   ]
+  },
+  "goldenglory": {
+   "name": "황금의 영광",
+   "stats": [
+    "시야 반경 증가 및 감소 수치의 50%를 용병에게 적용되는",
+    "연결 스킬 버프의 효과에도 적용"
+   ]
+  },
+  "golemcommander": {
+   "name": "골렘을 부리는 자",
+   "stats": [
+    "골렘이 제공하는 버프 효과 40% 증가",
+    "골렘 최대치 +1"
+   ]
+  },
+  "golemsblood": {
+   "name": "골렘의 피",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "1초마다 생명력의 1.6% 재생"
+   ]
+  },
+  "goliath": {
+   "name": "골리앗",
+   "stats": [
+    "50%의 확률로 기절 지속시간 2배"
+   ]
+  },
+  "goredancer": {
+   "name": "선혈 춤꾼",
+   "stats": [
+    "생명력 흡수의 30%가 즉시 적용"
+   ]
+  },
+  "gracefulassault": {
+   "name": "우아한 공격",
+   "stats": [
+    "플레이어에게 적용되는 맹공 효과 30% 증가",
+    "처치 시 10%의 확률로 4초 동안 맹공 획득",
+    "맹공 상태일 때 방어도 및 회피 30% 증가"
+   ]
+  },
+  "gratuitousviolence": {
+   "name": "불필요한 폭력",
+   "stats": [
+    "출혈 중인 적을 처치하면 적이 폭발하여",
+    "최대 생명력의 20%를 물리 피해로 줌"
+   ]
+  },
+  "graveintentions": {
+   "name": "무덤의 목적",
+   "stats": [
+    "소환수의 카오스 저항 +27%",
+    "소환수가 최대 생명력의 20%를 추가 에너지 보호막 최대치로 획득"
+   ]
+  },
+  "gravepact": {
+   "name": "엄숙한 계약",
+   "stats": [
+    "카오스 저항 +7%",
+    "소환수가 8%의 확률로 2배의 피해를 줌"
+   ]
+  },
+  "growthanddecay": {
+   "name": "성장과 부패",
+   "stats": [
+    "지속 피해 배율 +12%",
+    "1초마다 생명력의 1% 재생"
+   ]
+  },
+  "hardenedscars": {
+   "name": "굳어진 흉터",
+   "stats": [
+    "플라스크로 회복하는 생명력 15% 증가",
+    "아무 생명력 플라스크나 효과를 받는 동안 받는 지속 피해 25% 감폭"
+   ]
+  },
+  "hardknocks": {
+   "name": "고난",
+   "stats": [
+    "지능 +30"
+   ]
+  },
+  "harmonyofpurpose": {
+   "name": "의지력의 조화",
+   "stats": [
+    "10초마다 무작위 성소 버프 1개 획득"
+   ]
+  },
+  "harpooner": {
+   "name": "작살꾼",
+   "stats": [
+    "양손 무기로 적 명중 시 20%의 확률로 적 꿰뚫음",
+    "꿰뚫리지 않은 적에게 양손 무기로 유발하는 꿰뚫기의 효과 30% 증가",
+    "꿰뚫기 지속시간 50% 증가"
+   ]
+  },
+  "harrier": {
+   "name": "해리어",
+   "stats": [
+    "공격 속도 8% 증가",
+    "시전 속도 6% 증가",
+    "이동 속도 5% 증가"
+   ]
+  },
+  "harshlessons": {
+   "name": "혹독한 교훈",
+   "stats": [
+    "주문 스킬의 지속 피해 배율 +12%",
+    "플레이어에게 적용되는 상태 이상 지속시간 20% 감소"
+   ]
+  },
+  "harvesteroffoes": {
+   "name": "적병 수확자",
+   "stats": [
+    "도끼 사용 시 물리 피해 30% 증가",
+    "도끼 공격으로 주는 상태 이상 피해 30% 증가",
+    "꿰뚫기 효과 12% 증가"
+   ]
+  },
+  "hastydemise": {
+   "name": "성급한 최후",
+   "stats": [
+    "주문 스킬의 지속 피해 30% 증가",
+    "시전 속도 8% 증가",
+    "스킬 효과 지속시간 10% 감소"
+   ]
+  },
+  "hatchetmaster": {
+   "name": "손도끼의 대가",
+   "stats": [
+    "도끼 공격으로 주는 적중 및 상태 이상 피해 24% 증가",
+    "도끼 사용 시 공격 속도 10% 증가",
+    "처치 시 20%의 확률로 4초 동안 맹공 획득"
+   ]
+  },
+  "headsman": {
+   "name": "참수자",
+   "stats": [
+    "플레이어의 스킬로 생명력이 20% 이하인 적 처치",
+    "희귀 또는 고유 적 처치 시 20초 동안 공격 속도 10% 증가",
+    "적 처치 시 20초 동안 이동 속도 10% 증가"
+   ]
+  },
+  "heartandsoul": {
+   "name": "심장과 영혼",
+   "stats": [
+    "최대 생명력 8% 증가",
+    "최대 마나 12% 증가"
+   ]
+  },
+  "heartofdarkness": {
+   "name": "어둠의 심장",
+   "stats": [
+    "카오스 피해 27% 증가",
+    "피해가 카오스 저항 7% 관통"
+   ]
+  },
+  "heartofdestruction": {
+   "name": "파괴의 심장",
+   "stats": [
+    "고유 적 명중 시 수렴 획득, 8초마다 최대 1번 획득",
+    "수렴이 없을 때 효과 범위 60% 증가"
+   ]
+  },
+  "heartofflame": {
+   "name": "화염의 심장",
+   "stats": [
+    "화염 피해 30% 증가",
+    "피해가 화염 저항 6% 관통"
+   ]
+  },
+  "heartofice": {
+   "name": "얼음의 심장",
+   "stats": [
+    "냉기 피해 30% 증가",
+    "피해가 냉기 저항 6% 관통"
+   ]
+  },
+  "heartofoak": {
+   "name": "오크의 심장",
+   "stats": [
+    "최대 생명력 8% 증가",
+    "20%의 확률로 기절 긴급회피",
+    "지난 10초 이내에 생명력 플라스크를 사용한 경우 1초마다 생명력의 2% 재생"
+   ]
+  },
+  "heartofthewarrior": {
+   "name": "전사의 심장",
+   "stats": [
+    "생명력 최대치 +20",
+    "최대 생명력 10% 증가",
+    "힘 +10"
+   ]
+  },
+  "heartofthunder": {
+   "name": "천둥의 심장",
+   "stats": [
+    "번개 피해 30% 증가",
+    "피해가 번개 저항 6% 관통"
+   ]
+  },
+  "heartseeker": {
+   "name": "심장 노리기",
+   "stats": [
+    "치명타 피해 배율 +30%"
+   ]
+  },
+  "heartstopper": {
+   "name": "심정지",
+   "stats": [
+    "10초마다:",
+    "5초 동안 명중으로 받는 피해 50% 감폭",
+    "5초 동안 받는 지속 피해 75% 감폭",
+    "trickster damage over time taken +% final [-50]",
+    "trickster hit damage taken +% final [-75]"
+   ]
+  },
+  "hearty": {
+   "name": "원기 왕성",
+   "stats": [
+    "생명력 재생 속도 15% 증가",
+    "1초마다 생명력의 1.8% 재생"
+   ]
+  },
+  "heavydraw": {
+   "name": "묵직한 당기기",
+   "stats": [
+    "활 사용 시 물리 피해 30% 증가",
+    "활 사용 시 적에게 적용되는 기절 지속시간 50% 증가",
+    "활 스킬의 지속 피해 30% 증가"
+   ]
+  },
+  "hematophagy": {
+   "name": "식혈",
+   "stats": [
+    "흡수로 인한 초당 총 생명력 회복량 최대치 40% 증가",
+    "생명력 흡수로 인한 초당 총 회복량 100% 증가"
+   ]
+  },
+  "herbalism": {
+   "name": "약초학",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "플라스크 회복 속도 30% 증가"
+   ]
+  },
+  "hexmaster": {
+   "name": "사술의 대가",
+   "stats": [
+    "사술이 무한한 지속시간 보유",
+    "플레이어의 저주 효과 20% 감폭"
+   ]
+  },
+  "highexplosives": {
+   "name": "고성능 폭약",
+   "stats": [
+    "덫 사용 시 치명타 확률 60% 증가",
+    "덫 사용 시 치명타 피해 배율 +20%",
+    "자신의 덫이 적에 의해 발동되면 15%의 확률로 권능 충전 획득"
+   ]
+  },
+  "highvoltage": {
+   "name": "고전압",
+   "stats": [
+    "감전된 적에 대한 치명타 확률 100% 증가"
+   ]
+  },
+  "hinekora2cdeathsfury": {
+   "name": "죽음의 광분, 히네코라",
+   "stats": [
+    "플레이어 또는 플레이어의 토템이 처치한 적이 10%의 확률로 폭발하여, 해당 적의 최대 생명력의 250%를 화염 피해로 줌"
+   ]
+  },
+  "hiredkiller": {
+   "name": "청부살인자",
+   "stats": [
+    "최대 생명력 7% 증가",
+    "처치 시 생명력의 2% 회복"
+   ]
+  },
+  "holloweffigy": {
+   "name": "텅 빈 제웅",
+   "stats": [
+    "시신 없이도 공물 스킬 사용 가능"
+   ]
+  },
+  "holydominion": {
+   "name": "신성한 지배력",
+   "stats": [
+    "모든 원소 저항 +12%",
+    "원소 피해 24% 증가",
+    "10%의 확률로 동결, 감전 및 점화 유발"
+   ]
+  },
+  "holyfire": {
+   "name": "신성한 불꽃",
+   "stats": [
+    "지속 화염 피해 배율 +12%",
+    "화염 저항 +24%"
+   ]
+  },
+  "howlofthewolf": {
+   "name": "늑대의 포효",
+   "stats": [
+    "함성이 시신을 흔들어 추가 아이템을 떨어뜨리려 시도",
+    "플레이어가 함성을 사용하면 상자가 열림"
+   ]
+  },
+  "huntersgambit": {
+   "name": "사냥꾼의 책략",
+   "stats": [
+    "지속 카오스 피해 배율 +10%",
+    "스킬 효과 지속시간 10% 증가",
+    "활 스킬의 지속 피해 25% 증가"
+   ]
+  },
+  "huntleader": {
+   "name": "사냥 우두머리",
+   "stats": [
+    "치명타 명중 시 20레벨 영체 호랑이 소환 발동",
+    "20레벨 영체 호랑이 소환 부여"
+   ]
+  },
+  "illuminateddevotion": {
+   "name": "빛나는 헌신",
+   "stats": [
+    "비전 쇄도 상태에서 자신에게 적용되는 비-피해 상태 이상 효과 50% 감소",
+    "비전 쇄도 상태에서 효과 범위 30% 증가",
+    "비전 쇄도 상태일 때 주문 피해의 0.5%를 생명력으로 흡수"
+   ]
+  },
+  "imbalancedguard": {
+   "name": "불안정한 방어",
+   "stats": [
+    "100% 확률로 200%의 방어도로 방어",
+    "모든 피해 유형에 대한 피해 감소의 최대치는 50%"
+   ]
+  },
+  "impact": {
+   "name": "충격",
+   "stats": [
+    "근접 타격 범위 +0.4미터",
+    "최근 4초 이내 처치한 적 하나당 효과 범위 5% 증가, 최대 50%",
+    "적이 가까울수록 주는 근접 피해가 최대 15% 증폭",
+    "정확도 50% 증가"
+   ]
+  },
+  "incorporeal": {
+   "name": "무형",
+   "stats": [
+    "플레이어에게 적용된 도피의 효과가 50% 느리게 감소",
+    "플레이어에게 적용된 도피가 20% 효과일 때 제거됨"
+   ]
+  },
+  "indiscriminaterevenge": {
+   "name": "무차별적인 복수",
+   "stats": [
+    "보복 스킬의 효과 범위 30% 증가"
+   ]
+  },
+  "indomitablearmy": {
+   "name": "불굴의 군단",
+   "stats": [
+    "소환수가 받는 물리 피해 15% 추가 감소",
+    "소환수의 모든 원소 저항 +15%",
+    "출혈 상태에서 이동해도 소환수가 추가 피해를 받지 않음"
+   ]
+  },
+  "inevitablejudgement": {
+   "name": "피할 수 없는 심판",
+   "stats": [
+    "치명타 시 적 몬스터의 원소 저항을 무시",
+    "비-치명타 시 적의 원소 저항 10% 관통"
+   ]
+  },
+  "inexorable": {
+   "name": "준엄",
+   "stats": [
+    "피격 시 25%의 확률로 인내 충전 획득",
+    "정지 상태일 때 방어도 50% 증가"
+   ]
+  },
+  "influence": {
+   "name": "영향력",
+   "stats": [
+    "자신의 비-저주 오라 스킬 효과 14% 증가"
+   ]
+  },
+  "infused": {
+   "name": "주입",
+   "stats": [
+    "권능 충전 최대치 +1"
+   ]
+  },
+  "infusedflesh": {
+   "name": "주입된 육체",
+   "stats": [
+    "받은 피해의 18%를 생명력으로 회생"
+   ]
+  },
+  "infusedtoxins": {
+   "name": "주입된 독소",
+   "stats": [
+    "모든 명중 피해가 중독 유발 가능"
+   ]
+  },
+  "insightfulness": {
+   "name": "통찰력",
+   "stats": [
+    "에너지 보호막 최대치 10% 증가",
+    "최대 마나 16% 증가",
+    "마나 소모 효율 16% 증가"
+   ]
+  },
+  "inspirational": {
+   "name": "격려",
+   "stats": [
+    "자신의 비-저주 오라 스킬 효과 30% 증가",
+    "설치한 깃발의 영향을 받는 플레이어 및 동료들이 해당 깃발에 소모된 기백 하나당 1초마다 생명력의 0.1% 재생",
+    "깃발의 범위를 떠날 시 해당 깃발에 소모한 기백의 30% 회복"
+   ]
+  },
+  "inspiringbond": {
+   "name": "기운 나는 유대",
+   "stats": [
+    "대상에 연결 시 10%의 확률로 에너지 보호막 재충전 시작",
+    "최근 4초 이내 대상과 연결한 경우 연결 스킬의 버프 효과 20% 증가"
+   ]
+  },
+  "instability": {
+   "name": "불안정",
+   "stats": [
+    "권능 충전 최대치 +1"
+   ]
+  },
+  "instinct": {
+   "name": "본능",
+   "stats": [
+    "주문 피해 억제 확률 +12%",
+    "주문 피해 억제 시 에너지 보호막 50 회복"
+   ]
+  },
+  "instrumentsofjustice": {
+   "name": "정의의 도구",
+   "stats": [
+    "주문의 기본 주문 치명타 확률이 주 무기의 치명타 확률과 동일"
+   ]
+  },
+  "instrumentsofvirtue": {
+   "name": "미덕의 도구",
+   "stats": [
+    "지난 8초 동안 시전한 비-즉시 시전 주문 하나당 공격 피해 10% 증폭, 최대 30% 증폭",
+    "전투마법사"
+   ]
+  },
+  "instrumentsofzeal": {
+   "name": "열의의 도구",
+   "stats": [
+    "최대 광신 충전에 도달 시 5초 동안 광신주의 획득",
+    "지난 1초 동안 공격한 경우 1초마다 광신 충전 1 획득",
+    "최대 광신 충전에 도달 시 모든 광신 충전을 상실",
+    "광신 충전 최대치 +3"
+   ]
+  },
+  "intensifyingsuffusion": {
+   "name": "격화하는 확산",
+   "stats": [
+    "빈 플라스크 슬롯 1개당 자신에게 적용된 팅크의 효과 75% 증가"
+   ]
+  },
+  "intuition": {
+   "name": "직관",
+   "stats": [
+    "주문 피해 억제 확률 +8%",
+    "회피 15% 증가",
+    "최대 생명력 5% 증가"
+   ]
+  },
+  "inveterate": {
+   "name": "고질적",
+   "stats": [
+    "억제된 주문 피해의 +3% 방지",
+    "주문 피해 억제 확률 +15%"
+   ]
+  },
+  "invigoratingblaze": {
+   "name": "활기를 주는 불길",
+   "stats": [
+    "공격 스킬의 지속 화염 피해 배율 +10%",
+    "점화 상태가 아닌 적 점화 시 생명력의 2% 회복"
+   ]
+  },
+  "irongrip": {
+   "name": "강철 손아귀",
+   "stats": [
+    "근접 피해뿐만 아니라 투사체 공격 피해에도 힘의 피해 보너스 적용"
+   ]
+  },
+  "ironreflexes": {
+   "name": "철의 반사신경",
+   "stats": [
+    "모든 회피를 방어도로 전환, 민첩으로 회피에 적용되는 보너스 없음"
+   ]
+  },
+  "ironwill": {
+   "name": "강철의 의지",
+   "stats": [
+    "모든 주문 피해에 힘의 피해 보너스 적용"
+   ]
+  },
+  "ironwood": {
+   "name": "철목",
+   "stats": [
+    "토템 생명력 40% 증가",
+    "토템이 받는 물리 피해 40% 추가 감소"
+   ]
+  },
+  "itwasntme": {
+   "name": "내가 아니었어!",
+   "stats": [
+    "local display grants level x misty reflection [0]",
+    "unique insanity do weird things [1]",
+    "20레벨 연무의 투영 부여"
+   ]
+  },
+  "jaggedtechnique": {
+   "name": "들쭉날쭉한 기술",
+   "stats": [
+    "플레이어가 유발하는 출혈이 가중됨"
+   ]
+  },
+  "jaggedwounds": {
+   "name": "삐죽삐죽한 상처",
+   "stats": [
+    "최근 4초 이내 치명타 명중 시 흡수로 인한",
+    "초당 총 생명력 회복량 최대치 20% 증가"
+   ]
+  },
+  "jewellerydisplay": {
+   "name": "장신구 전시물",
+   "stats": []
+  },
+  "juggernaut": {
+   "name": "거신상",
+   "stats": [
+    "방어도 24% 증가",
+    "최대 생명력 8% 증가"
+   ]
+  },
+  "kineticimpacts": {
+   "name": "역학 충격",
+   "stats": [
+    "양손 근접 무기 사용 시 물리 피해 25% 증가",
+    "양손 근접 무기 공격으로 주는 상태 이상 피해 25% 증가",
+    "10%의 확률로 기절 지속시간 2배",
+    "5%의 확률로 2배의 피해를 줌"
+   ]
+  },
+  "kingofthehill": {
+   "name": "언덕의 왕",
+   "stats": [
+    "활 사용 시 치명타 확률 100% 증가"
+   ]
+  },
+  "knowledgebarrier": {
+   "name": "지식의 방벽",
+   "stats": [
+    "할당한 숙련의 각기 다른 유형 하나당 에너지 보호막 재충전 속도 6% 증가"
+   ]
+  },
+  "lastingtempest": {
+   "name": "지속되는 폭풍",
+   "stats": [
+    "적에게 적용되는 원소 상태 이상 지속시간 50% 증가"
+   ]
+  },
+  "lastrites": {
+   "name": "최후의 의식",
+   "stats": [
+    "처치한 저주받은 적이 파괴됨",
+    "플레이어가 저주를 건 적의 생명력 재생 속도 50% 감소",
+    "플레이어가 저주한 적이 에너지 보호막 재충전 불가"
+   ]
+  },
+  "lavalash": {
+   "name": "용암 채찍",
+   "stats": [
+    "무기로 주는 피해가 8%의 화염 저항 관통",
+    "공격 스킬의 화염 피해 30% 증가"
+   ]
+  },
+  "leaderofthepack": {
+   "name": "무리의 우두머리",
+   "stats": [
+    "오라 스킬의 효과 범위 20% 증가",
+    "스킬의 점유 효율 12% 증가"
+   ]
+  },
+  "leadership": {
+   "name": "통솔력",
+   "stats": [
+    "오라 스킬의 효과 범위 30% 증가",
+    "자신의 비-저주 오라 스킬 효과 6% 증가"
+   ]
+  },
+  "legacyoftheking": {
+   "name": "왕의 유산",
+   "stats": []
+  },
+  "legacyofthewilds": {
+   "name": "아생의 유산",
+   "stats": [
+    "마나 연소 중첩을 10회 이상 보유한 동안 팅크 효과 40% 증가"
+   ]
+  },
+  "legendaryarms": {
+   "name": "전설적인 병기",
+   "stats": [
+    "플레이어의 용병이 고유 무기, 방패 및 화살통 장착 가능",
+    "용병과 그 소환수가 장착한 고유 아이템 하나당",
+    "주는 피해 8% 증폭"
+   ]
+  },
+  "lessonoftheseasons": {
+   "name": "계절의 가르침",
+   "stats": [
+    "껍질 하나당 주문 피격 시 받는 각 피해 유형의 피해 -40",
+    "최대치에 미달하는 껍질 하나당 억제된 주문 피해의 +3% 방지",
+    "적 주문 피해에 피격 시 껍질 1개 상실"
+   ]
+  },
+  "lethality": {
+   "name": "치명상",
+   "stats": [
+    "투사체 공격 스킬의 치명타 확률 50% 증가",
+    "투사체 공격 스킬의 치명타 피해 배율 +30%"
+   ]
+  },
+  "letheshade": {
+   "name": "레테의 그늘",
+   "stats": [
+    "지난 1초 내에 지속 피해를 받기 시작한 경우 지속 피해 50% 감폭",
+    "플레이어에게 적용된 상태 이상의 지속시간 100% 증폭"
+   ]
+  },
+  "liegeoftheprimordial": {
+   "name": "태고의 군주",
+   "stats": [
+    "소환된 골렘이 원소 피해에 면역",
+    "소환된 골렘이 죽으면 4초 뒤 재소환됨",
+    "골렘 최대치 +2"
+   ]
+  },
+  "liferaker": {
+   "name": "생명 채집자",
+   "stats": [
+    "클로 사용 시 공격 속도 12% 증가",
+    "클로 사용 시 정확도 12% 증가",
+    "공격으로 명중한 적 하나당 생명력 6 획득"
+   ]
+  },
+  "lighteater": {
+   "name": "빛 포식자",
+   "stats": [
+    "주문 피해의 0.8%를 에너지 보호막으로 흡수",
+    "흡수로 인한 초당 총 에너지 보호막 회복량 최대치 30% 증가",
+    "에너지 보호막이 최대일 때 피해 24% 증가"
+   ]
+  },
+  "lightningwalker": {
+   "name": "번개 보행자",
+   "stats": [
+    "번개 피해 25% 증가",
+    "번개 스킬 시전 속도 5% 증가",
+    "번개 저항 +15%"
+   ]
+  },
+  "lightofdivinity": {
+   "name": "신성의 빛",
+   "stats": [
+    "주문 피해 20% 증가",
+    "주문 치명타 확률 30% 증가",
+    "힘 및 지능 +10",
+    "시야 반경 10% 증가"
+   ]
+  },
+  "likeclockwork": {
+   "name": "태엽장치처럼",
+   "stats": [
+    "재사용 대기시간 회복 속도 50% 증가",
+    "주변의 적의 재사용 대기시간 회복 속도 10% 감소"
+   ]
+  },
+  "longshot": {
+   "name": "원거리 사격",
+   "stats": [
+    "투사체 속도 30% 증가",
+    "투사체 이동 거리가 멀어질수록",
+    "대상 명중 시 피해 최대 60% 증가"
+   ]
+  },
+  "lordofthedead": {
+   "name": "망자의 군주",
+   "stats": [
+    "소환수의 최대 생명력 15% 증가",
+    "소환수가 주는 피해 20% 증가",
+    "소환 가능한 좀비 최대치 +1",
+    "해골 최대치 +1"
+   ]
+  },
+  "loyalbodyguard": {
+   "name": "충직한 호위병",
+   "stats": [
+    "용병의 생명력이 플레이어의 생명력보다 높을 경우, 피격 시 받는 피해의 20%를",
+    "자신보다 용병이 먼저 받음",
+    "용병의 생명력이 플레이어의 생명력보다 낮을 경우, 용병이 받는 피해의 40%를 생명력으로 회생"
+   ]
+  },
+  "lustforcarnage": {
+   "name": "학살의 욕망",
+   "stats": [
+    "공격 속도 12% 증가",
+    "물리 공격 피해의 1.5%를 생명력으로 흡수"
+   ]
+  },
+  "magebane": {
+   "name": "마법사 파멸",
+   "stats": [
+    "민첩이 회피에 직접적인 보너스를 주지 않음",
+    "민첩 15당 주문 피해 억제 확률 +1%"
+   ]
+  },
+  "magmaticstrikes": {
+   "name": "마그마성 일격",
+   "stats": [
+    "10초마다 물리 피해의 30%를",
+    "4초 동안 추가 화염 피해로 획득"
+   ]
+  },
+  "maliciousintent": {
+   "name": "불순한 의도(Malicious Intent)",
+   "stats": [
+    "모든 저주 스킬 젬 레벨 +2"
+   ]
+  },
+  "manaflows": {
+   "name": "마나의 흐름",
+   "stats": [
+    "최대 마나 16% 증가",
+    "마나 재생 속도 30% 증가",
+    "지능 +20"
+   ]
+  },
+  "marauderascendancy": {
+   "name": "머라우더 전직",
+   "stats": []
+  },
+  "markedfordeath": {
+   "name": "죽음의 징표",
+   "stats": [
+    "징표가 찍힌 적에게 마무리 타격 가능"
+   ]
+  },
+  "marktheprey": {
+   "name": "사냥감 징표 찍기",
+   "stats": [
+    "징표가 찍힌 적의 정확도 10% 감소",
+    "징표가 찍힌 적이 받는 피해 10% 증가"
+   ]
+  },
+  "marshalofdivinity": {
+   "name": "신성의 총사령관",
+   "stats": [
+    "근접 명중 시 거룩한 불길 유발",
+    "적에게 유발할 수 있는 거룩한 불길 +1",
+    "최근 4초 이내 아군의 명중으로 제거된 거룩한 불길 하나당 물리 피해의 10%를 추가 번개 피해로 획득, 최대 80%"
+   ]
+  },
+  "martialexperience": {
+   "name": "무도 경험",
+   "stats": [
+    "양손 근접 무기 사용 시 물리 피해 30% 증가",
+    "양손 근접 무기 공격으로 주는 상태 이상 피해 30% 증가",
+    "생명력 흡수로 인한 초당 총 회복량 100% 증가",
+    "명중 시 30%의 확률로 적 몬스터 물리 피해 감소를 무시"
+   ]
+  },
+  "martialweapondisplay": {
+   "name": "무도 무기 전시물",
+   "stats": []
+  },
+  "masteralchemist": {
+   "name": "일류 연금술사",
+   "stats": [
+    "플라스크 사용 시 상태 이상 제거",
+    "50%의 확률로 자신의 플라스크 충전을 소모하지 않음"
+   ]
+  },
+  "masterdistiller": {
+   "name": "증류의 달인",
+   "stats": [
+    "다음 각 유형의 플라스크 충전을 3 소모하여 사용하는 비-집중 유지 스킬에",
+    "보너스 부여, 부여하는 보너스:",
+    "비스무트 플라스크 충전을 소모한 경우, 30%의 원소 저항 관통",
+    "자수정 플라스크 충전을 소모한 경우, 물리 피해의 47%가 추가 카오스 피해",
+    "다이아몬드 플라스크 충전을 소모한 경우, 치명타 피해 배율 +100%"
+   ]
+  },
+  "masterfletcher": {
+   "name": "화살 숙련가",
+   "stats": [
+    "활 공격 시 화살 1개 추가 발사"
+   ]
+  },
+  "masterfulform": {
+   "name": "명인의 형태",
+   "stats": [
+    "인내 충전 최대치가 격분 충전 최대치와 동일",
+    "격분 충전 최대치 +1"
+   ]
+  },
+  "mastermindofdiscord": {
+   "name": "불화의 지휘자",
+   "stats": [
+    "플레이어가 유발하는 노출이 영향을 받는 저항에 -25% 추가",
+    "최근 4초 이내 노출을 유발했을 경우 1초마다 마나의 1% 재생"
+   ]
+  },
+  "masterofblades": {
+   "name": "칼날의 대가",
+   "stats": [
+    "명중 시 30%의 확률로 적 몬스터 물리 피해 감소를 무시",
+    "힘 +30",
+    "물리 피해 30% 증가"
+   ]
+  },
+  "masterofmetal": {
+   "name": "금속의 대가",
+   "stats": [
+    "플레이어가 부여한 꿰뚫기 효과가 1회 적중할 동안 유지됨",
+    "최근 4초 이내 적을 꿰뚫은 경우, 자신 및",
+    "6미터 내의 동료들의 방어도 +1000",
+    "자신 및 주변 동료들이 적을 꿰뚫을 때마다",
+    "물리 피해 6~12 추가"
+   ]
+  },
+  "masterofthearena": {
+   "name": "투기장의 대가",
+   "stats": [
+    "1초마다 생명력의 1% 재생",
+    "근접 물리 피해 10% 증가",
+    "근접 타격 범위 +0.3미터",
+    "힘 +20"
+   ]
+  },
+  "masterofwounds": {
+   "name": "상처의 대가",
+   "stats": [
+    "출혈 지속 피해 배율 +12%",
+    "플레이어에게 적용되는 출혈 지속시간 30% 감소"
+   ]
+  },
+  "mastersapper": {
+   "name": "일급 공병",
+   "stats": [
+    "덫 피해 30% 증가",
+    "한 번에 덫 최대 2개 추가 설치",
+    "자신의 덫이 적에 의해 발동되면 15%의 확률로 격분 충전 획득"
+   ]
+  },
+  "mastersurgeon": {
+   "name": "일류 의사",
+   "stats": [
+    "점유되지 않은 생명력이 찼을 때 생명력 플라스크 효과가 제거되지 않음",
+    "생명력 플라스크 효과가 예약되지 않음",
+    "플라스크 생명력 회복 속도 50% 감폭"
+   ]
+  },
+  "mastertoxicist": {
+   "name": "일류 독술사",
+   "stats": [
+    "아무 플라스크나 효과를 받는 동안 중독된 적 처치 시 1.5미터 내의 적들에게 중독 유발",
+    "아무 플라스크나 효과를 받는 동안 플레이어가 유발한 중독으로 주는 피해 20%의 확률로 100% 증폭"
+   ]
+  },
+  "measuredfury": {
+   "name": "계획적인 광분",
+   "stats": [
+    "함성 사용 시 전력 공격 1회 추가"
+   ]
+  },
+  "measuredretaliation": {
+   "name": "계획적인 보복",
+   "stats": [
+    "보복 스킬의 사용 가능 시간 2초 추가",
+    "50%의 확률로 보복 스킬이 사용 후에도 사용 가능 상태로 남고 재사용 횟수를 소모하지 않음"
+   ]
+  },
+  "melding": {
+   "name": "융합",
+   "stats": [
+    "최대 생명력 7% 증가",
+    "최대 생명력의 3%를 추가 에너지 보호막 최대치로 획득"
+   ]
+  },
+  "mentalrapidity": {
+   "name": "신속한 정신",
+   "stats": [
+    "시전 속도 10% 증가",
+    "마나 재생 속도 30% 증가"
+   ]
+  },
+  "mercilessskewering": {
+   "name": "무자비한 꿰뚫기",
+   "stats": [
+    "공격 명중 시 15%의 확률로 적 꿰뚫음",
+    "꿰뚫기 효과 12% 증가"
+   ]
+  },
+  "might": {
+   "name": "완력",
+   "stats": [
+    "힘 +30"
+   ]
+  },
+  "mightofthebear": {
+   "name": "곰의 완력",
+   "stats": [
+    "캐릭터 크기 5% 증가",
+    "소지품창 슬롯이 20개인 야생림 등짐 가방 장착"
+   ]
+  },
+  "minddrinker": {
+   "name": "정신 흡수자",
+   "stats": [
+    "최대 마나 20% 증가",
+    "처치 시 마나의 2% 회복"
+   ]
+  },
+  "mindlessaggression": {
+   "name": "이유 없는 공격성",
+   "stats": [
+    "소환수의 최대 생명력 20% 증폭",
+    "소환수가 주는 피해 10% 증폭"
+   ]
+  },
+  "mindovermatter": {
+   "name": "물질보다 정신",
+   "stats": [
+    "피해의 40%를 생명력 대신 마나로 소모"
+   ]
+  },
+  "minioninstability": {
+   "name": "소환수 불안정",
+   "stats": [
+    "소환수가 낮은 생명력 상태가 될 경우 폭발하여, 주변 적에게 생명력의 33%를 화염 피해로 줌"
+   ]
+  },
+  "mistressofsacrifice": {
+   "name": "희생의 여주인",
+   "stats": [
+    "공물 스킬이 자신에게도 영향을 미침",
+    "자신의 공물이 자신에게 미치는 효과 50% 감소",
+    "스킬 효과 지속시간 40% 증가"
+   ]
+  },
+  "mistwalker": {
+   "name": "안개 속을 걷는 자",
+   "stats": [
+    "치명타 명중 시 도피 획득",
+    "도피 효과 100% 증가",
+    "도피 중 치명타로 받는 추가 피해 없음"
+   ]
+  },
+  "mixedmunitions": {
+   "name": "혼합 탄약",
+   "stats": [
+    "최근 4초 이내에 폭발시킨 지뢰 하나당 덫 투척 재사용 대기시간 회복 속도 5% 증가"
+   ]
+  },
+  "morethanskill": {
+   "name": "기술 외의 소질",
+   "stats": [
+    "최근 4초 이내에 막아낸 경우 공격 또는 주문 피해 막기 확률에 행운 적용"
+   ]
+  },
+  "mothersteachings": {
+   "name": "어머니의 가르침",
+   "stats": [
+    "local display grants skill barkskin [0]",
+    "20레벨 껍질피부 부여"
+   ]
+  },
+  "multishot": {
+   "name": "다중 사격",
+   "stats": [
+    "공격 시 투사체 1개 추가 발사"
+   ]
+  },
+  "mycelialgrowth": {
+   "name": "균사체 종양",
+   "stats": []
+  },
+  "mysticalinfusion": {
+   "name": "신비한 주입",
+   "stats": [
+    "주문 치명타 확률이 두 갈래로 나뉨",
+    "주문 치명타 확률 30% 감폭"
+   ]
+  },
+  "mysticbulwark": {
+   "name": "신비한 방벽",
+   "stats": [
+    "6%의 확률로 주문 피해를 막아냄",
+    "주문 피해 막기 확률 1%당 마나 재생 속도 1% 증가"
+   ]
+  },
+  "mysticism": {
+   "name": "신비주의",
+   "stats": [
+    "쌍수 장착 시 주문 피해 20% 증가",
+    "쌍수 장착 시 시전 속도 6% 증가",
+    "최근 4초 이내 이동 스킬을 사용한 경우 마나 재생 40% 증가"
+   ]
+  },
+  "mystictalents": {
+   "name": "신비한 재능",
+   "stats": [
+    "주문 피해 16% 증가",
+    "에너지 보호막 최대치 +14",
+    "마나 재생 속도 25% 증가",
+    "지능 +30"
+   ]
+  },
+  "naturalauthority": {
+   "name": "타고난 권위",
+   "stats": [
+    "함성으로 도발한 적이 받는 피해 8% 증가",
+    "함성 버프 효과 20% 증가"
+   ]
+  },
+  "naturalremedies": {
+   "name": "자연 요법",
+   "stats": [
+    "플라스크 효과 지속시간 20% 증가",
+    "자신에게 적용된 플라스크의 효과 10% 증가",
+    "플라스크 사용 시 힘줄 절단 및 이동 방해 제거"
+   ]
+  },
+  "naturesadrenaline": {
+   "name": "자연의 아드레날린",
+   "stats": [
+    "3초마다 플라스크 3 충전"
+   ]
+  },
+  "naturesboon": {
+   "name": "자연의 은혜",
+   "stats": [
+    "자신에게 적용된 마법 특수 플라스크의 효과 30% 증가"
+   ]
+  },
+  "naturesconcoction": {
+   "name": "자연의 혼합물",
+   "stats": [
+    "근접 무기로 적 명중 시 활성화된 팅크에 인접한",
+    "플라스크 2 충전, 1초마다 최대 1번 충전"
+   ]
+  },
+  "naturesreprisal": {
+   "name": "자연의 앙갚음",
+   "stats": [
+    "명중 시 25%의 확률로 2초 동안 위축 유발",
+    "위축 효과 50% 증가"
+   ]
+  },
+  "necromanticaegis": {
+   "name": "강령술의 비호",
+   "stats": [
+    "장착한 방패가 주는 모든 보너스를 자신 대신 소환수에게 적용"
+   ]
+  },
+  "ngamahu2cflamesadvance": {
+   "name": "불꽃의 진보, 나마후",
+   "stats": [
+    "비-고유 주얼이 넓은 반경 내 기타 피해 유형의 증가 및 감소를 변형하여 화염 피해에 적용",
+    "비-고유 주얼이 넓은 반경 내 소형 및 주요 패시브 스킬이 추가로 힘 +4 부여하게 함"
+   ]
+  },
+  "nightstalker": {
+   "name": "밤추적자",
+   "stats": [
+    "단검 사용 시 치명타 피해 배율 +30%",
+    "공격 피해의 0.6%를 생명력으로 흡수",
+    "공격 피해의 0.6%를 마나로 흡수"
+   ]
+  },
+  "nimbleness": {
+   "name": "기민함",
+   "stats": [
+    "시전 속도 8% 증가",
+    "주문 피해의 치명타 피해 배율 +15%"
+   ]
+  },
+  "nobleblood": {
+   "name": "귀족 피",
+   "stats": [
+    "용병을 영구적으로 고용할 수 있음",
+    "permanenet mercenary damage +% final and minion damage +% final from luminary [-30]"
+   ]
+  },
+  "noforgiveness": {
+   "name": "무관용",
+   "stats": [
+    "20%의 확률로 보복 스킬이 사용 후에도 사용 가능 상태로 남고 재사용 횟수를 소모하지 않음"
+   ]
+  },
+  "nomadicteachings": {
+   "name": "유목민의 가르침",
+   "stats": [
+    "모든 원소 저항 최대치 +2%"
+   ]
+  },
+  "oathoffealty": {
+   "name": "충성 서약",
+   "stats": [
+    "연결 스킬의 비용 50% 감폭",
+    "연결 스킬의 부착 지속시간 무한",
+    "연결된 용병이 죽어도 연결의 소유자는 죽지 않음"
+   ]
+  },
+  "oathofspring": {
+   "name": "봄의 서약",
+   "stats": [
+    "감전의 최대 효과가 받는 피해 2% 증가",
+    "적마다 감전 최대 50개 적용 가능"
+   ]
+  },
+  "oathofsummer": {
+   "name": "여름의 서약",
+   "stats": [
+    "적 점화 시 점화가 아닌 그을림 적용",
+    "적마다 추가 그을림 1개 적용 가능"
+   ]
+  },
+  "oathofthemaji": {
+   "name": "마지의 서약",
+   "stats": [
+    "장착한 갑옷에 장착된 젬이 없을 경우 해당 갑옷으로 얻는 방어력이 2배로 증가",
+    "장착된 젬이 없는 투구를 장착 중인 경우 모든 원소 저항 +50%",
+    "장착된 젬이 없는 장갑 장착 시 생명력 최대치 25% 증가",
+    "장착된 젬이 없는 장화 장착 시 이동 속도 30% 증가"
+   ]
+  },
+  "oathofwinter": {
+   "name": "겨울의 서약",
+   "stats": [
+    "자신이 동결시킨 적이 최소 2초 동안 동결됨",
+    "동결 지속시간이 부족하여 명중으로 동결시키지 못할 시 동결이 아닌 흰서리 유발"
+   ]
+  },
+  "occupyingforce": {
+   "name": "점령군",
+   "stats": [
+    "신기루 궁수가 플레이어에게 붙어 있지 않음",
+    "소환 가능한 신기루 궁수 최대치 +2명",
+    "플레이어의 신기루 궁수 근처에 있을 때 신기루 궁수 소환 불가"
+   ]
+  },
+  "onestepahead": {
+   "name": "한발 앞서",
+   "stats": [
+    "플레이어의 동작 속도가 기본 수치의 105% 이상",
+    "주변 적 몬스터의 동작 속도가 기본 수치의 최대 90%"
+   ]
+  },
+  "onewithnature": {
+   "name": "자연과의 일체화",
+   "stats": [
+    "모든 원소 저항 +8%",
+    "공격 치명타 확률 24% 증가",
+    "공격 스킬의 원소 피해 24% 증가"
+   ]
+  },
+  "onewiththeriver": {
+   "name": "강에 선 사람",
+   "stats": [
+    "지팡이 사용 시 원소 피해 30% 증가",
+    "무기로 주는 피해가 5%의 원소 저항 관통"
+   ]
+  },
+  "opportunistic": {
+   "name": "기회주의",
+   "stats": [
+    "6미터 내에 희귀 또는 고유 적이 하나 이하인 경우 피해 25% 증폭",
+    "피해가 반사되지 않음",
+    "6미터 내에 희귀 또는 고유 적이 둘 이상인 경우 플레이어가 받는 피해 35% 감폭"
+   ]
+  },
+  "overcharge": {
+   "name": "과충전",
+   "stats": [
+    "권능 충전 최대치 +1"
+   ]
+  },
+  "overcharged": {
+   "name": "과충전",
+   "stats": [
+    "처치 시 8%의 확률로 권능, 격분 또는 인내 충전 획득"
+   ]
+  },
+  "overprepared": {
+   "name": "준비 과다",
+   "stats": [
+    "덫 투척 스킬의 재사용 횟수 +1회"
+   ]
+  },
+  "overwhelm": {
+   "name": "압도",
+   "stats": [
+    "무기 공격의 기본 치명타 확률 8%",
+    "6미터 내의 적 하나당 치명타 피해 배율 +10%, 최대 +100%",
+    "주변의 적의 치명타 피해 배율 -30%"
+   ]
+  },
+  "painattunement": {
+   "name": "고통의 조율",
+   "stats": [
+    "낮은 생명력 상태일 때 주문 피해 30% 증폭"
+   ]
+  },
+  "painforger": {
+   "name": "거짓 고통",
+   "stats": [
+    "철퇴나 셉터 사용 시 치명타 확률 60% 증가",
+    "철퇴나 셉터 사용 시 적 기절 한계치 10% 감소",
+    "근접 피해로 기절시킬 시 10%의 확률로 권능 충전 획득"
+   ]
+  },
+  "pathoftheduelist": {
+   "name": "듀얼리스트의 길",
+   "stats": [
+    "듀얼리스트의 시작 포인트에서 패시브 스킬 할당 가능",
+    "패시브 스킬 포인트 2포인트 제공"
+   ]
+  },
+  "pathofthehunter": {
+   "name": "사냥꾼의 길",
+   "stats": [
+    "정확도 +100",
+    "투사체 피해 16% 증가",
+    "민첩 +20"
+   ]
+  },
+  "pathofthemarauder": {
+   "name": "머라우더의 길",
+   "stats": [
+    "머라우더의 시작 포인트에서 패시브 스킬 할당 가능",
+    "패시브 스킬 포인트 2포인트 제공"
+   ]
+  },
+  "pathoftheranger": {
+   "name": "레인저의 길",
+   "stats": [
+    "레인저의 시작 포인트에서 패시브 스킬 할당 가능",
+    "패시브 스킬 포인트 2포인트 제공"
+   ]
+  },
+  "pathofthesavant": {
+   "name": "학자의 길",
+   "stats": [
+    "주문 피해 16% 증가",
+    "마나 최대치 +20",
+    "지능 +20"
+   ]
+  },
+  "pathoftheshadow": {
+   "name": "쉐도우의 길",
+   "stats": [
+    "쉐도우의 시작 포인트에서 패시브 스킬 할당 가능",
+    "패시브 스킬 포인트 2포인트 제공"
+   ]
+  },
+  "pathofthetemplar": {
+   "name": "템플러의 길",
+   "stats": [
+    "템플러의 시작 포인트에서 패시브 스킬 할당 가능",
+    "패시브 스킬 포인트 2포인트 제공"
+   ]
+  },
+  "pathofthewarrior": {
+   "name": "전사의 길",
+   "stats": [
+    "방어도 +50",
+    "힘 +20",
+    "물리 피해 16% 증가"
+   ]
+  },
+  "pathofthewitch": {
+   "name": "위치의 길",
+   "stats": [
+    "위치의 시작 포인트에서 패시브 스킬 할당 가능",
+    "패시브 스킬 포인트 2포인트 제공"
+   ]
+  },
+  "perfectagony": {
+   "name": "완벽한 고통",
+   "stats": [
+    "상태 이상 지속 피해 배율이 치명타 피해 배율과 동일",
+    "치명타가 추가 피해를 주지 않음",
+    "비-치명타가 상태 이상 유발 불가"
+   ]
+  },
+  "perfectcrime": {
+   "name": "완전 범죄",
+   "stats": [
+    "할당 시 20레벨 발동 장치 소환 발동",
+    "발동형 주문 피해 30% 감폭",
+    "20레벨 발동 장치 소환 부여"
+   ]
+  },
+  "perfectedformula": {
+   "name": "완벽해진 조합법",
+   "stats": [
+    "팅크가 15%의 확률로 마나 연소를 유발하지 않음",
+    "자신에게 적용된 팅크의 마나 연소 속도 10% 감소"
+   ]
+  },
+  "perfectionist": {
+   "name": "완벽주의자",
+   "stats": [
+    "이동 속도 5% 증가",
+    "30%의 확률로 기절 긴급회피",
+    "기절 및 막기 회복 50% 증가"
+   ]
+  },
+  "persistence": {
+   "name": "지속성",
+   "stats": [
+    "피격 시 받는 물리 피해 -10",
+    "1레벨당 피격 시 받는 물리 피해 -1"
+   ]
+  },
+  "physique": {
+   "name": "체격",
+   "stats": [
+    "힘 +30"
+   ]
+  },
+  "piercingshots": {
+   "name": "관통 사격",
+   "stats": [
+    "투사체가 대상 2개를 추가 관통"
+   ]
+  },
+  "piouspath": {
+   "name": "경건한 길",
+   "stats": [
+    "플레이어가 생성하는 신성화 지대가 생명력 재생 시 자신과 아군의 에너지 보호막도 회복",
+    "플레이어가 생성하는 신성화 지대의 효과가 4초 더 유지됨"
+   ]
+  },
+  "plaguebringer": {
+   "name": "역병운반자",
+   "stats": [
+    "최근 4초 이내 시신을 소모한 경우 자신과 소환수의 효과 범위 30% 증가",
+    "6미터 내에 시신이 하나 이상일 경우 자신 및 6미터 내의 동료들이 주는 피해 10% 증폭",
+    "6미터 내에 시신이 하나 이상일 경우 6미터 내의 적이 주는 피해 10% 감소"
+   ]
+  },
+  "pointblank": {
+   "name": "근접 사격",
+   "stats": [
+    "투사체 공격 적중 시, 투사체 발사 지점에서 대상이 가까울수록 받는 피해 최대 30% 증폭, 멀어질수록 받는 피해 감폭"
+   ]
+  },
+  "poisonousfangs": {
+   "name": "독성 송곳니",
+   "stats": [
+    "독 지속 피해 배율 +10%",
+    "클로 공격으로 주는 상태 이상 피해 25% 증가",
+    "클로 사용 시 공격 속도 6% 증가"
+   ]
+  },
+  "polymath": {
+   "name": "대학자",
+   "stats": [
+    "할당한 숙련의 각기 다른 유형 하나당 피해 2% 증폭",
+    "할당한 숙련의 각기 다른 유형 하나당 처치 시 생명력의 1% 회복",
+    "할당한 숙련의 각기 다른 유형 하나당 처치 시 에너지 보호막의 1% 회복",
+    "할당한 숙련의 각기 다른 유형 하나당 처치 시 마나의 1% 회복"
+   ]
+  },
+  "potencyofwill": {
+   "name": "의지의 잠재력",
+   "stats": [
+    "스킬 효과 지속시간 25% 증가"
+   ]
+  },
+  "potentconnections": {
+   "name": "위력적인 연결",
+   "stats": [
+    "연결된 대상이 4개 이상인 동안 방어 25% 증가",
+    "연결된 대상이 2개 이상인 동안 이동 속도 10% 증가"
+   ]
+  },
+  "powerfulbond": {
+   "name": "강력한 유대",
+   "stats": [
+    "연결 지속시간의 50%가 만료된 연결의 버프 효과 20% 증가",
+    "연결된 대상 대신 플레이어가 저주받음"
+   ]
+  },
+  "practicalapplication": {
+   "name": "현실적 응용",
+   "stats": [
+    "모든 원소 저항 +10%",
+    "시전하는 동안 25%의 확률로 기절 무시",
+    "힘 및 민첩 +20"
+   ]
+  },
+  "practisedreapplication": {
+   "name": "숙련된 재적용",
+   "stats": [
+    "팅크 재사용 대기시간 회복 속도 25% 증가"
+   ]
+  },
+  "precisetechnique": {
+   "name": "정확한 기술",
+   "stats": [
+    "정확도가 최대 생명력보다 높으면 공격 피해 40% 증폭",
+    "치명타가 발동하지 않음"
+   ]
+  },
+  "precision": {
+   "name": "정밀함",
+   "stats": [
+    "공격 및 시전 속도 6% 증가",
+    "민첩 +20",
+    "정확도 10% 증가"
+   ]
+  },
+  "precursorsrelease": {
+   "name": "선도자의 석방",
+   "stats": [
+    "장착된 젬이 없는 장화 장착 시 동작 속도가 기본 수치 밑으로 내려가지 않음",
+    "장착된 젬이 없는 투구를 장착 중인 경우 기절할 수 없음",
+    "장착된 젬이 없는 갑옷을 장착 중인 경우 원소 상태 이상이 플레이어에게 유발될 수 없음",
+    "장착된 젬이 없는 장갑 장착 시 치명타로 받는 추가 피해 없음"
+   ]
+  },
+  "preparedresponse": {
+   "name": "준비된 응답",
+   "stats": [
+    "보복 스킬 사용 시 25%의 확률로 다른 보복 스킬 사용 가능",
+    "보복 스킬의 사용 가능 시간 30% 증가"
+   ]
+  },
+  "presage": {
+   "name": "흉조",
+   "stats": [
+    "전령 스킬의 효과 범위 25% 증가",
+    "전령 스킬의 마나 점유 효율 20% 증가"
+   ]
+  },
+  "primalmanifestation": {
+   "name": "원시의 현신",
+   "stats": [
+    "토템 피해 30% 증가",
+    "토템 생명력 30% 증가",
+    "토템 지속시간 50% 증가"
+   ]
+  },
+  "primalroar": {
+   "name": "원시 포효",
+   "stats": [
+    "소환수 하나당 공격 속도 4% 증가, 최대 80% 증가",
+    "최근 4초 이내 함성을 사용한 경우 소환수가 주는 피해 80% 증가"
+   ]
+  },
+  "primalspirit": {
+   "name": "원시 혼백",
+   "stats": [
+    "최대 마나 20% 증가",
+    "지난 10초 이내에 마나 플라스크를 사용한 경우 공격으로 명중하는 적 하나당 마나 4 획득",
+    "힘 및 지능 +20"
+   ]
+  },
+  "primevalforce": {
+   "name": "원시적인 힘",
+   "stats": [
+    "아무 플라스크나 효과를 받는 동안 원소 피해 25% 증가",
+    "공격 스킬의 원소 피해 25% 증가"
+   ]
+  },
+  "prismaticskin": {
+   "name": "분광 피부",
+   "stats": [
+    "모든 원소 저항 최대치 +2%"
+   ]
+  },
+  "prismweave": {
+   "name": "빛의 매듭",
+   "stats": [
+    "마법봉 사용 시 공격 속도 6% 증가",
+    "마법봉 사용 시 원소 피해 24% 증가",
+    "무기로 주는 피해가 5%의 원소 저항 관통"
+   ]
+  },
+  "prodigalperfection": {
+   "name": "사치스러운 마무리",
+   "stats": [
+    "최대 마나 20% 증가",
+    "최대 마나 100당 주문 피해 2% 증가, 최대 40%"
+   ]
+  },
+  "profanebloom": {
+   "name": "부정한 꽃",
+   "stats": [
+    "자신이나 소환수가 저주받은 적을 처치할 경우 50%의 확률로 적이 폭발하며 생명력 최대치의 1/4만큼을 카오스 피해로 줌"
+   ]
+  },
+  "profanechemistry": {
+   "name": "부정한 반응",
+   "stats": [
+    "최대 생명력 7% 증가",
+    "플라스크로 회복하는 생명력 30% 증가",
+    "3초마다 생명력 플라스크 1 충전"
+   ]
+  },
+  "proficiency": {
+   "name": "숙달",
+   "stats": [
+    "민첩 +30"
+   ]
+  },
+  "prolongedservitude": {
+   "name": "길어지는 복종",
+   "stats": [
+    "소환수가 낮은 생명력 상태일 때 주는 피해 20% 증폭",
+    "소환수를 처치할 수 없지만,생명력이 1로 감소한 후 6초가 지나면 사망함"
+   ]
+  },
+  "prowess": {
+   "name": "기량",
+   "stats": [
+    "힘 +30"
+   ]
+  },
+  "purityofflesh": {
+   "name": "육체의 정화",
+   "stats": [
+    "에너지 보호막 최대치 8% 증가",
+    "최대 생명력 10% 증가",
+    "카오스 저항 +8%"
+   ]
+  },
+  "pursuitoffaith": {
+   "name": "믿음의 추구",
+   "stats": [
+    "토템 지속시간 100% 증가",
+    "소환 가능한 토템 최대치 +1",
+    "토템 설치 속도 100% 증가"
+   ]
+  },
+  "pyromaniac": {
+   "name": "방화광",
+   "stats": [
+    "점화 및 감전에 면역",
+    "최근 4초 이내 폭발한 지뢰 하나당 1초마다 생명력의 2% 재생, 최대 10% 재생",
+    "최근 4초 이내 발동된 덫 하나당 1초마다 생명력의 2% 재생, 최대 10% 재생"
+   ]
+  },
+  "quickrecovery": {
+   "name": "빠른 회복",
+   "stats": [
+    "최대 생명력 7% 증가",
+    "마나 재생 속도 20% 증가",
+    "1초마다 생명력의 0.8% 재생"
+   ]
+  },
+  "quickstep": {
+   "name": "빠른 걸음",
+   "stats": [
+    "주문 피해 억제 확률 +10%",
+    "이동 속도 6% 증가"
+   ]
+  },
+  "radiantcrusade": {
+   "name": "찬란한 성전",
+   "stats": [
+    "피격 시 받는 피해의 20%를 플레이어보다 광휘의 파수꾼의 생명력에 먼저 적용",
+    "local display grants skill summon radiant sentinel [0]",
+    "20레벨 광휘의 파수꾼 소환 부여"
+   ]
+  },
+  "radiantfaith": {
+   "name": "찬란한 믿음",
+   "stats": [
+    "플레이어 및 6미터 내의 동료들에게 점유 마나의 25%와 동일한 방어도 적용",
+    "플레이어 및 6미터 내의 동료들에게 점유 마나의 10%와 동일한",
+    "에너지 보호막 최대치 적용"
+   ]
+  },
+  "rallyingicon": {
+   "name": "집결의 우상",
+   "stats": [
+    "깃발 스킬의 오라 효과 15% 증가",
+    "깃발의 영향을 받는 플레이어 및 동료들의 모든 원소 저항 +5%"
+   ]
+  },
+  "ramako2csunslight": {
+   "name": "태양의 빛, 라마코",
+   "stats": [
+    "플레이어가 정지 상태일 때",
+    "6미터 내 적 몬스터의 지속 피해에 대한 화염 저항 -20%",
+    "플레이어가 정지 상태일 때",
+    "6미터 내의 적 몬스터가 지속 피해에 대항하는 화염 저항 없음"
+   ]
+  },
+  "rampart": {
+   "name": "성벽",
+   "stats": [
+    "방어 상승 상태에서 방어도 및 회피 30% 증가",
+    "고유 적 명중 시 적용하는 방어 상승 100% 증가"
+   ]
+  },
+  "rangerascendancy": {
+   "name": "레인저 전직",
+   "stats": []
+  },
+  "ravenoushorde": {
+   "name": "굶주린 패거리",
+   "stats": [
+    "소환수의 이동 속도 30% 증가",
+    "소환수가 처치 시 30%의 확률로 소환수가 4초 동안 맹공 획득"
+   ]
+  },
+  "razorsedge": {
+   "name": "예리한 날",
+   "stats": [
+    "검 사용 시 물리 피해 35% 증가",
+    "검 공격으로 주는 상태 이상 피해 35% 증가",
+    "명중 시 35%의 확률로 적 몬스터 물리 피해 감소를 무시"
+   ]
+  },
+  "redemption": {
+   "name": "구원",
+   "stats": [
+    "소환수가 주는 피해 20% 증가",
+    "소환수의 공격 속도 10% 증가",
+    "소환수의 시전 속도 10% 증가"
+   ]
+  },
+  "reflexes": {
+   "name": "반사신경",
+   "stats": [
+    "주문 피해 억제 확률 +10%",
+    "회피 +100",
+    "회피 30% 증가"
+   ]
+  },
+  "relentless": {
+   "name": "집요",
+   "stats": [
+    "최근 4초 이내 적을 기절시킨 경우 1초마다 생명력의 1% 재생",
+    "물리 피해 25% 증가"
+   ]
+  },
+  "relentlesspursuit": {
+   "name": "집요한 추적",
+   "stats": [
+    "최근 4초 이내에 징표 주문을 시전한 경우 공격 속도 10% 증가",
+    "최근 4초 이내에 징표 주문을 시전한 경우 이동 속도 10% 증가"
+   ]
+  },
+  "renowneddeeds": {
+   "name": "유명한 위업",
+   "stats": [
+    "기백 최대치 +30"
+   ]
+  },
+  "replenishingremedies": {
+   "name": "회복 요법",
+   "stats": [
+    "플라스크 충전량 15% 증가",
+    "3초마다 생명력 플라스크 2 충전",
+    "3초마다 마나 플라스크 2 충전"
+   ]
+  },
+  "resolutetechnique": {
+   "name": "확고한 기술",
+   "stats": [
+    "플레이어가 무조건 명중",
+    "치명타가 발동하지 않음"
+   ]
+  },
+  "resourcefulness": {
+   "name": "지략",
+   "stats": [
+    "주문 피해 억제 확률 +8%",
+    "에너지 보호막 최대치 10% 증가",
+    "최대 생명력 5% 증가"
+   ]
+  },
+  "retaliation": {
+   "name": "보복",
+   "stats": [
+    "방패를 들고 있는 동안 공격 스킬로 주는 피해 20% 증가",
+    "방패를 들고 있는 동안 공격 속도 8% 증가",
+    "장착한 방패로 얻는 방어력 60% 증가"
+   ]
+  },
+  "retribution": {
+   "name": "응징",
+   "stats": [
+    "피해 15% 증가",
+    "소환수가 주는 피해 15% 증가",
+    "공격 및 시전 속도 5% 증가",
+    "힘 및 지능 +10"
+   ]
+  },
+  "revelry": {
+   "name": "환락",
+   "stats": [
+    "마나 최대치 +25",
+    "최대 마나 15% 증가",
+    "적에게 적용되는 플레이어의 비-저주 오라 스킬 효과 10% 증가"
+   ]
+  },
+  "revengeofthehunted": {
+   "name": "사냥감의 복수",
+   "stats": [
+    "회피 18% 증가",
+    "최대 생명력 10% 증가",
+    "생명력이 최대일 때 주문 피해 억제 확률 +10%"
+   ]
+  },
+  "ribcagecrusher": {
+   "name": "흉골 분쇄자",
+   "stats": [
+    "철퇴나 셉터 공격으로 주는 적중 및 상태 이상 피해 24% 증가",
+    "철퇴나 셉터 사용 시 공격 속도 6% 증가",
+    "최근 4초 이내 적을 기절시킨 경우 효과 범위 15% 증가"
+   ]
+  },
+  "ricochet": {
+   "name": "튕겨 쏘기",
+   "stats": [
+    "스킬 연쇄 +1회",
+    "투사체가 지형과 충돌 시 30%의 확률로 연쇄"
+   ]
+  },
+  "righteousarmy": {
+   "name": "정의의 군대",
+   "stats": [
+    "1초마다 생명력의 1% 재생",
+    "소환수가 주는 피해 20% 증가",
+    "소환수가 1초마다 생명력의 1% 재생"
+   ]
+  },
+  "righteousdecree": {
+   "name": "정의로운 법령",
+   "stats": [
+    "최대 마나 22% 증가",
+    "마나 소모 효율 12% 증가"
+   ]
+  },
+  "righteousfury": {
+   "name": "정의로운 광분",
+   "stats": [
+    "근접 처치 시 10%의 확률로 4초간 지속되는 신성화 지대 생성",
+    "근거리에서 명중 시 근접 피해 40% 증가"
+   ]
+  },
+  "righteousprovidence": {
+   "name": "정의로운 섭리",
+   "stats": [
+    "힘 또는 지능 중 더 낮은 능력치 포인트 하나당 치명타 확률 1% 증가",
+    "힘 및 지능 +50"
+   ]
+  },
+  "riteofruin": {
+   "name": "폐허의 의식",
+   "stats": [
+    "격노를 상실하지 않는 동안 격노 하나당 1초마다 생명력의 0.1% 상실",
+    "격노 효과 50% 증가"
+   ]
+  },
+  "ritualofawakening": {
+   "name": "각성의 의식",
+   "stats": [
+    "소환된 토템 하나당 피해 3% 증폭",
+    "소환된 토템 하나당 1초마다 마나의 0.5% 재생",
+    "자신 및 자신의 토템이 소환된 토템 하나당 1초마다 생명력의 1% 재생"
+   ]
+  },
+  "roaringchallenge": {
+   "name": "포효하는 도전",
+   "stats": [
+    "함성이 적용된 총 위세 25% 증가"
+   ]
+  },
+  "robust": {
+   "name": "왕성함",
+   "stats": [
+    "1초마다 생명력 10 재생",
+    "1초마다 생명력의 1.2% 재생"
+   ]
+  },
+  "roilingtempest": {
+   "name": "요동치는 폭풍",
+   "stats": [
+    "최대 번개 피해 25% 증폭",
+    "최소 번개 피해 50% 감폭",
+    "비-번개 피해를 줄 수 없음"
+   ]
+  },
+  "runebinder": {
+   "name": "룬 결속사",
+   "stats": [
+    "소환 가능한 토템 최대치 -1",
+    "적에게 낙인 1개 추가 부착 가능"
+   ]
+  },
+  "runesmith": {
+   "name": "룬 제작자",
+   "stats": [
+    "낙인 스킬 시전 속도 12% 증가",
+    "낙인이 부착된 적이 부착된 낙인 하나당 받는 피해 5% 증가"
+   ]
+  },
+  "runicboon": {
+   "name": "룬의 은혜",
+   "stats": []
+  },
+  "saboteur": {
+   "name": "사보추어",
+   "stats": [
+    "덫 피해 30% 증가",
+    "지뢰 피해 30% 증가",
+    "한 번에 덫 최대 2개 추가 설치",
+    "한 번에 원격 지뢰 최대 2개 추가 설치"
+   ]
+  },
+  "sacrifice": {
+   "name": "희생",
+   "stats": [
+    "소환수의 최대 생명력 20% 증가",
+    "1초마다 생명력의 1% 재생",
+    "소환수가 1초마다 생명력의 1% 재생"
+   ]
+  },
+  "safeguard": {
+   "name": "방비",
+   "stats": [
+    "주문 피해 막기 확률 최대치 +3%",
+    "주문 피해를 막아낼 시 에너지 보호막 50 회복",
+    "지팡이 혹은 방패를 들고 있는 동안 주문 피해 막기 확률 +10%"
+   ]
+  },
+  "saltandscale": {
+   "name": "소금과 비늘",
+   "stats": [
+    "1초마다 5미터 내의 적들에게 따개비 유발",
+    "buff impl stat [-5]"
+   ]
+  },
+  "sanctity": {
+   "name": "존엄성",
+   "stats": [
+    "방어도 20% 증가",
+    "에너지 보호막 최대치 10% 증가",
+    "1초마다 생명력의 1% 재생",
+    "힘 및 지능 +10"
+   ]
+  },
+  "sanctuary": {
+   "name": "성역",
+   "stats": [
+    "방패를 들고 있는 동안 공격 피해 막기 확률 +4%",
+    "방패를 들고 있는 동안 주문 피해 막기 확률 +4%",
+    "모든 원소 저항 최대치 +1%"
+   ]
+  },
+  "sanctuaryofthought": {
+   "name": "사고의 성역",
+   "stats": [
+    "최대 마나의 20%를 추가 에너지 보호막 최대치로 획득",
+    "점유하지 않은 마나 최대치 50당 효과 범위 1% 증가, 최대 100%",
+    "1초마다 마나의 1% 재생"
+   ]
+  },
+  "sanctumofthought": {
+   "name": "사상의 지성소",
+   "stats": [
+    "치명타로 받는 추가 피해 30% 감소",
+    "방어도 18% 증가",
+    "에너지 보호막 최대치 12% 증가"
+   ]
+  },
+  "sanguimancy": {
+   "name": "혈액술",
+   "stats": [
+    "스킬이 마나 대신 생명력 소모",
+    "스킬이 마나 대신 생명력 점유",
+    "모든 마나 제거",
+    "스킬의 생명력 점유 효율 50% 증가"
+   ]
+  },
+  "savageintensity": {
+   "name": "야만적인 격렬함",
+   "stats": [
+    "공격의 소모 효율 30% 증가",
+    "기본적으로 상실하는 격노를 20% 더 느리게 상실"
+   ]
+  },
+  "savagery": {
+   "name": "야만성",
+   "stats": [
+    "격분 충전 최대치 +1"
+   ]
+  },
+  "savageskewering": {
+   "name": "야만적인 꿰뚫기",
+   "stats": [
+    "꿰뚫기 효과 15% 증가"
+   ]
+  },
+  "savagewounds": {
+   "name": "야만적인 상처",
+   "stats": [
+    "플레이어가 유발한 출혈이 피해 15% 가속"
+   ]
+  },
+  "searingheat": {
+   "name": "이글거리는 열기",
+   "stats": [
+    "플레이어가 유발한 점화가 피해 15% 가속"
+   ]
+  },
+  "seasonedhunter": {
+   "name": "노련한 사냥꾼",
+   "stats": [
+    "팅크가 활성화되어 있는 동안 투사체 속도 50% 증가",
+    "원거리 무기에도 팅크 효과 적용"
+   ]
+  },
+  "seasonedswordplay": {
+   "name": "노련한 검술",
+   "stats": [
+    "태세 스킬의 마나 점유 효율 50% 증가"
+   ]
+  },
+  "seasonofice": {
+   "name": "얼음의 계절",
+   "stats": [
+    "지속 냉기 피해 배율 +12%",
+    "냉각 효과 20% 증가"
+   ]
+  },
+  "selectiveprecision": {
+   "name": "선별적인 정밀함",
+   "stats": [
+    "연발 사격 시 첫 번째와 마지막 사격이 자신에게 돌아오는 투사체 발사"
+   ]
+  },
+  "sentinel": {
+   "name": "파수꾼",
+   "stats": [
+    "회피 및 방어도 24% 증가",
+    "모든 원소 저항 +10%"
+   ]
+  },
+  "serpentinespellslinger": {
+   "name": "구불거리는 주문투척",
+   "stats": [
+    "플레이어가 중독을 유발한 적의 카오스 저항 -5%",
+    "주문 스킬의 독 지속 피해 배율 +12%"
+   ]
+  },
+  "serpentstance": {
+   "name": "독사의 자세",
+   "stats": [
+    "지팡이 장착 시 치명타 확률 40% 증가",
+    "지팡이 장착 시 치명타 피해 배율 +30%",
+    "최근 4초 이내 치명타 명중 시 공격 피해 막기 확률 +5%"
+   ]
+  },
+  "settlingash": {
+   "name": "내려앉는 재",
+   "stats": [
+    "지난 2초 이내에 움직이지 않은 경우 6미터 내의 적이 재로 뒤덮임",
+    "cover nearby enemies in ash if havent moved in past X seconds [2]"
+   ]
+  },
+  "shadowascendancy": {
+   "name": "쉐도우 전직",
+   "stats": []
+  },
+  "shadowedblood": {
+   "name": "그늘진 피",
+   "stats": [
+    "받은 물리 피해의 40%를 생명력으로 회생",
+    "피해를 주는 상태 이상의 영향을 받지 않음"
+   ]
+  },
+  "shamanisticfury": {
+   "name": "주술사의 광분",
+   "stats": [
+    "토템 피해 25% 증가",
+    "토템 설치 속도 25% 증가"
+   ]
+  },
+  "shamansdominion": {
+   "name": "주술사의 지배",
+   "stats": [
+    "토템 스킬 치명타 확률 50% 증가",
+    "토템 스킬 치명타 피해 배율 +20%"
+   ]
+  },
+  "shaper": {
+   "name": "쉐이퍼",
+   "stats": [
+    "마나 재생 속도 40% 증가",
+    "1초마다 생명력의 1% 재생"
+   ]
+  },
+  "shaperofflames": {
+   "name": "화염의 형성자",
+   "stats": [
+    "플레이어가 적중 시 항상 점화 유발",
+    "모든 피해가 점화 유발 가능",
+    "자신이 점화한 적이 주는 물리 피해의 40%를 화염 피해로 전환"
+   ]
+  },
+  "shaperofstorms": {
+   "name": "폭풍의 형성자",
+   "stats": [
+    "플레이어가 적중 시 항상 감전 유발",
+    "피격되어 감전된 적이 받는 피해가 항상 최소 25%만큼 증가",
+    "모든 피해가 감전 유발 가능"
+   ]
+  },
+  "shaperofwinter": {
+   "name": "겨울의 형성자",
+   "stats": [
+    "모든 적중 피해가 냉각 유발 가능",
+    "플레이어의 냉각이 동작 속도를 최대 40%까지 감소시킴",
+    "플레이어에게 피격되어 냉각된 적이 주는 피해가 냉각 효과의 반만큼 감폭"
+   ]
+  },
+  "shiningjustice": {
+   "name": "반짝이는 정의",
+   "stats": [
+    "자신이 생성한 신성화 지대의 효과 20% 증가",
+    "플레이어가 생성하는 신성화 지대가 플레이어 및 동료들의 정확도 30% 증가"
+   ]
+  },
+  "shrapnelspecialist": {
+   "name": "파편 전문가",
+   "stats": [
+    "투사체가 50%의 확률로 자신에게 돌아옴",
+    "투사체가 무작위 방향으로 발사됨"
+   ]
+  },
+  "signofpurpose": {
+   "name": "의지력의 징표",
+   "stats": [
+    "부착 지속시간의 75%가 경과하면 낙인의 활성화 빈도 100% 증폭",
+    "낙인 소환의 재사용 대기시간 회복 속도 100% 증가"
+   ]
+  },
+  "silentsteps": {
+   "name": "은밀한 발걸음",
+   "stats": [
+    "회피 20% 증가",
+    "실명 효과 40% 증가"
+   ]
+  },
+  "sinnersaint": {
+   "name": "죄 지은 성자",
+   "stats": [
+    "번개 피해의 67%를 카오스 피해로 전환",
+    "냉기 피해의 67%를 카오스 피해로 전환",
+    "화염 피해의 67%를 카오스 피해로 전환"
+   ]
+  },
+  "sione2csunsroar": {
+   "name": "태양의 포효 시온",
+   "stats": [
+    "함성 버프 효과 30% 증가",
+    "함성이 무한한 위세 보유"
+   ]
+  },
+  "sionesambition": {
+   "name": "시온의 야심",
+   "stats": [
+    "추가 적을 대상으로 지정하는 타격 스킬의 추가 대상 탐색 범위 40% 증가"
+   ]
+  },
+  "skitteringrunes": {
+   "name": "달리는 룬 문자",
+   "stats": [
+    "사술 스킬 효과 범위 50% 증가",
+    "저주 스킬의 마나 소모 효율 20% 증가",
+    "저주 오라 스킬의 마나 점유 효율 20% 증가"
+   ]
+  },
+  "skullcracking": {
+   "name": "해골 부수기",
+   "stats": [
+    "철퇴나 셉터 사용 시 물리 피해 36% 증가",
+    "철퇴나 셉터 공격으로 주는 상태 이상 피해 36% 증가",
+    "철퇴나 셉터 사용 시 적 기절 한계치 12% 감소"
+   ]
+  },
+  "slaughter": {
+   "name": "살육",
+   "stats": [
+    "도끼 사용 시 물리 피해 25% 증가",
+    "도끼 공격으로 주는 상태 이상 피해 25% 증가",
+    "도끼 사용 시 공격 속도 8% 증가",
+    "도끼로 명중 시 격노 1 획득"
+   ]
+  },
+  "sleightofhand": {
+   "name": "교묘한 손재주",
+   "stats": [
+    "한손 무기 공격으로 주는 상태 이상 피해 30% 증가",
+    "한손 무기 공격 속도 8% 증가",
+    "한손 무기 피해 20% 증가"
+   ]
+  },
+  "smashingstrikes": {
+   "name": "박살내는 일격",
+   "stats": [
+    "지팡이 공격으로 주는 적중 및 상태 이상 피해 30% 증가",
+    "지팡이 사용 시 치명타 확률 30% 증가",
+    "근접 치명타 시 10%의 확률로 인내 충전 획득"
+   ]
+  },
+  "snowforged": {
+   "name": "눈의 대장간",
+   "stats": [
+    "화염 피해 25% 증가",
+    "냉기 피해 25% 증가",
+    "플레이어에 의해 점화 또는 냉각된 적의 원소 저항 -5%"
+   ]
+  },
+  "solipsism": {
+   "name": "유아론",
+   "stats": [
+    "지능이 에너지 보호막에 직접적인 보너스를 주지 않음",
+    "플레이어에게 적용되는 원소 상태 이상의 지속시간이 지능 15당 2% 감소"
+   ]
+  },
+  "souldrinker": {
+   "name": "영혼 흡수자",
+   "stats": [
+    "피해의 2%를 에너지 보호막으로 흡수",
+    "에너지 보호막이 찼을 때 에너지 보호막 흡수 효과가 제거되지 않음"
+   ]
+  },
+  "soulofsteel": {
+   "name": "강철의 영혼",
+   "stats": [
+    "방어도 +150",
+    "방어도 30% 증가",
+    "모든 원소 저항 최대치 +1%"
+   ]
+  },
+  "soulsiphon": {
+   "name": "영혼 착취",
+   "stats": [
+    "마나 최대치 +20",
+    "최대 마나 18% 증가",
+    "처치한 적 하나당 마나 10 획득"
+   ]
+  },
+  "soulsplitting": {
+   "name": "영혼 분할",
+   "stats": [
+    "local display grants skill voodoo doll [0]",
+    "20레벨 어둠의 제웅 소환 부여"
+   ]
+  },
+  "soulthief": {
+   "name": "영혼 도둑",
+   "stats": [
+    "회피 15% 증가",
+    "에너지 보호막 최대치 10% 증가",
+    "처치 시 에너지 보호막의 2% 회복"
+   ]
+  },
+  "sovereignty": {
+   "name": "주권",
+   "stats": [
+    "스킬의 마나 점유 효율 12% 증가",
+    "자신의 비-저주 오라 스킬 효과 10% 증가"
+   ]
+  },
+  "spellbreaker": {
+   "name": "주문분쇄자",
+   "stats": [
+    "에너지 보호막이 최대일 때 억제된 주문 피해의 +20% 방지",
+    "주문 피해 억제 시 50%의 확률로 에너지 보호막 재충전 시작"
+   ]
+  },
+  "spikedbulwark": {
+   "name": "가시 방벽",
+   "stats": [
+    "방어도 28% 증가",
+    "근접 공격자에게 50의 물리 피해 반사"
+   ]
+  },
+  "spinecruncher": {
+   "name": "척추 접기",
+   "stats": [
+    "철퇴나 셉터 사용 시 물리 피해 30% 증가",
+    "철퇴나 셉터 공격으로 주는 상태 이상 피해 30% 증가",
+    "생명력이 최대인 적에게 주는 기절 지속시간 100% 증가"
+   ]
+  },
+  "spiritofwar": {
+   "name": "전쟁의 정신",
+   "stats": [
+    "물리 공격 피해의 0.5%를 마나로 흡수",
+    "공격의 소모 효율 25% 증가"
+   ]
+  },
+  "spiritualaid": {
+   "name": "혼백의 도움",
+   "stats": [
+    "소환수 피해의 증가 및 감소가 자신에게도 적용"
+   ]
+  },
+  "spiritualcommand": {
+   "name": "혼백의 명령",
+   "stats": [
+    "소환수의 공격 속도 8% 증가",
+    "소환수의 시전 속도 8% 증가",
+    "소환수 공격 속도 증가 및 감소 효과가 자신에게도 적용"
+   ]
+  },
+  "spiritvoid": {
+   "name": "혼백 비우기",
+   "stats": [
+    "공격 피해의 1%를 마나로 흡수",
+    "흡수로 인한 초당 총 마나 회복량 최대치 40% 증가"
+   ]
+  },
+  "splitshot": {
+   "name": "분할 사격",
+   "stats": [
+    "투사체가 갈라질 때 50%의 확률로 투사체 1개 추가 생성"
+   ]
+  },
+  "stamina": {
+   "name": "지구력",
+   "stats": [
+    "인내 충전 최대치 +1"
+   ]
+  },
+  "staticblows": {
+   "name": "정전기 타격",
+   "stats": [
+    "최근 4초 이내 적을 감전시킨 경우 피해 30% 증가",
+    "번개 상태 이상 지속시간 50% 증가",
+    "번개 상태 이상 효과 30% 증가"
+   ]
+  },
+  "steadfast": {
+   "name": "요지부동",
+   "stats": [
+    "방어 상승 최대치 +3",
+    "방어 상승 하나당 1초마다 생명력의 0.1% 재생"
+   ]
+  },
+  "steelwoodstance": {
+   "name": "강철목 자세",
+   "stats": [
+    "지팡이 공격으로 주는 적중 및 상태 이상 피해 30% 증가",
+    "최근 4초 이내 막아낸 경우 방어도 +800",
+    "지팡이 장착 시 공격 피해 막기 확률 +10%"
+   ]
+  },
+  "steepedintheprofane": {
+   "name": "부정에 대한 몰입",
+   "stats": [
+    "플레이어에게 적용되는 저주 효과 15% 감소",
+    "플레이어의 저주 효과 10% 증가"
+   ]
+  },
+  "stormweaver": {
+   "name": "태풍술사",
+   "stats": [
+    "냉기 피해 25% 증가",
+    "번개 피해 25% 증가",
+    "플레이어가 감전 또는 동결시킨 적이 받는 원소 피해 5% 증가"
+   ]
+  },
+  "strongarm": {
+   "name": "튼튼한 팔",
+   "stats": [
+    "한손 근접 무기 사용 시 물리 피해 25% 증가",
+    "한손 근접 무기 공격으로 주는 상태 이상 피해 25% 증가",
+    "한손 근접 무기 사용 시 공격 속도 5% 증가",
+    "힘 +20"
+   ]
+  },
+  "successivedetonations": {
+   "name": "연이은 폭발",
+   "stats": [
+    "최근 4초 이내 폭발한 지뢰 하나당",
+    "치명타 확률 10% 증가, 최대 100%",
+    "최근 4초 이내 폭발한 지뢰 하나당",
+    "치명타 피해 배율 +4%. 최대 40%"
+   ]
+  },
+  "supremeego": {
+   "name": "자만의 정점",
+   "stats": [
+    "자신의 스킬로 발생하는 오라가 자신에게만 영향을 미침",
+    "오라 스킬이 점유하는 최대 마나의 2%마다 오라 효과가 1% 증폭",
+    "오라 스킬의 마나 점유 40% 증폭"
+   ]
+  },
+  "surgeofvigour": {
+   "name": "쇄도하는 활력",
+   "stats": [
+    "4초마다 1초에 걸쳐 생명력의 15% 재생"
+   ]
+  },
+  "surveillance": {
+   "name": "파수",
+   "stats": [
+    "토템의 공격 속도 8% 증가",
+    "공격 스킬로 소환 가능한 쇠뇌 토템 최대치 +1",
+    "토템 하나당 3미터 내에 있는 적이 받는 피해 1% 증가"
+   ]
+  },
+  "survivalist": {
+   "name": "생존주의자",
+   "stats": [
+    "회피 24% 증가",
+    "모든 원소 저항 +8%",
+    "냉기 저항 최대치 +1%"
+   ]
+  },
+  "swagger": {
+   "name": "활보",
+   "stats": [
+    "쌍수 장착 시 공격 피해 막기 확률 +8%",
+    "막아낼 시 25%의 확률로 격분 충전 획득"
+   ]
+  },
+  "swiftkiller": {
+   "name": "재빠른 살인자",
+   "stats": [
+    "충전 지속시간 200% 증가",
+    "격분 충전 최대치 +2"
+   ]
+  },
+  "swiftvenoms": {
+   "name": "즉발성 맹독",
+   "stats": [
+    "독 지속 피해 배율 +14%",
+    "공격 속도 10% 증가"
+   ]
+  },
+  "tasalio2ccleansingwater": {
+   "name": "물을 정화하는 자, 타살리오",
+   "stats": [
+    "화염 저항에 적용되는 속성이 수치의 50%만큼 냉기 및 번개 저항에도 적용",
+    "점화의 영향을 받지 않음"
+   ]
+  },
+  "tasteforblood": {
+   "name": "피의 갈증",
+   "stats": [
+    "공격 피해의 1%를 생명력으로 흡수",
+    "흡수로 인한 초당 총 생명력 회복량 최대치 30% 증가"
+   ]
+  },
+  "tempestblast": {
+   "name": "폭풍 강타",
+   "stats": [
+    "마법봉 물리 피해의 20%를 번개 피해로 추가"
+   ]
+  },
+  "templarascendancy": {
+   "name": "템플러 전직",
+   "stats": []
+  },
+  "tenacity": {
+   "name": "참을성",
+   "stats": [
+    "최대 생명력 5% 증가",
+    "육체의 변모"
+   ]
+  },
+  "testudo": {
+   "name": "귀갑 방패",
+   "stats": [
+    "방패를 들고 있는 동안 공격 피해 막기 확률 +10%",
+    "막기 회복 60% 증가",
+    "막아낼 시 생명력 30 회복"
+   ]
+  },
+  "thatdidnthappen": {
+   "name": "그건 일어나지 않은 일이야!",
+   "stats": [
+    "피격으로 받는 피해 40% 감폭",
+    "모든 피격 4초 후 해당 명중으로 받은 피해의 40%와 동일한 생명력 상실",
+    "패시브 스킬 트리에 장착된 비-스킬 군, 비-통로, 비-균사체 주얼의 효과가 적용되지 않음",
+    "unique insanity do weird things [1]"
+   ]
+  },
+  "theagnostic": {
+   "name": "불가지론자",
+   "stats": [
+    "모든 에너지 보호막 제거",
+    "생명력이 최대가 아닐 경우, 1초마다 마나의 20%를 희생하여 그와 동일한 수치의 생명력 회복"
+   ]
+  },
+  "theimpaler": {
+   "name": "꿰뚫는 자",
+   "stats": [
+    "플레이어가 명중시켜 적을 꿰뚫을 경우 근처의 다른 적도 꿰뚫음",
+    "플레이어가 꿰뚫은 적에게 꿰뚫기 5회 추가 부여",
+    "적을 꿰뚫은 후 5초 동안은 해당 적을 꿰뚫을 수 없으며 강철의 부름으로 해당 적의 꿰뚫기를 제거할 수 없음"
+   ]
+  },
+  "theprimalowl": {
+   "name": "원시 올빼미",
+   "stats": [
+    "봉인 해제된 주문의 효과가 재발생할 때마다 피해 5% 증폭",
+    "촉발 보조 젬 효과가 적용되는 스킬이 가지는 최대 봉인 수 +3"
+   ]
+  },
+  "theunseenhand": {
+   "name": "보이지 않는 손",
+   "stats": [
+    "반지 슬롯 +1"
+   ]
+  },
+  "thevividcat": {
+   "name": "혈기 고양이",
+   "stats": [
+    "플레이어에게 적용된 도피가 100% 효과일 때 50% 확률로 제거됨",
+    "도피 중 플레이어의 징표 효과 50% 증가"
+   ]
+  },
+  "thewildbear": {
+   "name": "야생 곰",
+   "stats": [
+    "격노 최대치 +20",
+    "최대 격노에 도달하면 모든 격노 상실,",
+    "이 방식으로 잃은 격노 10당 1초 동안 황야의 야만성 획득"
+   ]
+  },
+  "thickskin": {
+   "name": "두꺼운 가죽",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "8%의 확률로 원소 상태 이상 긴급회피"
+   ]
+  },
+  "thiefscraft": {
+   "name": "도둑의 술책",
+   "stats": [
+    "지능 +30"
+   ]
+  },
+  "thrillkiller": {
+   "name": "살인마",
+   "stats": [
+    "최대 마나 16% 증가",
+    "처치 시 마나의 2% 회복"
+   ]
+  },
+  "thrillofbattle": {
+   "name": "전투의 전율",
+   "stats": [
+    "공격으로 명중한 적 하나당 마나 2 획득",
+    "공격의 소모 효율 25% 증가"
+   ]
+  },
+  "throatseeker": {
+   "name": "숨통 노리기",
+   "stats": [
+    "치명타 피해 배율 +30%"
+   ]
+  },
+  "tidecaller": {
+   "name": "파도 소환사",
+   "stats": [
+    "원소 주문 시전 시 20레벨 솟구치는 급류 발동",
+    "이동 중 4초 동안 지속되는 염수 지대 생성",
+    "grants a crab arm [1]",
+    "20레벨 솟구치는 급류 부여"
+   ]
+  },
+  "timeofneed": {
+   "name": "긴요한 시기",
+   "stats": [
+    "4초마다 플레이어에게 걸린 저주 및 상태 이상 제거",
+    "4초마다 1초에 걸쳐 생명력의 100% 재생"
+   ]
+  },
+  "tireless": {
+   "name": "끈기",
+   "stats": [
+    "최대 생명력 10% 증가",
+    "소모 효율 10% 증가"
+   ]
+  },
+  "titanicimpacts": {
+   "name": "거대한 충격",
+   "stats": [
+    "양손 근접 무기 사용 시 치명타 피해 배율 +45%"
+   ]
+  },
+  "tolerance": {
+   "name": "내성",
+   "stats": [
+    "카오스 저항 +19%",
+    "30%의 확률로 중독 긴급회피",
+    "30%의 확률로 출혈 긴급회피"
+   ]
+  },
+  "totemiczeal": {
+   "name": "토템의 열의",
+   "stats": [
+    "토템 설치 속도 30% 증가",
+    "토템의 주문 시전 속도 8% 증가",
+    "토템의 공격 속도 10% 증가"
+   ]
+  },
+  "toxicdelivery": {
+   "name": "맹독성 전달",
+   "stats": [
+    "치명타로 중독 유발 시 피해 20% 증폭",
+    "최근 4초 이내 적에게 유발한 중독 하나당 중독 지속시간 5% 증가, 최대 100% 증가",
+    "처치한 적에게 중첩된 중독 하나당 생명력의 0.5% 회복"
+   ]
+  },
+  "toxicstrikes": {
+   "name": "맹독성 일격",
+   "stats": [
+    "독 지속 피해 배율 +15%",
+    "명중 시 15%의 확률로 중독 유발"
+   ]
+  },
+  "tranquility": {
+   "name": "고요함",
+   "stats": [
+    "에너지 보호막 최대치 5% 증가",
+    "영혼의 변모"
+   ]
+  },
+  "trialofthefaith": {
+   "name": "신념의 시험",
+   "stats": [
+    "기절 및 막기 회복 50% 증가",
+    "기절 시 1초에 걸쳐 에너지 보호막의 5% 재생",
+    "기절 시 1초에 걸쳐 생명력의 5% 재생"
+   ]
+  },
+  "tribalfury": {
+   "name": "부족의 광분",
+   "stats": [
+    "근접 타격 스킬로 주변 대상에게 범위 피해를 줌"
+   ]
+  },
+  "trickery": {
+   "name": "계략",
+   "stats": [
+    "피해 20% 증가",
+    "치명타 확률 20% 증가",
+    "민첩 및 지능 +10"
+   ]
+  },
+  "trickshot": {
+   "name": "기교 사격",
+   "stats": [
+    "연쇄 범위 30% 증가"
+   ]
+  },
+  "truestrike": {
+   "name": "정확한 일격",
+   "stats": [
+    "치명타 확률 45% 증가",
+    "치명타 피해 배율 +15%"
+   ]
+  },
+  "tukohama2cwarsherald": {
+   "name": "전쟁의 전령, 투코하마",
+   "stats": [
+    "장착한 갑옷의 스킬에 30레벨 선대의 부름 보조 효과 적용",
+    "장착한 갑옷의 스킬에 20레벨 전쟁의 주먹 보조 효과 적용"
+   ]
+  },
+  "tuloftheblizzard": {
+   "name": "눈보라의 툴",
+   "stats": [
+    "적에게 적용되는 동결 지속시간 30% 증가",
+    "삿된 고유 아이템을 4개 이상 장착한 경우 모든 냉기 스킬 젬 레벨 +2",
+    "장착한 반지가 모두 냉동 보존 반지인 경우, 명중 시 적 몬스터의 냉기 저항을 무시함"
+   ]
+  },
+  "twinterrors": {
+   "name": "쌍수의 공포",
+   "stats": [
+    "쌍수 장착 시 공격 치명타 확률 100% 증가"
+   ]
+  },
+  "umbralarmy": {
+   "name": "그늘진 군대",
+   "stats": [
+    "소환된 격노의 유령 하나당 공격 및 시전 속도 2% 증가",
+    "소환한 좀비 하나당 공격 피해 15% 증가",
+    "소환한 망령 하나당 방어력 10% 증가",
+    "소환된 환영 하나당 이동 속도 2% 증가",
+    "소환된 해골 하나당 주문 피해 6% 증가"
+   ]
+  },
+  "unbreakable": {
+   "name": "무적",
+   "stats": [
+    "장착한 갑옷으로 얻는 방어도 2배",
+    "방어도의 15%가 피격 시 받는 카오스 피해에도 적용"
+   ]
+  },
+  "undeniable": {
+   "name": "명명백백",
+   "stats": [
+    "정확도 +500",
+    "정확도 150당 공격 속도 1% 증가",
+    "힘의 2배와 동일한 정확도 획득"
+   ]
+  },
+  "undertaker": {
+   "name": "장의사",
+   "stats": [
+    "최근 4초 이내 시신을 소모한 경우 피해 30% 증가",
+    "모독과 발굴의 최대 시신 개수 +2",
+    "최근 4초 이내 시신을 소모한 경우 1초마다 생명력의 2% 재생"
+   ]
+  },
+  "unfaltering": {
+   "name": "단호함",
+   "stats": [
+    "기절 한계치 50% 증가",
+    "기절 유발 명중으로 받는 피해의 10%를 생명력으로 회복"
+   ]
+  },
+  "unflinching": {
+   "name": "불굴",
+   "stats": [
+    "피격 시 30%의 확률로 인내 충전 획득",
+    "인내 충전 획득 시 25%의 확률로 인내 충전 최대치 획득",
+    "최근 4초 이내 피격된 경우 1초마다 인내 충전 1개 획득",
+    "인내 충전 최대치 +1"
+   ]
+  },
+  "unhallowedrite": {
+   "name": "부정한 의례",
+   "stats": [
+    "주문을 집중 유지하는 동안 0.5초마다 혼백 주입 획득"
+   ]
+  },
+  "unholyauthority": {
+   "name": "불경한 권위",
+   "stats": [
+    "추가 저주 1개 적용 가능",
+    "플레이어의 사술이 사술 방지 적에게 영향을 줌"
+   ]
+  },
+  "unlightsilhouette": {
+   "name": "무광 실루엣",
+   "stats": [
+    "생명력 소모량이 소모할 수 있는 최대 생명력보다 크지 않을 경우, 스킬이 생명력 소모량의 25%와 동일한 추가 카오스 피해를 얻음",
+    "스킬이 기본 마나 소모의 100%와 동일한 기본 생명력 소모를 얻음"
+   ]
+  },
+  "unnaturalcalm": {
+   "name": "기이한 고요",
+   "stats": [
+    "에너지 보호막 최대치 18% 증가",
+    "에너지 보호막 재충전 속도 15% 증가",
+    "번개 저항 최대치 +1%"
+   ]
+  },
+  "unnaturalstrength": {
+   "name": "초자연적인 힘",
+   "stats": [
+    "소환수가 불경한 힘 보유"
+   ]
+  },
+  "unrelenting": {
+   "name": "분투",
+   "stats": [
+    "인내 충전 하나당 원소 피해 1% 추가 감소",
+    "인내 충전 하나당 받는 물리 피해 1% 추가 감소"
+   ]
+  },
+  "unstableinfusion": {
+   "name": "불안정한 주입",
+   "stats": [
+    "치명타 명중 시 15%의 확률로 권능 충전 획득",
+    "비-치명타 명중 시 30% 확률로 권능 충전 획득",
+    "권능 충전 최대치 +1"
+   ]
+  },
+  "unstablemunitions": {
+   "name": "불안정한 탄약",
+   "stats": [
+    "덫 피해 30% 증가",
+    "효과 범위 12% 증가",
+    "덫 발동 효과 범위 50% 증가"
+   ]
+  },
+  "unstoppable": {
+   "name": "폭주",
+   "stats": [
+    "이동 속도 10% 증가",
+    "기절할 수 없음",
+    "동작 속도가 기본 수치 밑으로 내려가지 않음",
+    "이동 속도가 기본 수치 밑으로 내려가지 않음"
+   ]
+  },
+  "unstoppablehero": {
+   "name": "무적의 영웅",
+   "stats": [
+    "20을 초과하는 방어 상승 하나당 방어도 및 회피 3% 증폭",
+    "20을 초과하는 방어 상승 하나당 공격 속도 3% 증가"
+   ]
+  },
+  "untiring": {
+   "name": "견인불발",
+   "stats": [
+    "생명력 재생 속도 40% 증가",
+    "1초마다 지난 10초 동안의 피격에서 예방한 물리 피해의 1.5%를 생명력으로 재생",
+    "juggernaut_phys_damage_prevented_as_life_regen"
+   ]
+  },
+  "unwaveringcrusade": {
+   "name": "변함없는 성전",
+   "stats": [
+    "20레벨 원소의 유물 소환 부여",
+    "플레이어 또는 6미터 내의 동료가 적을 처치하거나 희귀 또는 고유 적 명중 시, 25%의 확률로 20레벨 원소의 유물 소환 발동"
+   ]
+  },
+  "unwaveringfaith": {
+   "name": "변함없는 믿음",
+   "stats": [
+    "스킬의 점유 효율 50% 증가"
+   ]
+  },
+  "unwaveringstance": {
+   "name": "변함없는 자세",
+   "stats": [
+    "적 공격을 회피할 수 없음",
+    "기절 면역"
+   ]
+  },
+  "unyielding": {
+   "name": "완고",
+   "stats": [
+    "인내 충전 하나당 피해 8% 증가",
+    "인내 충전 하나당 효과 범위 6% 증가",
+    "적 기절 시 25%의 확률로 인내 충전 획득",
+    "인내 충전 하나당 적에게 적용되는 기절 지속시간 10% 증가"
+   ]
+  },
+  "utmostintellect": {
+   "name": "극에 이른 지능",
+   "stats": [
+    "지능 +40",
+    "지능 8% 증가"
+   ]
+  },
+  "utmostmight": {
+   "name": "극에 이른 힘",
+   "stats": [
+    "힘 +40",
+    "힘 8% 증가"
+   ]
+  },
+  "utmostswiftness": {
+   "name": "극에 이른 속도",
+   "stats": [
+    "민첩 +40",
+    "민첩 8% 증가"
+   ]
+  },
+  "vaalpact": {
+   "name": "바알의 계약",
+   "stats": [
+    "근접 피해로 인한 생명력 흡수가 즉시 적용",
+    "생명력 흡수로만 생명력 회복 가능"
+   ]
+  },
+  "valako2cstormsembrace": {
+   "name": "폭풍으로 감싸는 자, 발라코",
+   "stats": [
+    "최대 화염 저항에 적용되는 속성이 최대 냉기 및 번개 저항에도 적용"
+   ]
+  },
+  "vampirism": {
+   "name": "흡혈",
+   "stats": [
+    "처치 시 생명력의 3% 회복",
+    "받은 피해의 12%를 생명력으로 회생"
+   ]
+  },
+  "vanquisher": {
+   "name": "격퇴자",
+   "stats": [
+    "적이 최대 생명력 상태일 때 명중시키면 4초 동안 적 타쇄",
+    "물리 피해 40% 증가"
+   ]
+  },
+  "vengeance": {
+   "name": "복수",
+   "stats": [
+    "격노 1당 방어도 1% 증가",
+    "적에게 피격 시 격노 3 획득"
+   ]
+  },
+  "vengeantcascade": {
+   "name": "빗발치는 응징",
+   "stats": [
+    "돌아오는 투사체의 속도 150% 증가"
+   ]
+  },
+  "versatilecombatant": {
+   "name": "유연한 전투원",
+   "stats": [
+    "공격 피해 막기 확률 최대치 -10%",
+    "주문 피해 막기 확률 최대치 -10%",
+    "제한 초과 공격 피해 막기 확률 1%당 주문 피해 막기 확률 +2%"
+   ]
+  },
+  "versatility": {
+   "name": "융통성",
+   "stats": [
+    "이동 속도 5% 증가",
+    "민첩 및 지능 +20",
+    "정확도 15% 증가"
+   ]
+  },
+  "veteransoldier": {
+   "name": "역전 용사",
+   "stats": [
+    "지속 물리 피해 배율 +15%",
+    "생명력 최대치 +25"
+   ]
+  },
+  "veteranswrath": {
+   "name": "역전 용사의 진노",
+   "stats": [
+    "근접 명중 시 격노 2 획득",
+    "기본 격노 상실이 1초 늦게 시작"
+   ]
+  },
+  "vigour": {
+   "name": "활력",
+   "stats": [
+    "인내 충전 최대치 +1"
+   ]
+  },
+  "vilebastion": {
+   "name": "끔찍한 보루",
+   "stats": [
+    "1초마다 에너지 보호막 100 재생",
+    "에너지 보호막이 있는 동안 기절 면역",
+    "에너지 보호막 최대치가 주문 피해 막기 확률에 따라 증가"
+   ]
+  },
+  "vinespikecordial": {
+   "name": "덩굴가시 과일청",
+   "stats": [
+    "생명력 플라스크의 효과를 받는 동안 탐욕스러운 덩굴이",
+    "8개 미만인 적 명중 시 탐욕스러운 덩굴 1개 유발"
+   ]
+  },
+  "vitalityvoid": {
+   "name": "활력 비우기",
+   "stats": [
+    "공격 피해의 1%를 생명력으로 흡수",
+    "흡수로 인한 초당 총 생명력 회복량 최대치 40% 증가"
+   ]
+  },
+  "voidbarrier": {
+   "name": "공허 방어막",
+   "stats": [
+    "회피 18% 증가",
+    "에너지 보호막 최대치 12% 증가",
+    "에너지 보호막이 최대일 때 주문 피해 억제 확률 +10%"
+   ]
+  },
+  "voidbeacon": {
+   "name": "공허의 등불",
+   "stats": [
+    "주변의 적의 냉기 저항 -20%",
+    "주변의 적의 카오스 저항 -20%",
+    "주변의 적의 생명력 재생 속도 100% 감소"
+   ]
+  },
+  "volatilemines": {
+   "name": "폭발성 지뢰",
+   "stats": [
+    "지뢰 지속시간 30% 증가",
+    "한 번에 원격 지뢰 최대 3개 추가 설치",
+    "지뢰의 폭파 속도 30% 증가"
+   ]
+  },
+  "volatilerunes": {
+   "name": "폭발성 룬",
+   "stats": [
+    "수호 파괴 시 20레벨 수호 산산조각 발동",
+    "has trigger when ward breaks [1]",
+    "track ward broken in the past 2 seconds [1]",
+    "20레벨 수호 산산조각 부여"
+   ]
+  },
+  "voraciousflame": {
+   "name": "탐욕적인 화염",
+   "stats": [
+    "각각의 적에게 추가 점화 1개 유발 가능",
+    "기본 점화 지속시간 1초",
+    "점화 피해 25% 감폭",
+    "비-화염 피해를 줄 수 없음"
+   ]
+  },
+  "wallofsteel": {
+   "name": "강철 벽",
+   "stats": [
+    "쌍수 장착 시 또는 방패를 들고 있는 동안 공격 피해 막기 확률 +10%",
+    "최근 4초 이내 막아낸 경우 방어도 +300"
+   ]
+  },
+  "wandslinger": {
+   "name": "마법봉 투척가",
+   "stats": [
+    "마법봉 장착 시 피해 30% 증가",
+    "마법봉 사용 시 공격 속도 10% 증가"
+   ]
+  },
+  "warbringer": {
+   "name": "전쟁 인도자",
+   "stats": [
+    "함성이 2배 더 많은 공격을 전력 공격으로 만듦"
+   ]
+  },
+  "warlockpower": {
+   "name": "마법사의 힘",
+   "stats": []
+  },
+  "warofattrition": {
+   "name": "소모전",
+   "stats": [
+    "희귀 및 고유 적이 접근해 있던 시간 1초당 해당 적에게 주는 명중 및 상태 이상 피해 1% 증폭, 최대 100% 증폭"
+   ]
+  },
+  "warriorsblood": {
+   "name": "전사의 피",
+   "stats": [
+    "1초마다 생명력의 1.8% 재생",
+    "기절 한계치 20% 증가",
+    "힘 +20"
+   ]
+  },
+  "warriortraining": {
+   "name": "전사 훈련",
+   "stats": [
+    "근접 타격 범위 +0.2미터",
+    "근접 스킬의 효과 범위 12% 증가"
+   ]
+  },
+  "wasting": {
+   "name": "소모성",
+   "stats": [
+    "지속 카오스 피해 배율 +10%",
+    "카오스 저항 +17%"
+   ]
+  },
+  "watchtowers": {
+   "name": "감시 포탑",
+   "stats": [
+    "토템 피해 24% 증가",
+    "공격 스킬로 소환 가능한 쇠뇌 토템 최대치 +1",
+    "소환된 토템 하나당 이동 속도 1% 증가"
+   ]
+  },
+  "wayofthewarrior": {
+   "name": "전사의 길",
+   "stats": [
+    "근접 피해 16% 증가",
+    "방어도 16% 증가",
+    "생명력 최대치 +16",
+    "힘 +30"
+   ]
+  },
+  "weaponartistry": {
+   "name": "무기의 예술성",
+   "stats": [
+    "쌍수 장착 시 또는 방패를 들고 있는 동안 공격 피해 막기 확률 +4%",
+    "공격 속도 8% 증가",
+    "근접 타격 범위 +0.2미터"
+   ]
+  },
+  "weaponmaster": {
+   "name": "무기의 대가",
+   "stats": [
+    "검 장착 시 정확도 25% 증폭",
+    "철퇴 또는 셉터 장착 시 효과 범위 20% 증폭",
+    "단검 장착 시 치명타 확률 20% 증폭",
+    "클로 장착 시 흡수의 20%가 즉시 적용",
+    "도끼 장착 시 낮은 생명력 상태의 적에게 주는 명중 및 상태 이상 피해 30% 증폭"
+   ]
+  },
+  "weatheredhunter": {
+   "name": "풍파에 시달린 사냥꾼",
+   "stats": [
+    "정확도 +100",
+    "모든 원소 저항 +10%",
+    "정확도 20% 증가"
+   ]
+  },
+  "whirlingbarrier": {
+   "name": "소용돌이 방어막",
+   "stats": [
+    "막아낼 시 20%의 확률로 권능 충전 획득",
+    "지팡이 장착 시 공격 피해 막기 확률 +8%",
+    "지팡이 장착 시 주문 피해 막기 확률 +8%"
+   ]
+  },
+  "whispersofdoom": {
+   "name": "멸망의 속삭임",
+   "stats": [
+    "추가 저주 1개 적용 가능"
+   ]
+  },
+  "wickedblade": {
+   "name": "사악한 칼날",
+   "stats": [
+    "출혈 피해 30% 증가",
+    "출혈 지속시간 20% 증가"
+   ]
+  },
+  "wickedward": {
+   "name": "사악한 수호",
+   "stats": [
+    "에너지 보호막 재충전을 최근 4초 이내 시작했을 경우 피해를 받아도 중단되지 않음",
+    "에너지 보호막 재충전 속도 40% 감폭"
+   ]
+  },
+  "wildhunger": {
+   "name": "야생의 굶주림",
+   "stats": [
+    "공격 피해의 0.8%를 생명력으로 흡수",
+    "흡수로 인한 초당 총 생명력 회복량 최대치 30% 증가"
+   ]
+  },
+  "wildwoodblessing": {
+   "name": "야생림의 축복",
+   "stats": [
+    "local display grants skill barkskin [0]",
+    "20레벨 껍질피부 부여"
+   ]
+  },
+  "willofblades": {
+   "name": "칼날의 의지",
+   "stats": [
+    "치명타 확률 40% 증가",
+    "물리 피해 20% 증가"
+   ]
+  },
+  "winddancer": {
+   "name": "바람의 무희",
+   "stats": [
+    "최근 4초 이내 공격에 피격되지 않은 경우 받는 공격 피해 20% 감폭",
+    "최근 4초 이내 공격에 피격된 경우 공격 회피 확률 10% 증폭",
+    "최근 4초 이내 공격에 피격된 경우 받는 공격 피해 20% 증폭"
+   ]
+  },
+  "windowofopportunity": {
+   "name": "기회의 창",
+   "stats": [
+    "스킬 효과 지속시간 15% 감소",
+    "플레이어에게 적용되는 디버프가 15% 더 빠르게 만료됨"
+   ]
+  },
+  "windward": {
+   "name": "바람 수호",
+   "stats": [
+    "강풍의 힘 하나당 받는 피해 4% 감폭",
+    "피격 시 강풍의 힘 모두 잃음"
+   ]
+  },
+  "wintersembrace": {
+   "name": "겨울의 포옹",
+   "stats": [
+    "적에게 적용되는 동결 지속시간 60% 증가",
+    "최근 4초 이내 적을 산산이 조각낸 경우 피해 30% 증가"
+   ]
+  },
+  "winterspirit": {
+   "name": "겨울의 혼백",
+   "stats": [
+    "물리 피해의 10%를 추가 냉기 피해로 획득"
+   ]
+  },
+  "wisdomoftheglade": {
+   "name": "숲의 지혜",
+   "stats": [
+    "지능 +30"
+   ]
+  },
+  "witchascendancy": {
+   "name": "위치 전직",
+   "stats": []
+  },
+  "witheringpresence": {
+   "name": "고사시키는 존재",
+   "stats": [
+    "카오스 저항 +60%",
+    "카오스 피해 15% 증폭",
+    "1초마다 15초 동안 6미터 내의 적에게 위축 유발",
+    "이동 방해를 받는 주변의 적이 주는 지속 피해 15% 감소"
+   ]
+  },
+  "wood2cstone2candspell": {
+   "name": "나무, 돌, 주문",
+   "stats": [
+    "소환된 토템 하나당 자신에게 적용되는 비전 쇄도의 효과 10% 증가"
+   ]
+  },
+  "worshiptheblightheart": {
+   "name": "메마른 심장 숭배",
+   "stats": [
+    "신성화 지대 대신 곰팡이 지대 생성"
+   ]
+  },
+  "worthycauses": {
+   "name": "가치 있는 대의",
+   "stats": [
+    "설치된 깃발이 있는 동안에도 기백 획득 가능",
+    "깃발 스킬의 지속시간 100% 증가"
+   ]
+  },
+  "worthyfoe": {
+   "name": "호적수",
+   "stats": [
+    "명중 시 도발",
+    "플레이어가 도발한 적이 받는 피해 15% 증가",
+    "플레이어가 도발한 적은 공격 회피 불가"
+   ]
+  },
+  "wreckingball": {
+   "name": "파괴구",
+   "stats": [
+    "양손 근접 무기 공격으로 주는 적중 및 상태 이상 피해 25% 증가",
+    "양손 근접 무기 사용 시 공격 속도 10% 증가",
+    "양손 근접 무기 사용 시 적에게 적용되는 기절 지속시간 40% 증가"
+   ]
+  },
+  "writteninblood": {
+   "name": "혈서",
+   "stats": [
+    "에너지 보호막 최대치 10% 증가",
+    "최대 생명력 10% 증가",
+    "힘 +10"
+   ]
+  },
+  "yourethecrazyone": {
+   "name": "미친 건 너다!",
+   "stats": [
+    "찬란한 광기의 영향을 받는 동안 1초마다 6미터 내의 적들에게 광증 유발",
+    "local display grants skill embrace madness level [0]",
+    "unique insanity do weird things [1]",
+    "1레벨 광기의 수용 부여"
+   ]
+  },
+  "zealotsoath": {
+   "name": "맹신자의 서약",
+   "stats": [
+    "생명력 재생이 에너지 보호막에 대신 적용"
+   ]
+  }
+ }
+}

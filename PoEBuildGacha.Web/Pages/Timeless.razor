@@ -3,13 +3,18 @@
 @using System.Text
 @using PoEBuildGacha.Web.Gacha
 @inject HttpClient Http
+@inject TimelessChanges Changes
 
 <PageTitle>군단 주얼 트리 - PoE Build Gacha</PageTitle>
+@* 이 페이지만 글자를 1.2배로 키웁니다 (rem 기준이라 여백도 같이 커짐). 다른 페이지로 가면 빠집니다. *@
+<HeadContent>
+    <style>html { font-size: 120%; }</style>
+</HeadContent>
 
-<main class="shell">
+<main class="shell wide" style="--faction: @FactionColor">
     <header class="hero">
         <h1>Timeless Jewel</h1>
-        <p class="tagline">군단 주얼을 골라서 Path of Building 트리로 바로 열어 보세요</p>
+        <p class="tagline">군단 주얼을 고르면 반경 안 패시브가 어떻게 바뀌는지 보여 드려요</p>
     </header>
 
     <section class="panel">
@@ -18,20 +23,23 @@
         <div class="tj-grid">
             @foreach (var j in TimelessJewels.All)
             {
-                <button type="button" class="tj-choice @(j == jewel ? "on" : "")" @onclick="() => SelectJewel(j)">
-                    <b>@j.Korean</b>
-                    <small>@j.Name</small>
+                <button type="button" class="tj-choice tj-jewel @(j == jewel ? "on" : "")" @onclick="() => SelectJewel(j)">
+                    <img src="@j.ImageUrl" alt="" width="52" height="52" loading="lazy" />
+                    <span>
+                        <b>@j.Korean</b>
+                        <small>@j.Name</small>
+                    </span>
                 </button>
             }
         </div>
 
         <h3 class="tj-sub">정복자</h3>
-        <div class="tj-grid three">
+        <div class="tj-grid">
             @foreach (var c in jewel.Conquerors)
             {
-                <button type="button" class="tj-choice @(c == conqueror ? "on" : "")" @onclick="() => conqueror = c">
-                    <b>@c.Name</b>
-                    <small>@c.Keystone</small>
+                <button type="button" class="tj-choice @(c == conqueror ? "on" : "")" @onclick="() => SelectConqueror(c)">
+                    <b>@c.Display</b>
+                    <small>@(c.Korean is null ? "" : c.Name + " · ")@c.KeystoneKorean</small>
                 </button>
             }
         </div>
@@ -39,7 +47,7 @@
         <h3 class="tj-sub">시드 (주얼에 적힌 숫자)</h3>
         <input class="tj-seed @(SeedWrong ? "bad" : "")" type="number" inputmode="numeric"
                min="@jewel.MinSeed" max="@jewel.MaxSeed" step="@jewel.SeedStep"
-               @bind="seed" @bind:event="oninput" />
+               @bind="seed" @bind:event="oninput" @bind:after="Recompute" />
         <p class="tj-help @(SeedWrong ? "bad" : "")">
             @jewel.MinSeed.ToString("N0") ~ @jewel.MaxSeed.ToString("N0")@(jewel.SeedStep > 1 ? $", {jewel.SeedStep} 단위" : "")
         </p>
@@ -53,27 +61,59 @@
         }
         else
         {
-            <p class="tj-help">금색 동그라미가 주얼 소켓이에요. 눌러서 고르면 대형 반경과 경로가 표시돼요.</p>
-            <svg class="tj-map" viewBox="@MapViewBox" role="img" aria-label="패시브 트리 소켓 지도">
-                <path class="tj-edge" d="@edgePath" />
-                @if (socket is not null)
+            <p class="tj-help">왼쪽 지도에서 금색 동그라미(주얼 소켓)를 누르면 오른쪽에 그 소켓의 대형 반경이 크게 보여요.</p>
+            <div class="tj-maps">
+                <svg class="tj-map" viewBox="@mapViewBox" role="img" aria-label="패시브 트리 소켓 지도">
+                    <path class="tj-edge" d="@overviewEdges" />
+                    @foreach (var n in bigNodes)
+                    {
+                        <circle class="@(n.IsKeystone ? "tj-key" : "tj-notable")" cx="@F(n.X)" cy="@F(n.Y)" r="@(n.IsKeystone ? 75 : 50)" />
+                    }
+                    @if (socket is not null)
+                    {
+                        <circle class="tj-radius" cx="@F(socket.X)" cy="@F(socket.Y)" r="@F(TimelessTree.LargeRadius)" />
+                        <path class="tj-path" d="@pathEdges" />
+                    }
+                    @foreach (var s in tree.Sockets)
+                    {
+                        <circle class="tj-socket @(s == socket ? "on" : "")" cx="@F(s.X)" cy="@F(s.Y)" r="200"
+                                @onclick="() => SelectSocket(s)">
+                            <title>@SocketLabel(s)</title>
+                        </circle>
+                    }
+                </svg>
+
+                @if (socket is null)
                 {
-                    <circle class="tj-radius" cx="@F(socket.X)" cy="@F(socket.Y)" r="@F(TimelessTree.LargeRadius)" />
-                    <path class="tj-path" d="@pathLine" />
+                    <div class="tj-zoom-empty">소켓을 고르면 여기에 확대해서 보여 드려요</div>
                 }
-                @foreach (var n in bigNodes)
+                else
                 {
-                    <circle class="@(n.IsKeystone ? "tj-key" : "tj-notable") @(inRadius.Contains(n.I) ? "hit" : "")"
-                            cx="@F(n.X)" cy="@F(n.Y)" r="@(n.IsKeystone ? 70 : 45)" />
+                    <svg class="tj-zoom" viewBox="@ZoomViewBox" role="img" aria-label="고른 소켓의 대형 반경">
+                        <circle class="tj-zradius" cx="@F(socket.X)" cy="@F(socket.Y)" r="@F(TimelessTree.LargeRadius)" />
+                        <path class="tj-zedge" d="@zoomEdges" />
+                        <path class="tj-zedge on" d="@zoomPathEdges" />
+                        @foreach (var n in zoomNodes)
+                        {
+                            var change = changes.GetValueOrDefault(n.I);
+                            <g class="tj-znode @NodeClass(n, change)" @onclick="() => ClickNode(n)">
+                                <circle cx="@F(n.X)" cy="@F(n.Y)" r="@NodeRadius(n)" />
+                                <title>@NodeTooltip(n, change)</title>
+                            </g>
+                        }
+                        <polygon class="tj-zjewel" points="@JewelPoints(socket)" />
+                        @foreach (var n in zoomNodes.Where(n => (n.IsNotable || n.IsKeystone) && inRadius.Contains(n.I)))
+                        {
+                            var change = changes.GetValueOrDefault(n.I);
+                            @* <g>로 감싸야 Razor가 SVG <text>를 자기 <text> 태그로 착각하지 않습니다. *@
+                            <g>
+                                <text class="tj-zlabel @(change?.Kind == NodeChangeKind.Replaced ? "changed" : "")"
+                                      x="@F(n.X)" y="@F(n.Y + NodeRadius(n) + 75)">@Label(n, change)</text>
+                            </g>
+                        }
+                    </svg>
                 }
-                @foreach (var s in tree.Sockets)
-                {
-                    <circle class="tj-socket @(s == socket ? "on" : "")" cx="@F(s.X)" cy="@F(s.Y)" r="190"
-                            @onclick="() => SelectSocket(s)">
-                        <title>@SocketLabel(s)</title>
-                    </circle>
-                }
-            </svg>
+            </div>
 
             @if (socket is not null)
             {
@@ -88,27 +128,107 @@
                             }
                         </select>
                     </label>
-                    <span class="tj-help">소켓까지 @(path?.Length ?? 0)포인트</span>
+                    <span class="tj-help">소켓까지 @(path?.Length ?? 0)포인트@(chosen.Count > 0 ? $" · 고른 노드까지 {AllocatedNodes?.Length ?? 0}포인트" : "")</span>
                 </div>
 
-                <h3 class="tj-sub">반경 안의 핵심·주요 패시브</h3>
-                <ul class="tj-notables">
-                    @foreach (var n in notablesInRadius)
+                <div class="tj-mode" role="group" aria-label="노드를 눌렀을 때">
+                    <span>노드를 누르면</span>
+                    <button type="button" class="@(pickMode ? "" : "on")" @onclick="() => pickMode = false">자세히 보기</button>
+                    <button type="button" class="@(pickMode ? "on" : "")" @onclick="() => pickMode = true">찍을 노드로 고르기</button>
+                    @if (chosen.Count > 0)
                     {
-                        <li class="@(n.IsKeystone ? "key" : "")">@n.N</li>
+                        <span class="tj-help">고른 노드 @(chosen.Count)개</span>
+                        <button type="button" class="tj-clear" @onclick="ClearChosen">모두 빼기</button>
                     }
-                </ul>
+                </div>
+                @if (pickMode)
+                {
+                    <p class="tj-help">
+                        반경 안 노드를 누르면 파란 테두리로 골라져요 (다시 누르면 빠져요).
+                        @(jewel.Faction == "vaal" ? "찬란한 허영심은 주요·작은 패시브를 고를 수 있어요." : "이 주얼은 주요 패시브만 시드에 따라 바뀌어서 주요 패시브만 고를 수 있어요.")
+                    </p>
+                }
+
+                @if (selectedNode is { } sel)
+                {
+                    <NodeDetail Node="sel" Change="changes.GetValueOrDefault(sel.I)" />
+                }
             }
         }
     </section>
 
+    @if (socket is not null)
+    {
+        <section class="panel">
+            <h2>3. 바뀌는 패시브</h2>
+            @if (!SeedValid)
+            {
+                <p class="tj-help">시드를 적으면 반경 안 주요·핵심 패시브가 무엇으로 바뀌는지 알려 드려요.</p>
+            }
+            else if (computing)
+            {
+                <p class="tj-help">변환표를 받는 중이에요… (찬란한 허영심은 소켓마다 1MB 정도)</p>
+            }
+            else if (changesFailed)
+            {
+                <p class="tj-help bad">변환표를 받지 못했어요. 잠시 뒤에 다시 시도해 주세요.</p>
+            }
+            else
+            {
+                <p class="tj-help">@jewel.Korean @seed!.Value.ToString("N0") (@conqueror.Display) · 주요·핵심 패시브 @(bigChanges.Length)개</p>
+                <div class="tj-changes">
+                    @foreach (var c in bigChanges)
+                    {
+                        <button type="button" class="tj-change @(c.Node.IsKeystone ? "key" : "") @(c.Node == selectedNode ? "on" : "")"
+                                @onclick="() => selectedNode = c.Node">
+                            <span class="tj-from">@c.Node.Display</span>
+                            @if (c.Kind == NodeChangeKind.Replaced)
+                            {
+                                <span class="tj-arrow">→ <b>@c.Title</b></span>
+                            }
+                            else
+                            {
+                                <span class="tj-arrow">+ 능력치 추가</span>
+                            }
+                            @foreach (var line in c.Lines)
+                            {
+                                <small>@line</small>
+                            }
+                        </button>
+                    }
+                </div>
+
+                @if (smallChanges.Length > 0)
+                {
+                    <details class="tj-small">
+                        <summary>작은 패시브 @(smallChanges.Length)개 변화 보기</summary>
+                        <ul>
+                            @foreach (var group in smallChanges.GroupBy(c => (c.Title, string.Join(" / ", c.Lines))).OrderByDescending(g => g.Count()))
+                            {
+                                <li><b>@(group.Key.Title)</b> @group.Key.Item2 <span class="tj-count">×@group.Count()</span></li>
+                            }
+                        </ul>
+                    </details>
+                }
+            }
+        </section>
+    }
+
+    @if (socket is not null)
+    {
+        <section class="panel">
+            <h2>4. 시드 찾기</h2>
+            <SeedFinder Socket="socket" Jewel="jewel" Conqueror="conqueror" Chosen="chosen" ChosenVersion="chosenVersion" OnPick="PickSeed" />
+        </section>
+    }
+
     @if (Code is { } pobCode)
     {
         <section class="panel">
-            <h2>3. PoB로 보기</h2>
+            <h2>5. PoB로 보기</h2>
             <p class="tj-help">
-                @jewel.Korean @seed (@conqueror.Name)을 @ClassKorean(StartClass) 시작점에서 이어진 소켓에 꽂아 둔 상태로 열려요.
-                PoB 트리에서 바뀐 패시브에 마우스를 올려 보세요.
+                @jewel.Korean @seed (@conqueror.Display) 주얼을 @ClassKorean(StartClass) 시작점에서 이어진 소켓에 꽂아 둔 상태로 열려요.
+                @(chosen.Count > 0 ? "고른 노드까지 가는 경로도 찍어 둬요." : "")
             </p>
             <PobActions Code="@pobCode" Description="이 군단 주얼이 소켓에 꽂힌 상태로 열려요" />
         </section>
@@ -120,6 +240,9 @@
 </main>
 
 @code {
+    // 확대 그림에서 소켓 중심부터 보여 줄 거리 (대형 반경 1800 + 여유)
+    const double ZoomHalf = 2150;
+
     TimelessTree? tree;
     bool loadFailed;
 
@@ -128,35 +251,57 @@
     int? seed;
 
     TreeNode? socket;
+    TreeNode? selectedNode;
     string classChoice = "";
     string nearestClass = "Scion";
     HashSet<int> inRadius = [];
-    TreeNode[] notablesInRadius = [];
     TreeNode[] bigNodes = [];
-    string edgePath = "";
+    TreeNode[] zoomNodes = [];
+    string mapViewBox = "";
+    string overviewEdges = "";
+    string zoomEdges = "";
     int[]? path;
-    string pathLine = "";
+    HashSet<int> pathSet = [];
+    string pathEdges = "";
+    string zoomPathEdges = "";
+
+    // 찍을 노드 고르기 (시드 찾기와 PoB 코드에 씀)
+    bool pickMode;
+    HashSet<int> chosen = [];
+    int chosenVersion;
+
+    Dictionary<int, NodeChange> changes = [];
+    NodeChange[] bigChanges = [];
+    NodeChange[] smallChanges = [];
+    bool computing;
+    bool changesFailed;
+    int computeVersion;
 
     bool SeedValid => seed is { } s && jewel.IsValidSeed(s);
     // 아직 안 적었을 때는 빨갛게 하지 않습니다.
     bool SeedWrong => seed is not null && !SeedValid;
     string StartClass => classChoice == "" ? nearestClass : classChoice;
 
-    string? Code => SeedValid && socket is not null && path is not null
-        ? PobCode.CreateTimeless(StartClass, jewel, conqueror, seed!.Value, socket.I, path)
+    string? Code => SeedValid && socket is not null && AllocatedNodes is { } nodes
+        ? PobCode.CreateTimeless(StartClass, jewel, conqueror, seed!.Value, socket.I, nodes)
         : null;
 
-    string MapViewBox
+    /// <summary>PoB에 찍을 노드: 시작점에서 소켓까지, 그리고 고른 노드마다 시작점에서 가는 가장 짧은 경로를 합친 것</summary>
+    int[]? AllocatedNodes => path is null ? null
+        : path.Concat(chosen.SelectMany(id => tree!.PathTo(StartClass, id) ?? [])).Distinct().ToArray();
+
+    string ZoomViewBox => $"{F(socket!.X - ZoomHalf)} {F(socket.Y - ZoomHalf)} {F(2 * ZoomHalf)} {F(2 * ZoomHalf)}";
+
+    // PoB 반경 원 색과 비슷하게 정복자 세력마다 색을 다르게 합니다.
+    string FactionColor => jewel.Faction switch
     {
-        get
-        {
-            var nodes = tree!.Data.Nodes;
-            double minX = nodes.Min(n => n.X), maxX = nodes.Max(n => n.X);
-            double minY = nodes.Min(n => n.Y), maxY = nodes.Max(n => n.Y);
-            const double pad = 300;
-            return $"{F(minX - pad)} {F(minY - pad)} {F(maxX - minX + 2 * pad)} {F(maxY - minY + 2 * pad)}";
-        }
-    }
+        "vaal" => "#d0402f",
+        "karui" => "#e07b2a",
+        "maraketh" => "#d9b24a",
+        "templar" => "#e9e1c4",
+        "eternal" => "#7fb2e0",
+        _ => "#4fbfae",
+    };
 
     protected override async Task OnInitializedAsync()
     {
@@ -165,24 +310,25 @@
         if (tree is null) return;
 
         bigNodes = tree.Data.Nodes.Where(n => n.IsKeystone || n.IsNotable).ToArray();
-        var sb = new StringBuilder();
-        foreach (var e in tree.Data.Edges)
-        {
-            TreeNode a = tree.Nodes[e[0]], b = tree.Nodes[e[1]];
-            // 직업 시작점의 연결선은 PoB처럼 그리지 않습니다 (시작점 원 안에서 겹침).
-            if (a.IsStart || b.IsStart) continue;
-            sb.Append($"M{F(a.X)} {F(a.Y)}L{F(b.X)} {F(b.Y)}");
-        }
-        edgePath = sb.ToString();
+        // 직업 시작점의 연결선은 PoB처럼 그리지 않습니다 (시작점 원 안에서 겹침).
+        overviewEdges = EdgePath(tree.Data.Edges.Where(e => !tree.Nodes[e[0]].IsStart && !tree.Nodes[e[1]].IsStart));
+        var nodes = tree.Data.Nodes;
+        double minX = nodes.Min(n => n.X), maxX = nodes.Max(n => n.X);
+        double minY = nodes.Min(n => n.Y), maxY = nodes.Max(n => n.Y);
+        const double pad = 300;
+        mapViewBox = $"{F(minX - pad)} {F(minY - pad)} {F(maxX - minX + 2 * pad)} {F(maxY - minY + 2 * pad)}";
     }
 
     void UpdatePath()
     {
         if (tree is null || socket is null) return;
         path = tree.PathTo(StartClass, socket.I);
-        var start = tree.Nodes[tree.Data.Starts[StartClass]];
-        var points = new[] { start }.Concat((path ?? []).Select(id => tree.Nodes[id]));
-        pathLine = "M" + string.Join("L", points.Select(n => $"{F(n.X)} {F(n.Y)}"));
+        var start = tree.Data.Starts[StartClass];
+        var chain = new[] { start }.Concat(path ?? []).ToArray();
+        pathSet = chain.ToHashSet();
+        var pairs = chain.Zip(chain.Skip(1), (a, b) => new[] { a, b }).ToArray();
+        pathEdges = EdgePath(pairs.Where(e => !tree.Nodes[e[0]].IsStart));
+        zoomPathEdges = EdgePath(pairs.Where(e => !tree.Nodes[e[0]].IsStart && (Near(e[0]) || Near(e[1]))));
     }
 
     void SelectJewel(TimelessJewelType j)
@@ -190,23 +336,157 @@
         if (j == jewel) return;
         jewel = j;
         conqueror = j.Conquerors[0];
+        // 다른 주얼에서는 고를 수 없는 노드(찬란한 허영심의 작은 노드)를 뺍니다.
+        if (tree is not null && chosen.RemoveWhere(id => !CanChoose(tree.Nodes[id])) > 0) chosenVersion++;
         if (seed is { } s && !j.IsValidSeed(s)) seed = null;
+        _ = Recompute();
+    }
+
+    void SelectConqueror(Conqueror c)
+    {
+        conqueror = c;
+        _ = Recompute();
+    }
+
+    void ClickNode(TreeNode n)
+    {
+        if (!pickMode)
+        {
+            selectedNode = n;
+            return;
+        }
+        if (!CanChoose(n)) return;
+        if (!chosen.Remove(n.I)) chosen.Add(n.I);
+        chosenVersion++;
+    }
+
+    /// <summary>시드에 따라 바뀌는 노드만 고를 수 있습니다 (반경 안, 찬란한 허영심은 작은 노드도).</summary>
+    bool CanChoose(TreeNode n) =>
+        inRadius.Contains(n.I) && (n.IsNotable || (jewel.Faction == "vaal" && n.IsSmall));
+
+    void ClearChosen()
+    {
+        chosen.Clear();
+        chosenVersion++;
+    }
+
+    void PickSeed(int value)
+    {
+        seed = value;
+        _ = Recompute();
     }
 
     void SelectSocket(TreeNode s)
     {
+        if (s != socket) ClearChosen();
         socket = s;
+        selectedNode = null;
         nearestClass = tree!.NearestClass(s.I);
-        var nodes = tree.InRadius(s).ToArray();
-        inRadius = nodes.Select(n => n.I).ToHashSet();
-        notablesInRadius = nodes.Where(n => n.IsKeystone || n.IsNotable)
-            .OrderByDescending(n => n.IsKeystone).ThenBy(n => n.N).ToArray();
+        inRadius = tree.InRadius(s).Select(n => n.I).ToHashSet();
+        zoomNodes = tree.Data.Nodes.Where(n => !n.IsStart && n != s && Near(n.I))
+            .OrderBy(n => n.IsSmall ? 0 : 1).ToArray();
+        zoomEdges = EdgePath(tree.Data.Edges.Where(e => !tree.Nodes[e[0]].IsStart && !tree.Nodes[e[1]].IsStart
+            && (Near(e[0]) || Near(e[1]))));
         UpdatePath();
+        _ = Recompute();
+    }
+
+    async Task Recompute()
+    {
+        var version = ++computeVersion;
+        changes = [];
+        bigChanges = [];
+        smallChanges = [];
+        changesFailed = false;
+        if (tree is null || socket is null || !SeedValid)
+        {
+            computing = false;
+            return;
+        }
+
+        computing = true;
+        StateHasChanged();
+        NodeChange[]? result;
+        try
+        {
+            result = await Changes.ComputeAsync(tree, socket, jewel, conqueror, seed!.Value);
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e);  // 화면에는 "받지 못했어요"로 보여 주고, 원인은 브라우저 콘솔에 남깁니다.
+            result = null;
+        }
+        if (version != computeVersion) return;  // 그 사이 다른 것을 골랐으면 버립니다.
+
+        computing = false;
+        changesFailed = result is null;
+        changes = (result ?? []).ToDictionary(c => c.Node.I);
+        bigChanges = changes.Values.Where(c => !c.Node.IsSmall)
+            .OrderByDescending(c => c.Node.IsKeystone).ThenBy(c => c.Node.Display).ToArray();
+        smallChanges = changes.Values.Where(c => c.Node.IsSmall).ToArray();
+        StateHasChanged();
+    }
+
+    bool Near(int id)
+    {
+        var n = tree!.Nodes[id];
+        return Math.Abs(n.X - socket!.X) <= ZoomHalf + 200 && Math.Abs(n.Y - socket.Y) <= ZoomHalf + 200;
+    }
+
+    /// <summary>연결선 SVG path. 같은 그룹·같은 궤도면 PoB처럼 궤도를 따라 호로 그립니다.</summary>
+    string EdgePath(IEnumerable<int[]> edges)
+    {
+        var sb = new StringBuilder();
+        foreach (var e in edges)
+        {
+            TreeNode a = tree!.Nodes[e[0]], b = tree.Nodes[e[1]];
+            sb.Append($"M{F(a.X)} {F(a.Y)}");
+            if (a.G == b.G && a.O > 0 && Math.Abs(a.O - b.O) < 0.5 && tree.Data.Groups.TryGetValue(a.G.ToString(), out var g))
+            {
+                var diff = Math.Atan2(b.Y - g[1], b.X - g[0]) - Math.Atan2(a.Y - g[1], a.X - g[0]);
+                while (diff > Math.PI) diff -= 2 * Math.PI;
+                while (diff < -Math.PI) diff += 2 * Math.PI;
+                sb.Append($"A{F(a.O)} {F(a.O)} 0 0 {(diff > 0 ? 1 : 0)} {F(b.X)} {F(b.Y)}");
+            }
+            else
+            {
+                sb.Append($"L{F(b.X)} {F(b.Y)}");
+            }
+        }
+        return sb.ToString();
+    }
+
+    static int NodeRadius(TreeNode n) => n.IsKeystone ? 95 : n.IsNotable ? 65 : 38;
+
+    string NodeClass(TreeNode n, NodeChange? change) => string.Join(' ',
+        n.IsKeystone ? "key" : n.IsNotable ? "notable" : "small",
+        inRadius.Contains(n.I) ? "in" : "out",
+        change?.Kind == NodeChangeKind.Replaced ? "replaced" : change?.Kind == NodeChangeKind.Added ? "added" : "",
+        pathSet.Contains(n.I) ? "alloc" : "",
+        chosen.Contains(n.I) ? "chosen" : "",
+        pickMode && CanChoose(n) ? "pickable" : "",
+        n == selectedNode ? "sel" : "");
+
+    static string Label(TreeNode n, NodeChange? change) =>
+        change?.Kind == NodeChangeKind.Replaced ? change.Title : n.Display;
+
+    static string NodeTooltip(TreeNode n, NodeChange? change)
+    {
+        var original = n.IsSmall ? "작은 패시브" : n.Display;
+        return change is null ? original
+            : change.Kind == NodeChangeKind.Replaced ? $"{original} → {change.Title}\n{string.Join("\n", change.Lines)}"
+            : $"{original} + {string.Join(", ", change.Lines)}";
+    }
+
+    static string JewelPoints(TreeNode s)
+    {
+        const double r = 110;
+        return $"{F(s.X)},{F(s.Y - r)} {F(s.X + r)},{F(s.Y)} {F(s.X)},{F(s.Y + r)} {F(s.X - r)},{F(s.Y)}";
     }
 
     string SocketLabel(TreeNode s)
     {
-        var names = tree!.InRadius(s).Where(n => n.IsKeystone).Select(n => n.N).ToArray();
+        var names = tree!.InRadius(s).Where(n => n.IsKeystone).Select(n => n.Display).ToArray();
         return names.Length > 0 ? "소켓 · " + string.Join(", ", names) : "소켓";
     }
 

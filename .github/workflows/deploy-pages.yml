@@ -42,6 +42,9 @@ jobs:
           # 프로젝트 사이트는 하위 경로에서 서비스되므로 기준 경로를 바꾼다
           sed -i "s|<base href=\"/\" />|<base href=\"${BASE_PATH}\" />|" publish/wwwroot/index.html
           grep -q "<base href=\"${BASE_PATH}\" />" publish/wwwroot/index.html
+          # 브라우저가 예전 CSS를 캐시해 두고 쓰지 않게 배포마다 주소를 바꾼다
+          sed -i "s|href=\"css/app.css\"|href=\"css/app.css?v=${GITHUB_SHA::8}\"|" publish/wwwroot/index.html
+          grep -q "css/app.css?v=" publish/wwwroot/index.html
           # 주소를 직접 열거나 새로고침해도 Blazor 라우터가 처리하도록 한다
           cp publish/wwwroot/index.html publish/wwwroot/404.html
           # Jekyll이 _framework 폴더를 빼지 않게 한다
@@ -67,6 +70,34 @@ jobs:
         env:
           BASE_PATH: /${{ github.event.repository.name }}/pob/
         run: bash tools/pob/build.sh publish/wwwroot/pob "$BASE_PATH"
+
+      # 군단 주얼 페이지의 시드별 변환표 (tools/build_timeless_luts.py, 약 33MB). PoB 원본에서 만들고,
+      # PoB 버전과 스크립트·입력 파일이 같으면 캐시를 다시 씁니다.
+      - name: Read PoB version
+        id: pob
+        run: echo "tag=$(grep -oE 'POB_TAG:-[^}]+' tools/pob/build.sh | cut -d- -f2-)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@v4
+        id: timeless-cache
+        with:
+          key: timeless-${{ steps.pob.outputs.tag }}-${{ hashFiles('tools/build_timeless_luts.py', 'tools/build_timeless_tree.py', 'tools/timeless_korean.json', 'PoEBuildGacha.Web/wwwroot/data/timeless-tree.json') }}
+          path: .timeless-data
+
+      # 실패해도 사이트 배포는 계속합니다 (그때는 군단 주얼 페이지에서 변환 목록만 빠집니다).
+      - name: Build timeless jewel data
+        if: steps.timeless-cache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        env:
+          POB_TAG: ${{ steps.pob.outputs.tag }}
+        run: |
+          git clone -q --depth 1 --filter=blob:none --sparse --branch "$POB_TAG" https://github.com/PathOfBuildingCommunity/PathOfBuilding.git .pob-timeless
+          git -C .pob-timeless sparse-checkout set src/Data/TimelessJewelData
+          # 중간에 실패한 결과가 캐시되지 않게 다 만든 뒤에 옮깁니다.
+          python3 tools/build_timeless_luts.py .pob-timeless/src .timeless-tmp
+          mv .timeless-tmp .timeless-data
+
+      - name: Copy timeless jewel data
+        run: if [ -d .timeless-data ]; then cp -r .timeless-data publish/wwwroot/data/timeless; fi
 
       - uses: actions/upload-pages-artifact@v3
         with:
