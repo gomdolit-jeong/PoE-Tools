@@ -47,13 +47,18 @@ public sealed record CraftBench(
     [property: JsonPropertyName("c")] string[] Classes,
     [property: JsonPropertyName("cost")] Dictionary<string, int> Cost);
 
-/// <summary>화석: Pos 태그는 가중치 배율(%), Neg 태그는 막음</summary>
+/// <summary>화석: Pos 태그는 가중치 배율(%), Neg 태그는 막음, Forced는 확정으로 붙이는 옵션(공허 화석: 심연 홈), Allowed는 쓸 수 있는 베이스 태그</summary>
 public sealed record CraftFossil(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("n")] string Name,
     [property: JsonPropertyName("k")] string Korean,
     [property: JsonPropertyName("pos")] List<List<object>> Pos,
-    [property: JsonPropertyName("neg")] string[] Neg);
+    [property: JsonPropertyName("neg")] string[] Neg,
+    [property: JsonPropertyName("forced")] string[]? Forced = null,
+    [property: JsonPropertyName("allowed")] string[]? Allowed = null)
+{
+    public bool UsableOn(CraftBase item) => Allowed is not { Length: > 0 } || Allowed.Any(item.Tags.Contains);
+}
 
 /// <summary>혼돈 공명기 (S: 화석 소켓 수)</summary>
 public sealed record CraftResonator(
@@ -433,7 +438,8 @@ public sealed class CraftSimulator
     }
 
     SampleMod Sample(CraftMod mod, string? source) =>
-        new(mod.Text, mod.Prefix, source is null ? TierOf(mod) : 0, source ?? (TierOf(mod) == 0 ? "에센스" : null), IsTarget(mod));
+        new(mod.Text, mod.Prefix, source is null ? TierOf(mod) : 0,
+            source ?? (TierOf(mod) != 0 ? null : mod.Domain == "delve" ? "화석" : "에센스"), IsTarget(mod));
 
     public bool CanBench(int target) => bench[target] is not null;
 
@@ -598,11 +604,12 @@ public sealed class CraftSimulator
         var item = NewItem();
         var names = string.Join(" + ", fossils.Select(f => f.Korean));
         string[] steps = [$"{resonator.Korean}에 {names}을(를) 넣고 원하는 옵션이 나올 때까지 사용", BenchStep(allowBench)];
+        var forced = fossils.SelectMany(f => f.Forced ?? []).Select(id => data.Mods.GetValueOrDefault(id)).OfType<CraftMod>().FirstOrDefault();
         return Run($"화석 · {names}", steps.Where(s => s != "").ToArray(), item, uses =>
         {
             Use(uses, resonator.Id);
             foreach (var f in fossils) Use(uses, f.Id);
-            RollRare(item, null);
+            RollRare(item, forced);
             var (ok, b) = Check(item, allowBench);
             return ok ? b : null;
         }, 400, 3_000_000, cancel);
@@ -787,7 +794,7 @@ public sealed class CraftSimulator
 // ───────── 화면용 도우미 ─────────
 
 /// <summary>옵션 종류 하나 (검색 목록). Label: 티어 1 문장의 수치를 #으로 바꾼 것</summary>
-public sealed record CraftModType(string Type, bool Prefix, string Label, CraftMod[] Tiers, bool EssenceOnly, int Weight, bool Veiled = false, bool BenchOnly = false);
+public sealed record CraftModType(string Type, bool Prefix, string Label, CraftMod[] Tiers, bool EssenceOnly, int Weight, bool Veiled = false, bool BenchOnly = false, bool FossilOnly = false);
 
 public static partial class CraftHelpers
 {
@@ -823,6 +830,12 @@ public static partial class CraftHelpers
             var tiers = g.Distinct().OrderByDescending(m => m.V.Length > 0 ? Math.Abs(m.V[0][0]) : 0).ToArray();
             list.Add(new CraftModType(g.Key.Type, g.Key.Prefix, Template(tiers[0].Text), tiers, true, 0));
         }
+        // 화석 전용 옵션: 공허 화석의 심연 홈처럼 화석이 확정으로 붙이는 것
+        foreach (var f in data.Fossils.Where(f => f.Forced is { Length: > 0 } && f.UsableOn(pool.Base)))
+            foreach (var m in f.Forced!.Select(id => data.Mods.GetValueOrDefault(id)).OfType<CraftMod>())
+                if (!list.Any(t => t.Type == m.Type && t.Prefix == m.Prefix))
+                    list.Add(new CraftModType(m.Type, m.Prefix, Template(m.Text), [m], false, 0, FossilOnly: true));
+
         // 작업대 전용 옵션: 일반·에센스로 안 나오고 작업대로만 붙는 종류 (예: 2배 피해)
         var benchMods = data.Bench
             .Where(b => Array.IndexOf(b.Classes, pool.Base.Class) >= 0)
@@ -904,7 +917,7 @@ public static partial class CraftItemText
             .Where(l => !InfluenceWords.Any(x => x.Words.Contains(l)))
             .Where(l => !l.EndsWith("(implicit)") && !l.EndsWith("(enchant)"))
             .Select(l => l.EndsWith("(crafted)") ? l[..^"(crafted)".Length].Trim() : l)
-            .Where(l => l is not ("Fractured Item" or "Mirrored" or "Corrupted" or "균열된 아이템" or "복제됨" or "타락"))
+            .Where(l => l is not ("Fractured Item" or "Mirrored" or "Corrupted" or "Searing Exarch Item" or "Eater of Worlds Item" or "균열된 아이템" or "복제됨" or "타락"))
             .ToList();
         // 균열 옵션: 게임 복사는 "(fractured)", PoB는 {fractured} 표시 (FromPathOfBuilding에서 " (fractured)"로 바꿔 둠)
         var fractured = new HashSet<string>();
@@ -990,6 +1003,7 @@ public static partial class CraftItemText
             .Where(x => !string.IsNullOrEmpty(x.text))
             .Select(x => (x.t, x.text, lines: x.text.Split('\n').Length))
             .OrderByDescending(x => x.lines)
+            .ThenBy(x => IsNatural(x.t) ? 0 : 1)  // 같은 문장이면 일반 옵션부터
             .ToList();
 
         foreach (var (type, text, count) in candidates)
@@ -1003,7 +1017,12 @@ public static partial class CraftItemText
                 var match = pattern.Match(string.Join("\n", lines[i..(i + count)]));
                 if (!match.Success) continue;
                 var values = match.Groups.Cast<Group>().Skip(1).Select(g => double.Parse(g.Value)).ToArray();
-                found.Add((type, BestTier(type, values, korean), lines[i..(i + count)]));
+                var (tier, miss) = BestTier(type, values, korean);
+                // 여러 줄짜리나 일반으로 안 나오는 옵션은 수치가 범위에서 크게 벗어나면 다른 옵션 줄이 우연히 맞은 것으로 봅니다
+                // (예: "에너지 보호막 98% 증가"와 "생명력 +140"이 작업대 혼합 옵션 "18~21% / 14~16"으로 묶이는 것).
+                // 한 줄짜리 일반 옵션은 같은 능력치가 합쳐져 범위를 넘을 수 있어서 가장 가까운 티어로 둡니다.
+                if ((count > 1 || !IsNatural(type)) && miss > 0.35) continue;
+                found.Add((type, tier, lines[i..(i + count)]));
                 for (var j = i; j < i + count; j++) used[j] = true;
                 break;
             }
@@ -1012,7 +1031,10 @@ public static partial class CraftItemText
         return (found, unknown);
     }
 
-    static int BestTier(CraftModType type, double[] values, bool korean)
+    static bool IsNatural(CraftModType t) => !t.EssenceOnly && !t.Veiled && !t.BenchOnly && !t.FossilOnly;
+
+    /// <summary>가장 잘 맞는 티어와, 그 티어 범위에서 벗어난 정도(범위 대비 비율, 0이면 범위 안)</summary>
+    static (int Tier, double Miss) BestTier(CraftModType type, double[] values, bool korean)
     {
         var bestTier = 1;
         var bestMiss = double.MaxValue;
@@ -1025,11 +1047,12 @@ public static partial class CraftItemText
             {
                 var v = Math.Abs(values[k]);
                 var (lo, hi) = (Math.Min(Math.Abs(ranges[k].Lo), Math.Abs(ranges[k].Hi)), Math.Max(Math.Abs(ranges[k].Lo), Math.Abs(ranges[k].Hi)));
-                miss += v < lo ? lo - v : v > hi ? v - hi : 0;
+                var off = v < lo ? (lo - v) / Math.Max(lo, 1) : v > hi ? (v - hi) / Math.Max(hi, 1) : 0;
+                miss = Math.Max(miss, off);
             }
-            if (miss == 0) return i + 1;
+            if (miss == 0) return (i + 1, 0);
             if (miss < bestMiss) (bestMiss, bestTier) = (miss, i + 1);
         }
-        return bestTier;
+        return (bestTier, bestMiss);
     }
 }

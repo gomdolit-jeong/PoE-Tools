@@ -95,6 +95,10 @@ def main() -> None:
         currencies.update(o.get("cost", {}))
         out_bench.append({"m": mod, "c": cls, "cost": o.get("cost", {})})
 
+    # 공허 화석처럼 옵션을 확정으로 붙이는 화석의 옵션 (심연 홈)
+    for f in fossils.values():
+        needed.update(f.get("forced_mods", []))
+
     out_mods = {}
     for key, m in mods.items():
         if m.get("generation_type") not in ("prefix", "suffix"):
@@ -124,8 +128,9 @@ def main() -> None:
         en = (bases.get(cid) or {}).get("name") or cid.rsplit("/", 1)[-1]
         out_currency[cid] = [en, (bases_ko.get(cid) or {}).get("name") or en]
 
-    # 화석: 태그 가중치만 바꾸는 것 (옵션을 더하거나 확정하는 화석, 행운·복제·판매가 화석은 아직 계산하지 않음)
-    special = ("added_mods", "forced_mods", "allowed_tags", "forbidden_tags", "rolls_lucky", "mirrors",
+    # 화석: 태그 가중치를 바꾸는 것과, 옵션 하나를 확정으로 붙이는 것(공허 화석: 심연 홈, 쓸 수 있는 베이스 태그가 정해짐).
+    # 옵션을 더 붙이는 화석, 행운·복제·판매가 화석은 아직 계산하지 않음
+    special = ("added_mods", "forbidden_tags", "rolls_lucky", "mirrors",
                "corrupted_essence_chance", "sell_price_mods", "changes_quality", "rolls_white_sockets")
     out_fossils = []
     for key, f in fossils.items():
@@ -133,12 +138,14 @@ def main() -> None:
             continue
         if (bases.get(key) or {}).get("release_state") != "released" or any(f.get(x) for x in special):
             continue
-        if not f.get("positive_mod_weights") and not f.get("negative_mod_weights"):
+        if not f.get("positive_mod_weights") and not f.get("negative_mod_weights") and not f.get("forced_mods"):
             continue
         out_fossils.append({
             "id": key, "n": f["name"], "k": (fossils_ko.get(key) or {}).get("name") or f["name"],
             "pos": weights(f.get("positive_mod_weights", [])),
             "neg": [w["tag"] for w in f.get("negative_mod_weights", []) if w["weight"] == 0],
+            "forced": [m for m in f.get("forced_mods", []) if m in out_mods],
+            "allowed": f.get("allowed_tags", []),
         })
 
     # 혼돈 공명기 (소켓 1~4개): 한글 이름

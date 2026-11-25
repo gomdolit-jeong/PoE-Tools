@@ -90,7 +90,7 @@
                                     }
                                     else if (!t.Tiers.Any(m => m.W.Count > 0))
                                     {
-                                        <span class="cr-veiled">@(t.Tiers.All(m => m.Crafted) ? " (작업대)" : " (에센스)")</span>
+                                        <span class="cr-veiled">@(t.Tiers.All(m => m.Crafted) ? " (작업대)" : t.Tiers.All(m => m.Domain == "delve") ? " (공허 화석)" : " (에센스)")</span>
                                     }
                                 </td>
                                 <td>
@@ -129,7 +129,7 @@
                     <button type="button" class="cr-type" @onclick="() => AddTarget(type)">
                         <span class="cr-side @(type.Prefix ? "p" : "s")">@(type.Prefix ? "접두" : "접미")</span>
                         <span class="cr-label">@OneLine(type.Label)</span>
-                        <small>@(type.Veiled ? "베일드" : type.BenchOnly ? "작업대 전용" : type.EssenceOnly ? "에센스 전용" : $"{type.Tiers.Length}티어 · {Share(type):0.#}%")</small>
+                        <small>@(type.Veiled ? "베일드" : type.FossilOnly ? "공허 화석" : type.BenchOnly ? "작업대 전용" : type.EssenceOnly ? "에센스 전용" : $"{type.Tiers.Length}티어 · {Share(type):0.#}%")</small>
                     </button>
                 }
             </div>
@@ -531,9 +531,14 @@
         }
 
         // 화석: 목표를 막지 않는 화석 1~4개 조합 중에서, 목표 옵션 비중을 가장 싸게 늘리는 조합 3개만 실제로 굴려 봅니다.
-        if (unnatural.Count == 0 || benchOnly)
+        // 심연 홈처럼 화석으로만 붙는 목표가 있으면 그 화석(공허 화석)을 꼭 넣습니다.
+        var required = data.Fossils.FirstOrDefault(f => f.Forced is { Length: > 0 } && f.UsableOn(baseItem!)
+            && unnatural.Any(x => f.Forced.Any(id => data.Mods.TryGetValue(id, out var m) && x.t.Matches(m))));
+        var restUnnatural = unnatural.Where(x => required?.Forced?.Any(id => data.Mods.TryGetValue(id, out var m) && x.t.Matches(m)) != true).ToList();
+        var fossilOk = restUnnatural.Count == 0 || (restUnnatural.Count == 1 && allowBench && sim.CanBench(restUnnatural[0].i));
+        if (fossilOk)
         {
-            foreach (var (fossils, resonator) in BestFossilCombos(3))
+            foreach (var (fossils, resonator) in BestFossilCombos(3, required))
             {
                 var fossilSim = new CraftSimulator(data, pool.WithFossils(fossils), targets, Price);
                 jobs.Add(("화석 · " + string.Join(" + ", fossils.Select(f => f.Korean)), () => fossilSim.FossilSpam(resonator, fossils, allowBench, token)));
@@ -564,11 +569,17 @@
     /// 화석 조합 어림 점수: 목표마다 (그 목표 옵션 가중치 / 전체 가중치)를 곱한 값이 "한 번에 다 붙을 가능성"에 비례한다고 보고,
     /// (공명기 + 화석 가격) / 점수가 작은 순서로 고릅니다. 화석 없이 굴리는 것(카오스)보다 나은 조합만 돌려줍니다.
     /// </summary>
-    List<(CraftFossil[] Fossils, CraftResonator Resonator)> BestFossilCombos(int count)
+    List<(CraftFossil[] Fossils, CraftResonator Resonator)> BestFossilCombos(int count, CraftFossil? required = null)
     {
         if (data is null || pool is null || data.Resonators.Length == 0) return [];
-        var natural = targets.Where(t => !t.Fixed && !t.Reserved && pool.WeightOf(t) > 0).ToList();
-        if (natural.Count == 0) return [];
+        var forcedMods = (required?.Forced ?? []).Select(id => data.Mods.GetValueOrDefault(id)).OfType<CraftMod>().ToArray();
+        var natural = targets.Where(t => !t.Fixed && !t.Reserved && pool.WeightOf(t) > 0 && !forcedMods.Any(t.Matches)).ToList();
+        if (natural.Count == 0)
+        {
+            // 화석으로 확정되는 목표만 있으면 그 화석 하나만 씁니다.
+            var single = data.Resonators.FirstOrDefault(x => x.Sockets == 1);
+            return required is not null && single is not null ? [([required], single)] : [];
+        }
 
         double Score(ModPool p)
         {
@@ -582,8 +593,10 @@
             return score;
         }
 
-        // 목표를 하나라도 막는 화석은 뺍니다.
-        var useful = data.Fossils.Where(f => Score(pool.WithFossils([f])) > 0).ToArray();
+        // 목표를 하나라도 막는 화석과, 옵션을 확정으로 붙이는 화석(필요할 때만 따로 넣음)은 뺍니다.
+        var useful = data.Fossils
+            .Where(f => f.Forced is not { Length: > 0 } && f.UsableOn(pool.Base) && Score(pool.WithFossils([f])) > 0)
+            .ToArray();
         var baseline = Price(Currencies.Chaos) / Score(pool);
         var scored = new List<(CraftFossil[] Fossils, CraftResonator Resonator, double Cost)>();
         void Visit(int start, List<CraftFossil> picked)
@@ -609,8 +622,9 @@
                 picked.RemoveAt(picked.Count - 1);
             }
         }
-        Visit(0, []);
-        return scored.Where(s => s.Cost < baseline).OrderBy(s => s.Cost).Take(count)
+        Visit(0, required is null ? [] : [required]);
+        // 꼭 넣어야 하는 화석이 있으면 카오스와 비교할 수 없어서(카오스로는 안 나옴) 그냥 싼 순서로 고릅니다.
+        return scored.Where(s => required is not null || s.Cost < baseline).OrderBy(s => s.Cost).Take(count)
             .Select(s => (s.Fossils, s.Resonator)).ToList();
     }
 
