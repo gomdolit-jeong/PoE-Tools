@@ -249,6 +249,7 @@ public sealed class ModPool
         var mods = new List<CraftMod>();
         var weights = new List<int>();
         var veiled = new List<CraftMod>();
+        var delve = new List<(CraftMod, int)>();
         foreach (var mod in data.Mods.Values)
         {
             if (mod.Level > itemLevel || mod.W.Count == 0) continue;
@@ -258,17 +259,22 @@ public sealed class ModPool
             var g = FirstMatch(mod.Gw, tags);
             if (g is { } gm) w = w * gm / 100;
             if (w <= 0) continue;
+            if (mod.Domain == "delve") { delve.Add((mod, w)); continue; }
             mods.Add(mod);
             weights.Add(w);
         }
         Mods = [.. mods];
         Weights = [.. weights];
         Veiled = [.. veiled];
+        Delve = [.. delve];
         (cumulative, Total) = Sum(Weights);
     }
 
     /// <summary>이 베이스에 붙을 수 있는 베일드 옵션 (풀에는 넣지 않음)</summary>
     public CraftMod[] Veiled { get; private init; } = [];
+
+    /// <summary>화석 전용 옵션과 가중치: 화석을 넣은 공명기로 굴릴 때만 풀에 들어갑니다 (WithFossils).</summary>
+    public (CraftMod Mod, int Weight)[] Delve { get; private init; } = [];
 
     ModPool(CraftBase item, int itemLevel, CraftMod[] mods, int[] weights)
     {
@@ -290,24 +296,27 @@ public sealed class ModPool
     /// <summary>
     /// 화석을 넣은 공명기로 굴릴 때의 풀: 옵션 태그가 화석의 막는 태그와 겹치면 0,
     /// 늘리는 태그와 겹치면 (가중치/100)배를 화석·태그마다 곱합니다 (Craft of Exile과 같은 어림).
+    /// 화석을 하나라도 넣으면 화석 전용 옵션도 풀에 들어가고, 같은 규칙으로 배율을 받습니다.
     /// </summary>
     public ModPool WithFossils(IEnumerable<CraftFossil> fossils)
     {
         var list = fossils.ToArray();
-        var weights = new int[Mods.Length];
-        for (var i = 0; i < Mods.Length; i++)
+        CraftMod[] mods = list.Length > 0 ? [.. Mods, .. Delve.Select(d => d.Mod)] : Mods;
+        int[] baseWeights = list.Length > 0 ? [.. Weights, .. Delve.Select(d => d.Weight)] : Weights;
+        var weights = new int[mods.Length];
+        for (var i = 0; i < mods.Length; i++)
         {
-            double w = Weights[i];
+            double w = baseWeights[i];
             foreach (var f in list)
             {
-                if (f.Neg.Any(t => Array.IndexOf(Mods[i].Tags, t) >= 0)) { w = 0; break; }
+                if (f.Neg.Any(t => Array.IndexOf(mods[i].Tags, t) >= 0)) { w = 0; break; }
                 foreach (var pos in f.Pos)
-                    if (pos.Count == 2 && Array.IndexOf(Mods[i].Tags, pos[0].ToString()) >= 0)
+                    if (pos.Count == 2 && Array.IndexOf(mods[i].Tags, pos[0].ToString()) >= 0)
                         w *= double.Parse(pos[1].ToString()!, System.Globalization.CultureInfo.InvariantCulture) / 100;
             }
             weights[i] = (int)Math.Min(int.MaxValue / 64, Math.Round(w));
         }
-        return new ModPool(Base, ItemLevel, Mods, weights);
+        return new ModPool(Base, ItemLevel, mods, weights);
     }
 
     /// <summary>목표 하나를 채우는 옵션들의 가중치 합 (화석 조합 고르기에 씀)</summary>
@@ -439,7 +448,8 @@ public sealed class CraftSimulator
 
     int TierOf(CraftMod mod)
     {
-        tiers ??= pool.Mods.GroupBy(m => (m.Type, m.Prefix))
+        // 화석 전용 옵션은 티어가 없어서 빼고 셉니다 (예시에서 "화석"으로 표시).
+        tiers ??= pool.Mods.Where(m => m.Domain != "delve").GroupBy(m => (m.Type, m.Prefix))
             .SelectMany(g => g.OrderByDescending(m => m.Level).Select((m, i) => (m, tier: i + 1)))
             .ToDictionary(x => x.m, x => x.tier);
         return tiers.GetValueOrDefault(mod);
@@ -843,6 +853,13 @@ public static partial class CraftHelpers
             foreach (var m in f.Forced!.Select(id => data.Mods.GetValueOrDefault(id)).OfType<CraftMod>())
                 if (!list.Any(t => t.Type == m.Type && t.Prefix == m.Prefix))
                     list.Add(new CraftModType(m.Type, m.Prefix, Template(m.Text), [m], false, 0, FossilOnly: true));
+        // 화석을 넣고 굴릴 때만 나오는 옵션 (예: 장화의 장착된 화염 젬 레벨 +2)
+        foreach (var g in pool.Delve.Select(d => d.Mod).GroupBy(m => (m.Type, m.Prefix)))
+        {
+            if (list.Any(t => t.Type == g.Key.Type && t.Prefix == g.Key.Prefix)) continue;
+            var tiers = g.OrderByDescending(m => m.Level).ThenByDescending(m => m.V.Length > 0 ? Math.Abs(m.V[0][0]) : 0).ToArray();
+            list.Add(new CraftModType(g.Key.Type, g.Key.Prefix, Template(tiers[0].Text), tiers, false, 0, FossilOnly: true));
+        }
 
         // 작업대 전용 옵션: 일반·에센스로 안 나오고 작업대로만 붙는 종류 (예: 2배 피해)
         var benchMods = data.Bench

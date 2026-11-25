@@ -7,6 +7,7 @@
 - essences.min.json / Korean/essences.min.json: 에센스가 분류마다 확정으로 붙이는 옵션
 - crafting_bench_options.min.json: 작업대 옵션과 비용
 - fossils.min.json / Korean/fossils.min.json: 화석이 옵션 태그별로 바꾸는 가중치 (가중치만 바꾸는 화석만 씀)
+  화석 전용 옵션(mods의 domain "delve")도 등장 가중치와 함께 넣습니다.
 
 결과: PoETools.Web/wwwroot/data/crafting.json
 패치마다 가중치가 바뀌므로 배포할 때마다 GitHub Actions가 다시 받습니다 (실패하면 저장소 파일을 씀).
@@ -104,7 +105,8 @@ def main() -> None:
         if m.get("generation_type") not in ("prefix", "suffix"):
             continue
         # unveiled: 베일드 옵션 (베일드 오브·아이슬링으로 붙는 옵션, 계산기는 자리만 비워 둠)
-        natural = m.get("domain") in ("item", "unveiled") and any(w["weight"] > 0 and w["tag"] in all_tags for w in m.get("spawn_weights", []))
+        # delve: 화석 전용 옵션 (화석을 넣은 공명기로 굴릴 때만 풀에 들어감, 화석 태그 배율도 똑같이 받음)
+        natural = m.get("domain") in ("item", "unveiled", "delve") and any(w["weight"] > 0 and w["tag"] in all_tags for w in m.get("spawn_weights", []))
         if not natural and key not in needed:
             continue
         ko = mods_ko.get(key) or {}

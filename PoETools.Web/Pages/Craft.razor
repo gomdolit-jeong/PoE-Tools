@@ -88,9 +88,13 @@
                                     {
                                         <span class="cr-veiled"> (베일드)</span>
                                     }
+                                    else if (t.Tiers.All(m => m.Domain == "delve"))
+                                    {
+                                        <span class="cr-veiled"> (화석 전용)</span>
+                                    }
                                     else if (!t.Tiers.Any(m => m.W.Count > 0))
                                     {
-                                        <span class="cr-veiled">@(t.Tiers.All(m => m.Crafted) ? " (작업대)" : t.Tiers.All(m => m.Domain == "delve") ? " (공허 화석)" : " (에센스)")</span>
+                                        <span class="cr-veiled">@(t.Tiers.All(m => m.Crafted) ? " (작업대)" : " (에센스)")</span>
                                     }
                                 </td>
                                 <td>
@@ -129,7 +133,7 @@
                     <button type="button" class="cr-type" @onclick="() => AddTarget(type)">
                         <span class="cr-side @(type.Prefix ? "p" : "s")">@(type.Prefix ? "접두" : "접미")</span>
                         <span class="cr-label">@OneLine(type.Label)</span>
-                        <small>@(type.Veiled ? "베일드" : type.FossilOnly ? "공허 화석" : type.BenchOnly ? "작업대 전용" : type.EssenceOnly ? "에센스 전용" : $"{type.Tiers.Length}티어 · {Share(type):0.#}%")</small>
+                        <small>@(type.Veiled ? "베일드" : type.FossilOnly ? "화석 전용" : type.BenchOnly ? "작업대 전용" : type.EssenceOnly ? "에센스 전용" : $"{type.Tiers.Length}티어 · {Share(type):0.#}%")</small>
                     </button>
                 }
             </div>
@@ -280,7 +284,8 @@
 
         <p class="hint">
             옵션·가중치는 RePoE 게임 데이터(배포 때마다 새로 받음), 레어 옵션 개수(4·5·6개 = 8:3:1)는 커뮤니티 추정치예요.
-            화석은 가중치만 바꾸는 17종만 계산하고(태그가 겹치면 배율을 곱하는 어림),
+            화석은 가중치만 바꾸는 17종과 공허 화석만 계산하고(태그가 겹치면 배율을 곱하는 어림),
+            화석 전용 옵션은 어떤 화석을 넣든 풀에 들어가고 화석 배율도 똑같이 받는다고 봐요.
             메타 크래프팅은 "접두어/접미어 속성 변경 불가 → 정제 → 엑잘"만 계산해요 (고정 비용은 3.30.0 패치 노트 기준).
             1·2개만 고정하는 옵션(어느 옵션이 고정될지 무작위)과 하베스트·무효화는 아직 계산하지 않아요.
         </p>
@@ -534,7 +539,11 @@
         // 심연 홈처럼 화석으로만 붙는 목표가 있으면 그 화석(공허 화석)을 꼭 넣습니다.
         var required = data.Fossils.FirstOrDefault(f => f.Forced is { Length: > 0 } && f.UsableOn(baseItem!)
             && unnatural.Any(x => f.Forced.Any(id => data.Mods.TryGetValue(id, out var m) && x.t.Matches(m))));
-        var restUnnatural = unnatural.Where(x => required?.Forced?.Any(id => data.Mods.TryGetValue(id, out var m) && x.t.Matches(m)) != true).ToList();
+        // 화석 전용 옵션 목표는 화석을 넣고 굴리면 나올 수 있어서 화석 방법에서는 막지 않습니다.
+        var restUnnatural = unnatural
+            .Where(x => required?.Forced?.Any(id => data.Mods.TryGetValue(id, out var m) && x.t.Matches(m)) != true)
+            .Where(x => !pool.Delve.Any(d => x.t.Matches(d.Mod)))
+            .ToList();
         var fossilOk = restUnnatural.Count == 0 || (restUnnatural.Count == 1 && allowBench && sim.CanBench(restUnnatural[0].i));
         if (fossilOk)
         {
@@ -573,7 +582,9 @@
     {
         if (data is null || pool is null || data.Resonators.Length == 0) return [];
         var forcedMods = (required?.Forced ?? []).Select(id => data.Mods.GetValueOrDefault(id)).OfType<CraftMod>().ToArray();
-        var natural = targets.Where(t => !t.Fixed && !t.Reserved && pool.WeightOf(t) > 0 && !forcedMods.Any(t.Matches)).ToList();
+        // 화석으로 굴려서 나올 수 있는 목표 (일반 옵션 + 화석 전용 옵션)
+        var natural = targets.Where(t => !t.Fixed && !t.Reserved && !forcedMods.Any(t.Matches)
+            && (pool.WeightOf(t) > 0 || pool.Delve.Any(d => t.Matches(d.Mod)))).ToList();
         if (natural.Count == 0)
         {
             // 화석으로 확정되는 목표만 있으면 그 화석 하나만 씁니다.
