@@ -102,8 +102,16 @@ public sealed class CraftDataStore(HttpClient http)
         var data = await http.GetFromJsonAsync<CraftData>("data/crafting.json")
                    ?? throw new InvalidOperationException("crafting.json이 비어 있어요");
         foreach (var (id, mod) in data.Mods) mod.Id = id;
+        // RePoE 에센스 데이터에는 룬 단검·전투 지팡이 칸이 없어요. 게임에서는 단검·지팡이 옵션이 붙으므로 그쪽으로 이어 줍니다.
+        foreach (var e in data.Essences)
+            foreach (var (cls, fallback) in EssenceClassFallback)
+                if (!e.Mods.ContainsKey(cls) && e.Mods.TryGetValue(fallback, out var mod))
+                    e.Mods[cls] = mod;
         return data;
     }
+
+    static readonly (string Class, string Fallback)[] EssenceClassFallback =
+        [("Rune Dagger", "Dagger"), ("Warstaff", "Staff")];
 }
 
 // ───────── 화폐 ─────────
