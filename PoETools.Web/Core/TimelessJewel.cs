@@ -1,7 +1,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace PoEKRTools.Web.Core;
+namespace PoETools.Web.Core;
 
 /// <summary>
 /// 정복자(주얼 변형)와 그 정복자가 주는 핵심 패시브. Name·Keystone은 PoB에 쓰는 영어 이름입니다.

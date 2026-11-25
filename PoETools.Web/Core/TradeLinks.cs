@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace PoEKRTools.Web.Core;
+namespace PoETools.Web.Core;
 
 /// <summary>거래소 한 곳 (공식 거래 검색 주소의 앞부분)</summary>
 public sealed record TradeSite(string Label, string SearchUrl);

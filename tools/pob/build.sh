@@ -2,7 +2,7 @@
 # 브라우저에서 돌아가는 Path of Building을 빌드합니다.
 # pob-web (https://github.com/atty303/pob-web, MIT)의 드라이버로 PoB Community 원본을 그대로 실행합니다.
 #
-# 사용법: tools/pob/build.sh <출력 폴더> <사이트 기준 경로, 예: /PoE_KR_Tools/pob/>
+# 사용법: tools/pob/build.sh <출력 폴더> <사이트 기준 경로, 예: /PoE-Tools/pob/>
 # 필요한 도구(deno, emsdk, cmake, ninja)는 pob-web의 mise.toml 버전을 mise로 설치합니다.
 #
 # 결과: <출력 폴더>/index.html 과 PoB 데이터(<출력 폴더>/data/games/poe1/versions/<POB_TAG>/)

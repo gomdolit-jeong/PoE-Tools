@@ -33,7 +33,7 @@ ANCHOR = """		for i, line in ipairs(mNode.sd) do
 		end
 """
 
-KOREAN_BLOCK = """		-- PoE KR Tools: 한글 이름·설명 (tools/pob/korean_tooltips.py)
+KOREAN_BLOCK = """		-- PoE Tools: 한글 이름·설명 (tools/pob/korean_tooltips.py)
 		if gachaKoreanPassives == nil then
 			local ok, list = pcall(LoadModule, "Data/KoreanPassives")
 			gachaKoreanPassives = ok and type(list) == "table" and list or false
@@ -55,7 +55,7 @@ ITEM_ANCHOR = """						for _ = 1, variantCount do
 						end
 """
 
-ITEM_BLOCK = """						-- PoE KR Tools: 옵션 줄의 한글 (tools/pob/korean_tooltips.py)
+ITEM_BLOCK = """						-- PoE Tools: 옵션 줄의 한글 (tools/pob/korean_tooltips.py)
 						if gachaKoreanModLine == nil then
 							local ok, translate = pcall(LoadModule, "Data/KoreanMods")
 							gachaKoreanModLine = ok and type(translate) == "function" and translate or false
@@ -76,7 +76,7 @@ NAME_ANCHOR = """	-- Item name
 	end
 """
 
-NAME_BLOCK = """	-- PoE KR Tools: 아이템 한글 이름 (고유 아이템 이름 · 기본 아이템). 희귀 아이템의 무작위 이름은 번역하지 않습니다.
+NAME_BLOCK = """	-- PoE Tools: 아이템 한글 이름 (고유 아이템 이름 · 기본 아이템). 희귀 아이템의 무작위 이름은 번역하지 않습니다.
 	if gachaKoreanItemNames == nil then
 		local ok, names = pcall(LoadModule, "Data/KoreanItems")
 		gachaKoreanItemNames = ok and type(names) == "table" and names or false
@@ -97,7 +97,7 @@ NAME_BLOCK = """	-- PoE KR Tools: 아이템 한글 이름 (고유 아이템 이�
 GEM_ANCHOR = """		tooltip:AddLine(fontSizeTitle, colorCodes.GEM .. grantedEffect.name, "FONTIN SC")
 """
 
-GEM_BLOCK = """		-- PoE KR Tools: 젬 한글 이름 (tools/pob/korean_tooltips.py)
+GEM_BLOCK = """		-- PoE Tools: 젬 한글 이름 (tools/pob/korean_tooltips.py)
 		if gachaKoreanItemNames == nil then
 			local ok, names = pcall(LoadModule, "Data/KoreanItems")
 			gachaKoreanItemNames = ok and type(names) == "table" and names or false
@@ -115,7 +115,7 @@ SEARCH_ANCHOR = """		if not found then
 	return true
 """
 
-SEARCH_BLOCK = """		-- PoE KR Tools: 검색어에 한글이 있으면 한글 이름·옵션 문장에서도 찾습니다 (tools/pob/korean_tooltips.py)
+SEARCH_BLOCK = """		-- PoE Tools: 검색어에 한글이 있으면 한글 이름·옵션 문장에서도 찾습니다 (tools/pob/korean_tooltips.py)
 		local koreanQuery = self.controls.search.buf
 		if not found and koreanQuery:find("[\\128-\\255]") then
 			if gachaKoreanItemNames == nil then
@@ -152,21 +152,21 @@ CONTINUATION = "(function(b) return b and b >= 128 and b < 192 end)"
 EDIT_PATCHES = [
     # Backspace: 앞 글자가 여러 바이트면 그 글자 전체를 지웁니다.
     ("\t\t\tself.buf = self.buf:sub(1, self.caret - 1 - len) .. self.buf:sub(self.caret)\n",
-     "\t\t\t-- PoE KR Tools: 한글 등 여러 바이트 글자는 한 글자 전체를 지웁니다.\n"
+     "\t\t\t-- PoE Tools: 한글 등 여러 바이트 글자는 한 글자 전체를 지웁니다.\n"
      f"\t\t\twhile self.caret - len > 1 and {CONTINUATION}(self.buf:byte(self.caret - len)) do\n"
      "\t\t\t\tlen = len + 1\n"
      "\t\t\tend\n"
      "\t\t\tself.buf = self.buf:sub(1, self.caret - 1 - len) .. self.buf:sub(self.caret)\n"),
     # Delete: 커서 뒤 글자가 여러 바이트면 그 글자 전체를 지웁니다.
     ("\t\t\tself.buf = self.buf:sub(1, self.caret - 1) .. self.buf:sub(self.caret + len)\n",
-     "\t\t\t-- PoE KR Tools: 한글 등 여러 바이트 글자는 한 글자 전체를 지웁니다.\n"
+     "\t\t\t-- PoE Tools: 한글 등 여러 바이트 글자는 한 글자 전체를 지웁니다.\n"
      f"\t\t\twhile self.caret + len <= #self.buf and {CONTINUATION}(self.buf:byte(self.caret + len)) do\n"
      "\t\t\t\tlen = len + 1\n"
      "\t\t\tend\n"
      "\t\t\tself.buf = self.buf:sub(1, self.caret - 1) .. self.buf:sub(self.caret + len)\n"),
     # 붙여넣기: 영어가 아닌 글자를 "?"로 바꾸지 않습니다.
     ('\t\t\ttext = text:gsub("[\\128-\\255]","?")\n',
-     "\t\t\t-- PoE KR Tools: 한글을 붙여넣을 수 있게 \"?\"로 바꾸지 않습니다.\n"),
+     "\t\t\t-- PoE Tools: 한글을 붙여넣을 수 있게 \"?\"로 바꾸지 않습니다.\n"),
 ]
 
 
@@ -239,7 +239,7 @@ return translate
 
 def write_korean_mods(src: Path, korean_stats: Path) -> int:
     rows = json.loads(korean_stats.read_text(encoding="utf-8"))
-    lines = ["-- PoE KR Tools: 아이템 옵션 줄의 한글 (tools/pob/korean_tooltips.py가 RePoE 데이터로 만듦)", "local rows = {}"]
+    lines = ["-- PoE Tools: 아이템 옵션 줄의 한글 (tools/pob/korean_tooltips.py가 RePoE 데이터로 만듦)", "local rows = {}"]
     # 한 함수에 상수가 너무 많아지지 않게 2000줄씩 나눠 채웁니다.
     for start in range(0, len(rows), 2000):
         lines.append("do")
@@ -264,7 +264,7 @@ def patch(path: Path, anchor: str, block: str, label: str) -> bool:
 KOREAN_UI = Path(__file__).resolve().parent / "korean_ui.json"
 
 # 능력치 이름은 계산 코드에서도 비교에 쓰이므로(예: "Unreserved Life") 표는 그대로 두고, 그릴 때만 한글로 바꿉니다.
-LABEL_HELPER = """-- PoE KR Tools: 능력치 이름을 그릴 때만 한글로 바꿉니다 (tools/pob/korean_tooltips.py)
+LABEL_HELPER = """-- PoE Tools: 능력치 이름을 그릴 때만 한글로 바꿉니다 (tools/pob/korean_tooltips.py)
 function gachaKoreanLabel(label)
 	if gachaKoreanLabels == nil then
 		local ok, labels = pcall(LoadModule, "Data/KoreanUI")
@@ -284,7 +284,7 @@ LABEL_DRAWS = [
 
 def patch_ui(src: Path) -> None:
     ui = json.loads(KOREAN_UI.read_text(encoding="utf-8"))
-    lines = ["-- PoE KR Tools: 능력치 이름의 한글 (tools/pob/korean_ui.json)", "return {"]
+    lines = ["-- PoE Tools: 능력치 이름의 한글 (tools/pob/korean_ui.json)", "return {"]
     lines += [f"\t[{lua_string(en)}] = {lua_string(ko)}," for en, ko in sorted(ui["labels"].items())]
     lines.append("}")
     (src / "Data" / "KoreanUI.lua").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -347,7 +347,7 @@ def main(repo: Path, korean_json: Path, korean_stats: Path | None = None) -> Non
         if name not in entries and candidates and candidates[0]["name"]:
             entries[name] = (candidates[0]["name"], [])
 
-    lines = ["-- PoE KR Tools: 패시브 툴팁의 한글 이름·설명 (tools/pob/korean_tooltips.py가 poedb 데이터로 만듦)", "return {"]
+    lines = ["-- PoE Tools: 패시브 툴팁의 한글 이름·설명 (tools/pob/korean_tooltips.py가 poedb 데이터로 만듦)", "return {"]
     for name in sorted(entries):
         ko_name, stats = entries[name]
         stat_list = ", ".join(lua_string(s) for s in stats)
@@ -368,7 +368,7 @@ def main(repo: Path, korean_json: Path, korean_stats: Path | None = None) -> Non
         korean_items = korean_stats.with_name("korean_items.json")
         if korean_items.exists():
             names = json.loads(korean_items.read_text(encoding="utf-8"))
-            lines = ["-- PoE KR Tools: 아이템 한글 이름 (tools/pob/korean_tooltips.py가 RePoE 데이터로 만듦)", "return {"]
+            lines = ["-- PoE Tools: 아이템 한글 이름 (tools/pob/korean_tooltips.py가 RePoE 데이터로 만듦)", "return {"]
             lines += [f"\t[{lua_string(en)}] = {lua_string(ko)}," for en, ko in sorted(names.items())]
             lines.append("}")
             (src / "Data" / "KoreanItems.lua").write_text("\n".join(lines) + "\n", encoding="utf-8")

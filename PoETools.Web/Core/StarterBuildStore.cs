@@ -1,7 +1,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace PoEKRTools.Web.Core;
+namespace PoETools.Web.Core;
 
 /// <summary>
 /// starter-builds.json 을 한 번만 받아서 여러 화면이 같이 씁니다.

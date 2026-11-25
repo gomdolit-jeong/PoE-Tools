@@ -15,7 +15,7 @@ from pathlib import Path
 
 # 지운 트리 버전을 남긴 버전으로 바꿔 주는 함수. GameVersions.lua 끝에 붙입니다.
 RESOLVER = """
--- PoE KR Tools: 지운 트리 버전은 남긴 최신 트리로 엽니다 (프레시아 빌드는 남긴 프레시아 트리).
+-- PoE Tools: 지운 트리 버전은 남긴 최신 트리로 엽니다 (프레시아 빌드는 남긴 프레시아 트리).
 function gachaTreeVersion(treeVersion)
 	for _, version in ipairs(treeVersionList) do
 		if version == treeVersion then return treeVersion end

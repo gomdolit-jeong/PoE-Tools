@@ -1,4 +1,4 @@
-namespace PoEKRTools.Web.Core;
+namespace PoETools.Web.Core;
 
 // tools/crawl_starter_builds.py 가 만드는 wwwroot/data/starter-builds.json 의 모양입니다.
 

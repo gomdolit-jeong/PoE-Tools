@@ -1,4 +1,4 @@
-namespace PoEKRTools.Web.Core;
+namespace PoETools.Web.Core;
 
 public sealed record GachaResult(
     bool Phrecia,

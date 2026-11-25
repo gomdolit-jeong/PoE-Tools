@@ -46,7 +46,7 @@ jobs:
           fi
 
       - name: Publish
-        run: dotnet publish PoEKRTools.Web/PoEKRTools.Web.csproj -c Release -o publish
+        run: dotnet publish PoETools.Web/PoETools.Web.csproj -c Release -o publish
 
       - name: Prepare for the /<repo>/ sub-path
         env:
@@ -90,7 +90,7 @@ jobs:
         id: pob
         run: |
           echo "tag=$(grep -oE 'POB_TAG:-[^}]+' tools/pob/build.sh | cut -d- -f2-)" >> "$GITHUB_OUTPUT"
-          echo "tree=$(grep -oE 'TreeVersion = "[^"]+"' PoEKRTools.Web/Core/PobCode.cs | head -1 | cut -d'"' -f2)" >> "$GITHUB_OUTPUT"
+          echo "tree=$(grep -oE 'TreeVersion = "[^"]+"' PoETools.Web/Core/PobCode.cs | head -1 | cut -d'"' -f2)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/cache@v4
         id: timeless-cache

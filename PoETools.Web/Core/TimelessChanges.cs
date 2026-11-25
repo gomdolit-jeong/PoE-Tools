@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace PoEKRTools.Web.Core;
+namespace PoETools.Web.Core;
 
 /// <summary>설명 틀의 {k} 자리: I 굴림 번호(1부터), D 나눌 값, M·X 보여 줄 단위의 최소·최대 (굴림이 없을 때는 M)</summary>
 public sealed record LegionSlot(int I, double D, double M, double X);

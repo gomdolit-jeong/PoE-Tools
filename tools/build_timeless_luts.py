@@ -1,12 +1,12 @@
 """군단 주얼 페이지가 시드별 변환을 보여 줄 수 있게, PoB의 변환표를 소켓별로 잘라 둡니다.
 
 사용법: python tools/build_timeless_luts.py <PoB 폴더>/src [출력 폴더] [트리 json]
-  기본 출력 폴더: PoEKRTools.Web/wwwroot/data/timeless/ (저장소에는 넣지 않고 배포 때 만듭니다)
+  기본 출력 폴더: PoETools.Web/wwwroot/data/timeless/ (저장소에는 넣지 않고 배포 때 만듭니다)
   트리 json을 주지 않으면 저장소의 timeless-tree.json을 씁니다.
 
 입력
 - <PoB>/src/Data/TimelessJewelData/: 변환표(*.zip, GloriousVanity.zip.part*), NodeIndexMapping.lua, LegionPassives.lua
-- PoEKRTools.Web/wwwroot/data/timeless-tree.json: 소켓과 노드 좌표 (tools/build_timeless_tree.py)
+- PoETools.Web/wwwroot/data/timeless-tree.json: 소켓과 노드 좌표 (tools/build_timeless_tree.py)
 - tools/timeless_korean.json: 한글 이름·설명 (tools/crawl_timeless_korean.py)
 
 출력
@@ -27,9 +27,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_timeless_tree import parse_lua_table  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-TREE_JSON = ROOT / "PoEKRTools.Web" / "wwwroot" / "data" / "timeless-tree.json"
+TREE_JSON = ROOT / "PoETools.Web" / "wwwroot" / "data" / "timeless-tree.json"
 KOREAN = Path(__file__).resolve().parent / "timeless_korean.json"
-DEFAULT_OUT = ROOT / "PoEKRTools.Web" / "wwwroot" / "data" / "timeless"
+DEFAULT_OUT = ROOT / "PoETools.Web" / "wwwroot" / "data" / "timeless"
 
 LARGE_RADIUS = 1800  # PoB Data.lua 3.16 이후 대형 반경 (TimelessTree.LargeRadius와 같아야 합니다)
 ADDITIONS = 337  # PoB Data.lua timelessJewelAdditions: 이보다 작은 값은 덧붙는 능력치, 크거나 같으면 바뀌는 패시브

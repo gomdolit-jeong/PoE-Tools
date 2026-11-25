@@ -1,9 +1,9 @@
-# PoE KR Tools (PoE 한글 도구함)
+# PoE Tools
 
 한글로 쓰는 Path of Exile 도구 모음입니다. 빌드 뽑기, 브라우저용 Path of Building(한글 툴팁), 군단 주얼 트리가 있습니다.
-(예전 이름: PoE Build Gacha)
+(예전 이름: PoE Build Gacha, PoE KR Tools)
 
-**👉 바로 가기: https://gomdolit-jeong.github.io/PoE_KR_Tools/**
+**👉 바로 가기: https://gomdolit-jeong.github.io/PoE-Tools/**
 
 - **빌드 뽑기**: "운명 뽑기" 버튼을 누르면 주사위가 굴러가고, Path of Exile 1의 직업, 전직, 주요 스킬 젬을 무작위로 뽑아 줍니다.
 - 누를 때마다 완전히 새로 뽑습니다.
@@ -41,20 +41,20 @@
 ## 실행
 
 ```bash
-dotnet run --project PoEKRTools.Web --launch-profile http
+dotnet run --project PoETools.Web --launch-profile http
 ```
 
 `main`에 push하면 GitHub Actions가 GitHub Pages로 배포합니다 (Settings → Pages → Source: GitHub Actions).
 
 ## 구조
 
-- `PoEKRTools.Web/Core/PoeData.cs` — 직업·전직·스킬·이동기 목록
-- `PoEKRTools.Web/Core/BuildGacha.cs` — 무작위 뽑기
-- `PoEKRTools.Web/Pages/Home.razor` — 화면과 주사위 효과
-- `PoEKRTools.Web/Core/PobCode.cs` — 뽑기 결과·군단 주얼 → PoB 코드
-- `PoEKRTools.Web/Core/TimelessJewel.cs` — 군단 주얼 목록, 트리 데이터, 소켓까지 경로
-- `PoEKRTools.Web/Core/TimelessChanges.cs` — 시드별 패시브 변화 계산
-- `PoEKRTools.Web/Pages/Timeless.razor` — 군단 주얼 페이지
+- `PoETools.Web/Core/PoeData.cs` — 직업·전직·스킬·이동기 목록
+- `PoETools.Web/Core/BuildGacha.cs` — 무작위 뽑기
+- `PoETools.Web/Pages/Home.razor` — 화면과 주사위 효과
+- `PoETools.Web/Core/PobCode.cs` — 뽑기 결과·군단 주얼 → PoB 코드
+- `PoETools.Web/Core/TimelessJewel.cs` — 군단 주얼 목록, 트리 데이터, 소켓까지 경로
+- `PoETools.Web/Core/TimelessChanges.cs` — 시드별 패시브 변화 계산
+- `PoETools.Web/Pages/Timeless.razor` — 군단 주얼 페이지
 - `tools/pob/` — 브라우저용 PoB 빌드 (배포 때만 빌드, 로컬 실행에는 없음)
 
 This is a fan project, not affiliated with Grinding Gear Games.

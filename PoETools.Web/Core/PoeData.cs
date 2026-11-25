@@ -1,4 +1,4 @@
-namespace PoEKRTools.Web.Core;
+namespace PoETools.Web.Core;
 
 public enum SkillKind { Attack, Spell, Minion }
 
