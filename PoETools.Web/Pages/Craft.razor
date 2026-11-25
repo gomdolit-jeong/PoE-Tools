@@ -115,13 +115,23 @@
                 <span>모자란 옵션 하나는 작업대로 붙여도 돼요</span>
             </label>
             <details class="cr-prices">
-                <summary>화폐 가격 (카오스 기준, 리그 시세에 맞게 고쳐 주세요)</summary>
+                <summary>화폐 가격 (카오스 기준)</summary>
+                <p class="tj-help">
+                    @if (market is not null)
+                    {
+                        <span>poe.ninja @market.League 리그 시세(인터내셔널 서버, @market.Updated.Replace("T", " ").Replace("Z", " UTC") 기준)를 넣었어요. 카카오 서버 시세와 다를 수 있으니 필요하면 고쳐 주세요. 금색 테두리는 시세에서 가져온 값이에요.</span>
+                    }
+                    else
+                    {
+                        <span>시세를 받지 못해서 어림값을 넣었어요. 리그 시세에 맞게 고쳐 주세요.</span>
+                    }
+                </p>
                 <div class="cr-price-grid">
-                    @foreach (var c in Currencies.All.Take(9))
+                    @foreach (var c in Currencies.All.Take(11))
                     {
                         <label class="cr-field">
                             <span>@c.Korean</span>
-                            <input type="number" step="0.01" min="0" value="@Price(c.Id).ToString(CultureInfo.InvariantCulture)"
+                            <input type="number" step="0.01" min="0" class="@(FromMarket(c.Id) ? "market" : "")" value="@Price(c.Id).ToString(CultureInfo.InvariantCulture)"
                                    @onchange="e => SetPrice(c.Id, e.Value)" />
                         </label>
                     }
@@ -129,7 +139,7 @@
                     {
                         <label class="cr-field">
                             <span>@name</span>
-                            <input type="number" step="0.01" min="0" value="@Price(id).ToString(CultureInfo.InvariantCulture)"
+                            <input type="number" step="0.01" min="0" class="@(FromMarket(id) ? "market" : "")" value="@Price(id).ToString(CultureInfo.InvariantCulture)"
                                    @onchange="ev => SetPrice(id, ev.Value)" />
                         </label>
                     }
@@ -137,7 +147,7 @@
                     {
                         <label class="cr-field">
                             <span>@e.Korean</span>
-                            <input type="number" step="0.01" min="0" value="@Price(e.Id).ToString(CultureInfo.InvariantCulture)"
+                            <input type="number" step="0.01" min="0" class="@(FromMarket(e.Id) ? "market" : "")" value="@Price(e.Id).ToString(CultureInfo.InvariantCulture)"
                                    @onchange="ev => SetPrice(e.Id, ev.Value)" />
                         </label>
                     }
@@ -201,13 +211,16 @@
 
         <p class="hint">
             옵션·가중치는 RePoE 게임 데이터(배포 때마다 새로 받음), 레어 옵션 개수(4·5·6개 = 8:3:1)는 커뮤니티 추정치예요.
-            화석은 가중치만 바꾸는 17종만 계산하고(태그가 겹치면 배율을 곱하는 어림), 하베스트·메타 크래프팅(접두 고정 등)·제거는 아직 계산하지 않아요.
+            화석은 가중치만 바꾸는 17종만 계산하고(태그가 겹치면 배율을 곱하는 어림),
+            메타 크래프팅은 "접두어/접미어 속성 변경 불가 → 정제 → 엑잘"만 계산해요 (고정 비용은 3.30.0 패치 노트 기준).
+            1·2개만 고정하는 옵션(어느 옵션이 고정될지 무작위)과 하베스트·무효화는 아직 계산하지 않아요.
         </p>
     }
 </main>
 
 @code {
     CraftData? data;
+    CraftPrices? market;
     bool loadFailed;
     string itemClass = "Body Armour";
     CraftBase? baseItem;
@@ -260,6 +273,7 @@
         try
         {
             data = await Store.Load();
+            market = await Store.LoadPrices();
             SelectClass(itemClass);
         }
         catch (Exception)
@@ -345,9 +359,11 @@
         results.Clear();
     }
 
+    /// <summary>직접 고친 가격 → poe.ninja 시세 → 기본 가격 순서</summary>
     double Price(string id)
     {
         if (prices.TryGetValue(id, out var p)) return p;
+        if (EnglishName(id) is { } name && market?.Prices.TryGetValue(name, out var m) == true) return m;
         var c = Currencies.All.FirstOrDefault(x => x.Id == id);
         if (c is not null) return c.DefaultPrice;
         var e = data?.Essences.FirstOrDefault(x => x.Id == id);
@@ -356,6 +372,14 @@
         var r = data?.Resonators.FirstOrDefault(x => x.Id == id);
         return r is not null ? Currencies.ResonatorPrice(r.Sockets) : 1;
     }
+
+    string? EnglishName(string id) =>
+        Currencies.All.FirstOrDefault(c => c.Id == id)?.Name
+        ?? data?.Essences.FirstOrDefault(e => e.Id == id)?.Name
+        ?? data?.Fossils.FirstOrDefault(f => f.Id == id)?.Name
+        ?? data?.Resonators.FirstOrDefault(x => x.Id == id)?.Name;
+
+    bool FromMarket(string id) => !prices.ContainsKey(id) && EnglishName(id) is { } n && market?.Prices.ContainsKey(n) == true;
 
     void SetPrice(string id, object? value)
     {
@@ -408,6 +432,21 @@
             jobs.Add((e.Korean, () => sim.EssenceSpam(e, allowBench, token)));
             essenceJobs++;
         }
+        // 메타 크래프팅: 접두·접미 목표가 둘 다 있을 때만 의미가 있습니다. 고정할 쪽은 카오스 또는 그쪽 목표를 확정으로 붙이는 가장 높은 단계 에센스로 굴립니다.
+        if ((unnatural.Count == 0 || benchOnly) && targets.Any(t => t.Prefix) && targets.Any(t => !t.Prefix))
+        {
+            foreach (var lockPrefixes in new[] { true, false })
+            {
+                var side = lockPrefixes;
+                jobs.Add(($"메타 · {(side ? "접두" : "접미")} 고정", () => sim.MetaLock(side, null, allowBench, token)));
+                var essence = UsableEssences
+                    .Where(e => data.Mods.GetValueOrDefault(e.Mods[itemClass]) is { } m && m.Prefix == side && targets.Any(t => t.Matches(m)))
+                    .OrderByDescending(e => e.Level).FirstOrDefault();
+                if (essence is not null)
+                    jobs.Add(($"메타 · {(side ? "접두" : "접미")} 고정 ({essence.Korean})", () => sim.MetaLock(side, essence, allowBench, token)));
+            }
+        }
+
         // 화석: 목표를 막지 않는 화석 1~4개 조합 중에서, 목표 옵션 비중을 가장 싸게 늘리는 조합 3개만 실제로 굴려 봅니다.
         if (unnatural.Count == 0 || benchOnly)
         {

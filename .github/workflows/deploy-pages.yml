@@ -32,6 +32,11 @@ jobs:
         continue-on-error: true
         run: python3 tools/crawl_starter_builds.py
 
+      # 크래프팅 계산기 시세 (poe.ninja): 매시간 배포마다 새로 받습니다. 실패하면 저장소 파일을 씁니다.
+      - name: Crawl crafting prices
+        continue-on-error: true
+        run: python3 tools/crawl_prices.py
+
       # 한글 데이터: 군단 주얼 페이지·PoB 패시브 툴팁(poedb), PoB 아이템·젬 툴팁(RePoE 게임 번역),
       # 크래프팅 계산기 옵션·가중치(RePoE).
       # 받는 양이 커서 매시간 배포에서는 하루 한 번(UTC 0시)만 받고, push·직접 실행 때는 항상 받습니다.

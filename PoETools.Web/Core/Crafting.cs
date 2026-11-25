@@ -79,8 +79,18 @@ public sealed class CraftData
 public sealed class CraftDataStore(HttpClient http)
 {
     Task<CraftData>? loading;
+    Task<CraftPrices?>? prices;
 
     public Task<CraftData> Load() => loading ??= Fetch();
+
+    /// <summary>poe.ninja 시세 (없거나 못 받으면 null → 기본 가격을 씀)</summary>
+    public Task<CraftPrices?> LoadPrices() => prices ??= FetchPrices();
+
+    async Task<CraftPrices?> FetchPrices()
+    {
+        try { return await http.GetFromJsonAsync<CraftPrices>("data/prices.json"); }
+        catch (Exception) { return null; }
+    }
 
     async Task<CraftData> Fetch()
     {
@@ -93,7 +103,15 @@ public sealed class CraftDataStore(HttpClient http)
 
 // ───────── 화폐 ─────────
 
-public sealed record Currency(string Id, string Korean, double DefaultPrice);
+/// <summary>poe.ninja 시세 (tools/crawl_prices.py): 영어 이름 → 카오스</summary>
+public sealed class CraftPrices
+{
+    [JsonPropertyName("league")] public string League { get; set; } = "";
+    [JsonPropertyName("updated")] public string Updated { get; set; } = "";
+    [JsonPropertyName("prices")] public Dictionary<string, double> Prices { get; set; } = [];
+}
+
+public sealed record Currency(string Id, string Name, string Korean, double DefaultPrice);
 
 public static class Currencies
 {
@@ -107,30 +125,44 @@ public static class Currencies
     public const string Scour = P + "CurrencyConvertToNormal";
     public const string Exalt = P + "CurrencyAddModToRare";
     public const string Divine = P + "CurrencyModValues";
+    public const string Blessed = P + "CurrencyRerollImplicit";
+    public const string Sacred = P + "CurrencyRerollDefences";
+
+    static readonly string[] Jewellery = ["Amulet", "Ring", "Belt"];
+    static readonly string[] Armour = ["Body Armour", "Helmet", "Gloves", "Boots", "Shield", "Quiver"];
+
+    /// <summary>
+    /// 작업대 "접두어/접미어 속성 변경 불가" 비용 (3.30.0 패치 노트): 무기 신성 4 + 신성화 1,
+    /// 방어구·화살통 신성 4 + 축복 4, 장신구 신성 4 + 엑잘 8.
+    /// </summary>
+    public static Dictionary<string, int> LockCost(string itemClass) =>
+        Jewellery.Contains(itemClass) ? new() { [Divine] = 4, [Exalt] = 8 }
+        : Armour.Contains(itemClass) ? new() { [Divine] = 4, [Blessed] = 4 }
+        : new() { [Divine] = 4, [Sacred] = 1 };
 
     /// <summary>카오스 기준 기본 가격 (리그마다 달라서 화면에서 고칠 수 있음)</summary>
     public static readonly Currency[] All =
     [
-        new(Chaos, "카오스 오브", 1),
-        new(Alteration, "변화의 오브", 0.15),
-        new(Augment, "확장의 오브", 0.1),
-        new(Transmute, "변환의 오브", 0.05),
-        new(Regal, "제왕의 오브", 0.5),
-        new(Alchemy, "연금술의 오브", 0.3),
-        new(Scour, "정제의 오브", 0.5),
-        new(Exalt, "엑잘티드 오브", 15),
-        new(Divine, "신성한 오브", 150),
-        new(P + "CurrencyCorrupt", "바알 오브", 1),
-        new(P + "CurrencyRerollImplicit", "축복의 오브", 0.5),
-        new(P + "CurrencyRerollDefences", "신성화의 오브", 10),
-        new(P + "CurrencyFlaskQuality", "유리공의 방울", 0.1),
-        new(P + "CurrencyArmourQuality", "방어구 장인의 고철", 0.02),
-        new(P + "CurrencyGemQuality", "젬 세공사의 프리즘", 1),
-        new(P + "CurrencyRerollSocketNumbers", "보석공의 오브", 0.1),
-        new(P + "CurrencyRerollSocketLinks", "결합의 오브", 0.2),
-        new(P + "CurrencyRerollSocketColours", "색채의 오브", 0.05),
-        new(P + "CurrencyUpgradeRandomly", "기회의 오브", 0.05),
-        new(P + "CurrencyInstillingOrb", "주입의 오브", 1),
+        new(Chaos, "Chaos Orb", "카오스 오브", 1),
+        new(Alteration, "Orb of Alteration", "변화의 오브", 0.15),
+        new(Augment, "Orb of Augmentation", "확장의 오브", 0.1),
+        new(Transmute, "Orb of Transmutation", "변환의 오브", 0.05),
+        new(Regal, "Regal Orb", "제왕의 오브", 0.5),
+        new(Alchemy, "Orb of Alchemy", "연금술의 오브", 0.3),
+        new(Scour, "Orb of Scouring", "정제의 오브", 0.5),
+        new(Exalt, "Exalted Orb", "엑잘티드 오브", 15),
+        new(Divine, "Divine Orb", "신성한 오브", 150),
+        new(Blessed, "Blessed Orb", "축복의 오브", 0.5),
+        new(Sacred, "Sacred Orb", "신성화의 오브", 10),
+        new(P + "CurrencyCorrupt", "Vaal Orb", "바알 오브", 1),
+        new(P + "CurrencyFlaskQuality", "Glassblower's Bauble", "유리공의 방울", 0.1),
+        new(P + "CurrencyArmourQuality", "Armourer's Scrap", "방어구 장인의 고철", 0.02),
+        new(P + "CurrencyGemQuality", "Gemcutter's Prism", "젬 세공사의 프리즘", 1),
+        new(P + "CurrencyRerollSocketNumbers", "Jeweller's Orb", "보석공의 오브", 0.1),
+        new(P + "CurrencyRerollSocketLinks", "Orb of Fusing", "결합의 오브", 0.2),
+        new(P + "CurrencyRerollSocketColours", "Chromatic Orb", "색채의 오브", 0.05),
+        new(P + "CurrencyUpgradeRandomly", "Orb of Chance", "기회의 오브", 0.05),
+        new(P + "CurrencyInstillingOrb", "Instilling Orb", "주입의 오브", 1),
     ];
 
     /// <summary>화석 기본 가격 (리그마다 크게 다르니 화면에서 고쳐 주세요)</summary>
@@ -444,7 +476,6 @@ public sealed class CraftSimulator
                     foreach (var (cur, n) in bench[benchTarget]!.Value.Cost)
                         uses[cur] = uses.GetValueOrDefault(cur) + n;
             }
-            if ((tries & 63) != 0) continue;
             // 화면이 멈추지 않게 가끔 양보하고, 방법 하나에 2.5초가 넘으면 그만둡니다.
             var now = Environment.TickCount64;
             if (now - started > 2500) break;
@@ -552,7 +583,7 @@ public sealed class CraftSimulator
             // 매직 단계: 원하는 옵션만, 필요한 수만큼 붙을 때까지 변화 (한 시도에서 너무 오래 돌면 끊어서 셉니다)
             for (var spins = 0; ; spins++)
             {
-                if (spins > 50_000) return null;
+                if (spins > 20_000) return null;
                 var good = item.Mods.Count > 0 && item.Mods.All(IsTarget);
                 if (good && item.Mods.Count < magicNeed)
                 {
@@ -581,6 +612,89 @@ public sealed class CraftSimulator
             }
             return null;
         }
+    }
+
+    /// <summary>한쪽(접두 또는 접미) 목표를 이 아이템이 다 채웠는지</summary>
+    bool SideDone(CraftItem item, bool prefix)
+    {
+        Span<bool> used = stackalloc bool[6];
+        foreach (var t in targets)
+        {
+            if (t.Prefix != prefix) continue;
+            var hit = false;
+            for (var i = 0; i < item.Mods.Count; i++)
+            {
+                if (used[i] || !t.Matches(item.Mods[i])) continue;
+                used[i] = hit = true;
+                break;
+            }
+            if (!hit) return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// 메타 크래프팅: 한쪽 목표가 다 나올 때까지 카오스(또는 에센스)를 굴린 뒤,
+    /// 작업대에서 그쪽을 "속성 변경 불가"로 고정 → 정제의 오브로 반대쪽만 지우기 → 엑잘로 반대쪽 채우기.
+    /// 고정 옵션은 반대쪽 자리를 하나 차지하므로(접두 고정은 접미 옵션) 반대쪽에 빈자리가 있어야 하고, 정제하면 함께 지워집니다.
+    /// 엑잘로 반대쪽이 꽉 찼는데 실패하면 고정할 자리가 없어서 처음부터(정제 후 다시 굴리기) 시작합니다.
+    /// </summary>
+    public Task<CraftResult> MetaLock(bool lockPrefixes, CraftEssence? essence, bool allowBench, CancellationToken cancel)
+    {
+        var item = new CraftItem();
+        var lockCost = Currencies.LockCost(pool.Base.Class);
+        var forced = essence is null ? null : data.Mods[essence.Mods[pool.Base.Class]];
+        var kept = lockPrefixes ? "접두" : "접미";
+        var other = lockPrefixes ? "접미" : "접두";
+        var lockText = lockPrefixes ? "접두어 속성 변경 불가" : "접미어 속성 변경 불가";
+        var roll = essence is null ? "카오스 오브" : essence.Korean;
+        var steps = new List<string>
+        {
+            $"{roll}로 {kept} 옵션이 원하는 대로 나오고 {other}에 빈자리가 있을 때까지 굴리기",
+            $"작업대에서 \"{lockText}\" 붙이기 (신성한 오브 4개 + α)",
+            $"정제의 오브로 {other} 옵션만 지우기 ({kept}는 그대로 남고 고정 옵션도 같이 지워짐)",
+            $"엑잘티드 오브로 {other} 옵션을 하나씩 추가",
+        };
+        var bs = BenchStep(allowBench);
+        if (bs != "") steps.Add(bs);
+        steps.Add($"{other}가 꽉 찼는데 실패하면 다시 고정 → 정제, 고정할 자리가 없으면 처음부터");
+
+        var name = $"메타 · {kept} 고정 → 정제 → 엑잘" + (essence is null ? "" : $" ({essence.Korean})");
+        var needRoll = true;
+        return Run(name, [.. steps], uses =>
+        {
+            // 1단계: 고정할 쪽 목표가 다 나오고 반대쪽에 고정 옵션 자리가 생길 때까지 굴립니다.
+            if (needRoll)
+            {
+                for (var spins = 0; ; spins++)
+                {
+                    if (spins > 20_000) return null;
+                    Use(uses, essence?.Id ?? Currencies.Chaos);
+                    RollRare(item, forced);
+                    var (whole, b) = Check(item, allowBench);
+                    if (whole) return b;
+                    if (SideDone(item, lockPrefixes) && item.HasRoom(!lockPrefixes)) break;
+                }
+                needRoll = false;
+            }
+
+            // 2단계: 고정 → 정제 (반대쪽 옵션이 모두 지워짐)
+            foreach (var (cur, n) in lockCost) Use(uses, cur, n);
+            Use(uses, Currencies.Scour);
+            item.Mods.RemoveAll(m => m.Prefix != lockPrefixes);
+
+            // 3단계: 엑잘로 채우기 (아직 채울 자리가 남았을 때만)
+            while (item.Mods.Count < 6 && HasRoomForMissing(item))
+            {
+                Use(uses, Currencies.Exalt);
+                Add(item);
+                var (ok, b) = Check(item, allowBench);
+                if (ok) { needRoll = true; return b; }
+            }
+            // 반대쪽에 고정할 자리가 남았으면 다음 시도에서 다시 고정, 없으면 처음부터
+            if (!item.HasRoom(!lockPrefixes)) { Use(uses, Currencies.Scour); needRoll = true; }
+            return null;
+        }, 400, 200_000, cancel);
     }
 
     /// <summary>아직 못 채운 목표가 들어갈 접두·접미 자리가 남았는지</summary>

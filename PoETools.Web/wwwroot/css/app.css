@@ -713,3 +713,4 @@ a.back { display: inline-block; text-decoration: none; }
 .cr-paste { margin-bottom: 14px; color: var(--muted); font-size: .9rem; }
 .cr-paste summary { cursor: pointer; color: var(--text); }
 .cr-paste textarea { resize: vertical; font-family: inherit; }
+.cr-field input.market { border-color: color-mix(in srgb, var(--gold) 60%, var(--line)); }
