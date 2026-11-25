@@ -13,6 +13,38 @@ function show(message: string) {
   status.hidden = false;
 }
 
+// PoB 화면은 캔버스라 브라우저 한글 입력기가 켜지지 않습니다. 오른쪽 아래 작은 입력칸에서 한글을 치고 Enter를 누르면,
+// 글자를 하나씩 키 입력으로 보내서 PoB에서 고른 입력칸(아이템 검색 등)에 들어갑니다.
+// (붙여넣기 이벤트로는 PoB 입력칸까지 전달되지 않아서 키 입력을 씁니다.)
+function addKoreanInput(): void {
+  const form = document.createElement("form");
+  form.id = "ko-input";
+  const input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "한글 입력 후 Enter → PoB 입력칸에 넣기";
+  input.setAttribute("aria-label", "PoB 입력칸에 넣을 한글");
+  form.appendChild(input);
+
+  // PoB가 문서 전체의 붙여넣기를 가로채므로, 이 칸에 붙여넣을 때는 PoB로 보내지 않습니다.
+  window.addEventListener("paste", (e) => {
+    if (e.target === input) e.stopImmediatePropagation();
+  }, true);
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const text = input.value;
+    const target = document.querySelector<HTMLElement>("#window [tabindex]");
+    if (!text || !target) return;
+    target.focus();
+    for (const char of text) {
+      target.dispatchEvent(new KeyboardEvent("keydown", { key: char, bubbles: true, cancelable: true }));
+      target.dispatchEvent(new KeyboardEvent("keyup", { key: char, bubbles: true, cancelable: true }));
+    }
+    input.value = "";
+  });
+  document.body.appendChild(form);
+}
+
 function buildCodeFromHash(): string | undefined {
   const hash = window.location.hash;
   const code = hash.startsWith("#build=") ? hash.slice("#build=".length) : undefined;
@@ -65,6 +97,7 @@ async function main(): Promise<void> {
 
   status.hidden = true;
   await driver.attachToDOM(document.querySelector("#window") as HTMLElement);
+  addKoreanInput();
 }
 
 void main().catch((error) => {

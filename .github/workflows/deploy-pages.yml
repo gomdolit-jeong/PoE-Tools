@@ -32,10 +32,18 @@ jobs:
         continue-on-error: true
         run: python3 tools/crawl_starter_builds.py
 
-      # 군단 주얼 페이지·PoB 툴팁의 한글 이름·설명 (poedb). 실패하거나 너무 적게 읽히면 저장소 파일을 씁니다.
-      - name: Crawl timeless jewel Korean names
+      # 한글 데이터: 군단 주얼 페이지·PoB 패시브 툴팁(poedb), PoB 아이템·젬 툴팁(RePoE 게임 번역).
+      # 받는 양이 커서 매시간 배포에서는 하루 한 번(UTC 0시)만 받고, push·직접 실행 때는 항상 받습니다.
+      # 실패하거나 너무 적게 읽히면 저장소 파일을 씁니다.
+      - name: Crawl Korean names and translations
         continue-on-error: true
-        run: python3 tools/crawl_timeless_korean.py
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "$(date -u +%H)" = "00" ]; then
+            python3 tools/crawl_timeless_korean.py || echo "poedb 한글 수집 실패: 저장소 파일을 씁니다"
+            python3 tools/crawl_korean_stats.py || echo "RePoE 번역 수집 실패: 저장소 파일을 씁니다"
+          else
+            echo "매시간 배포: 한글 데이터는 저장소 파일을 씁니다"
+          fi
 
       - name: Publish
         run: dotnet publish PoEBuildGacha.Web/PoEBuildGacha.Web.csproj -c Release -o publish

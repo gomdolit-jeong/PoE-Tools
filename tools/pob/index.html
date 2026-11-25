@@ -18,6 +18,14 @@
         color: #ddd; font: 16px/1.6 system-ui, sans-serif; text-align: center;
       }
       #status[hidden] { display: none; }
+      /* 한글 입력칸 (gacha-run.ts addKoreanInput) */
+      #ko-input { position: fixed; right: 8px; bottom: 8px; z-index: 10; }
+      #ko-input input {
+        width: 270px; padding: 6px 8px; box-sizing: border-box;
+        background: rgba(20, 16, 12, .92); color: #eee; border: 1px solid #8a6a28; border-radius: 6px;
+        font: 14px system-ui, sans-serif;
+      }
+      #ko-input input:focus { outline: none; border-color: #e8c46a; }
     </style>
   </head>
   <body>
