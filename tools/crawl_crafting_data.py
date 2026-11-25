@@ -17,6 +17,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import urllib.request
 from pathlib import Path
@@ -46,6 +47,14 @@ def fetch(path: str):
 
 def weights(entries) -> list:
     return [[e["tag"], e["weight"]] for e in entries]
+
+
+# 옵션 문장의 게임 내부 링크 표시: "[PlayerItemRarity|아이템 희귀도]" → "아이템 희귀도", "[Blind]" → "Blind"
+MARKUP = re.compile(r"\[([^\[\]|]+)\|([^\[\]]+)\]|\[([^\[\]|]+)\]")
+
+
+def plain(text: str) -> str:
+    return MARKUP.sub(lambda m: m.group(2) or m.group(3), text)
 
 
 def main() -> None:
@@ -118,8 +127,8 @@ def main() -> None:
             "w": weights(m.get("spawn_weights", [])) if natural else [],
             "gw": weights(m.get("generation_weights", [])),
             "tags": m.get("implicit_tags", []),
-            "en": m.get("text") or "",
-            "ko": ko.get("text") or m.get("text") or "",
+            "en": plain(m.get("text") or ""),
+            "ko": plain(ko.get("text") or m.get("text") or ""),
             "v": [[s["min"], s["max"]] for s in m.get("stats", [])],
             "d": m.get("domain"),
         }
