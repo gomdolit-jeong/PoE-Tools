@@ -1,0 +1,28 @@
+<aside class="panel bookmarks">
+    <h2>즐겨찾기</h2>
+    <ul>
+        @foreach (var b in Bookmarks)
+        {
+            <li>
+                <a class="bookmark" href="@b.Url" target="_blank" rel="noopener">
+                    <b>@b.Title</b>
+                    <span>@b.Description</span>
+                </a>
+            </li>
+        }
+    </ul>
+</aside>
+
+@code {
+    sealed record Bookmark(string Title, string Url, string Description);
+
+    static readonly Bookmark[] Bookmarks =
+    [
+        new("poe.ninja", "https://poe.ninja/", "이번 리그 아이템·화폐 시세와 인기 빌드 통계"),
+        new("Craft of Exile", "https://www.craftofexile.com/?cl=kr", "원하는 옵션이 붙을 확률과 비용을 계산하는 제작 시뮬레이터"),
+        new("PoEDB", "https://poedb.tw/kr/", "젬·아이템·옵션·전직 정보를 한글로 찾아보는 데이터베이스"),
+        new("PoELab", "https://www.poelab.com/", "매일 바뀌는 미궁 지도와 함정·황금 열쇠 위치"),
+        new("Wealthy Exile", "https://wealthyexile.com/", "창고 자산 추적과 파밍 전략별 시간당 수익 비교"),
+        new("Hideout Showcase", "https://hideoutshowcase.com/", "다른 사람이 꾸민 은신처 구경하고 파일 내려받기"),
+    ];
+}

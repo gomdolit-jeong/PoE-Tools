@@ -420,6 +420,28 @@ html, body {
     vertical-align: middle;
 }
 
+/* ===== 즐겨찾기 (넓은 화면에서는 스타터 빌드 오른쪽, 좁으면 아래) ===== */
+.home-split { display: grid; gap: 0 20px; align-items: start; }
+@media (min-width: 1240px) {
+    /* 가운데 640px 칸은 그대로 두고 오른쪽으로 즐겨찾기 칸만 넓힙니다. */
+    .home-split { grid-template-columns: minmax(0, 1fr) 260px; margin-right: -280px; }
+    .bookmarks { position: sticky; top: 20px; }
+}
+.bookmarks ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.bookmark {
+    display: flex; flex-direction: column; gap: 3px;
+    padding: 10px 12px;
+    background: #0f0c0a;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color .15s;
+}
+.bookmark:hover { border-color: var(--gold); }
+.bookmark b { color: var(--gold); font-size: .95rem; }
+.bookmark span { color: var(--muted); font-size: .8rem; line-height: 1.4; }
+
 /* ===== 뽑은 빌드 가이드 ===== */
 .guides { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
 .guides h3 { margin: 0 0 10px; font-size: 1rem; color: var(--gold); }
