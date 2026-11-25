@@ -5,7 +5,8 @@ namespace PoETools.Web.Core;
 
 /// <summary>
 /// 정복자(주얼 변형)와 그 정복자가 주는 핵심 패시브. Name·Keystone은 PoB에 쓰는 영어 이름입니다.
-/// 한글 이름은 poedb(kr) 표기이고, poedb에 한글 표기가 없는 정복자는 Korean이 null입니다.
+/// 한글 이름은 poedb(kr) 표기이고, poedb에 없는 이름은 게임 번역(RePoE의 군단 주얼·지도 옵션 문구)에서 가져왔습니다.
+/// 3.30에 새로 바뀐 Mazcotl은 한국어판 데이터에 아직 없어서 Korean이 null입니다.
 /// LegionId는 PoB ModParser.lua conquerorList의 id로, 핵심 패시브가 "{Faction}_keystone_{LegionId}"로 바뀝니다.
 /// </summary>
 public sealed record Conqueror(string Name, string? Korean, string Keystone, string KeystoneKorean, string LegionId)
@@ -68,7 +69,7 @@ public static class TimelessJewels
         new("Brutal Restraint", "잔인한 속박", "maraketh", 500, 8000, 1,
             "Denoted service of {0} dekhara in the akhara of {1}",
             "Passives in radius are Conquered by the Maraketh",
-            [new("Asenath", "아세나스", "Dance with Death", "죽음의 춤", "2"), new("Nasima", null, "Second Sight", "꿰뚫어 보는 눈", "3"), new("Balbala", "발바라", "The Traitor", "배반자", "1_v2")]),
+            [new("Asenath", "아세나스", "Dance with Death", "죽음의 춤", "2"), new("Nasima", "나시마", "Second Sight", "꿰뚫어 보는 눈", "3"), new("Balbala", "발바라", "The Traitor", "배반자", "1_v2")]),
         new("Militant Faith", "호전적인 신념", "templar", 2000, 10000, 1,
             "Carved to glorify {0} new faithful converted by High Templar {1}",
             "Passives in radius are Conquered by the Templars",
@@ -77,11 +78,11 @@ public static class TimelessJewels
         new("Elegant Hubris", "고상한 오만", "eternal", 2000, 160000, 20,
             "Commissioned {0} coins to commemorate {1}",
             "Passives in radius are Conquered by the Eternal Empire",
-            [new("Cadiro", "카디로", "Supreme Decadence", "타락의 정점", "1"), new("Victario", "빅타리오", "Supreme Grandstanding", "과시의 정점", "2"), new("Caspiro", null, "Supreme Ostentation", "허영의 정점", "3_v2")]),
+            [new("Cadiro", "카디로", "Supreme Decadence", "타락의 정점", "1"), new("Victario", "빅타리오", "Supreme Grandstanding", "과시의 정점", "2"), new("Caspiro", "카스피로", "Supreme Ostentation", "허영의 정점", "3_v2")]),
         new("Heroic Tragedy", "영웅적인 비극", "kalguur", 100, 8000, 1,
             "Remembrancing {0} songworthy deeds by the line of {1}",
             "Passives in radius are Conquered by the Kalguur",
-            [new("Vorana", "보라나", "Black Scythe Training", "검은 낫의 교육", "1"), new("Uhtred", null, "Celestial Mathematics", "천공의 수학", "2"), new("Medved", null, "The Unbreaking Circle", "부서지지 않는 원", "3")]),
+            [new("Vorana", "보라나", "Black Scythe Training", "검은 낫의 교육", "1"), new("Uhtred", "우트레드", "Celestial Mathematics", "천공의 수학", "2"), new("Medved", "메드베드", "The Unbreaking Circle", "부서지지 않는 원", "3")]),
     ];
 
     /// <summary>PoB 아이템 텍스트 (Items 탭에 그대로 들어갑니다)</summary>
