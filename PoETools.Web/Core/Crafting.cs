@@ -783,13 +783,17 @@ public static partial class CraftItemText
         ("adjudicator", ["전쟁군주 아이템", "Warlord Item"]),
     ];
 
-    /// <summary>한글·영어 클라이언트에서 Ctrl+C(또는 Ctrl+Alt+C)로 복사한 텍스트</summary>
+    /// <summary>
+    /// 한글·영어 클라이언트에서 Ctrl+C(또는 Ctrl+Alt+C)로 복사한 텍스트, 또는 Path of Building에서 복사한 아이템 텍스트.
+    /// PoB 형식은 구분선이 없고, "Implicits: N" 다음 N줄이 고정 옵션이며, 줄 앞에 {crafted}·{crucible} 같은 표시가 붙습니다.
+    /// </summary>
     public static ParsedItem Parse(CraftData data, string text)
     {
         // Ctrl+Alt+C는 숫자 뒤에 "(100-114)"처럼 범위를 붙여서 지웁니다.
         var lines = text.Replace("\r", "").Split('\n')
             .Select(l => RangeSuffix().Replace(l, "").Trim())
             .Where(l => l != "").ToArray();
+        if (!lines.Any(l => l.StartsWith("----"))) lines = FromPathOfBuilding(lines);
         // 이름 부분(첫 구분선 전)에 들어 있는 가장 긴 베이스 이름 (매직은 앞뒤에 접사가 붙음)
         var header = lines.TakeWhile(l => !l.StartsWith("----")).ToArray();
         var found = data.Bases
@@ -810,6 +814,39 @@ public static partial class CraftItemText
             .ToArray();
         return new ParsedItem(found, level, influences, modLines);
     }
+
+    /// <summary>
+    /// PoB 아이템 텍스트를 게임 복사 형식처럼 바꿉니다: 이름 부분 뒤에 구분선을 넣고, 고정 옵션(Implicits: N 다음 N줄)과
+    /// 작업대·도가니·인챈트 등 크래프팅으로 만들 수 없는 줄은 빼고, 남은 줄의 {…} 표시는 지웁니다 ({fractured}는 일반 옵션으로 둠).
+    /// </summary>
+    static string[] FromPathOfBuilding(string[] lines)
+    {
+        var result = new List<string>();
+        var i = 0;
+        // 이름 부분: "키: 값" 줄이 처음 나오기 전까지 (Rarity: 줄은 이름 부분에 둡니다)
+        for (; i < lines.Length && (!lines[i].Contains(':') || lines[i].StartsWith("Rarity:")); i++) result.Add(lines[i]);
+        result.Add("--------");
+        var skip = 0;
+        for (; i < lines.Length; i++)
+        {
+            var line = lines[i];
+            if (line.StartsWith("Implicits:"))
+            {
+                int.TryParse(line["Implicits:".Length..].Trim(), out skip);
+                continue;
+            }
+            if (skip > 0) { skip--; continue; }
+            if (line.Contains(':')) { result.Add(line); continue; }  // Item Level 등
+            var tags = PobTag().Matches(line).Select(m => m.Groups[1].Value).ToArray();
+            if (tags.Any(t => t is "crafted" or "crucible" or "enchant" or "implicit" or "scourge" or "exarch" or "eater" or "synthesis"))
+                continue;
+            result.Add(PobTag().Replace(line, ""));
+        }
+        return [.. result];
+    }
+
+    [GeneratedRegex(@"\{(\w+)[^}]*\}")]
+    private static partial Regex PobTag();
 
     /// <summary>옵션 문장 → 숫자 자리를 잡는 정규식 (수치 범위 "(a-b)"와 숫자를 모두 숫자 하나로)</summary>
     static Regex Pattern(string text)
