@@ -1,6 +1,6 @@
 # PoE Tools
 
-한글로 쓰는 Path of Exile 도구 모음입니다. 빌드 뽑기, 브라우저용 Path of Building(한글 툴팁), 군단 주얼 트리가 있습니다.
+한글로 쓰는 Path of Exile 도구 모음입니다. 빌드 뽑기, 브라우저용 Path of Building(한글 툴팁), 군단주얼탐색기가 있습니다.
 (예전 이름: PoE Build Gacha, PoE KR Tools)
 
 **👉 바로 가기: https://gomdolit-jeong.github.io/PoE-Tools/**
@@ -28,7 +28,7 @@
   - 용량을 줄이려고 패시브 트리는 최신 정규 리그 2개(3.30, 3.29)와 최신 프레시아(3.28 alternate)만 넣습니다(`tools/pob/trim_pob.py`). 다른 버전으로 저장된 빌드는 최신 트리로 열립니다.
   - 배포할 때 GitHub Actions가 `tools/pob/build.sh`로 빌드합니다. PoB 버전(`POB_TAG`)과 pob-web 버전은 이 파일에 고정되어 있고, 올릴 때는 `PobCode.cs`의 트리 버전과 `timeless-tree.json`도 같이 확인합니다.
 
-- 첫 화면의 **군단 주얼 트리**(`/timeless`)에서 군단 주얼을 직접 골라 볼 수 있습니다.
+- 첫 화면의 **군단주얼탐색기**(`/timeless`)에서 군단 주얼을 직접 골라 볼 수 있습니다.
   - 주얼 종류(찬란한 허영심, 치명적인 긍지, 잔인한 속박, 호전적인 신념, 고상한 오만, 영웅적인 비극), 정복자, 시드를 고르고 트리 지도에서 소켓을 누릅니다.
   - 고른 소켓의 대형 반경을 크게 그리고, 반경 안 주요·핵심·작은 패시브가 무엇으로 바뀌는지 한글로 보여 줍니다. 계산 규칙은 PoB(`PassiveSpec.lua`)와 같습니다.
   - PoB는 찍힌 소켓의 주얼만 변환을 보여 주므로, PoB로 열 때는 직업 시작점(기본은 가장 가까운 직업)에서 소켓까지 가장 짧은 경로를 찍습니다.
