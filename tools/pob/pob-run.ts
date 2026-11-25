@@ -13,36 +13,96 @@ function show(message: string) {
   status.hidden = false;
 }
 
-// PoB 화면은 캔버스라 브라우저 한글 입력기가 켜지지 않습니다. 오른쪽 아래 작은 입력칸에서 한글을 치고 Enter를 누르면,
-// 글자를 하나씩 키 입력으로 보내서 PoB에서 고른 입력칸(아이템 검색 등)에 들어갑니다.
-// (붙여넣기 이벤트로는 PoB 입력칸까지 전달되지 않아서 키 입력을 씁니다.)
+// PoB 화면은 캔버스라 브라우저 한글 입력기가 켜지지 않습니다. PoB 입력칸(아이템 검색 등)을 누르거나 오른쪽 아래
+// "한글 입력" 버튼을 누르면 작은 창이 뜨고, 거기서 한글을 치고 Enter를 누르면 글자를 하나씩 키 입력으로 보내서
+// PoB에서 고른 입력칸에 들어갑니다. (붙여넣기 이벤트로는 PoB 입력칸까지 전달되지 않아서 키 입력을 씁니다.)
+// 입력칸을 누른 것은 캔버스 안의 일이라, PoB의 EditControl.lua에 넣은 코드(korean_tooltips.py)가
+// 창 제목을 EDIT_CLICK_SIGNAL로 바꾸는 방법으로 알려 줍니다.
+const EDIT_CLICK_SIGNAL = "poe-tools:edit-click";
+const AUTO_OPEN_KEY = "poe-tools:ko-auto-open";
+let openKoreanInput: (() => void) | undefined;
+
+function readAutoOpen(): boolean {
+  try {
+    return localStorage.getItem(AUTO_OPEN_KEY) !== "off";
+  } catch {
+    return true;
+  }
+}
+
 function addKoreanInput(): void {
-  const form = document.createElement("form");
-  form.id = "ko-input";
-  const input = document.createElement("input");
-  input.type = "text";
-  input.placeholder = "한글 입력 후 Enter → PoB 입력칸에 넣기";
-  input.setAttribute("aria-label", "PoB 입력칸에 넣을 한글");
-  form.appendChild(input);
+  const open = document.createElement("button");
+  open.type = "button";
+  open.id = "ko-open";
+  open.textContent = "한글 입력";
+  open.title = "PoB 입력칸을 먼저 클릭한 뒤 누르세요";
+
+  const dialog = document.createElement("form");
+  dialog.id = "ko-dialog";
+  dialog.hidden = true;
+  dialog.innerHTML = `
+    <b>PoB 입력칸에 한글 넣기</b>
+    <small>PoB에서 글자를 넣을 칸(아이템 검색 등)을 먼저 클릭한 뒤 쓰세요.</small>
+    <input type="text" class="ko-text" aria-label="PoB 입력칸에 넣을 한글" placeholder="예: 카메리아" autocomplete="off" />
+    <span class="ko-buttons">
+      <label class="ko-auto"><input type="checkbox" /> 입력칸을 누르면 자동으로 열기</label>
+      <button type="submit">넣기 (Enter)</button><button type="button" class="ko-close">닫기 (Esc)</button>
+    </span>`;
+  const input = dialog.querySelector(".ko-text") as HTMLInputElement;
+  const auto = dialog.querySelector(".ko-auto input") as HTMLInputElement;
+  auto.checked = readAutoOpen();
+  auto.addEventListener("change", () => {
+    try {
+      localStorage.setItem(AUTO_OPEN_KEY, auto.checked ? "on" : "off");
+    } catch {
+      // 저장할 수 없으면 이번 화면에서만 적용합니다.
+    }
+  });
+
+  const close = () => {
+    dialog.hidden = true;
+    input.value = "";
+    // 다시 PoB를 바로 조작할 수 있게 포커스를 돌려줍니다.
+    document.querySelector<HTMLElement>("#window [tabindex]")?.focus();
+  };
+  const showDialog = () => {
+    dialog.hidden = false;
+    input.focus();
+  };
+  open.addEventListener("click", showDialog);
+  openKoreanInput = () => {
+    if (auto.checked) showDialog();
+  };
+  // PoB의 다른 곳을 누르면 창을 닫습니다. (입력칸을 누른 경우는 신호가 뒤따라 와서 다시 열립니다.)
+  document.querySelector("#window")?.addEventListener("pointerdown", () => {
+    if (!dialog.hidden) {
+      dialog.hidden = true;
+      input.value = "";
+    }
+  }, true);
+  dialog.querySelector(".ko-close")!.addEventListener("click", close);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
 
   // PoB가 문서 전체의 붙여넣기를 가로채므로, 이 칸에 붙여넣을 때는 PoB로 보내지 않습니다.
   window.addEventListener("paste", (e) => {
     if (e.target === input) e.stopImmediatePropagation();
   }, true);
 
-  form.addEventListener("submit", (e) => {
+  dialog.addEventListener("submit", (e) => {
     e.preventDefault();
     const text = input.value;
     const target = document.querySelector<HTMLElement>("#window [tabindex]");
-    if (!text || !target) return;
+    if (!text || !target) return close();
     target.focus();
     for (const char of text) {
       target.dispatchEvent(new KeyboardEvent("keydown", { key: char, bubbles: true, cancelable: true }));
       target.dispatchEvent(new KeyboardEvent("keyup", { key: char, bubbles: true, cancelable: true }));
     }
-    input.value = "";
+    close();
   });
-  document.body.appendChild(form);
+  document.body.append(open, dialog);
 }
 
 function buildCodeFromHash(): string | undefined {
@@ -80,6 +140,10 @@ async function main(): Promise<void> {
     onOAuthAuthorize: () => Promise.reject(new Error("이 사이트의 PoB에서는 계정 연결을 지원하지 않아요.")),
     onOAuthLogout: () => {},
     onTitleChange: (title) => {
+      if (title === EDIT_CLICK_SIGNAL) {
+        openKoreanInput?.();
+        return;
+      }
       document.title = title || "Path of Building";
     },
   });

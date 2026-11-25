@@ -18,17 +18,51 @@
         color: #ddd; font: 16px/1.6 system-ui, sans-serif; text-align: center;
       }
       #status[hidden] { display: none; }
-      /* 한글 입력칸 (pob-run.ts addKoreanInput) */
-      #ko-input { position: fixed; right: 8px; bottom: 8px; z-index: 10; }
-      #ko-input input {
-        width: 270px; padding: 6px 8px; box-sizing: border-box;
-        background: rgba(20, 16, 12, .92); color: #eee; border: 1px solid #8a6a28; border-radius: 6px;
-        font: 14px system-ui, sans-serif;
+      /* 오른쪽 아래 버튼: 한글 입력(pob-run.ts addKoreanInput)과 사이트 첫 화면으로 돌아가기.
+         오른쪽 끝에는 pob-web의 세로 도구 막대(폭 56px)가 있어서 그 왼쪽에 둡니다. */
+      #ko-open, #home-link {
+        position: fixed; right: 64px; z-index: 10; box-sizing: border-box; min-width: 150px;
+        padding: 7px 12px; border-radius: 6px; text-align: center; text-decoration: none; cursor: pointer;
+        font: 700 14px system-ui, sans-serif;
       }
-      #ko-input input:focus { outline: none; border-color: #e8c46a; }
+      #ko-open {
+        bottom: 10px; color: #1a1206; border: 1px solid #f3d98a;
+        background: linear-gradient(#f0d27a, #c9982e); box-shadow: 0 2px 10px rgba(0, 0, 0, .6);
+      }
+      #ko-open:hover { filter: brightness(1.1); }
+      #home-link {
+        bottom: 52px; color: #e8c46a; border: 1px solid #8a6a28; background: rgba(20, 16, 12, .92);
+        font-weight: 400; font-size: 13px;
+      }
+      #home-link:hover { border-color: #e8c46a; color: #fff; }
+      /* 한글 입력 창 */
+      #ko-dialog {
+        position: fixed; left: 50%; top: 30%; transform: translateX(-50%); z-index: 20;
+        width: min(420px, calc(100vw - 32px)); box-sizing: border-box; padding: 16px;
+        display: grid; gap: 8px; color: #eee; font: 14px/1.5 system-ui, sans-serif;
+        background: rgba(20, 16, 12, .97); border: 1px solid #c9982e; border-radius: 10px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .7);
+      }
+      #ko-dialog[hidden] { display: none; }
+      #ko-dialog b { color: #e8c46a; font-size: 15px; }
+      #ko-dialog small { color: #bbb; }
+      #ko-dialog .ko-text {
+        padding: 9px 10px; font: 16px system-ui, sans-serif; color: #fff;
+        background: #0d0a07; border: 1px solid #8a6a28; border-radius: 6px;
+      }
+      #ko-dialog .ko-text:focus { outline: none; border-color: #e8c46a; }
+      #ko-dialog .ko-buttons { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-end; }
+      #ko-dialog .ko-auto { margin-right: auto; color: #bbb; font-size: 12px; cursor: pointer; }
+      #ko-dialog button {
+        padding: 6px 12px; border-radius: 6px; cursor: pointer; font: 13px system-ui, sans-serif;
+        color: #e8c46a; background: transparent; border: 1px solid #8a6a28;
+      }
+      #ko-dialog button[type="submit"] { color: #1a1206; background: #e0b955; border-color: #f3d98a; font-weight: 700; }
     </style>
   </head>
   <body>
+    <!-- pob/ 한 단계 위가 사이트 첫 화면입니다 -->
+    <a id="home-link" href="../">← PoE Tools 홈으로</a>
     <div id="app"><div id="window"></div></div>
     <div id="status" hidden></div>
     <script type="module" src="/src/js/pob-run.ts"></script>

@@ -149,6 +149,8 @@ SEARCH_BLOCK = """		-- PoE Tools: 검색어에 한글이 있으면 한글 이름
 # 입력칸(EditControl.lua): 한글(UTF-8 여러 바이트)을 한 글자로 지우고, 붙여넣은 한글을 "?"로 바꾸지 않습니다.
 # 커서 이동(←→)은 PoB가 이미 글자 단위로 처리합니다.
 CONTINUATION = "(function(b) return b and b >= 128 and b < 192 end)"
+# pob-run.ts의 EDIT_CLICK_SIGNAL과 같아야 합니다.
+EDIT_CLICK_SIGNAL = "poe-tools:edit-click"
 EDIT_PATCHES = [
     # Backspace: 앞 글자가 여러 바이트면 그 글자 전체를 지웁니다.
     ("\t\t\tself.buf = self.buf:sub(1, self.caret - 1 - len) .. self.buf:sub(self.caret)\n",
@@ -164,6 +166,11 @@ EDIT_PATCHES = [
      "\t\t\t\tlen = len + 1\n"
      "\t\t\tend\n"
      "\t\t\tself.buf = self.buf:sub(1, self.caret - 1) .. self.buf:sub(self.caret + len)\n"),
+    # 입력칸을 마우스로 누르면 페이지에 알립니다. pob-run.ts가 이 신호(창 제목으로 전달)를 받아 한글 입력 창을 엽니다.
+    ('\tif key == "LEFTBUTTON" then\n\t\tif not self.Object:IsMouseOver() then\n\t\t\treturn\n\t\tend\n',
+     '\tif key == "LEFTBUTTON" then\n\t\tif not self.Object:IsMouseOver() then\n\t\t\treturn\n\t\tend\n'
+     "\t\t-- PoE Tools: 입력칸을 눌렀다고 페이지에 알립니다 (한글 입력 창을 엽니다).\n"
+     f'\t\tif SetWindowTitle then SetWindowTitle("{EDIT_CLICK_SIGNAL}") end\n'),
     # 붙여넣기: 영어가 아닌 글자를 "?"로 바꾸지 않습니다.
     ('\t\t\ttext = text:gsub("[\\128-\\255]","?")\n',
      "\t\t\t-- PoE Tools: 한글을 붙여넣을 수 있게 \"?\"로 바꾸지 않습니다.\n"),
