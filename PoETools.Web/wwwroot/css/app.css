@@ -482,7 +482,7 @@ html, body {
 
 
 /* ===== 군단 주얼 페이지 (Pages/Timeless.razor) ===== */
-.game-links { display: flex; gap: 8px; }
+.game-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .game-links .game-pob { flex: 1; }
 a.back { display: inline-block; text-decoration: none; }
 
@@ -662,3 +662,54 @@ a.back { display: inline-block; text-decoration: none; }
 .tj-hits li { display: flex; align-items: stretch; gap: 6px; }
 .tj-hits li > button { flex: 1; }
 .tj-hits li > a { display: flex; align-items: center; padding: 0 10px; font-size: .8rem; }
+
+/* 크래프팅 계산기 (/craft) */
+.cr-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.cr-field { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; color: var(--muted); }
+.cr-field.grow { flex: 1; min-width: 240px; }
+.cr-field select, .cr-field input, .cr-search, .cr-targets select {
+    background: #110e0b; color: var(--text); border: 1px solid var(--line);
+    border-radius: 6px; padding: 7px 9px; font: inherit; font-size: .92rem;
+}
+.cr-field input[type=number] { width: 7rem; }
+.cr-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.cr-chip {
+    background: #110e0b; color: var(--muted); border: 1px solid var(--line);
+    border-radius: 999px; padding: 5px 12px; cursor: pointer; font: inherit; font-size: .88rem;
+}
+.cr-chip.on { color: var(--gold); border-color: var(--gold); }
+.cr-chip:disabled { opacity: .4; cursor: not-allowed; }
+.cr-targets { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.cr-targets li { display: flex; align-items: center; gap: 8px; }
+.cr-targets select { flex: 1; min-width: 0; }
+.cr-x { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 6px; cursor: pointer; padding: 5px 9px; }
+.cr-x:hover { color: #d98a6a; border-color: #8a3a2a; }
+.cr-side { flex: none; font-size: .75rem; padding: 2px 7px; border-radius: 4px; }
+.cr-side.p { background: #2c3a52; color: #b9cdf0; }
+.cr-side.s { background: #3d3020; color: #e6c98f; }
+.cr-search { width: 100%; box-sizing: border-box; margin: 12px 0 8px; }
+.cr-list { max-height: 360px; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.cr-type {
+    display: flex; align-items: center; gap: 8px; text-align: left; width: 100%;
+    background: none; border: 1px solid transparent; border-radius: 6px; color: var(--text);
+    padding: 6px 8px; cursor: pointer; font: inherit; font-size: .9rem;
+}
+.cr-type:hover { border-color: var(--line); background: #110e0b; }
+.cr-type .cr-label { flex: 1; }
+.cr-type small { color: var(--muted); white-space: nowrap; }
+.cr-prices { margin: 12px 0; color: var(--muted); font-size: .9rem; }
+.cr-prices summary { cursor: pointer; }
+.cr-price-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin-top: 10px; }
+.cr-go { margin-top: 8px; }
+.cr-result { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-top: 10px; }
+.cr-result.best { border-color: var(--gold); box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 20%, transparent); }
+.cr-result header { display: flex; justify-content: space-between; gap: 12px; }
+.cr-result.best header b { color: var(--gold); }
+.cr-cost { color: var(--gold); font-weight: 600; white-space: nowrap; }
+.cr-result ol { margin: 8px 0; padding-left: 20px; font-size: .9rem; }
+.cr-meta, .cr-uses { margin: 4px 0 0; color: var(--muted); font-size: .85rem; }
+.cr-uses span { margin-left: 8px; }
+.cr-rough { color: #d98a6a; }
+.cr-paste { margin-bottom: 14px; color: var(--muted); font-size: .9rem; }
+.cr-paste summary { cursor: pointer; color: var(--text); }
+.cr-paste textarea { resize: vertical; font-family: inherit; }

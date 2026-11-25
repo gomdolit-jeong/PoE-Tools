@@ -1,0 +1,524 @@
+@page "/craft"
+@using System.Globalization
+@using PoETools.Web.Core
+@inject CraftDataStore Store
+@implements IDisposable
+
+<PageTitle>크래프팅 계산기 - PoE Tools</PageTitle>
+
+<main class="shell wide">
+    <header class="hero">
+        <h1>Crafting</h1>
+        <p class="tagline">원하는 옵션을 고르면 크래프팅 방법별 성공 확률과 예상 비용을 비교해 드려요</p>
+    </header>
+
+    @if (data is null)
+    {
+        <section class="panel">
+            <a class="back" href="./">← 처음으로</a>
+            <p class="tj-help">@(loadFailed ? "크래프팅 데이터를 받지 못했어요. 새로고침해 주세요." : "크래프팅 데이터를 불러오는 중이에요…")</p>
+        </section>
+    }
+    else
+    {
+        <section class="panel">
+            <a class="back" href="./">← 처음으로</a>
+            <h2>1. 베이스 고르기</h2>
+            <details class="cr-paste" open>
+                <summary>게임에서 복사한 아이템으로 채우기</summary>
+                <p class="tj-help">만들고 싶은 아이템(거래소 매물 등)에 마우스를 올리고 Ctrl+C를 누른 뒤 여기에 붙여넣으세요. 베이스·아이템 레벨·영향력·옵션과 티어를 채워 드려요.</p>
+                <textarea class="cr-search" rows="6" @bind="pasteText" @bind:event="oninput" placeholder="아이템 종류: 갑옷&#10;아이템 희귀도: 희귀&#10;…"></textarea>
+                <button type="button" class="cr-chip on" @onclick="ApplyPaste" disabled="@string.IsNullOrWhiteSpace(pasteText)">불러오기</button>
+                @if (pasteMessage is not null)
+                {
+                    <p class="tj-help @(pasteBad ? "bad" : "")">@pasteMessage</p>
+                }
+            </details>
+            <div class="cr-row">
+                <label class="cr-field">
+                    <span>분류</span>
+                    <select value="@itemClass" @onchange="e => SelectClass((string)e.Value!)">
+                        @foreach (var (en, ko) in data.Classes)
+                        {
+                            <option value="@en">@ko</option>
+                        }
+                    </select>
+                </label>
+                <label class="cr-field grow">
+                    <span>베이스</span>
+                    <select value="@baseItem?.Name" @onchange="e => SelectBase((string)e.Value!)">
+                        @foreach (var b in data.Bases.Where(b => b.Class == itemClass).OrderByDescending(b => b.Level))
+                        {
+                            <option value="@b.Name">@b.Korean (@b.Name · 레벨 @b.Level)</option>
+                        }
+                    </select>
+                </label>
+                <label class="cr-field">
+                    <span>아이템 레벨</span>
+                    <input type="number" min="1" max="100" @bind="itemLevel" @bind:after="Rebuild" />
+                </label>
+            </div>
+            <h3 class="tj-sub">영향력 (최대 2개)</h3>
+            <div class="cr-chips">
+                @foreach (var inf in data.Influences)
+                {
+                    var on = influences.Contains(inf);
+                    <button type="button" class="cr-chip @(on ? "on" : "")" disabled="@(!on && influences.Count >= 2)"
+                            @onclick="() => ToggleInfluence(inf)">@InfluenceName(inf)</button>
+                }
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>2. 원하는 옵션 고르기</h2>
+            @if (targets.Count > 0)
+            {
+                <ul class="cr-targets">
+                    @foreach (var t in targets)
+                    {
+                        <li>
+                            <span class="cr-side @(t.Prefix ? "p" : "s")">@(t.Prefix ? "접두" : "접미")</span>
+                            <select value="@t.Tier" @onchange="e => SetTier(t, e.Value)">
+                                @for (var i = 0; i < t.Tiers.Length; i++)
+                                {
+                                    var tier = t.Tiers[i];
+                                    <option value="@(i + 1)">T@(i + 1)@(i > 0 ? " 이상" : "") · @OneLine(tier.Text)@(tier.W.Count > 0 ? $" · 아이템 레벨 {tier.Level}+" : "")</option>
+                                }
+                            </select>
+                            <button type="button" class="cr-x" @onclick="() => RemoveTarget(t)" aria-label="빼기">✕</button>
+                        </li>
+                    }
+                </ul>
+            }
+            <p class="tj-help @(TooMany ? "bad" : "")">
+                접두 @targets.Count(t => t.Prefix)/3 · 접미 @targets.Count(t => !t.Prefix)/3
+                @(TooMany ? " — 한쪽에 3개까지만 붙어요" : "")
+            </p>
+
+            <input class="cr-search" placeholder="옵션 검색 (예: 생명력, 저항, 이동 속도)" @bind="search" @bind:event="oninput" />
+            <div class="cr-list">
+                @foreach (var type in FilteredTypes)
+                {
+                    <button type="button" class="cr-type" @onclick="() => AddTarget(type)">
+                        <span class="cr-side @(type.Prefix ? "p" : "s")">@(type.Prefix ? "접두" : "접미")</span>
+                        <span class="cr-label">@OneLine(type.Label)</span>
+                        <small>@(type.EssenceOnly ? "에센스 전용" : $"{type.Tiers.Length}티어 · {Share(type):0.#}%")</small>
+                    </button>
+                }
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>3. 설정</h2>
+            <label class="check">
+                <input type="checkbox" @bind="allowBench" />
+                <span>모자란 옵션 하나는 작업대로 붙여도 돼요</span>
+            </label>
+            <details class="cr-prices">
+                <summary>화폐 가격 (카오스 기준, 리그 시세에 맞게 고쳐 주세요)</summary>
+                <div class="cr-price-grid">
+                    @foreach (var c in Currencies.All.Take(9))
+                    {
+                        <label class="cr-field">
+                            <span>@c.Korean</span>
+                            <input type="number" step="0.01" min="0" value="@Price(c.Id).ToString(CultureInfo.InvariantCulture)"
+                                   @onchange="e => SetPrice(c.Id, e.Value)" />
+                        </label>
+                    }
+                    @foreach (var (id, name) in data.Resonators.Select(x => (x.Id, x.Korean)).Concat(data.Fossils.Select(f => (f.Id, f.Korean))))
+                    {
+                        <label class="cr-field">
+                            <span>@name</span>
+                            <input type="number" step="0.01" min="0" value="@Price(id).ToString(CultureInfo.InvariantCulture)"
+                                   @onchange="ev => SetPrice(id, ev.Value)" />
+                        </label>
+                    }
+                    @foreach (var e in UsableEssences)
+                    {
+                        <label class="cr-field">
+                            <span>@e.Korean</span>
+                            <input type="number" step="0.01" min="0" value="@Price(e.Id).ToString(CultureInfo.InvariantCulture)"
+                                   @onchange="ev => SetPrice(e.Id, ev.Value)" />
+                        </label>
+                    }
+                </div>
+            </details>
+            <button class="roll cr-go" @onclick="Calculate" disabled="@(running || targets.Count == 0 || TooMany)">
+                @(running ? $"계산 중… {progress}" : "계산하기")
+            </button>
+        </section>
+
+        @if (results.Count > 0)
+        {
+            <section class="panel">
+                <h2>4. 결과 (예상 비용이 싼 순서)</h2>
+                <p class="tj-help">아이템을 실제로 수십만 번 굴려 본 평균이에요. 방법마다 최대 2.5초씩 돌려서, 확률이 아주 낮으면 "못 찾음"으로 나와요.</p>
+                @foreach (var r in results.OrderBy(r => r.Cost))
+                {
+                    <article class="cr-result @(r == results.MinBy(x => x.Cost) && r.Found ? "best" : "")">
+                        <header>
+                            <b>@r.Name</b>
+                            <span class="cr-cost">@(r.Found ? $"약 {Format(r.Cost)} 카오스" : "못 찾음")</span>
+                        </header>
+                        <ol>
+                            @foreach (var s in r.Steps)
+                            {
+                                <li>@s</li>
+                            }
+                        </ol>
+                        <p class="cr-meta">
+                            @if (r.Found)
+                            {
+                                <span>시도 1번 성공 확률 @Percent(r.SuccessPerTry) · @r.Tries.ToString("N0")번 중 @r.Successes.ToString("N0")번 성공</span>
+                                @if (r.Successes < 30)
+                                {
+                                    <span class="cr-rough"> · 성공 표본이 적어서 대략적인 값이에요</span>
+                                }
+                            }
+                            else
+                            {
+                                <span>@r.Tries.ToString("N0")번 굴려서 한 번도 안 나왔어요 (확률 @Percent(1.0 / Math.Max(1, r.Tries)) 미만)</span>
+                            }
+                        </p>
+                        @if (r.Found)
+                        {
+                            <p class="cr-uses">
+                                평균 사용량:
+                                @foreach (var (cur, n) in r.Uses.OrderByDescending(kv => kv.Value * Price(kv.Key)))
+                                {
+                                    <span>@CurrencyName(cur) @Format(n)개</span>
+                                }
+                            </p>
+                        }
+                    </article>
+                }
+                @foreach (var skip in skipped)
+                {
+                    <p class="tj-help">· @skip</p>
+                }
+            </section>
+        }
+
+        <p class="hint">
+            옵션·가중치는 RePoE 게임 데이터(배포 때마다 새로 받음), 레어 옵션 개수(4·5·6개 = 8:3:1)는 커뮤니티 추정치예요.
+            화석은 가중치만 바꾸는 17종만 계산하고(태그가 겹치면 배율을 곱하는 어림), 하베스트·메타 크래프팅(접두 고정 등)·제거는 아직 계산하지 않아요.
+        </p>
+    }
+</main>
+
+@code {
+    CraftData? data;
+    bool loadFailed;
+    string itemClass = "Body Armour";
+    CraftBase? baseItem;
+    int itemLevel = 86;
+    readonly List<string> influences = [];
+    ModPool? pool;
+    List<CraftModType> types = [];
+    readonly List<CraftTarget> targets = [];
+    string search = "";
+    bool allowBench = true;
+    readonly Dictionary<string, double> prices = [];
+    readonly List<CraftResult> results = [];
+    readonly List<string> skipped = [];
+    bool running;
+    string progress = "";
+    CancellationTokenSource? cancel;
+    string pasteText = "";
+    string? pasteMessage;
+    bool pasteBad;
+
+    /// <summary>붙여넣은 아이템으로 베이스·레벨·영향력·목표 옵션을 채웁니다. 목표 티어는 그 아이템에 붙은 티어 이상입니다.</summary>
+    void ApplyPaste()
+    {
+        if (data is null) return;
+        var parsed = CraftItemText.Parse(data, pasteText);
+        if (parsed.Base is null)
+        {
+            (pasteMessage, pasteBad) = ("베이스 이름을 찾지 못했어요. 게임에서 Ctrl+C로 복사한 텍스트인지 확인해 주세요.", true);
+            return;
+        }
+        itemClass = parsed.Base.Class;
+        baseItem = parsed.Base;
+        if (parsed.ItemLevel is { } level) itemLevel = level;
+        influences.Clear();
+        influences.AddRange(parsed.Influences.Take(2));
+        targets.Clear();
+        Rebuild();
+
+        var (found, unknown) = CraftItemText.MatchMods(types, parsed.ModLines);
+        foreach (var (type, tier) in found.OrderBy(f => f.Type.Prefix ? 0 : 1))
+            targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Tier = tier });
+        pasteBad = found.Count == 0;
+        pasteMessage = $"{baseItem.Korean} · 아이템 레벨 {itemLevel} · 옵션 {found.Count}개를 채웠어요."
+                       + (unknown.Count > 0 ? $" 못 읽은 줄 {unknown.Count}개 (고정·작업대 옵션 등): " + string.Join(" / ", unknown.Take(4)) : "");
+        results.Clear();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            data = await Store.Load();
+            SelectClass(itemClass);
+        }
+        catch (Exception)
+        {
+            loadFailed = true;
+        }
+    }
+
+    void SelectClass(string cls)
+    {
+        itemClass = cls;
+        baseItem = data!.Bases.Where(b => b.Class == cls).OrderByDescending(b => b.Level).FirstOrDefault();
+        targets.Clear();
+        Rebuild();
+    }
+
+    void SelectBase(string name)
+    {
+        baseItem = data!.Bases.First(b => b.Name == name && b.Class == itemClass);
+        Rebuild();
+    }
+
+    void ToggleInfluence(string inf)
+    {
+        if (!influences.Remove(inf)) influences.Add(inf);
+        Rebuild();
+    }
+
+    /// <summary>베이스·레벨·영향력이 바뀌면 옵션 풀을 새로 만들고, 더는 못 붙는 목표는 뺍니다.</summary>
+    void Rebuild()
+    {
+        if (data is null || baseItem is null) return;
+        itemLevel = Math.Clamp(itemLevel, 1, 100);
+        pool = new ModPool(data, baseItem, itemLevel, influences);
+        types = CraftHelpers.Types(data, pool, UsableEssences);
+        var old = targets.ToList();
+        targets.Clear();
+        foreach (var t in old)
+        {
+            var type = types.FirstOrDefault(x => x.Type == t.Type && x.Prefix == t.Prefix);
+            if (type is null) continue;
+            targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Tier = Math.Min(t.Tier, type.Tiers.Length) });
+        }
+        results.Clear();
+    }
+
+    IEnumerable<CraftEssence> UsableEssences => data is null ? [] : data.Essences.Where(e =>
+        e.Mods.ContainsKey(itemClass) && (e.MaxItemLevel == 0 || itemLevel <= e.MaxItemLevel));
+
+    IEnumerable<CraftModType> FilteredTypes
+    {
+        get
+        {
+            var words = search.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            return types
+                .Where(t => !targets.Any(x => x.Type == t.Type && x.Prefix == t.Prefix))
+                .Where(t => words.All(w => t.Label.Contains(w, StringComparison.OrdinalIgnoreCase)
+                                           || t.Tiers[0].En.Contains(w, StringComparison.OrdinalIgnoreCase)))
+                .Take(80);
+        }
+    }
+
+    double Share(CraftModType type)
+    {
+        var side = types.Where(t => t.Prefix == type.Prefix).Sum(t => t.Weight);
+        return side == 0 ? 0 : 100.0 * type.Weight / side;
+    }
+
+    bool TooMany => targets.Count(t => t.Prefix) > 3 || targets.Count(t => !t.Prefix) > 3;
+
+    void AddTarget(CraftModType type)
+    {
+        targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Tier = Math.Min(2, type.Tiers.Length) });
+        search = "";
+        results.Clear();
+    }
+
+    void RemoveTarget(CraftTarget t) { targets.Remove(t); results.Clear(); }
+
+    void SetTier(CraftTarget t, object? value)
+    {
+        if (int.TryParse(value?.ToString(), out var tier)) t.Tier = tier;
+        results.Clear();
+    }
+
+    double Price(string id)
+    {
+        if (prices.TryGetValue(id, out var p)) return p;
+        var c = Currencies.All.FirstOrDefault(x => x.Id == id);
+        if (c is not null) return c.DefaultPrice;
+        var e = data?.Essences.FirstOrDefault(x => x.Id == id);
+        if (e is not null) return Currencies.EssencePrice(e);
+        if (data?.Fossils.Any(f => f.Id == id) == true) return Currencies.FossilPrice;
+        var r = data?.Resonators.FirstOrDefault(x => x.Id == id);
+        return r is not null ? Currencies.ResonatorPrice(r.Sockets) : 1;
+    }
+
+    void SetPrice(string id, object? value)
+    {
+        if (double.TryParse(value?.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out var p) && p >= 0)
+            prices[id] = p;
+    }
+
+    string CurrencyName(string id) =>
+        Currencies.All.FirstOrDefault(c => c.Id == id)?.Korean
+        ?? data?.Essences.FirstOrDefault(e => e.Id == id)?.Korean
+        ?? data?.Fossils.FirstOrDefault(f => f.Id == id)?.Korean
+        ?? data?.Resonators.FirstOrDefault(x => x.Id == id)?.Korean
+        ?? (data?.Currency.TryGetValue(id, out var n) == true ? n[1] : id.Split('/')[^1]);
+
+    async Task Calculate()
+    {
+        if (data is null || pool is null || running) return;
+        cancel?.Cancel();
+        cancel = new CancellationTokenSource();
+        var token = cancel.Token;
+        running = true;
+        results.Clear();
+        skipped.Clear();
+        var sim = new CraftSimulator(data, pool, targets, Price);
+
+        // 일반으로 안 나오는 목표가 있으면, 그 목표를 확정으로 붙이는 에센스나 작업대로만 채울 수 있습니다.
+        var unnatural = targets.Select((t, i) => (t, i)).Where(x => !pool.Mods.Any(m => x.t.Matches(m))).ToList();
+        var benchOnly = unnatural.Count == 1 && allowBench && sim.CanBench(unnatural[0].i);
+
+        var jobs = new List<(string Label, Func<Task<CraftResult>> Run)>();
+        var essenceJobs = 0;
+        if (unnatural.Count == 0 || benchOnly)
+        {
+            jobs.Add(("카오스 스팸", () => sim.ChaosSpam(allowBench, token)));
+            jobs.Add(("변화 → 제왕", () => sim.AltRegal(false, allowBench, token)));
+            jobs.Add(("변화 → 제왕 → 엑잘", () => sim.AltRegal(true, allowBench, token)));
+        }
+        else
+        {
+            skipped.Add("일반으로는 안 나오는 옵션이 있어서 카오스·변화 방법은 뺐어요: " + string.Join(", ", unnatural.Select(x => OneLine(x.t.Threshold.Text))));
+        }
+
+        foreach (var e in UsableEssences)
+        {
+            var forced = data.Mods.GetValueOrDefault(e.Mods[itemClass]);
+            if (forced is null || !targets.Any(t => t.Matches(forced))) continue;
+            // 확정 옵션이 채우는 목표를 빼고 남은 목표가 모두 일반으로 나올 수 있어야 합니다.
+            var rest = unnatural.Where(x => !x.t.Matches(forced)).ToList();
+            if (rest.Count > 1 || (rest.Count == 1 && !(allowBench && sim.CanBench(rest[0].i)))) continue;
+            jobs.Add((e.Korean, () => sim.EssenceSpam(e, allowBench, token)));
+            essenceJobs++;
+        }
+        // 화석: 목표를 막지 않는 화석 1~4개 조합 중에서, 목표 옵션 비중을 가장 싸게 늘리는 조합 3개만 실제로 굴려 봅니다.
+        if (unnatural.Count == 0 || benchOnly)
+        {
+            foreach (var (fossils, resonator) in BestFossilCombos(3))
+            {
+                var fossilSim = new CraftSimulator(data, pool.WithFossils(fossils), targets, Price);
+                jobs.Add(("화석 · " + string.Join(" + ", fossils.Select(f => f.Korean)), () => fossilSim.FossilSpam(resonator, fossils, allowBench, token)));
+            }
+        }
+
+        if (essenceJobs == 0)
+            skipped.Add("원하는 옵션을 확정으로 붙이는 에센스가 없어서 에센스 방법은 뺐어요.");
+
+        try
+        {
+            for (var i = 0; i < jobs.Count; i++)
+            {
+                progress = $"{i + 1}/{jobs.Count} {jobs[i].Label}";
+                StateHasChanged();
+                results.Add(await jobs[i].Run());
+            }
+        }
+        catch (OperationCanceledException) { }
+        finally
+        {
+            running = false;
+            progress = "";
+        }
+    }
+
+    /// <summary>
+    /// 화석 조합 어림 점수: 목표마다 (그 목표 옵션 가중치 / 전체 가중치)를 곱한 값이 "한 번에 다 붙을 가능성"에 비례한다고 보고,
+    /// (공명기 + 화석 가격) / 점수가 작은 순서로 고릅니다. 화석 없이 굴리는 것(카오스)보다 나은 조합만 돌려줍니다.
+    /// </summary>
+    List<(CraftFossil[] Fossils, CraftResonator Resonator)> BestFossilCombos(int count)
+    {
+        if (data is null || pool is null || data.Resonators.Length == 0) return [];
+        var natural = targets.Where(t => pool.WeightOf(t) > 0).ToList();
+        if (natural.Count == 0) return [];
+
+        double Score(ModPool p)
+        {
+            double score = 1;
+            foreach (var t in natural)
+            {
+                var w = p.WeightOf(t);
+                if (w == 0) return 0;
+                score *= (double)w / p.Total;
+            }
+            return score;
+        }
+
+        // 목표를 하나라도 막는 화석은 뺍니다.
+        var useful = data.Fossils.Where(f => Score(pool.WithFossils([f])) > 0).ToArray();
+        var baseline = Price(Currencies.Chaos) / Score(pool);
+        var scored = new List<(CraftFossil[] Fossils, CraftResonator Resonator, double Cost)>();
+        void Visit(int start, List<CraftFossil> picked)
+        {
+            if (picked.Count > 0)
+            {
+                var resonator = data.Resonators.FirstOrDefault(x => x.Sockets == picked.Count);
+                if (resonator is not null)
+                {
+                    var score = Score(pool.WithFossils(picked));
+                    if (score > 0)
+                    {
+                        var cost = (Price(resonator.Id) + picked.Sum(f => Price(f.Id))) / score;
+                        scored.Add(([.. picked], resonator, cost));
+                    }
+                }
+            }
+            if (picked.Count == 4) return;
+            for (var i = start; i < useful.Length; i++)
+            {
+                picked.Add(useful[i]);
+                Visit(i + 1, picked);
+                picked.RemoveAt(picked.Count - 1);
+            }
+        }
+        Visit(0, []);
+        return scored.Where(s => s.Cost < baseline).OrderBy(s => s.Cost).Take(count)
+            .Select(s => (s.Fossils, s.Resonator)).ToList();
+    }
+
+    public void Dispose() => cancel?.Cancel();
+
+    static string OneLine(string text) => text.Replace("\n", " / ");
+
+    static string Format(double v) => v switch
+    {
+        >= 1000 => v.ToString("N0"),
+        >= 10 => v.ToString("0"),
+        >= 1 => v.ToString("0.#"),
+        _ => v.ToString("0.##"),
+    };
+
+    static string Percent(double p) => p switch
+    {
+        >= 0.01 => $"{p * 100:0.#}%",
+        >= 0.0001 => $"{p * 100:0.###}%",
+        _ => $"1/{1 / p:N0}",
+    };
+
+    static string InfluenceName(string inf) => inf switch
+    {
+        "shaper" => "쉐이퍼",
+        "elder" => "엘더",
+        "crusader" => "성전사",
+        "eyrie" => "구원자",
+        "basilisk" => "사냥꾼",
+        "adjudicator" => "전쟁군주",
+        _ => inf,
+    };
+}
