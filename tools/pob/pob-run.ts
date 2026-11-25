@@ -13,7 +13,7 @@ function show(message: string) {
   status.hidden = false;
 }
 
-// PoB 화면은 캔버스라 브라우저 한글 입력기가 켜지지 않습니다. PoB 입력칸(아이템 검색 등)을 누르거나 오른쪽 아래
+// PoB 화면은 캔버스라 브라우저 한글 입력기가 켜지지 않습니다. 한글 검색이 되는 아이템 목록 검색칸을 누르거나 오른쪽 아래
 // "한글 입력" 버튼을 누르면 작은 창이 뜨고, 거기서 한글을 치고 Enter를 누르면 글자를 하나씩 키 입력으로 보내서
 // PoB에서 고른 입력칸에 들어갑니다. (붙여넣기 이벤트로는 PoB 입력칸까지 전달되지 않아서 키 입력을 씁니다.)
 // 입력칸을 누른 것은 캔버스 안의 일이라, PoB의 EditControl.lua에 넣은 코드(korean_tooltips.py)가
@@ -45,7 +45,7 @@ function addKoreanInput(): void {
     <small>PoB에서 글자를 넣을 칸(아이템 검색 등)을 먼저 클릭한 뒤 쓰세요.</small>
     <input type="text" class="ko-text" aria-label="PoB 입력칸에 넣을 한글" placeholder="예: 카메리아" autocomplete="off" />
     <span class="ko-buttons">
-      <label class="ko-auto"><input type="checkbox" /> 입력칸을 누르면 자동으로 열기</label>
+      <label class="ko-auto"><input type="checkbox" /> 아이템 검색칸을 누르면 자동으로 열기</label>
       <button type="submit">넣기 (Enter)</button><button type="button" class="ko-close">닫기 (Esc)</button>
     </span>`;
   const input = dialog.querySelector(".ko-text") as HTMLInputElement;

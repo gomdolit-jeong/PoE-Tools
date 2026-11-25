@@ -146,6 +146,13 @@ SEARCH_BLOCK = """		-- PoE Tools: 검색어에 한글이 있으면 한글 이름
 		end
 """
 
+# 아이템 목록 검색칸을 만든 바로 뒤. 이 칸을 누를 때만 한글 입력 창이 자동으로 뜨게 표시합니다 (EDIT_PATCHES 참고).
+SEARCH_FLAG_ANCHOR = "\tend, nil, nil, true)\n\tself.controls.searchMode = "
+SEARCH_FLAG = ("\tend, nil, nil, true)\n"
+               "\t-- PoE Tools: 이 칸을 누르면 한글 입력 창을 자동으로 엽니다 (tools/pob/korean_tooltips.py)\n"
+               "\tself.controls.search.koreanInput = true\n"
+               "\tself.controls.searchMode = ")
+
 # 입력칸(EditControl.lua): 한글(UTF-8 여러 바이트)을 한 글자로 지우고, 붙여넣은 한글을 "?"로 바꾸지 않습니다.
 # 커서 이동(←→)은 PoB가 이미 글자 단위로 처리합니다.
 CONTINUATION = "(function(b) return b and b >= 128 and b < 192 end)"
@@ -170,7 +177,8 @@ EDIT_PATCHES = [
     ('\tif key == "LEFTBUTTON" then\n\t\tif not self.Object:IsMouseOver() then\n\t\t\treturn\n\t\tend\n',
      '\tif key == "LEFTBUTTON" then\n\t\tif not self.Object:IsMouseOver() then\n\t\t\treturn\n\t\tend\n'
      "\t\t-- PoE Tools: 입력칸을 눌렀다고 페이지에 알립니다 (한글 입력 창을 엽니다).\n"
-     f'\t\tif SetWindowTitle then SetWindowTitle("{EDIT_CLICK_SIGNAL}") end\n'),
+     "\t\t-- 한글 검색을 넣은 칸(koreanInput, 아래 SEARCH_FLAG)만 알립니다. 다른 칸은 오른쪽 아래 버튼으로 엽니다.\n"
+     f'\t\tif SetWindowTitle and self.koreanInput then SetWindowTitle("{EDIT_CLICK_SIGNAL}") end\n'),
     # 붙여넣기: 영어가 아닌 글자를 "?"로 바꾸지 않습니다.
     ('\t\t\ttext = text:gsub("[\\128-\\255]","?")\n',
      "\t\t\t-- PoE Tools: 한글을 붙여넣을 수 있게 \"?\"로 바꾸지 않습니다.\n"),
@@ -385,8 +393,14 @@ def main(repo: Path, korean_json: Path, korean_stats: Path | None = None) -> Non
             item_db = src / "Classes" / "ItemDBControl.lua"
             text = item_db.read_text(encoding="utf-8")
             if SEARCH_ANCHOR in text:
-                item_db.write_text(text.replace(SEARCH_ANCHOR, SEARCH_BLOCK + SEARCH_ANCHOR, 1), encoding="utf-8")
+                text = text.replace(SEARCH_ANCHOR, SEARCH_BLOCK + SEARCH_ANCHOR, 1)
                 print("한글 검색: 아이템 목록")
+                if text.count(SEARCH_FLAG_ANCHOR) == 1:
+                    text = text.replace(SEARCH_FLAG_ANCHOR, SEARCH_FLAG)
+                    print("한글 입력: 아이템 목록 검색칸에서 자동으로 열기")
+                else:
+                    print("경고: ItemDBControl.lua에서 검색칸 표시 자리를 찾지 못해 자동으로 열기를 건너뜁니다.")
+                item_db.write_text(text, encoding="utf-8")
             else:
                 print("경고: ItemDBControl.lua에서 한글 검색을 넣을 자리를 찾지 못해 건너뜁니다.")
             gem_tooltip = src / "Classes" / "GemTooltip.lua"
