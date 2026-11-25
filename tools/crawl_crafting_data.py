@@ -99,7 +99,8 @@ def main() -> None:
     for key, m in mods.items():
         if m.get("generation_type") not in ("prefix", "suffix"):
             continue
-        natural = m.get("domain") == "item" and any(w["weight"] > 0 and w["tag"] in all_tags for w in m.get("spawn_weights", []))
+        # unveiled: 베일드 옵션 (베일드 오브·아이슬링으로 붙는 옵션, 계산기는 자리만 비워 둠)
+        natural = m.get("domain") in ("item", "unveiled") and any(w["weight"] > 0 and w["tag"] in all_tags for w in m.get("spawn_weights", []))
         if not natural and key not in needed:
             continue
         ko = mods_ko.get(key) or {}

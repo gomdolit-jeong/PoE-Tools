@@ -193,6 +193,10 @@ public sealed class CraftTarget
     /// <summary>티어 1(가장 좋음)부터 정렬된 일반 옵션 (일반으로 안 나오는 에센스 전용이면 에센스 옵션)</summary>
     public required CraftMod[] Tiers { get; init; }
     public int Tier { get; set; } = 1;
+    /// <summary>균열 옵션처럼 베이스에 처음부터 붙어 있고 지워지지 않는 옵션 (고른 티어로 붙어 있다고 봄)</summary>
+    public bool Fixed { get; set; }
+    /// <summary>베일드 옵션: 일반 크래프팅으로는 안 붙어서, 자리만 비워 두고 마지막에 따로 붙인다고 봄</summary>
+    public bool Reserved { get; init; }
 
     public CraftMod Threshold => Tiers[Math.Clamp(Tier, 1, Tiers.Length) - 1];
 
@@ -231,11 +235,13 @@ public sealed class ModPool
 
         var mods = new List<CraftMod>();
         var weights = new List<int>();
+        var veiled = new List<CraftMod>();
         foreach (var mod in data.Mods.Values)
         {
             if (mod.Level > itemLevel || mod.W.Count == 0) continue;
             var w = FirstMatch(mod.W, tags) ?? 0;
             if (w <= 0) continue;
+            if (mod.Domain == "unveiled") { veiled.Add(mod); continue; }
             var g = FirstMatch(mod.Gw, tags);
             if (g is { } gm) w = w * gm / 100;
             if (w <= 0) continue;
@@ -244,8 +250,12 @@ public sealed class ModPool
         }
         Mods = [.. mods];
         Weights = [.. weights];
+        Veiled = [.. veiled];
         (cumulative, Total) = Sum(Weights);
     }
+
+    /// <summary>이 베이스에 붙을 수 있는 베일드 옵션 (풀에는 넣지 않음)</summary>
+    public CraftMod[] Veiled { get; private init; } = [];
 
     ModPool(CraftBase item, int itemLevel, CraftMod[] mods, int[] weights)
     {
@@ -351,7 +361,10 @@ public sealed class CraftItem
         return true;
     }
 
-    public void Clear(bool rare) { Mods.Clear(); Rare = rare; }
+    /// <summary>균열 옵션: 어떤 오브로도 지워지지 않고 늘 붙어 있는 옵션</summary>
+    public CraftMod[] Fixed = [];
+
+    public void Clear(bool rare) { Mods.Clear(); Mods.AddRange(Fixed); Rare = rare; }
 }
 
 // ───────── 방법별 시뮬레이션 ─────────
@@ -367,10 +380,18 @@ public sealed record CraftResult(
     long Tries,
     IReadOnlyDictionary<string, double> Uses,
     double Cost,
-    string? Note)
+    string? Note,
+    IReadOnlyList<SampleMod[]> Samples,
+    IReadOnlyList<ExtraMod> Extras)
 {
     public bool Found => Successes > 0;
 }
+
+/// <summary>성공한 아이템의 옵션 한 줄. Tier: 일반 옵션 티어(에센스·작업대 옵션은 0), Source: "에센스"·"작업대" 등</summary>
+public sealed record SampleMod(string Text, bool Prefix, int Tier, string? Source, bool Target);
+
+/// <summary>목표 말고 함께 붙은 옵션 종류와, 성공한 아이템 중 그 옵션이 붙은 비율</summary>
+public sealed record ExtraMod(string Label, bool Prefix, double Share);
 
 public sealed class CraftSimulator
 {
@@ -400,7 +421,30 @@ public sealed class CraftSimulator
         }).ToArray();
     }
 
+    /// <summary>풀의 옵션 → 티어 (같은 종류 안에서 요구 레벨이 높은 순서로 1부터)</summary>
+    Dictionary<CraftMod, int>? tiers;
+
+    int TierOf(CraftMod mod)
+    {
+        tiers ??= pool.Mods.GroupBy(m => (m.Type, m.Prefix))
+            .SelectMany(g => g.OrderByDescending(m => m.Level).Select((m, i) => (m, tier: i + 1)))
+            .ToDictionary(x => x.m, x => x.tier);
+        return tiers.GetValueOrDefault(mod);
+    }
+
+    SampleMod Sample(CraftMod mod, string? source) =>
+        new(mod.Text, mod.Prefix, source is null ? TierOf(mod) : 0, source ?? (TierOf(mod) == 0 ? "에센스" : null), IsTarget(mod));
+
     public bool CanBench(int target) => bench[target] is not null;
+
+    /// <summary>베일드 옵션 자리 수 (접두·접미)</summary>
+    int ReservedPrefixes => targets.Count(t => t.Reserved && t.Prefix);
+    int ReservedSuffixes => targets.Count(t => t.Reserved && !t.Prefix);
+
+    /// <summary>균열 옵션 (목표 중 Fixed인 것을 고른 티어로)</summary>
+    CraftMod[] FixedMods => targets.Where(t => t.Fixed).Select(t => t.Threshold).ToArray();
+
+    CraftItem NewItem() => new() { Fixed = FixedMods };
 
     public string BenchText(int target) => bench[target] is { } b ? b.Mod.Text : "";
 
@@ -414,6 +458,7 @@ public sealed class CraftSimulator
         Span<bool> used = stackalloc bool[6];
         for (var t = 0; t < targets.Length; t++)
         {
+            if (targets[t].Reserved) continue;
             var hit = false;
             for (var i = 0; i < item.Mods.Count; i++)
             {
@@ -425,9 +470,13 @@ public sealed class CraftSimulator
             if (missing >= 0 || !allowBench || bench[t] is not { } b) return (false, -1);
             missing = t;
         }
-        if (missing < 0) return (true, -1);
+        // 베일드 옵션 자리 (작업대로 붙일 옵션이 있으면 그 자리까지 빼고)
+        var freeP = 3 - item.Prefixes - ReservedPrefixes;
+        var freeS = 3 - item.Suffixes - ReservedSuffixes;
+        if (missing < 0) return freeP >= 0 && freeS >= 0 ? (true, -1) : (false, -1);
         var mod = bench[missing]!.Value.Mod;
-        return item.CanAdd(mod) ? (true, missing) : (false, -1);
+        if (mod.Prefix) freeP--; else freeS--;
+        return item.CanAdd(mod) && freeP >= 0 && freeS >= 0 ? (true, missing) : (false, -1);
     }
 
     /// <summary>모든 목표가 아이템에 이미 붙은 옵션과 겹치지 않는지 (매직 단계에서 쓰레기 옵션 판정)</summary>
@@ -436,7 +485,7 @@ public sealed class CraftSimulator
     void RollRare(CraftItem item, CraftMod? forced)
     {
         item.Clear(rare: true);
-        if (forced is not null) item.Mods.Add(forced);
+        if (forced is not null && item.CanAdd(forced)) item.Mods.Add(forced);
         // 레어 옵션 개수: 4개 8/12, 5개 3/12, 6개 1/12 (커뮤니티 추정치)
         var r = rng.Next(12);
         var count = r < 8 ? 4 : r < 11 ? 5 : 6;
@@ -458,10 +507,12 @@ public sealed class CraftSimulator
     /// <summary>
     /// 시간 예산 안에서 방법 하나를 여러 번 돌립니다. tryOnce는 한 번의 "시도"를 하고, 쓴 화폐를 uses에 더하고, 성공이면 작업대 목표 번호(없으면 -1), 실패면 null.
     /// </summary>
-    async Task<CraftResult> Run(string name, string[] steps, Func<Dictionary<string, double>, int?> tryOnce,
+    async Task<CraftResult> Run(string name, string[] steps, CraftItem item, Func<Dictionary<string, double>, int?> tryOnce,
         int maxSuccesses, long maxTries, CancellationToken cancel, string? note = null)
     {
         var uses = new Dictionary<string, double>();
+        var samples = new List<SampleMod[]>();
+        var extras = new Dictionary<(string, bool), int>();
         long tries = 0;
         var successes = 0;
         var started = Environment.TickCount64;
@@ -475,6 +526,19 @@ public sealed class CraftSimulator
                 if (benchTarget >= 0)
                     foreach (var (cur, n) in bench[benchTarget]!.Value.Cost)
                         uses[cur] = uses.GetValueOrDefault(cur) + n;
+                // 완성된 아이템: 예시 몇 개와, 목표 말고 함께 붙은 옵션 종류
+                foreach (var m in item.Mods)
+                    if (!IsTarget(m))
+                    {
+                        var key = (CraftHelpers.Template(m.Text), m.Prefix);
+                        extras[key] = extras.GetValueOrDefault(key) + 1;
+                    }
+                if (samples.Count < 5)
+                {
+                    var mods = item.Mods.Select(m => Sample(m, Array.IndexOf(item.Fixed, m) >= 0 ? "균열" : null)).ToList();
+                    if (benchTarget >= 0) mods.Add(Sample(bench[benchTarget]!.Value.Mod, "작업대"));
+                    samples.Add([.. mods.OrderBy(m => m.Prefix ? 0 : 1)]);
+                }
             }
             // 화면이 멈추지 않게 가끔 양보하고, 방법 하나에 2.5초가 넘으면 그만둡니다.
             var now = Environment.TickCount64;
@@ -489,7 +553,9 @@ public sealed class CraftSimulator
         var per = successes > 0 ? (double)successes : 1;
         var perSuccess = uses.ToDictionary(kv => kv.Key, kv => kv.Value / per);
         var cost = successes > 0 ? perSuccess.Sum(kv => kv.Value * price(kv.Key)) : double.PositiveInfinity;
-        return new CraftResult(name, steps, (double)successes / Math.Max(1, tries), successes, tries, perSuccess, cost, note);
+        var extraList = extras.OrderByDescending(kv => kv.Value).Take(10)
+            .Select(kv => new ExtraMod(kv.Key.Item1, kv.Key.Item2, (double)kv.Value / per)).ToList();
+        return new CraftResult(name, steps, (double)successes / Math.Max(1, tries), successes, tries, perSuccess, cost, note, samples, extraList);
     }
 
     static void Use(Dictionary<string, double> uses, string currency, double n = 1) =>
@@ -500,9 +566,9 @@ public sealed class CraftSimulator
 
     public Task<CraftResult> ChaosSpam(bool allowBench, CancellationToken cancel)
     {
-        var item = new CraftItem();
+        var item = NewItem();
         string[] steps = ["레어 아이템에 카오스 오브를 원하는 옵션이 나올 때까지 사용", BenchStep(allowBench)];
-        return Run("카오스 스팸", steps.Where(s => s != "").ToArray(), uses =>
+        return Run("카오스 스팸", steps.Where(s => s != "").ToArray(), item, uses =>
         {
             Use(uses, Currencies.Chaos);
             RollRare(item, null);
@@ -514,10 +580,10 @@ public sealed class CraftSimulator
     public Task<CraftResult> EssenceSpam(CraftEssence essence, bool allowBench, CancellationToken cancel)
     {
         var forced = data.Mods[essence.Mods[pool.Base.Class]];
-        var item = new CraftItem();
+        var item = NewItem();
         var id = essence.Id;
         string[] steps = [$"{essence.Korean}을(를) 원하는 옵션이 나올 때까지 사용 (확정: {forced.Text})", BenchStep(allowBench)];
-        return Run($"에센스 스팸 · {essence.Korean}", steps.Where(s => s != "").ToArray(), uses =>
+        return Run($"에센스 스팸 · {essence.Korean}", steps.Where(s => s != "").ToArray(), item, uses =>
         {
             Use(uses, id);
             RollRare(item, forced);
@@ -529,10 +595,10 @@ public sealed class CraftSimulator
     /// <summary>화석을 넣은 혼돈 공명기를 레어 아이템에 반복 사용 (이 시뮬레이터의 풀은 WithFossils로 만든 것)</summary>
     public Task<CraftResult> FossilSpam(CraftResonator resonator, CraftFossil[] fossils, bool allowBench, CancellationToken cancel)
     {
-        var item = new CraftItem();
+        var item = NewItem();
         var names = string.Join(" + ", fossils.Select(f => f.Korean));
         string[] steps = [$"{resonator.Korean}에 {names}을(를) 넣고 원하는 옵션이 나올 때까지 사용", BenchStep(allowBench)];
-        return Run($"화석 · {names}", steps.Where(s => s != "").ToArray(), uses =>
+        return Run($"화석 · {names}", steps.Where(s => s != "").ToArray(), item, uses =>
         {
             Use(uses, resonator.Id);
             foreach (var f in fossils) Use(uses, f.Id);
@@ -549,9 +615,9 @@ public sealed class CraftSimulator
     /// </summary>
     public Task<CraftResult> AltRegal(bool useExalts, bool allowBench, CancellationToken cancel)
     {
-        var item = new CraftItem();
-        var wantPrefix = targets.Any(t => t.Prefix);
-        var wantSuffix = targets.Any(t => !t.Prefix);
+        var item = NewItem();
+        var wantPrefix = targets.Any(t => t.Prefix && !t.Reserved);
+        var wantSuffix = targets.Any(t => !t.Prefix && !t.Reserved);
         var magicNeed = (wantPrefix ? 1 : 0) + (wantSuffix ? 1 : 0);
         var failed = false;
 
@@ -567,7 +633,7 @@ public sealed class CraftSimulator
         steps.Add("실패하면 정제의 오브 + 변환의 오브로 처음부터");
 
         // 실패한 아이템은 정제해서 다시 쓰고, 성공하면 새 베이스로 시작합니다.
-        return Run(useExalts ? "변화 → 제왕 → 엑잘" : "변화 → 제왕", [.. steps], uses =>
+        return Run(useExalts ? "변화 → 제왕 → 엑잘" : "변화 → 제왕", [.. steps], item, uses =>
         {
             if (failed) Use(uses, Currencies.Scour);
             var result = Attempt(uses);
@@ -620,7 +686,7 @@ public sealed class CraftSimulator
         Span<bool> used = stackalloc bool[6];
         foreach (var t in targets)
         {
-            if (t.Prefix != prefix) continue;
+            if (t.Prefix != prefix || t.Reserved) continue;
             var hit = false;
             for (var i = 0; i < item.Mods.Count; i++)
             {
@@ -641,7 +707,7 @@ public sealed class CraftSimulator
     /// </summary>
     public Task<CraftResult> MetaLock(bool lockPrefixes, CraftEssence? essence, bool allowBench, CancellationToken cancel)
     {
-        var item = new CraftItem();
+        var item = NewItem();
         var lockCost = Currencies.LockCost(pool.Base.Class);
         var forced = essence is null ? null : data.Mods[essence.Mods[pool.Base.Class]];
         var kept = lockPrefixes ? "접두" : "접미";
@@ -661,7 +727,7 @@ public sealed class CraftSimulator
 
         var name = $"메타 · {kept} 고정 → 정제 → 엑잘" + (essence is null ? "" : $" ({essence.Korean})");
         var needRoll = true;
-        return Run(name, [.. steps], uses =>
+        return Run(name, [.. steps], item, uses =>
         {
             // 1단계: 고정할 쪽 목표가 다 나오고 반대쪽에 고정 옵션 자리가 생길 때까지 굴립니다.
             if (needRoll)
@@ -681,7 +747,7 @@ public sealed class CraftSimulator
             // 2단계: 고정 → 정제 (반대쪽 옵션이 모두 지워짐)
             foreach (var (cur, n) in lockCost) Use(uses, cur, n);
             Use(uses, Currencies.Scour);
-            item.Mods.RemoveAll(m => m.Prefix != lockPrefixes);
+            item.Mods.RemoveAll(m => m.Prefix != lockPrefixes && Array.IndexOf(item.Fixed, m) < 0);
 
             // 3단계: 엑잘로 채우기 (아직 채울 자리가 남았을 때만)
             while (item.Mods.Count < 6 && HasRoomForMissing(item))
@@ -721,7 +787,7 @@ public sealed class CraftSimulator
 // ───────── 화면용 도우미 ─────────
 
 /// <summary>옵션 종류 하나 (검색 목록). Label: 티어 1 문장의 수치를 #으로 바꾼 것</summary>
-public sealed record CraftModType(string Type, bool Prefix, string Label, CraftMod[] Tiers, bool EssenceOnly, int Weight);
+public sealed record CraftModType(string Type, bool Prefix, string Label, CraftMod[] Tiers, bool EssenceOnly, int Weight, bool Veiled = false, bool BenchOnly = false);
 
 public static partial class CraftHelpers
 {
@@ -729,6 +795,10 @@ public static partial class CraftHelpers
     private static partial Regex Numbers();
 
     public static string Template(string text) => Numbers().Replace(text, "#");
+
+    /// <summary>옵션 문장의 수치만 모아서: "생명력 최대치 +(175-189)" → "175-189", 여러 개면 " / "로</summary>
+    public static string Values(string text) =>
+        string.Join(" / ", Numbers().Matches(text).Select(m => m.Value.Trim('(', ')')));
 
     /// <summary>풀과 이 분류에 쓸 수 있는 에센스로 고를 수 있는 옵션 종류를 만듭니다.</summary>
     public static List<CraftModType> Types(CraftData data, ModPool pool, IEnumerable<CraftEssence> essences)
@@ -753,6 +823,26 @@ public static partial class CraftHelpers
             var tiers = g.Distinct().OrderByDescending(m => m.V.Length > 0 ? Math.Abs(m.V[0][0]) : 0).ToArray();
             list.Add(new CraftModType(g.Key.Type, g.Key.Prefix, Template(tiers[0].Text), tiers, true, 0));
         }
+        // 작업대 전용 옵션: 일반·에센스로 안 나오고 작업대로만 붙는 종류 (예: 2배 피해)
+        var benchMods = data.Bench
+            .Where(b => Array.IndexOf(b.Classes, pool.Base.Class) >= 0)
+            .Select(b => data.Mods.GetValueOrDefault(b.Mod))
+            .OfType<CraftMod>()
+            .Where(m => !list.Any(t => t.Type == m.Type && t.Prefix == m.Prefix))
+            .GroupBy(m => (m.Type, m.Prefix));
+        foreach (var g in benchMods)
+        {
+            var tiers = g.Distinct().OrderByDescending(m => m.Level).ToArray();
+            list.Add(new CraftModType(g.Key.Type, g.Key.Prefix, Template(tiers[0].Text), tiers, false, 0, BenchOnly: true));
+        }
+
+        // 베일드 옵션: 일반·에센스로 안 나오는 종류만
+        foreach (var g in pool.Veiled.GroupBy(m => (m.Type, m.Prefix)))
+        {
+            if (list.Any(t => t.Type == g.Key.Type && t.Prefix == g.Key.Prefix)) continue;
+            var tiers = g.OrderByDescending(m => m.Level).ToArray();
+            list.Add(new CraftModType(g.Key.Type, g.Key.Prefix, Template(tiers[0].Text), tiers, false, 0, Veiled: true));
+        }
         return list.OrderBy(t => t.Prefix ? 0 : 1).ThenByDescending(t => t.Weight).ToList();
     }
 }
@@ -760,7 +850,7 @@ public static partial class CraftHelpers
 // ───────── 게임에서 복사한 아이템 텍스트 읽기 ─────────
 
 /// <summary>붙여넣은 아이템에서 읽은 것: 베이스, 아이템 레벨, 영향력, 옵션 종류와 티어(1부터), 못 읽은 줄</summary>
-public sealed record ParsedItem(CraftBase? Base, int? ItemLevel, List<string> Influences, string[] ModLines);
+public sealed record ParsedItem(CraftBase? Base, int? ItemLevel, List<string> Influences, string[] ModLines, HashSet<string> Fractured);
 
 public static partial class CraftItemText
 {
@@ -772,6 +862,8 @@ public static partial class CraftItemText
 
     [GeneratedRegex(@"^(?:아이템 레벨|Item Level):\s*(\d+)", RegexOptions.Multiline)]
     private static partial Regex ItemLevelLine();
+
+    static readonly string[] FracturedMarks = ["(fractured)", "(균열)", "(균열됨)"];
 
     static readonly (string Tag, string[] Words)[] InfluenceWords =
     [
@@ -810,9 +902,22 @@ public static partial class CraftItemText
         var modLines = lines.Skip(header.Length)
             .Where(l => !l.StartsWith("----") && !l.StartsWith('{') && !l.Contains(':'))
             .Where(l => !InfluenceWords.Any(x => x.Words.Contains(l)))
-            .Where(l => !l.EndsWith("(crafted)") && !l.EndsWith("(implicit)") && !l.EndsWith("(enchant)") && !l.EndsWith("(fractured)"))
-            .ToArray();
-        return new ParsedItem(found, level, influences, modLines);
+            .Where(l => !l.EndsWith("(implicit)") && !l.EndsWith("(enchant)"))
+            .Select(l => l.EndsWith("(crafted)") ? l[..^"(crafted)".Length].Trim() : l)
+            .Where(l => l is not ("Fractured Item" or "Mirrored" or "Corrupted" or "균열된 아이템" or "복제됨" or "타락"))
+            .ToList();
+        // 균열 옵션: 게임 복사는 "(fractured)", PoB는 {fractured} 표시 (FromPathOfBuilding에서 " (fractured)"로 바꿔 둠)
+        var fractured = new HashSet<string>();
+        for (var i = 0; i < modLines.Count; i++)
+        {
+            foreach (var mark in FracturedMarks)
+            {
+                if (!modLines[i].EndsWith(mark)) continue;
+                modLines[i] = modLines[i][..^mark.Length].Trim();
+                fractured.Add(modLines[i]);
+            }
+        }
+        return new ParsedItem(found, level, influences, [.. modLines], fractured);
     }
 
     /// <summary>
@@ -838,9 +943,10 @@ public static partial class CraftItemText
             if (skip > 0) { skip--; continue; }
             if (line.Contains(':')) { result.Add(line); continue; }  // Item Level 등
             var tags = PobTag().Matches(line).Select(m => m.Groups[1].Value).ToArray();
-            if (tags.Any(t => t is "crafted" or "crucible" or "enchant" or "implicit" or "scourge" or "exarch" or "eater" or "synthesis"))
+            // {crafted} 옵션은 남겨서 작업대 목표로 씁니다 (고정 옵션 칸의 작업대 옵션은 위에서 이미 건너뜀).
+            if (tags.Any(t => t is "crucible" or "enchant" or "implicit" or "scourge" or "exarch" or "eater" or "synthesis"))
                 continue;
-            result.Add(PobTag().Replace(line, ""));
+            result.Add(PobTag().Replace(line, "") + (tags.Contains("fractured") ? " (fractured)" : ""));
         }
         return [.. result];
     }
@@ -874,9 +980,9 @@ public static partial class CraftItemText
     /// 읽은 숫자가 모두 범위 안에 드는 가장 좋은 티어를 고릅니다 (없으면 가장 가까운 티어).
     /// 반환: (종류, 티어 1부터) 목록과 못 읽은 줄
     /// </summary>
-    public static (List<(CraftModType Type, int Tier)> Found, List<string> Unknown) MatchMods(IEnumerable<CraftModType> types, string[] lines)
+    public static (List<(CraftModType Type, int Tier, string[] Lines)> Found, List<string> Unknown) MatchMods(IEnumerable<CraftModType> types, string[] lines)
     {
-        var found = new List<(CraftModType, int)>();
+        var found = new List<(CraftModType, int, string[])>();
         var used = new bool[lines.Length];
         // 여러 줄짜리 옵션을 먼저 맞춰야 한 줄짜리가 그 줄을 가로채지 않습니다.
         var candidates = types
@@ -897,7 +1003,7 @@ public static partial class CraftItemText
                 var match = pattern.Match(string.Join("\n", lines[i..(i + count)]));
                 if (!match.Success) continue;
                 var values = match.Groups.Cast<Group>().Skip(1).Select(g => double.Parse(g.Value)).ToArray();
-                found.Add((type, BestTier(type, values, korean)));
+                found.Add((type, BestTier(type, values, korean), lines[i..(i + count)]));
                 for (var j = i; j < i + count; j++) used[j] = true;
                 break;
             }

@@ -73,22 +73,49 @@
             <h2>2. 원하는 옵션 고르기</h2>
             @if (targets.Count > 0)
             {
-                <ul class="cr-targets">
-                    @foreach (var t in targets)
-                    {
-                        <li>
-                            <span class="cr-side @(t.Prefix ? "p" : "s")">@(t.Prefix ? "접두" : "접미")</span>
-                            <select value="@t.Tier" @onchange="e => SetTier(t, e.Value)">
-                                @for (var i = 0; i < t.Tiers.Length; i++)
-                                {
-                                    var tier = t.Tiers[i];
-                                    <option value="@(i + 1)">T@(i + 1)@(i > 0 ? " 이상" : "") · @OneLine(tier.Text)@(tier.W.Count > 0 ? $" · 아이템 레벨 {tier.Level}+" : "")</option>
-                                }
-                            </select>
-                            <button type="button" class="cr-x" @onclick="() => RemoveTarget(t)" aria-label="빼기">✕</button>
-                        </li>
-                    }
-                </ul>
+                <table class="cr-targets">
+                    <thead>
+                        <tr><th></th><th>옵션</th><th>티어</th><th title="베이스에 이미 붙어 있는 균열 옵션">균열</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in targets)
+                        {
+                            <tr class="@(t.Fixed ? "fixed" : "")">
+                                <td><span class="cr-side @(t.Prefix ? "p" : "s")">@(t.Prefix ? "접두" : "접미")</span></td>
+                                <td class="cr-target-label">
+                                    @OneLine(CraftHelpers.Template(t.Tiers[0].Text))
+                                    @if (t.Reserved)
+                                    {
+                                        <span class="cr-veiled"> (베일드)</span>
+                                    }
+                                    else if (!t.Tiers.Any(m => m.W.Count > 0))
+                                    {
+                                        <span class="cr-veiled">@(t.Tiers.All(m => m.Crafted) ? " (작업대)" : " (에센스)")</span>
+                                    }
+                                </td>
+                                <td>
+                                    <select value="@t.Tier" @onchange="e => SetTier(t, e.Value)">
+                                        @for (var i = 0; i < t.Tiers.Length; i++)
+                                        {
+                                            var tier = t.Tiers[i];
+                                            <option value="@(i + 1)">T@(i + 1)@(i > 0 && !t.Fixed ? " 이상" : "") · @CraftHelpers.Values(tier.Text)@(tier.W.Count > 0 ? $" · 레벨 {tier.Level}+" : "")</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td><input type="checkbox" checked="@t.Fixed" @onchange="e => SetFixed(t, e.Value)" title="베이스에 이미 붙어 있는 균열 옵션" /></td>
+                                <td><button type="button" class="cr-x" @onclick="() => RemoveTarget(t)" aria-label="빼기">✕</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (targets.Any(t => t.Reserved))
+                {
+                    <p class="tj-help">베일드 표시한 옵션은 일반 크래프팅으로는 안 붙어서, 그 자리만 비워 두고 계산해요. 마지막에 베일드 오브(또는 아이슬링)로 붙이는 비용과 확률은 결과에 빠져 있어요.</p>
+                }
+                @if (targets.Any(t => t.Fixed))
+                {
+                    <p class="tj-help">균열 표시한 옵션은 그 티어로 균열된 베이스를 사서 시작한다고 보고 계산해요 (지워지지 않고 자리를 하나 차지해요).</p>
+                }
             }
             <p class="tj-help @(TooMany ? "bad" : "")">
                 접두 @targets.Count(t => t.Prefix)/3 · 접미 @targets.Count(t => !t.Prefix)/3
@@ -102,7 +129,7 @@
                     <button type="button" class="cr-type" @onclick="() => AddTarget(type)">
                         <span class="cr-side @(type.Prefix ? "p" : "s")">@(type.Prefix ? "접두" : "접미")</span>
                         <span class="cr-label">@OneLine(type.Label)</span>
-                        <small>@(type.EssenceOnly ? "에센스 전용" : $"{type.Tiers.Length}티어 · {Share(type):0.#}%")</small>
+                        <small>@(type.Veiled ? "베일드" : type.BenchOnly ? "작업대 전용" : type.EssenceOnly ? "에센스 전용" : $"{type.Tiers.Length}티어 · {Share(type):0.#}%")</small>
                     </button>
                 }
             </div>
@@ -168,7 +195,13 @@
                     <article class="cr-result @(r == results.MinBy(x => x.Cost) && r.Found ? "best" : "")">
                         <header>
                             <b>@r.Name</b>
-                            <span class="cr-cost">@(r.Found ? $"약 {Format(r.Cost)} 카오스" : "못 찾음")</span>
+                            <span class="cr-cost">
+                                @(r.Found ? $"약 {Format(r.Cost)} 카오스" : "못 찾음")
+                                @if (r.Found && Price(Currencies.Divine) > 0)
+                                {
+                                    <small>≈ @Format(r.Cost / Price(Currencies.Divine)) 디바인</small>
+                                }
+                            </span>
                         </header>
                         <ol>
                             @foreach (var s in r.Steps)
@@ -199,6 +232,42 @@
                                     <span>@CurrencyName(cur) @Format(n)개</span>
                                 }
                             </p>
+                            <details class="cr-samples">
+                                <summary>이렇게 만들면 옵션이 어떻게 나오나요? (완성 예시 @(r.Samples.Count)개)</summary>
+                                <div class="cr-sample-grid">
+                                    @foreach (var sample in r.Samples)
+                                    {
+                                        <ul class="cr-sample">
+                                            @foreach (var m in sample)
+                                            {
+                                                <li class="@(m.Target ? "hit" : "")">
+                                                    <span class="cr-side @(m.Prefix ? "p" : "s")">@(m.Prefix ? "접두" : "접미")</span>
+                                                    <span class="cr-tier">@(m.Source ?? $"T{m.Tier}")</span>
+                                                    <span>@OneLine(m.Text)</span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                                @if (r.Extras.Count > 0)
+                                {
+                                    <p class="cr-meta">목표 말고 함께 붙은 옵션 (성공한 아이템 중 붙은 비율):</p>
+                                    <ul class="cr-extras">
+                                        @foreach (var x in r.Extras)
+                                        {
+                                            <li>
+                                                <span class="cr-side @(x.Prefix ? "p" : "s")">@(x.Prefix ? "접두" : "접미")</span>
+                                                <span>@OneLine(x.Label)</span>
+                                                <small>@($"{x.Share * 100:0.#}%")</small>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p class="cr-meta">목표 옵션만 붙어서 나왔어요.</p>
+                                }
+                            </details>
                         }
                     </article>
                 }
@@ -260,8 +329,12 @@
         Rebuild();
 
         var (found, unknown) = CraftItemText.MatchMods(types, parsed.ModLines);
-        foreach (var (type, tier) in found.OrderBy(f => f.Type.Prefix ? 0 : 1))
-            targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Tier = tier });
+        foreach (var (type, tier, lines) in found.OrderBy(f => f.Type.Prefix ? 0 : 1))
+            targets.Add(new CraftTarget
+            {
+                Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Tier = tier, Reserved = type.Veiled,
+                Fixed = lines.Any(parsed.Fractured.Contains) && !targets.Any(x => x.Fixed),
+            });
         pasteBad = found.Count == 0;
         pasteMessage = $"{baseItem.Korean} · 아이템 레벨 {itemLevel} · 옵션 {found.Count}개를 채웠어요."
                        + (unknown.Count > 0 ? $" 못 읽은 줄 {unknown.Count}개 (고정·작업대 옵션 등): " + string.Join(" / ", unknown.Take(4)) : "");
@@ -315,7 +388,7 @@
         {
             var type = types.FirstOrDefault(x => x.Type == t.Type && x.Prefix == t.Prefix);
             if (type is null) continue;
-            targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Tier = Math.Min(t.Tier, type.Tiers.Length) });
+            targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Reserved = type.Veiled, Tier = Math.Min(t.Tier, type.Tiers.Length), Fixed = t.Fixed });
         }
         results.Clear();
     }
@@ -346,12 +419,21 @@
 
     void AddTarget(CraftModType type)
     {
-        targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Tier = Math.Min(2, type.Tiers.Length) });
+        targets.Add(new CraftTarget { Type = type.Type, Prefix = type.Prefix, Tiers = type.Tiers, Reserved = type.Veiled, Tier = Math.Min(2, type.Tiers.Length) });
         search = "";
         results.Clear();
     }
 
     void RemoveTarget(CraftTarget t) { targets.Remove(t); results.Clear(); }
+
+    void SetFixed(CraftTarget t, object? value)
+    {
+        // 균열 옵션은 아이템에 하나만 붙어요.
+        var on = value is true;
+        foreach (var x in targets) x.Fixed = false;
+        t.Fixed = on;
+        results.Clear();
+    }
 
     void SetTier(CraftTarget t, object? value)
     {
@@ -406,7 +488,7 @@
         var sim = new CraftSimulator(data, pool, targets, Price);
 
         // 일반으로 안 나오는 목표가 있으면, 그 목표를 확정으로 붙이는 에센스나 작업대로만 채울 수 있습니다.
-        var unnatural = targets.Select((t, i) => (t, i)).Where(x => !pool.Mods.Any(m => x.t.Matches(m))).ToList();
+        var unnatural = targets.Select((t, i) => (t, i)).Where(x => !x.t.Fixed && !x.t.Reserved && !pool.Mods.Any(m => x.t.Matches(m))).ToList();
         var benchOnly = unnatural.Count == 1 && allowBench && sim.CanBench(unnatural[0].i);
 
         var jobs = new List<(string Label, Func<Task<CraftResult>> Run)>();
@@ -425,7 +507,8 @@
         foreach (var e in UsableEssences)
         {
             var forced = data.Mods.GetValueOrDefault(e.Mods[itemClass]);
-            if (forced is null || !targets.Any(t => t.Matches(forced))) continue;
+            if (forced is null || !targets.Any(t => !t.Fixed && t.Matches(forced))) continue;
+            if (targets.Any(t => t.Fixed && t.Threshold.Groups.Intersect(forced.Groups).Any())) continue;  // 균열 옵션과 같은 그룹이면 못 붙음
             // 확정 옵션이 채우는 목표를 빼고 남은 목표가 모두 일반으로 나올 수 있어야 합니다.
             var rest = unnatural.Where(x => !x.t.Matches(forced)).ToList();
             if (rest.Count > 1 || (rest.Count == 1 && !(allowBench && sim.CanBench(rest[0].i)))) continue;
@@ -440,7 +523,7 @@
                 var side = lockPrefixes;
                 jobs.Add(($"메타 · {(side ? "접두" : "접미")} 고정", () => sim.MetaLock(side, null, allowBench, token)));
                 var essence = UsableEssences
-                    .Where(e => data.Mods.GetValueOrDefault(e.Mods[itemClass]) is { } m && m.Prefix == side && targets.Any(t => t.Matches(m)))
+                    .Where(e => data.Mods.GetValueOrDefault(e.Mods[itemClass]) is { } m && m.Prefix == side && targets.Any(t => !t.Fixed && t.Matches(m)))
                     .OrderByDescending(e => e.Level).FirstOrDefault();
                 if (essence is not null)
                     jobs.Add(($"메타 · {(side ? "접두" : "접미")} 고정 ({essence.Korean})", () => sim.MetaLock(side, essence, allowBench, token)));
@@ -484,7 +567,7 @@
     List<(CraftFossil[] Fossils, CraftResonator Resonator)> BestFossilCombos(int count)
     {
         if (data is null || pool is null || data.Resonators.Length == 0) return [];
-        var natural = targets.Where(t => pool.WeightOf(t) > 0).ToList();
+        var natural = targets.Where(t => !t.Fixed && !t.Reserved && pool.WeightOf(t) > 0).ToList();
         if (natural.Count == 0) return [];
 
         double Score(ModPool p)
