@@ -284,8 +284,8 @@
 
         <p class="hint">
             옵션·가중치는 RePoE 게임 데이터(배포 때마다 새로 받음), 레어 옵션 개수(4·5·6개 = 8:3:1)는 커뮤니티 추정치예요.
-            화석은 가중치만 바꾸는 17종과 공허 화석만 계산하고(태그가 겹치면 배율을 곱하는 어림),
-            화석 전용 옵션은 어떤 화석을 넣든 풀에 들어가고 화석 배율도 똑같이 받는다고 봐요.
+            화석은 가중치만 바꾸는 18종(연마한 화석 포함)과 공허 화석만 계산하고(태그가 겹치면 배율을 곱하는 어림),
+            화석 전용 옵션은 어떤 화석을 넣든 풀에 들어가고(장착된 젬 레벨처럼 특정 화석이 여는 옵션은 그 화석을 넣을 때만) 화석 배율도 똑같이 받는다고 봐요. 축성된·상형 문자·얽혀든·피얼룩·분열된·도금된 화석은 아직 계산하지 않아요.
             메타 크래프팅은 "접두어/접미어 속성 변경 불가 → 정제 → 엑잘"만 계산해요 (고정 비용은 3.30.0 패치 노트 기준).
             1·2개만 고정하는 옵션(어느 옵션이 고정될지 무작위)과 무효화는 아직 계산하지 않아요.
             수확은 "X 옵션 포함 재구성"만 계산하고(태그가 붙은 옵션 하나를 먼저 넣고 나머지는 보통대로 굴린다고 봄, 비용은 poedb 원예 작업대 표 기준), 같은 옵션 종류가 더/덜 나오는 재구성과 옵션 바꾸기는 아직 계산하지 않아요.
@@ -614,8 +614,11 @@
         }
 
         // 목표를 하나라도 막는 화석과, 옵션을 확정으로 붙이는 화석(필요할 때만 따로 넣음)은 뺍니다.
+        // 장착된 젬 레벨처럼 다른 화석(연마한 화석)이 열어 줘야 나오는 목표가 있으면, 그 화석과 함께 넣었을 때로 봅니다.
+        var openers = data.Fossils.Where(o => o.Added is { Length: > 0 } && o.UsableOn(pool.Base)).ToArray();
         var useful = data.Fossils
-            .Where(f => f.Forced is not { Length: > 0 } && f.UsableOn(pool.Base) && Score(pool.WithFossils([f])) > 0)
+            .Where(f => f.Forced is not { Length: > 0 } && f.UsableOn(pool.Base)
+                        && (Score(pool.WithFossils([f])) > 0 || openers.Any(o => o != f && Score(pool.WithFossils([f, o])) > 0)))
             .ToArray();
         var baseline = Price(Currencies.Chaos) / Score(pool);
         var scored = new List<(CraftFossil[] Fossils, CraftResonator Resonator, double Cost)>();

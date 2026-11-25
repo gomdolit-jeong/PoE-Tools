@@ -55,7 +55,8 @@ public sealed record CraftFossil(
     [property: JsonPropertyName("pos")] List<List<object>> Pos,
     [property: JsonPropertyName("neg")] string[] Neg,
     [property: JsonPropertyName("forced")] string[]? Forced = null,
-    [property: JsonPropertyName("allowed")] string[]? Allowed = null)
+    [property: JsonPropertyName("allowed")] string[]? Allowed = null,
+    [property: JsonPropertyName("added")] string[]? Added = null)
 {
     public bool UsableOn(CraftBase item) => Allowed is not { Length: > 0 } || Allowed.Any(item.Tags.Contains);
 }
@@ -70,6 +71,8 @@ public sealed record CraftResonator(
 public sealed class CraftData
 {
     [JsonPropertyName("fossils")] public CraftFossil[] Fossils { get; set; } = [];
+    /// <summary>어떤 화석의 Added에 든 화석 전용 옵션: 그 화석을 넣을 때만 나옵니다.</summary>
+    [JsonPropertyName("gated")] public string[] Gated { get; set; } = [];
     [JsonPropertyName("resonators")] public CraftResonator[] Resonators { get; set; } = [];
     [JsonPropertyName("classes")] public Dictionary<string, string> Classes { get; set; } = [];
     [JsonPropertyName("influences")] public string[] Influences { get; set; } = [];
@@ -279,11 +282,14 @@ public sealed class ModPool
     public int[] Weights { get; }
     readonly long[] cumulative;
     public long Total { get; }
+    /// <summary>특정 화석(Added)을 넣어야만 나오는 화석 전용 옵션 id</summary>
+    readonly HashSet<string> gated = [];
 
     public ModPool(CraftData data, CraftBase item, int itemLevel, IReadOnlyCollection<string> influences)
     {
         Base = item;
         ItemLevel = itemLevel;
+        gated = [.. data.Gated];
         var tags = new HashSet<string>(item.Tags);
         foreach (var t in item.Tags)
             foreach (var inf in influences)
@@ -391,8 +397,10 @@ public sealed class ModPool
     public ModPool WithFossils(IEnumerable<CraftFossil> fossils)
     {
         var list = fossils.ToArray();
-        CraftMod[] mods = list.Length > 0 ? [.. Mods, .. Delve.Select(d => d.Mod)] : Mods;
-        int[] baseWeights = list.Length > 0 ? [.. Weights, .. Delve.Select(d => d.Weight)] : Weights;
+        // 다른 화석이 여는 옵션(Gated)은 그 화석을 넣었을 때만 들어갑니다.
+        var delve = list.Length > 0 ? Delve.Where(d => !gated.Contains(d.Mod.Id) || list.Any(f => f.Added?.Contains(d.Mod.Id) == true)).ToArray() : [];
+        CraftMod[] mods = [.. Mods, .. delve.Select(d => d.Mod)];
+        int[] baseWeights = [.. Weights, .. delve.Select(d => d.Weight)];
         var weights = new int[mods.Length];
         for (var i = 0; i < mods.Length; i++)
         {
@@ -991,8 +999,10 @@ public static partial class CraftHelpers
             foreach (var m in f.Forced!.Select(id => data.Mods.GetValueOrDefault(id)).OfType<CraftMod>())
                 if (!list.Any(t => t.Type == m.Type && t.Prefix == m.Prefix))
                     list.Add(new CraftModType(m.Type, m.Prefix, Template(m.Text), [m], false, 0, FossilOnly: true));
-        // 화석을 넣고 굴릴 때만 나오는 옵션 (예: 장화의 장착된 화염 젬 레벨 +2)
-        foreach (var g in pool.Delve.Select(d => d.Mod).GroupBy(m => (m.Type, m.Prefix)))
+        // 화석을 넣고 굴릴 때만 나오는 옵션 (예: 장화의 장착된 화염 젬 레벨 +2).
+        // 특정 화석이 여는 옵션은 그 화석을 이 계산기에서 쓸 수 있을 때만 보여 줍니다 (얽혀든 화석 전용 바알 옵션 등은 뺌).
+        var opened = data.Fossils.Where(f => f.UsableOn(pool.Base)).SelectMany(f => f.Added ?? []).ToHashSet();
+        foreach (var g in pool.Delve.Select(d => d.Mod).Where(m => !data.Gated.Contains(m.Id) || opened.Contains(m.Id)).GroupBy(m => (m.Type, m.Prefix)))
         {
             if (list.Any(t => t.Type == g.Key.Type && t.Prefix == g.Key.Prefix)) continue;
             var tiers = g.OrderByDescending(m => m.Level).ThenByDescending(m => m.V.Length > 0 ? Math.Abs(m.V[0][0]) : 0).ToArray();

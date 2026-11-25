@@ -139,11 +139,17 @@ def main() -> None:
         en = (bases.get(cid) or {}).get("name") or cid.rsplit("/", 1)[-1]
         out_currency[cid] = [en, (bases_ko.get(cid) or {}).get("name") or en]
 
-    # 화석: 태그 가중치를 바꾸는 것과, 옵션 하나를 확정으로 붙이는 것(공허 화석: 심연 홈, 쓸 수 있는 베이스 태그가 정해짐).
-    # 옵션을 더 붙이는 화석, 행운·복제·판매가 화석은 아직 계산하지 않음
-    special = ("added_mods", "forbidden_tags", "rolls_lucky", "mirrors",
+    # 화석: 태그 가중치를 바꾸는 것과, 옵션 하나를 확정으로 붙이는 것(공허 화석: 심연 홈, 쓸 수 있는 베이스 태그가 정해짐),
+    # 화석 전용 옵션을 더 여는 것(연마한 화석: 장착된 젬 레벨, added).
+    # 행운·복제·판매가·타락 에센스·무작위 효과 화석은 아직 계산하지 않음
+    special = ("forbidden_tags", "rolls_lucky", "mirrors",
                "corrupted_essence_chance", "sell_price_mods", "changes_quality", "rolls_white_sockets")
     out_fossils = []
+    # 어떤 화석의 added_mods에 든 화석 전용 옵션은 그 화석을 넣을 때만 나온다고 봅니다 (gated).
+    gated = set()
+    for key, f in fossils.items():
+        if key.rsplit("/", 1)[-1].startswith("CurrencyDelveCrafting"):
+            gated.update(m for m in f.get("added_mods", []) if m in out_mods)
     for key, f in fossils.items():
         if not key.rsplit("/", 1)[-1].startswith("CurrencyDelveCrafting"):
             continue
@@ -157,6 +163,7 @@ def main() -> None:
             "neg": [w["tag"] for w in f.get("negative_mod_weights", []) if w["weight"] == 0],
             "forced": [m for m in f.get("forced_mods", []) if m in out_mods],
             "allowed": f.get("allowed_tags", []),
+            "added": [m for m in f.get("added_mods", []) if m in out_mods],
         })
 
     # 혼돈 공명기 (소켓 1~4개): 한글 이름
@@ -182,6 +189,7 @@ def main() -> None:
         "bench": out_bench,
         "currency": out_currency,
         "fossils": out_fossils,
+        "gated": sorted(gated),
         "resonators": resonators,
     }
     if len(out_bases) < 300 or len(out_mods) < 2000:
