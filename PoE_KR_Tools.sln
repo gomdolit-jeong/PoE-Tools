@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoEBuildGacha.Web", "PoEBuildGacha.Web\PoEBuildGacha.Web.csproj", "{6A4A85F7-642C-40A2-94A6-3CD794075ABB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoEKRTools.Web", "PoEKRTools.Web\PoEKRTools.Web.csproj", "{6A4A85F7-642C-40A2-94A6-3CD794075ABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

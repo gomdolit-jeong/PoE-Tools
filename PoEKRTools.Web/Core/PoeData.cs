@@ -1,4 +1,4 @@
-namespace PoEBuildGacha.Web.Gacha;
+namespace PoEKRTools.Web.Core;
 
 public enum SkillKind { Attack, Spell, Minion }
 

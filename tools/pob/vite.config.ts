@@ -9,7 +9,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 const packageDir = path.dirname(path.fromFileUrl(import.meta.url));
 const rootDir = path.resolve(packageDir, "../..");
 
-// 예: /PoE_Build_Gacha_Web/pob/ (GitHub Pages 하위 경로)
+// 예: /PoE_KR_Tools/pob/ (GitHub Pages 하위 경로)
 const base = Deno.env.get("POB_BASE") ?? "/pob/";
 const pobVersion = Deno.env.get("POB_TAG");
 if (!pobVersion) throw new Error("POB_TAG가 필요합니다");

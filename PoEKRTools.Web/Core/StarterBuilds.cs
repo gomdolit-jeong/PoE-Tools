@@ -1,4 +1,4 @@
-namespace PoEBuildGacha.Web.Gacha;
+namespace PoEKRTools.Web.Core;
 
 // tools/crawl_starter_builds.py 가 만드는 wwwroot/data/starter-builds.json 의 모양입니다.
 

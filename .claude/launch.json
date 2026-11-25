@@ -4,13 +4,13 @@
     {
       "name": "web",
       "runtimeExecutable": "dotnet",
-      "runtimeArgs": ["run", "--project", "PoEBuildGacha.Web", "--launch-profile", "http"],
+      "runtimeArgs": ["run", "--project", "PoEKRTools.Web", "--launch-profile", "http"],
       "port": 5074
     },
     {
       "name": "web-alt",
       "runtimeExecutable": "dotnet",
-      "runtimeArgs": ["run", "--project", "PoEBuildGacha.Web", "--no-launch-profile", "--urls", "http://127.0.0.1:5090"],
+      "runtimeArgs": ["run", "--project", "PoEKRTools.Web", "--no-launch-profile", "--urls", "http://127.0.0.1:5090"],
       "port": 5090,
       "autoPort": false
     }

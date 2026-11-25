@@ -26,8 +26,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-DEFAULT_OUT = Path(__file__).resolve().parent.parent / "PoEBuildGacha.Web" / "wwwroot" / "data" / "starter-builds.json"
-USER_AGENT = "PoE-Build-Gacha fan site (https://github.com/gomdolit-jeong/PoE_Build_Gacha_Web)"
+DEFAULT_OUT = Path(__file__).resolve().parent.parent / "PoEKRTools.Web" / "wwwroot" / "data" / "starter-builds.json"
+USER_AGENT = "PoE-KR-Tools fan site (https://github.com/gomdolit-jeong/PoE_KR_Tools)"
 
 MOBALYTICS_API = "https://mobalytics.gg/api/poe/v1/graphql/query"
 MOBALYTICS_PAGE = "https://mobalytics.gg/poe/starter-builds"

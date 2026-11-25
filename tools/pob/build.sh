@@ -2,7 +2,7 @@
 # 브라우저에서 돌아가는 Path of Building을 빌드합니다.
 # pob-web (https://github.com/atty303/pob-web, MIT)의 드라이버로 PoB Community 원본을 그대로 실행합니다.
 #
-# 사용법: tools/pob/build.sh <출력 폴더> <사이트 기준 경로, 예: /PoE_Build_Gacha_Web/pob/>
+# 사용법: tools/pob/build.sh <출력 폴더> <사이트 기준 경로, 예: /PoE_KR_Tools/pob/>
 # 필요한 도구(deno, emsdk, cmake, ninja)는 pob-web의 mise.toml 버전을 mise로 설치합니다.
 #
 # 결과: <출력 폴더>/index.html 과 PoB 데이터(<출력 폴더>/data/games/poe1/versions/<POB_TAG>/)
@@ -58,7 +58,7 @@ python3 "$HERE/korean_tooltips.py" "$POB_REPO" "$HERE/../timeless_korean.json" "
 
 # 3) 이 사이트용 시작 페이지로 바꾸고, 사이트 루트(/)를 가정한 경로를 하위 경로로 고치기
 cp "$HERE/index.html" packages/driver/index.html
-cp "$HERE/gacha-run.ts" packages/driver/src/js/gacha-run.ts
+cp "$HERE/pob-run.ts" packages/driver/src/js/pob-run.ts
 cp "$HERE/vite.config.ts" packages/driver/vite.gacha.config.ts
 sed -i 's#loadFont("/#loadFont(import.meta.env.BASE_URL + "#' packages/driver/src/js/renderer/text.ts
 sed -i 's#new URL("/texture2ddecoder/#new URL(import.meta.env.BASE_URL + "texture2ddecoder/#' packages/driver/src/js/bc7.ts

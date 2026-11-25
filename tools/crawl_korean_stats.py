@@ -23,7 +23,7 @@ from pathlib import Path
 
 OUT = Path(__file__).resolve().parent / "korean_stats.json"
 ITEMS_OUT = Path(__file__).resolve().parent / "korean_items.json"
-USER_AGENT = "PoE-Build-Gacha fan site (https://github.com/gomdolit-jeong/PoE_Build_Gacha_Web)"
+USER_AGENT = "PoE-KR-Tools fan site (https://github.com/gomdolit-jeong/PoE_KR_Tools)"
 BASE = "https://repoe-fork.github.io/"
 
 # PoB Lua 쪽(korean_tooltips.py의 KoreanMods.lua)과 같은 숫자 규칙: 부호가 붙을 수 있는 정수·소수

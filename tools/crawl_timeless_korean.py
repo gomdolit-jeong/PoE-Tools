@@ -18,7 +18,7 @@ import urllib.request
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent / "timeless_korean.json"
-USER_AGENT = "PoE-Build-Gacha fan site (https://github.com/gomdolit-jeong/PoE_Build_Gacha_Web)"
+USER_AGENT = "PoE-KR-Tools fan site (https://github.com/gomdolit-jeong/PoE_KR_Tools)"
 
 # poedb의 주얼 한글 이름 → PoB LegionPassives.lua id 앞부분 (핵심 패시브 카드에만 적혀 있습니다)
 JEWEL_PREFIX = {

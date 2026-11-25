@@ -431,7 +431,7 @@ FodyWeavers.xsd
 .pob-work/
 
 # 군단 주얼 변환표: 배포 때 tools/build_timeless_luts.py로 만듭니다
-PoEBuildGacha.Web/wwwroot/data/timeless/
+PoEKRTools.Web/wwwroot/data/timeless/
 .timeless-data/
 .timeless-tmp/
 .pob-timeless/

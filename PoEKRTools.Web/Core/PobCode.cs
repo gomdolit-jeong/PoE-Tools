@@ -2,7 +2,7 @@ using System.IO.Compression;
 using System.Text;
 using System.Xml.Linq;
 
-namespace PoEBuildGacha.Web.Gacha;
+namespace PoEKRTools.Web.Core;
 
 /// <summary>
 /// 뽑기 결과를 Path of Building 가져오기 코드로 만듭니다.
@@ -78,7 +78,7 @@ public static class PobCode
                         new XAttribute("nodes", string.Join(',', pathNodes)),
                         new XElement("Sockets",
                             new XElement("Socket", new XAttribute("nodeId", socketId), new XAttribute("itemId", 1))))),
-                new XElement("Notes", $"PoE Build Gacha: {jewel.Name} {seed} / {conqueror.Name} ({conqueror.Keystone})")));
+                new XElement("Notes", $"PoE KR Tools: {jewel.Name} {seed} / {conqueror.Name} ({conqueror.Keystone})")));
     }
 
     static string Encode(XDocument xml)
@@ -117,12 +117,12 @@ public static class PobCode
                 skills,
                 new XElement("Tree", new XAttribute("activeSpec", 1),
                     new XElement("Spec",
-                        new XAttribute("title", "PoE Build Gacha"),
+                        new XAttribute("title", "PoE KR Tools"),
                         new XAttribute("treeVersion", result.Phrecia ? PhreciaTreeVersion : TreeVersion),
                         new XAttribute("classId", classId),
                         new XAttribute("ascendClassId", ascendClassId),
                         new XAttribute("nodes", ""))),
-                new XElement("Notes", $"PoE Build Gacha: {result.Ascendancy.Name} / {result.Skill.Name}")));
+                new XElement("Notes", $"PoE KR Tools: {result.Ascendancy.Name} / {result.Skill.Name}")));
     }
 
     static XElement SocketGroup(Skill skill, string label)

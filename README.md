@@ -1,9 +1,11 @@
-# PoE Build Gacha
+# PoE KR Tools (PoE 한글 도구함)
 
-"운명 뽑기" 버튼을 누르면 주사위가 굴러가고, Path of Exile 1의 직업, 전직, 주요 스킬 젬을 무작위로 뽑아 주는 재미용 웹 앱입니다.
+한글로 쓰는 Path of Exile 도구 모음입니다. 빌드 뽑기, 브라우저용 Path of Building(한글 툴팁), 군단 주얼 트리가 있습니다.
+(예전 이름: PoE Build Gacha)
 
-**👉 바로 가기: https://gomdolit-jeong.github.io/PoE_Build_Gacha_Web/**
+**👉 바로 가기: https://gomdolit-jeong.github.io/PoE_KR_Tools/**
 
+- **빌드 뽑기**: "운명 뽑기" 버튼을 누르면 주사위가 굴러가고, Path of Exile 1의 직업, 전직, 주요 스킬 젬을 무작위로 뽑아 줍니다.
 - 누를 때마다 완전히 새로 뽑습니다.
 - **프레시아 리그** 체크 시 Legacy of Phrecia 전직(19종)에서 뽑고, 이동기도 추천합니다.
 - PoE 2는 개발 예정입니다.
@@ -21,7 +23,7 @@
     - 젬: 툴팁의 스킬 이름 아래에 한글 이름 (RePoE)
     - 왼쪽 능력치 목록 이름과 위쪽 탭 버튼은 한글로 바꿉니다 (`tools/pob/korean_ui.json`, 그릴 때만 바꿔서 계산에는 영향 없음)
     - 한글 데이터는 하루 한 번(UTC 0시 배포)과 push할 때 새로 받고, 실패하면 저장소 파일을 씁니다.
-  - 한글 입력: PoB 화면은 캔버스라 한글 입력기가 켜지지 않아서, 오른쪽 아래 입력칸에서 한글을 치고 Enter를 누르면 PoB에서 고른 입력칸에 들어갑니다 (`tools/pob/gacha-run.ts`). 아이템 목록 검색은 한글 이름·옵션 문장으로도 찾습니다.
+  - 한글 입력: PoB 화면은 캔버스라 한글 입력기가 켜지지 않아서, 오른쪽 아래 입력칸에서 한글을 치고 Enter를 누르면 PoB에서 고른 입력칸에 들어갑니다 (`tools/pob/pob-run.ts`). 아이템 목록 검색은 한글 이름·옵션 문장으로도 찾습니다.
   - 처음 열 때 PoB 데이터 약 200MB를 받습니다. pobb.in 불러오기·캐릭터 가져오기처럼 외부 사이트에 접속하는 기능은 동작하지 않을 수 있습니다.
   - 용량을 줄이려고 패시브 트리는 최신 정규 리그 2개(3.30, 3.29)와 최신 프레시아(3.28 alternate)만 넣습니다(`tools/pob/trim_pob.py`). 다른 버전으로 저장된 빌드는 최신 트리로 열립니다.
   - 배포할 때 GitHub Actions가 `tools/pob/build.sh`로 빌드합니다. PoB 버전(`POB_TAG`)과 pob-web 버전은 이 파일에 고정되어 있고, 올릴 때는 `PobCode.cs`의 트리 버전과 `timeless-tree.json`도 같이 확인합니다.
@@ -39,20 +41,20 @@
 ## 실행
 
 ```bash
-dotnet run --project PoEBuildGacha.Web --launch-profile http
+dotnet run --project PoEKRTools.Web --launch-profile http
 ```
 
 `main`에 push하면 GitHub Actions가 GitHub Pages로 배포합니다 (Settings → Pages → Source: GitHub Actions).
 
 ## 구조
 
-- `PoEBuildGacha.Web/Gacha/PoeData.cs` — 직업·전직·스킬·이동기 목록
-- `PoEBuildGacha.Web/Gacha/BuildGacha.cs` — 무작위 뽑기
-- `PoEBuildGacha.Web/Pages/Home.razor` — 화면과 주사위 효과
-- `PoEBuildGacha.Web/Gacha/PobCode.cs` — 뽑기 결과·군단 주얼 → PoB 코드
-- `PoEBuildGacha.Web/Gacha/TimelessJewel.cs` — 군단 주얼 목록, 트리 데이터, 소켓까지 경로
-- `PoEBuildGacha.Web/Gacha/TimelessChanges.cs` — 시드별 패시브 변화 계산
-- `PoEBuildGacha.Web/Pages/Timeless.razor` — 군단 주얼 페이지
+- `PoEKRTools.Web/Core/PoeData.cs` — 직업·전직·스킬·이동기 목록
+- `PoEKRTools.Web/Core/BuildGacha.cs` — 무작위 뽑기
+- `PoEKRTools.Web/Pages/Home.razor` — 화면과 주사위 효과
+- `PoEKRTools.Web/Core/PobCode.cs` — 뽑기 결과·군단 주얼 → PoB 코드
+- `PoEKRTools.Web/Core/TimelessJewel.cs` — 군단 주얼 목록, 트리 데이터, 소켓까지 경로
+- `PoEKRTools.Web/Core/TimelessChanges.cs` — 시드별 패시브 변화 계산
+- `PoEKRTools.Web/Pages/Timeless.razor` — 군단 주얼 페이지
 - `tools/pob/` — 브라우저용 PoB 빌드 (배포 때만 빌드, 로컬 실행에는 없음)
 
 This is a fan project, not affiliated with Grinding Gear Games.

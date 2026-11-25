@@ -1,7 +1,7 @@
 """PoB 패시브 트리(tree.lua)에서 군단 주얼 페이지용 트리 데이터를 만듭니다.
 
 사용법: python tools/build_timeless_tree.py <PoB 폴더>/src/TreeData/3_30/tree.lua [결과 파일]
-결과: PoEBuildGacha.Web/wwwroot/data/timeless-tree.json (결과 파일을 주면 그곳)
+결과: PoEKRTools.Web/wwwroot/data/timeless-tree.json (결과 파일을 주면 그곳)
 배포할 때 GitHub Actions가 PobCode.TreeVersion의 트리로 다시 만듭니다.
 
 주요·핵심 패시브의 한글 이름·설명은 tools/timeless_korean.json(crawl_timeless_korean.py)에서 넣습니다.
@@ -15,7 +15,7 @@ import re
 import sys
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parent.parent / "PoEBuildGacha.Web" / "wwwroot" / "data" / "timeless-tree.json"
+OUT = Path(__file__).resolve().parent.parent / "PoEKRTools.Web" / "wwwroot" / "data" / "timeless-tree.json"
 KOREAN = Path(__file__).resolve().parent / "timeless_korean.json"
 # PoB PassiveSpec.lua의 attributes: 이 이름의 작은 노드는 군단 주얼이 더 작은 값을 붙입니다.
 ATTRIBUTE_NAMES = {"Strength", "Dexterity", "Intelligence"}

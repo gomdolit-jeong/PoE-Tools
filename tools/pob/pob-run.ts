@@ -1,4 +1,4 @@
-// PoE Build Gacha 전용 PoB 시작 코드입니다. pob-web의 packages/driver/src/js/run.ts 대신 씁니다.
+// PoE KR Tools 전용 PoB 시작 코드입니다. pob-web의 packages/driver/src/js/run.ts 대신 씁니다.
 // 주소 #build=<PoB 코드> 가 있으면 그 빌드를 연 상태로 시작합니다.
 import { gameData } from "pob-game";
 import { Driver } from "./driver.ts";
