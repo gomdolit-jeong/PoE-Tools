@@ -114,7 +114,7 @@
                 </table>
                 @if (targets.Any(t => t.Reserved))
                 {
-                    <p class="tj-help">베일드 표시한 옵션은 일반 크래프팅으로는 안 붙어서, 그 자리만 비워 두고 계산해요. 마지막에 베일드 오브(또는 아이슬링)로 붙이는 비용과 확률은 결과에 빠져 있어요.</p>
+                    <p class="tj-help">베일드 표시한 옵션은 일반 크래프팅으로는 안 붙어서, 그 자리를 비워 두고 만든 뒤 마지막에 장막의 엑잘티드 오브로 붙여서 해금한다고 보고 계산해요. 해금 선택지 3개에 원하는 옵션이 없으면 처음부터 다시 만든다고 봐요.</p>
                 }
                 @if (targets.Any(t => t.Fixed))
                 {
@@ -158,7 +158,7 @@
                     }
                 </p>
                 <div class="cr-price-grid">
-                    @foreach (var c in Currencies.All.Take(11).Concat(Currencies.Harvest))
+                    @foreach (var c in Currencies.All.Take(12).Concat(Currencies.Harvest))
                     {
                         <label class="cr-field">
                             <span>@c.Korean</span>
@@ -491,7 +491,10 @@
         running = true;
         results.Clear();
         skipped.Clear();
-        var sim = new CraftSimulator(data, pool, targets, Price);
+        // 베일드 목표를 모두 해금 선택지에서 얻을 확률 (목표마다 따로 붙이고 해금)
+        var rng = new Random();
+        var unveil = targets.Where(t => t.Reserved).Aggregate(1.0, (p, t) => p * pool.UnveilChance(t, rng));
+        var sim = new CraftSimulator(data, pool, targets, Price) { Unveil = unveil };
 
         // 일반으로 안 나오는 목표가 있으면, 그 목표를 확정으로 붙이는 에센스나 작업대로만 채울 수 있습니다.
         var unnatural = targets.Select((t, i) => (t, i)).Where(x => !x.t.Fixed && !x.t.Reserved && !pool.Mods.Any(m => x.t.Matches(m))).ToList();
@@ -555,7 +558,7 @@
         {
             foreach (var (fossils, resonator) in BestFossilCombos(3, required))
             {
-                var fossilSim = new CraftSimulator(data, pool.WithFossils(fossils), targets, Price);
+                var fossilSim = new CraftSimulator(data, pool.WithFossils(fossils), targets, Price) { Unveil = unveil };
                 jobs.Add(("화석 · " + string.Join(" + ", fossils.Select(f => f.Korean)), () => fossilSim.FossilSpam(resonator, fossils, allowBench, token)));
             }
         }

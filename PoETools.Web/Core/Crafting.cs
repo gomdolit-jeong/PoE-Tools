@@ -143,6 +143,7 @@ public static class Currencies
     public const string Divine = P + "CurrencyModValues";
     public const string Blessed = P + "CurrencyRerollImplicit";
     public const string Sacred = P + "CurrencyRerollDefences";
+    public const string VeiledExalt = P + "CurrencyRerollRareVeiled";
 
     static readonly string[] Jewellery = ["Amulet", "Ring", "Belt"];
     static readonly string[] Armour = ["Body Armour", "Helmet", "Gloves", "Boots", "Shield", "Quiver"];
@@ -170,6 +171,7 @@ public static class Currencies
         new(Divine, "Divine Orb", "신성한 오브", 150),
         new(Blessed, "Blessed Orb", "축복의 오브", 0.5),
         new(Sacred, "Sacred Orb", "신성화의 오브", 10),
+        new(VeiledExalt, "Veiled Exalted Orb", "장막의 엑잘티드 오브", 500),
         new(P + "CurrencyCorrupt", "Vaal Orb", "바알 오브", 1),
         new(P + "CurrencyFlaskQuality", "Glassblower's Bauble", "유리공의 방울", 0.1),
         new(P + "CurrencyArmourQuality", "Armourer's Scrap", "방어구 장인의 고철", 0.02),
@@ -290,13 +292,14 @@ public sealed class ModPool
         var mods = new List<CraftMod>();
         var weights = new List<int>();
         var veiled = new List<CraftMod>();
+        var veiledWeights = new List<int>();
         var delve = new List<(CraftMod, int)>();
         foreach (var mod in data.Mods.Values)
         {
             if (mod.Level > itemLevel || mod.W.Count == 0) continue;
             var w = FirstMatch(mod.W, tags) ?? 0;
             if (w <= 0) continue;
-            if (mod.Domain == "unveiled") { veiled.Add(mod); continue; }
+            if (mod.Domain == "unveiled") { veiled.Add(mod); veiledWeights.Add(w); continue; }
             var g = FirstMatch(mod.Gw, tags);
             if (g is { } gm) w = w * gm / 100;
             if (w <= 0) continue;
@@ -307,12 +310,58 @@ public sealed class ModPool
         Mods = [.. mods];
         Weights = [.. weights];
         Veiled = [.. veiled];
+        VeiledWeights = [.. veiledWeights];
         Delve = [.. delve];
         (cumulative, Total) = Sum(Weights);
     }
 
     /// <summary>이 베이스에 붙을 수 있는 베일드 옵션 (풀에는 넣지 않음)</summary>
     public CraftMod[] Veiled { get; private init; } = [];
+    public int[] VeiledWeights { get; private init; } = [];
+
+    /// <summary>
+    /// 베일드 옵션을 해금할 때 고르는 선택지 3개(같은 쪽, 서로 다른 그룹, 가중치대로) 중에 목표를 채우는 옵션이 있을 확률.
+    /// 여러 번 뽑아 보는 어림입니다.
+    /// </summary>
+    public double UnveilChance(CraftTarget target, Random rng, int samples = 5_000)
+    {
+        var side = Enumerable.Range(0, Veiled.Length).Where(i => Veiled[i].Prefix == target.Prefix).ToArray();
+        if (side.Length == 0 || !side.Any(i => target.Matches(Veiled[i]))) return 0;
+        var hits = 0;
+        var picked = new List<int>(3);
+        var used = new HashSet<string>();
+        for (var s = 0; s < samples; s++)
+        {
+            picked.Clear();
+            used.Clear();
+            var hit = false;
+            while (picked.Count < 3)
+            {
+                long sum = 0;
+                foreach (var i in side) if (Free(i)) sum += VeiledWeights[i];
+                if (sum == 0) break;
+                var r = rng.NextInt64(sum);
+                foreach (var i in side)
+                {
+                    if (!Free(i)) continue;
+                    r -= VeiledWeights[i];
+                    if (r >= 0) continue;
+                    picked.Add(i);
+                    foreach (var g in Veiled[i].Groups) used.Add(g);
+                    hit |= target.Matches(Veiled[i]);
+                    break;
+                }
+            }
+            if (hit) hits++;
+        }
+        return (double)hits / samples;
+
+        bool Free(int i)
+        {
+            foreach (var g in Veiled[i].Groups) if (used.Contains(g)) return false;
+            return true;
+        }
+    }
 
     /// <summary>화석 전용 옵션과 가중치: 화석을 넣은 공명기로 굴릴 때만 풀에 들어갑니다 (WithFossils).</summary>
     public (CraftMod Mod, int Weight)[] Delve { get; private init; } = [];
@@ -357,7 +406,8 @@ public sealed class ModPool
             }
             weights[i] = (int)Math.Min(int.MaxValue / 64, Math.Round(w));
         }
-        return new ModPool(Base, ItemLevel, mods, weights);
+        // 베일드 옵션은 마지막에 따로 붙이므로 화석과 상관없이 그대로 넘깁니다.
+        return new ModPool(Base, ItemLevel, mods, weights) { Veiled = Veiled, VeiledWeights = VeiledWeights };
     }
 
     /// <summary>목표 하나를 채우는 옵션들의 가중치 합 (화석 조합 고르기에 씀)</summary>
@@ -485,6 +535,9 @@ public sealed class CraftSimulator
     readonly Random rng = new();
     /// <summary>목표마다 작업대로 붙일 수 있는 옵션 (없으면 null)</summary>
     readonly (CraftMod Mod, Dictionary<string, int> Cost)?[] bench;
+
+    /// <summary>베일드 목표를 모두 해금 선택지에서 얻을 확률 (베일드 목표가 없으면 1). ModPool.UnveilChance로 미리 계산해서 넘깁니다.</summary>
+    public double Unveil { get; init; } = 1;
 
     public CraftSimulator(CraftData data, ModPool pool, IReadOnlyList<CraftTarget> targets, Func<string, double> price)
     {
@@ -638,7 +691,16 @@ public sealed class CraftSimulator
 
         var per = successes > 0 ? (double)successes : 1;
         var perSuccess = uses.ToDictionary(kv => kv.Key, kv => kv.Value / per);
-        var cost = successes > 0 ? perSuccess.Sum(kv => kv.Value * price(kv.Key)) : double.PositiveInfinity;
+        // 베일드 목표: 완성품마다 장막의 엑잘티드 오브를 하나씩 쓰고, 해금 선택지에 원하는 옵션이 없으면
+        // 처음부터 다시 만든다고 봐서 전체 비용을 그 확률로 나눕니다.
+        var reserved = targets.Count(t => t.Reserved);
+        if (reserved > 0)
+        {
+            steps = [.. steps, $"마지막에 장막의 엑잘티드 오브로 베일드 옵션을 붙이고 해금 (선택지 3개에 원하는 옵션이 나올 확률 {Unveil:0.#%}, 안 나오면 처음부터 다시 만든다고 봄)"];
+            perSuccess[Currencies.VeiledExalt] = perSuccess.GetValueOrDefault(Currencies.VeiledExalt) + reserved;
+            if (Unveil > 0) perSuccess = perSuccess.ToDictionary(kv => kv.Key, kv => kv.Value / Unveil);
+        }
+        var cost = successes > 0 && (reserved == 0 || Unveil > 0) ? perSuccess.Sum(kv => kv.Value * price(kv.Key)) : double.PositiveInfinity;
         var extraList = extras.OrderByDescending(kv => kv.Value).Take(10)
             .Select(kv => new ExtraMod(kv.Key.Item1, kv.Key.Item2, (double)kv.Value / per)).ToList();
         return new CraftResult(name, steps, (double)successes / Math.Max(1, tries), successes, tries, perSuccess, cost, note, samples, extraList);
