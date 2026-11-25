@@ -126,6 +126,9 @@ public sealed class CraftPrices
 
 public sealed record Currency(string Id, string Name, string Korean, double DefaultPrice);
 
+/// <summary>수확 태그 재구성 하나: Tag가 붙은 옵션을 하나 확정으로 넣는 재구성과 그 비용</summary>
+public sealed record HarvestReforge(string Tag, string Korean, Dictionary<string, int> Cost);
+
 public static class Currencies
 {
     const string P = "Metadata/Items/Currency/";
@@ -176,6 +179,44 @@ public static class Currencies
         new(P + "CurrencyRerollSocketColours", "Chromatic Orb", "색채의 오브", 0.05),
         new(P + "CurrencyUpgradeRandomly", "Orb of Chance", "기회의 오브", 0.05),
         new(P + "CurrencyInstillingOrb", "Instilling Orb", "주입의 오브", 1),
+    ];
+
+    public const string WildLifeforce = P + "HarvestSeedRed";
+    public const string VividLifeforce = P + "HarvestSeedGreen";
+    public const string PrimalLifeforce = P + "HarvestSeedBlue";
+    public const string Rancour = P + "HarvestSeedFaridun";
+
+    /// <summary>수확(원예 작업대) 비용 화폐: 생기 결정과 앙심의 결정체</summary>
+    public static readonly Currency[] Harvest =
+    [
+        new(WildLifeforce, "Wild Crystallised Lifeforce", "야생 생기 결정", 0.02),
+        new(VividLifeforce, "Vivid Crystallised Lifeforce", "혈기 생기 결정", 0.04),
+        new(PrimalLifeforce, "Primal Crystallised Lifeforce", "원시 생기 결정", 0.04),
+        new(Rancour, "Crystallised Rancour", "앙심의 결정체", 300),
+    ];
+
+    /// <summary>
+    /// 원예 작업대의 "X 옵션 포함 재구성": 태그가 붙은 옵션 하나를 확정으로 넣고 다시 굴립니다.
+    /// 비용은 poedb Horticrafting 표 기준입니다.
+    /// </summary>
+    public static readonly HarvestReforge[] HarvestReforges =
+    [
+        new("fire", "화염", new() { [WildLifeforce] = 50 }),
+        new("cold", "냉기", new() { [VividLifeforce] = 50 }),
+        new("lightning", "번개", new() { [PrimalLifeforce] = 50 }),
+        new("physical", "물리", new() { [VividLifeforce] = 50 }),
+        new("life", "생명력", new() { [WildLifeforce] = 75 }),
+        new("defences", "방어", new() { [PrimalLifeforce] = 75 }),
+        new("chaos", "카오스", new() { [VividLifeforce] = 100 }),
+        new("attack", "공격", new() { [WildLifeforce] = 75 }),
+        new("caster", "주문", new() { [PrimalLifeforce] = 75 }),
+        new("speed", "속도", new() { [VividLifeforce] = 150 }),
+        new("critical", "치명타", new() { [PrimalLifeforce] = 150 }),
+        new("minion", "소환수", new() { [PrimalLifeforce] = 200, [Rancour] = 3 }),
+        new("elemental", "원소", new() { [WildLifeforce] = 200, [Rancour] = 1 }),
+        new("attribute", "능력치", new() { [VividLifeforce] = 200, [Rancour] = 2 }),
+        new("mana", "마나", new() { [PrimalLifeforce] = 200, [Rancour] = 2 }),
+        new("drop", "아이템 획득", new() { [VividLifeforce] = 200, [Rancour] = 1 }),
     ];
 
     /// <summary>화석 기본 가격 (리그마다 크게 다르니 화면에서 고쳐 주세요)</summary>
@@ -334,6 +375,26 @@ public sealed class ModPool
                 return int.Parse(e[1].ToString()!);
         return null;
     }
+
+    /// <summary>태그가 붙은 옵션 중에서 하나를 가중치대로 뽑습니다 (수확 태그 재구성). 없으면 null</summary>
+    public CraftMod? PickTagged(CraftItem item, string tag, Random rng)
+    {
+        long sum = 0;
+        for (var i = 0; i < Mods.Length; i++)
+            if (Array.IndexOf(Mods[i].Tags, tag) >= 0 && item.CanAdd(Mods[i])) sum += Weights[i];
+        if (sum == 0) return null;
+        var pick = rng.NextInt64(sum);
+        for (var i = 0; i < Mods.Length; i++)
+        {
+            if (Array.IndexOf(Mods[i].Tags, tag) < 0 || !item.CanAdd(Mods[i])) continue;
+            pick -= Weights[i];
+            if (pick < 0) return Mods[i];
+        }
+        return null;
+    }
+
+    /// <summary>이 태그가 붙은 옵션이 풀에 있는지</summary>
+    public bool HasTag(string tag) => Mods.Any(m => Array.IndexOf(m.Tags, tag) >= 0);
 
     /// <summary>아이템에 붙일 수 있는 옵션 하나를 가중치대로 뽑습니다 (같은 그룹·꽉 찬 쪽은 제외). 없으면 null</summary>
     public CraftMod? Pick(CraftItem item, Random rng)
@@ -506,10 +567,11 @@ public sealed class CraftSimulator
     /// <summary>모든 목표가 아이템에 이미 붙은 옵션과 겹치지 않는지 (매직 단계에서 쓰레기 옵션 판정)</summary>
     bool IsTarget(CraftMod mod) => targets.Any(t => t.Matches(mod));
 
-    void RollRare(CraftItem item, CraftMod? forced)
+    void RollRare(CraftItem item, CraftMod? forced, string? tag = null)
     {
         item.Clear(rare: true);
         if (forced is not null && item.CanAdd(forced)) item.Mods.Add(forced);
+        if (tag is not null && pool.PickTagged(item, tag, rng) is { } tagged) item.Mods.Add(tagged);
         // 레어 옵션 개수: 4개 8/12, 5개 3/12, 6개 1/12 (커뮤니티 추정치)
         var r = rng.Next(12);
         var count = r < 8 ? 4 : r < 11 ? 5 : 6;
@@ -614,6 +676,20 @@ public sealed class CraftSimulator
             var (ok, b) = Check(item, allowBench);
             return ok ? b : null;
         }, 400, 3_000_000, cancel, note: id);
+    }
+
+    /// <summary>원예 작업대의 "X 속성 포함 재구성"을 반복: 태그가 붙은 옵션 하나를 먼저 넣고 나머지는 보통대로 굴립니다.</summary>
+    public Task<CraftResult> HarvestSpam(HarvestReforge reforge, bool allowBench, CancellationToken cancel)
+    {
+        var item = NewItem();
+        string[] steps = [$"원예 작업대에서 {reforge.Korean} 옵션이 하나 포함되는 희귀 아이템 재구성을 원하는 옵션이 나올 때까지 사용", BenchStep(allowBench)];
+        return Run($"수확 · {reforge.Korean} 포함 재구성", steps.Where(s => s != "").ToArray(), item, uses =>
+        {
+            foreach (var (cur, n) in reforge.Cost) Use(uses, cur, n);
+            RollRare(item, null, reforge.Tag);
+            var (ok, b) = Check(item, allowBench);
+            return ok ? b : null;
+        }, 400, 3_000_000, cancel);
     }
 
     /// <summary>화석을 넣은 혼돈 공명기를 레어 아이템에 반복 사용 (이 시뮬레이터의 풀은 WithFossils로 만든 것)</summary>
