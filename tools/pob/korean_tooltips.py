@@ -16,6 +16,7 @@
 - src/Classes/ItemsTab.lua: 아이템 이름 아래에 한글 이름을, 옵션 줄마다 아래에 한글 줄을 넣습니다.
 - src/Classes/GemTooltip.lua: 젬 툴팁의 스킬 이름 아래에 한글 이름을 넣습니다.
 - src/Classes/ItemDBControl.lua: 아이템 목록 검색어에 한글이 있으면 한글 이름·옵션 문장에서도 찾습니다.
+- src/Classes/ItemsTab.lua·DropDownControl.lua: 아이템 제작의 접두·접미 옵션 목록을 한글로 보여 줍니다.
 
 PoB를 올렸는데 넣을 자리를 못 찾으면 경고만 하고 그 부분은 건너뜁니다 (PoB는 영어로 정상 동작).
 """
@@ -145,6 +146,71 @@ SEARCH_BLOCK = """		-- PoE Tools: 검색어에 한글이 있으면 한글 이름
 			end
 		end
 """
+
+# 아이템 제작의 접두·접미 옵션 목록(ItemsTab.lua UpdateAffixControl): 목록을 만든 바로 뒤에서 줄마다 한글 이름
+# (koreanLabel)을 붙입니다. 줄 이름은 옵션 문장을 "/"로 이은 것이라 문장마다 번역하고, 하나라도 없으면 영어로 둡니다.
+AFFIX_ANCHOR = """		if #lastSeries.modList == 2 then
+			lastSeries.label = lastSeries.label:gsub("%(%-?[%d%.]+%-%-?[%d%.]+%)", "#"):gsub("%-?%d+%.?%d*", "#")
+			lastSeries.haveRange = true
+		end
+	end
+"""
+AFFIX_BLOCK = """	-- PoE Tools: 옵션 목록 줄마다 한글 이름을 붙입니다. 그릴 때만 쓰고 계산은 영어 label을 씁니다 (tools/pob/korean_tooltips.py)
+	if gachaKoreanModLine == nil then
+		local ok, translate = pcall(LoadModule, "Data/KoreanMods")
+		gachaKoreanModLine = ok and type(translate) == "function" and translate or false
+	end
+	if gachaKoreanModLine then
+		for _, entry in ipairs(control.list) do
+			if type(entry) == "table" and entry.label then
+				local parts = { }
+				for part in entry.label:gmatch("[^/]+") do
+					-- 표의 키는 "+#"를 "#"로 적습니다 (예: "+# to maximum Life" → "# to maximum Life").
+					local korean = gachaKoreanModLine((part:gsub("%+#", "#")))
+					if not korean then
+						parts = nil
+						break
+					end
+					parts[#parts + 1] = korean
+				end
+				entry.koreanLabel = parts and #parts > 0 and table.concat(parts, " / ") or nil
+			end
+		end
+	end
+"""
+
+# 드롭다운(DropDownControl.lua)이 줄 이름을 그릴 때 koreanLabel이 있으면 그것을 씁니다.
+# 목록 안에서 글자를 쳐서 찾는 중에는 영어로 찾고 강조하므로 영어로 그립니다.
+DROPDOWN_PATCHES = [
+    # 닫힌 상자에 보이는 고른 값
+    ("\t\t\tselLabel = selItem.label\n",
+     "\t\t\tselLabel = selItem.koreanLabel or selItem.label -- PoE Tools: 한글 이름\n"),
+    # 펼친 목록의 줄
+    ("\t\t\t\t\tlabel = listVal.label\n\t\t\t\t\tdetail = listVal.detail\n",
+     "\t\t\t\t\tlabel = (not self:IsSearchActive() and listVal.koreanLabel) or listVal.label -- PoE Tools: 한글 이름\n"
+     "\t\t\t\t\tdetail = listVal.detail\n"),
+    # 펼친 목록 폭 계산
+    ("\t\t\t\tline = line.label or \"\"\n",
+     "\t\t\t\tline = line.koreanLabel or line.label or \"\" -- PoE Tools: 한글 이름\n"),
+]
+
+
+def patch_affix_dropdown(src: Path) -> None:
+    if not patch(src / "Classes" / "ItemsTab.lua", AFFIX_ANCHOR, AFFIX_BLOCK, "제작 옵션 목록 한글"):
+        return
+    path = src / "Classes" / "DropDownControl.lua"
+    text = path.read_text(encoding="utf-8")
+    missing = []
+    for old, new in DROPDOWN_PATCHES:
+        if text.count(old) == 1:
+            text = text.replace(old, new)
+        else:
+            missing.append(old.strip()[:40])
+    path.write_text(text, encoding="utf-8")
+    print(f"한글 화면 글자: 제작 옵션 목록 ({len(DROPDOWN_PATCHES) - len(missing)}곳)")
+    if missing:
+        print(f"경고: DropDownControl.lua에서 찾지 못해 영어로 둔 곳: {missing}")
+
 
 # 아이템 목록 검색칸을 만든 바로 뒤. 이 칸을 누를 때만 한글 입력 창이 자동으로 뜨게 표시합니다 (EDIT_PATCHES 참고).
 SEARCH_FLAG_ANCHOR = "\tend, nil, nil, true)\n\tself.controls.searchMode = "
@@ -380,6 +446,7 @@ def main(repo: Path, korean_json: Path, korean_stats: Path | None = None) -> Non
         count = write_korean_mods(src, korean_stats)
         if patch(src / "Classes" / "ItemsTab.lua", ITEM_ANCHOR, ITEM_BLOCK, "아이템 한글 툴팁"):
             print(f"한글 툴팁: 아이템 옵션 문장 {count}개")
+        patch_affix_dropdown(src)
         korean_items = korean_stats.with_name("korean_items.json")
         if korean_items.exists():
             names = json.loads(korean_items.read_text(encoding="utf-8"))
